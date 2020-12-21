@@ -1,6 +1,0 @@
-target/test-classes/features/Master/Location.feature:13
-target/test-classes/features/Master/Inventory/Primary/Others.feature:13:21:29:37:54:59
-target/test-classes/features/Master/CategoryAttributeMapping.feature:13
-target/test-classes/features/Master/SalesMan_Master.feature:13
-target/test-classes/features/Master/Inventory/Primary/department.feature:14:24:35:43:53:62:68:74:80
-target/test-classes/features/Master/terminial.feature:13

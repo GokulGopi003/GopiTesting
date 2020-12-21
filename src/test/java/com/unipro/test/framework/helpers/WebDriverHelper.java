@@ -31,7 +31,7 @@ public abstract class WebDriverHelper extends EventFiringWebDriver {
 
         @Override
         public void run() {
-           //REAL_DRIVER.quit();
+           REAL_DRIVER.quit();
         }
     };
     private static String BROWSER;
@@ -93,6 +93,7 @@ public abstract class WebDriverHelper extends EventFiringWebDriver {
             }
 
         } catch (IllegalStateException e) {
+        	System.out.println(e);
             LOG.error("FIX path for driver.root.dir in pom.xml " + DRIVER_ROOT_DIR
                     + " Browser parameter " + BROWSER + " Platform parameter " + PLATFORM
                     + " type not supported");
