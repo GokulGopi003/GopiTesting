@@ -1,0 +1,142 @@
+[
+  {
+    "line": 6,
+    "elements": [
+      {
+        "line": 32,
+        "name": "Negative combinations for user login scenarios",
+        "description": "",
+        "id": "register:--as-a-new-customer-i-would-like-to-register-so-i-can-:--;negative-combinations-for-user-login-scenarios;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 22,
+            "name": "i navigate to the website \"HOME\" page",
+            "match": {},
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 23,
+            "name": "i click \"SIGN_IN\" on the Home Page",
+            "match": {},
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 24,
+            "name": "i enter loginId \"invalid\" and password \"invalid\"",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 25,
+            "name": "i click on Sign In button on the Login Page",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 26,
+            "name": "i can see the validation message \"error.incorrectDetails\"",
+            "match": {},
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@gui"
+          }
+        ]
+      },
+      {
+        "line": 33,
+        "name": "Negative combinations for user login scenarios",
+        "description": "",
+        "id": "register:--as-a-new-customer-i-would-like-to-register-so-i-can-:--;negative-combinations-for-user-login-scenarios;;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 22,
+            "name": "i navigate to the website \"HOME\" page",
+            "match": {},
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 23,
+            "name": "i click \"SIGN_IN\" on the Home Page",
+            "match": {},
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 24,
+            "name": "i enter loginId \"\" and password \"\"",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 25,
+            "name": "i click on Sign In button on the Login Page",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 26,
+            "name": "i can see the validation message \"error.enterLogin\"",
+            "match": {},
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@gui"
+          }
+        ]
+      }
+    ],
+    "name": "REGISTER:- As a new customer I would like to register so I can : -",
+    "description": "",
+    "id": "register:--as-a-new-customer-i-would-like-to-register-so-i-can-:--",
+    "keyword": "Feature",
+    "uri": "target/test-classes/features/web/WebRegister.feature",
+    "tags": [
+      {
+        "name": "@gui",
+        "type": "Tag",
+        "location": {
+          "line": 5,
+          "column": 1
+        }
+      }
+    ]
+  }
+]
