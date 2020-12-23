@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="2" configfailurepolicy="continue" guice-stage="DEVELOPMENT" name="Failed suite [run tests in parallel]" parallel="tests">
-  <test thread-count="2" name="ParallelThread2(failed)" parallel="tests">
-    <classes>
-      <class name="com.unipro.test.RunApiATSuite">
-        <methods>
-          <include name="setUpClass"/>
-          <include name="runScenario" invocation-numbers="0 1 2 3"/>
-          <include name="tearDownClass"/>
-        </methods>
-      </class> <!-- com.unipro.test.RunApiATSuite -->
-    </classes>
-  </test> <!-- ParallelThread2(failed) -->
   <test thread-count="2" name="ParallelThread1(failed)" parallel="tests">
     <classes>
       <class name="com.unipro.test.RunWebATSuite">
@@ -23,4 +12,15 @@
       </class> <!-- com.unipro.test.RunWebATSuite -->
     </classes>
   </test> <!-- ParallelThread1(failed) -->
+  <test thread-count="2" name="ParallelThread2(failed)" parallel="tests">
+    <classes>
+      <class name="com.unipro.test.RunApiATSuite">
+        <methods>
+          <include name="setUpClass"/>
+          <include name="runScenario" invocation-numbers="0 1 2 3"/>
+          <include name="tearDownClass"/>
+        </methods>
+      </class> <!-- com.unipro.test.RunApiATSuite -->
+    </classes>
+  </test> <!-- ParallelThread2(failed) -->
 </suite> <!-- Failed suite [run tests in parallel] -->

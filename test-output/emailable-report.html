@@ -9,14 +9,14 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="7">run tests in parallel</th></tr>
-<tr><td><a href="#t0">ParallelThread2</a></td><td class="num">0</td><td class="num attn">4</td><td class="num">0</td><td class="num">353</td><td></td><td></td></tr>
-<tr class="stripe"><td><a href="#t1">ParallelThread1</a></td><td class="num">0</td><td class="num attn">2</td><td class="num">0</td><td class="num">353</td><td></td><td></td></tr>
-<tr><th>Total</th><th class="num">0</th><th class="num attn">6</th><th class="num">0</th><th class="num">706</th><th colspan="2"></th></tr>
+<tr><td><a href="#t0">ParallelThread1</a></td><td class="num">0</td><td class="num attn">2</td><td class="num">0</td><td class="num">373</td><td></td><td></td></tr>
+<tr class="stripe"><td><a href="#t1">ParallelThread2</a></td><td class="num">0</td><td class="num attn">4</td><td class="num">0</td><td class="num">373</td><td></td><td></td></tr>
+<tr><th>Total</th><th class="num">0</th><th class="num attn">6</th><th class="num">0</th><th class="num">746</th><th colspan="2"></th></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">run tests in parallel</th></tr></tbody><tbody id="t0"><tr><th colspan="4">ParallelThread2 &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="4">com.unipro.test.RunApiATSuite</td><td><a href="#m0">runScenario</a></td><td rowspan="4">1608564868267</td><td rowspan="4">3</td></tr><tr class="skippedeven"><td><a href="#m1">runScenario</a></td></tr><tr class="skippedeven"><td><a href="#m2">runScenario</a></td></tr><tr class="skippedeven"><td><a href="#m3">runScenario</a></td></tr></tbody>
-<tbody id="t1"><tr><th colspan="4">ParallelThread1 &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="2">com.unipro.test.RunWebATSuite</td><td><a href="#m4">runScenario</a></td><td rowspan="2">1608564868128</td><td rowspan="2">132</td></tr><tr class="skippedeven"><td><a href="#m5">runScenario</a></td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">run tests in parallel</th></tr></tbody><tbody id="t0"><tr><th colspan="4">ParallelThread1 &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="2">com.unipro.test.RunWebATSuite</td><td><a href="#m0">runScenario</a></td><td rowspan="2">1608580100021</td><td rowspan="2">6</td></tr><tr class="skippedeven"><td><a href="#m1">runScenario</a></td></tr></tbody>
+<tbody id="t1"><tr><th colspan="4">ParallelThread2 &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="4">com.unipro.test.RunApiATSuite</td><td><a href="#m2">runScenario</a></td><td rowspan="4">1608580100030</td><td rowspan="4">3</td></tr><tr class="skippedeven"><td><a href="#m3">runScenario</a></td></tr><tr class="skippedeven"><td><a href="#m4">runScenario</a></td></tr><tr class="skippedeven"><td><a href="#m5">runScenario</a></td></tr></tbody>
 </table>
-<h2>ParallelThread2</h2><h3 id="m0">com.unipro.test.RunApiATSuite#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Update an Item&quot;</td><td>&quot;Sample Api tests to demonstrate CRUD operation&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.testng.SkipException: There are undefined steps
+<h2>ParallelThread1</h2><h3 id="m0">com.unipro.test.RunWebATSuite#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Negative combinations for user login scenarios&quot;</td><td>&quot;REGISTER:- As a new customer I would like to register so I can : -&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.testng.SkipException: There are undefined steps
 	at cucumber.api.testng.TestCaseResultListener.getError(TestCaseResultListener.java:60)
 	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:69)
 	at cucumber.api.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:22)
@@ -25,7 +25,7 @@
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
 ... Removed 16 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.unipro.test.RunApiATSuite#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Delete an Item&quot;</td><td>&quot;Sample Api tests to demonstrate CRUD operation&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.testng.SkipException: There are undefined steps
+<h3 id="m1">com.unipro.test.RunWebATSuite#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Negative combinations for user login scenarios&quot;</td><td>&quot;REGISTER:- As a new customer I would like to register so I can : -&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.testng.SkipException: There are undefined steps
 	at cucumber.api.testng.TestCaseResultListener.getError(TestCaseResultListener.java:60)
 	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:69)
 	at cucumber.api.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:22)
@@ -34,7 +34,7 @@
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
 ... Removed 16 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">com.unipro.test.RunApiATSuite#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Get Details&quot;</td><td>&quot;Sample Api tests to demonstrate CRUD operation&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.testng.SkipException: There are undefined steps
+<h2>ParallelThread2</h2><h3 id="m2">com.unipro.test.RunApiATSuite#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Delete an Item&quot;</td><td>&quot;Sample Api tests to demonstrate CRUD operation&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.testng.SkipException: There are undefined steps
 	at cucumber.api.testng.TestCaseResultListener.getError(TestCaseResultListener.java:60)
 	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:69)
 	at cucumber.api.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:22)
@@ -43,7 +43,7 @@
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
 ... Removed 16 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">com.unipro.test.RunApiATSuite#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Add an Item&quot;</td><td>&quot;Sample Api tests to demonstrate CRUD operation&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.testng.SkipException: There are undefined steps
+<h3 id="m3">com.unipro.test.RunApiATSuite#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Update an Item&quot;</td><td>&quot;Sample Api tests to demonstrate CRUD operation&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.testng.SkipException: There are undefined steps
 	at cucumber.api.testng.TestCaseResultListener.getError(TestCaseResultListener.java:60)
 	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:69)
 	at cucumber.api.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:22)
@@ -52,7 +52,7 @@
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
 ... Removed 16 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h2>ParallelThread1</h2><h3 id="m4">com.unipro.test.RunWebATSuite#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Negative combinations for user login scenarios&quot;</td><td>&quot;REGISTER:- As a new customer I would like to register so I can : -&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.testng.SkipException: There are undefined steps
+<h3 id="m4">com.unipro.test.RunApiATSuite#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Add an Item&quot;</td><td>&quot;Sample Api tests to demonstrate CRUD operation&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.testng.SkipException: There are undefined steps
 	at cucumber.api.testng.TestCaseResultListener.getError(TestCaseResultListener.java:60)
 	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:69)
 	at cucumber.api.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:22)
@@ -61,7 +61,7 @@
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
 ... Removed 16 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">com.unipro.test.RunWebATSuite#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Negative combinations for user login scenarios&quot;</td><td>&quot;REGISTER:- As a new customer I would like to register so I can : -&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.testng.SkipException: There are undefined steps
+<h3 id="m5">com.unipro.test.RunApiATSuite#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;Get Details&quot;</td><td>&quot;Sample Api tests to demonstrate CRUD operation&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.testng.SkipException: There are undefined steps
 	at cucumber.api.testng.TestCaseResultListener.getError(TestCaseResultListener.java:60)
 	at cucumber.api.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:69)
 	at cucumber.api.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:22)
