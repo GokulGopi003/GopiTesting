@@ -31,7 +31,7 @@ public abstract class WebDriverHelper extends EventFiringWebDriver {
 
         @Override
         public void run() {
-           REAL_DRIVER.quit();
+           //REAL_DRIVER.quit();
         }
     };
     private static String BROWSER;
