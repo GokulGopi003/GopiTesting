@@ -12,15 +12,4 @@
       </class> <!-- com.unipro.test.RunApiATSuite -->
     </classes>
   </test> <!-- ParallelThread2(failed) -->
-  <test thread-count="2" name="ParallelThread1(failed)" parallel="tests">
-    <classes>
-      <class name="com.unipro.test.RunWebATSuite">
-        <methods>
-          <include name="setUpClass"/>
-          <include name="runScenario" invocation-numbers="0 1"/>
-          <include name="tearDownClass"/>
-        </methods>
-      </class> <!-- com.unipro.test.RunWebATSuite -->
-    </classes>
-  </test> <!-- ParallelThread1(failed) -->
 </suite> <!-- Failed suite [run tests in parallel] -->
