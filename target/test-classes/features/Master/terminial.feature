@@ -31,3 +31,4 @@ Feature: PoS Master > Inventory > Category Attribute Mapping
     And I click on the checkBox forElement "input#ContentPlaceHolder1_chkNetUseCommand"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtNormalPrinter" as "10"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtBarcodePrinter.form-control-res" as "10"
+    
