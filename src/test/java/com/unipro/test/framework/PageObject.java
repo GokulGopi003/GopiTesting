@@ -454,6 +454,17 @@ public abstract class PageObject {
 	protected WebElement element(final By by) {
 		return getWebDriver().findElement(by);
 	}
+	
+	
+	/**
+	 * Wrapper for driver.findElement
+	 *
+	 * @param by
+	 *            Element location found by css, xpath, id etc...
+	 **/
+	protected List<WebElement> elements(final By by) {
+		return getWebDriver().findElements(by);
+	}
 
 	/**
 	 * Wrapper for clear data and sendKeys in Input Text box
