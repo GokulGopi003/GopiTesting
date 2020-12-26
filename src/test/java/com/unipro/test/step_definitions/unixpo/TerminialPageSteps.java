@@ -93,6 +93,12 @@ public class TerminialPageSteps {
 		ter_Page.terminal_waitClearEnterText_css(webele, textToType);
 
 	}
+	
+	
+	@Then("I enter the value forElement {string} as FCNew")
+	public void i_enter_the_value_forElement_as_FCNew(String string) {
+	    
+	}
 
 	@Then("I click on the checkBox forElement {string}")
 	public void i_click_on_the_checkBox_forElement(String webele) {
