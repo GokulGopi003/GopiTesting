@@ -54,16 +54,7 @@ public class CommonPages extends PageObject {
 		button.click();
 
 	}
-<<<<<<< Updated upstream
-	
-	
-	
-	
-	
-	
-	
-	
-=======
+
 	public WebElement js_waitAndTypeTextinsideTextBox(String valueToSearch, String forElement) {
 
 		String css_location_dropDownValue =forElement ;
@@ -89,6 +80,6 @@ public class CommonPages extends PageObject {
 		}
 
 	}
->>>>>>> Stashed changes
+
 
 }
