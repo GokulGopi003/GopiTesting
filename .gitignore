@@ -6,3 +6,6 @@ target/test-classes/com/unipro/test/step_definitions/unixpo/TerminialPageSteps.c
 *.class
 target/test-classes/com/unipro/test/framework/PageObject.class
 target/test-classes/com/unipro/test/step_definitions/unixpo/TerminialPageSteps.class
+target/test-classes/com/unipro/test/framework/PageObject.class
+target/test-classes/com/unipro/test/step_definitions/unixpo/TerminialPageSteps.class
+*.class
