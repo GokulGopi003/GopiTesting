@@ -88,10 +88,11 @@ public class TerminialPageSteps {
 	}
 
 	@Then("I enter the value forElement {string} as {string}")
-	public void i_enter_the_value_forElement_as(String webele, String textToType) {
+	public void i_enter_the_value_forElement_as(String webele, String textToType)  {
+
 
 		ter_Page.terminal_waitClearEnterText_css(webele, textToType);
-
+		
 	}
 	
 	

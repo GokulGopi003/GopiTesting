@@ -17,6 +17,15 @@ public class CommonPages extends PageObject {
 		button.click();
 
 	}
+	
+	public void clickonButton_Dynamic(String buttonName) {
+
+		WebElement button = waitForExpectedElement(
+				By.cssSelector("a#ContentPlaceHolder1_lnk" + buttonName));
+
+		button.click();
+
+	}
 
 	public void clickonElement(String element) {
 
@@ -34,5 +43,23 @@ public class CommonPages extends PageObject {
 		element.click();
 
 	}
+	
+	
+	
+	public void clickon_element_inAlertBox(String element) {
+
+		WebElement button = waitForExpectedElement(
+				By.cssSelector( element));
+		button.click();
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

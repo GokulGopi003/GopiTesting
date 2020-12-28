@@ -26,6 +26,15 @@ public class Unipro_Common_StepDefinitions {
 		cp.clickonButton(buttonName);
 
 	}
+	
+	
+	@When("I click dynamically on {string} button")
+	public void i_click_dynamically_on_button(String buttonName) {
+	 
+		cp.clickonButton_Dynamic(buttonName);
+		
+	}
+
 
 	@When("Im waiting for {int} sec")
 	public void im_waiting_for_sec(Integer seconds) {
@@ -57,5 +66,18 @@ public class Unipro_Common_StepDefinitions {
 		
 		cp.confirmDelete(string);
 	}
+	
+	
+	@When("I click on on element {string} in {string} alert box")
+	public void i_click_on_on_element_in_alert_box(String element, String forBox) {
+		
+		cp.clickon_element_inAlertBox(element);
+		
+		
+	}
+	
+	
+	
+
 
 }
