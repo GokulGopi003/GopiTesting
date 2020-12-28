@@ -88,10 +88,11 @@ public class TerminialPageSteps {
 	}
 
 	@Then("I enter the value forElement {string} as {string}")
-	public void i_enter_the_value_forElement_as(String webele, String textToType) {
+	public void i_enter_the_value_forElement_as(String webele, String textToType) throws InterruptedException {
+		Thread.sleep(3000);
 
 		ter_Page.terminal_waitClearEnterText_css(webele, textToType);
-
+		Thread.sleep(2000);
 	}
 
 	@Then("I click on the checkBox forElement {string}")
