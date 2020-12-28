@@ -34,6 +34,12 @@ public class Unipro_Common_StepDefinitions {
 		cp.clickonButton_Dynamic(buttonName);
 		
 	}
+	@When("I click on button tag with value {string}")
+	public void i_click_on_button_tag_with_value(String buttonName) {
+	 
+		cp.clickUsingButtonTag(buttonName);
+		
+	}
 
 
 	@When("Im waiting for {int} sec")
@@ -75,9 +81,16 @@ public class Unipro_Common_StepDefinitions {
 		
 		
 	}
+<<<<<<< Updated upstream
 	
 	
 	
 
+=======
+	@Then("I need to type the textvalue forElement {string} value as {string} using Javascript")
+	public void i_need_to_type_the_textvalue_forElement_value_as_using_Javascript(String string, String string2) {
+	    cp.js_waitAndTypeTextinsideTextBox(string2, string);
+	}
+>>>>>>> Stashed changes
 
 }
