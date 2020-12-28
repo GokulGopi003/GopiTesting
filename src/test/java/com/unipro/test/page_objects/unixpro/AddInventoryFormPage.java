@@ -14,6 +14,7 @@ import com.unipro.test.framework.PageObject;
 
 public class AddInventoryFormPage extends PageObject{
 	private By menu_invoke_element = By.cssSelector("a.dropdown-toggle");
+	private By sub_menu_invoke_element = By.cssSelector("a");
 	private By td_invoke_element = By.cssSelector("td");
 	private By table_element = By.cssSelector("div.search-table");
 	private By selling_price_element = By.cssSelector("input#ContentPlaceHolder1_imgPriceChange");
@@ -32,10 +33,10 @@ public class AddInventoryFormPage extends PageObject{
 			visibilityOf(webElement);
 			elementToBeClickable(webElement);
 			menu_invoke_ele = webElement;
-			System.out.println("Matching with default Value");
+			//System.out.println("Matching with default Value");
 			return menu_invoke_ele;
 			} else {
-				 System.out.println("Text did not Match with default Value");
+				// System.out.println("Text did not Match with default Value");
 			}
 		}
 		return menu_invoke_ele;
@@ -54,10 +55,10 @@ public class AddInventoryFormPage extends PageObject{
 			visibilityOf(webElement);
 			elementToBeClickable(webElement);
 			table_invoke_ele = webElement;
-			System.out.println("Matching with default Value");
+			//System.out.println("Matching with default Value");
 			return table_invoke_ele;
 			} else {
-				 System.out.println("Text did not Match with default Value");
+				 //System.out.println("Text did not Match with default Value");
 			}
 		}
 		return table_invoke_ele;
@@ -90,10 +91,27 @@ public class AddInventoryFormPage extends PageObject{
 		waitClearEnterText(inventory_by, textToEnter);
 
 	}
-	public void inventory_clearEnterText_css(String webele, String textToEnter) {
+	
+	//image menu upload
+	public WebElement return_submenu_invoke_element(String defaultText) {
 
-		By inventory_by = By.cssSelector(webele);
-		clearEnterText(inventory_by, textToEnter);
+		
+		WebElement menu_invoke_ele = null;
+
+		List<WebElement> listofHref = getWebDriver().findElements(sub_menu_invoke_element);
+		for (Iterator iter = listofHref.iterator(); iter.hasNext();) {
+			WebElement webElement = (WebElement) iter.next();
+			if (webElement.getText().equalsIgnoreCase(defaultText)) {
+				visibilityOf(webElement);
+				elementToBeClickable(webElement);
+				menu_invoke_ele = webElement;
+				// System.out.println("Matching with default Value");
+				return menu_invoke_ele;
+			} else {
+				// System.out.println("Text did not Match with default Value");
+			}
+		}
+		return menu_invoke_ele;
 
 	}
 

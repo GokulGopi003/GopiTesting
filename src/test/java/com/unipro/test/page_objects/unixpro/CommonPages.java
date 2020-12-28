@@ -1,5 +1,6 @@
 package com.unipro.test.page_objects.unixpro;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -53,13 +54,32 @@ public class CommonPages extends PageObject {
 		button.click();
 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public WebElement js_waitAndTypeTextinsideTextBox(String valueToSearch, String forElement) {
+
+		String css_location_dropDownValue =forElement ;
+		By textlocator = By.cssSelector(css_location_dropDownValue);
+		waitForExpectedElement(textlocator);
+		js_typeIntoDropDownSearchBox(css_location_dropDownValue, valueToSearch);
+
+		return waitForExpectedElement(textlocator);
+
+	}
+
+	public void clickUsingButtonTag(String buttonName) {
+		try {
+			List<WebElement> weList = getWebDriver().findElements(By.tagName("button"));
+			for (Iterator iterator = weList.iterator(); iterator.hasNext();) {
+				WebElement button = (WebElement) iterator.next();
+				if (button.getText().equalsIgnoreCase(buttonName)) {
+					button.click();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
 
 }
