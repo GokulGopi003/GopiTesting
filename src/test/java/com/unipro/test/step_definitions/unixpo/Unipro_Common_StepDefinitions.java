@@ -26,6 +26,12 @@ public class Unipro_Common_StepDefinitions {
 		cp.clickonButton(buttonName);
 
 	}
+	@Then("I need to click on the blue {string} button")
+	public void i_need_to_click_on_the_blue_button(String buttonName) {
+
+		cp.clickonBlueButton(buttonName);
+
+	}
 	
 	
 	@When("I click dynamically on {string} button")

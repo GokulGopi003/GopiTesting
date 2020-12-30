@@ -17,7 +17,6 @@ public class AddInventoryFormPage extends PageObject{
 	private By sub_menu_invoke_element = By.cssSelector("a");
 	private By td_invoke_element = By.cssSelector("td");
 	private By table_element = By.cssSelector("div.search-table");
-	private By selling_price_element = By.cssSelector("input#ContentPlaceHolder1_imgPriceChange");
 	
 	
 	public WebElement return_menu_invoke_element(String defaultText) {
@@ -94,7 +93,6 @@ public class AddInventoryFormPage extends PageObject{
 	
 	//image menu upload
 	public WebElement return_submenu_invoke_element(String defaultText) {
-
 		
 		WebElement menu_invoke_ele = null;
 

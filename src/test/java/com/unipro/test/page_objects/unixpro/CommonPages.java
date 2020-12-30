@@ -11,9 +11,17 @@ import com.unipro.test.framework.PageObject;
 public class CommonPages extends PageObject {
 
 	public void clickonButton(String buttonName) {
+		WebElement button = waitForExpectedElement(
+					By.cssSelector("a#ContentPlaceHolder1_lnk" + buttonName + ".button-red"));
+	
+		button.click();
+
+	}
+	
+	public void clickonBlueButton(String buttonName) {
 
 		WebElement button = waitForExpectedElement(
-				By.cssSelector("a#ContentPlaceHolder1_lnk" + buttonName + ".button-red"));
+					By.cssSelector("input#ContentPlaceHolder1_btn" + buttonName + ".button-blue"));
 
 		button.click();
 
