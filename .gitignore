@@ -1,4 +1,14 @@
 /target/
+.classpath
+.settings/org.eclipse.jdt.core.prefs
+target/classes/META-INF/MANIFEST.MF
+target/classes/META-INF/maven/Retail/POS_Automation/pom.properties
+target/classes/META-INF/maven/Retail/POS_Automation/pom.xml
+target/test-classes/com/unipro/test/framework/helpers/AndroidHelper$1.class
+target/test-classes/com/unipro/test/framework/helpers/screenshot_helper/ScreenshotHelper$1.class
+target/test-classes/com/unipro/test/framework/helpers/utils/StringUtilsHelper.class
+target/test-classes/com/unipro/test/framework/helpers/WebDriverHelper$1.class
+target/test-classes/com/unipro/test/framework/PageObject.class
 target/test-classes/com/unipro/test/framework/PageObject.class
 target/test-classes/com/unipro/test/framework/PageObject.class
 target/test-classes/com/unipro/test/step_definitions/unixpo/TerminialPageSteps.class
@@ -8,4 +18,4 @@ target/test-classes/com/unipro/test/framework/PageObject.class
 target/test-classes/com/unipro/test/step_definitions/unixpo/TerminialPageSteps.class
 target/test-classes/com/unipro/test/framework/PageObject.class
 target/test-classes/com/unipro/test/step_definitions/unixpo/TerminialPageSteps.class
-*.class
+
