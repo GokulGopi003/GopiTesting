@@ -18,5 +18,4 @@ target/test-classes/com/unipro/test/framework/PageObject.class
 target/test-classes/com/unipro/test/step_definitions/unixpo/TerminialPageSteps.class
 target/test-classes/com/unipro/test/framework/PageObject.class
 target/test-classes/com/unipro/test/step_definitions/unixpo/TerminialPageSteps.class
-*.class
-*.class
+
