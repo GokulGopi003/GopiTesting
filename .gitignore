@@ -9,3 +9,14 @@ target/test-classes/com/unipro/test/framework/helpers/screenshot_helper/Screensh
 target/test-classes/com/unipro/test/framework/helpers/utils/StringUtilsHelper.class
 target/test-classes/com/unipro/test/framework/helpers/WebDriverHelper$1.class
 target/test-classes/com/unipro/test/framework/PageObject.class
+target/test-classes/com/unipro/test/framework/PageObject.class
+target/test-classes/com/unipro/test/framework/PageObject.class
+target/test-classes/com/unipro/test/step_definitions/unixpo/TerminialPageSteps.class
+target/test-classes/com/unipro/test/step_definitions/unixpo/TerminialPageSteps.class
+*.class
+target/test-classes/com/unipro/test/framework/PageObject.class
+target/test-classes/com/unipro/test/step_definitions/unixpo/TerminialPageSteps.class
+target/test-classes/com/unipro/test/framework/PageObject.class
+target/test-classes/com/unipro/test/step_definitions/unixpo/TerminialPageSteps.class
+*.class
+*.class

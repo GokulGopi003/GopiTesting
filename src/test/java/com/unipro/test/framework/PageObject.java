@@ -442,7 +442,7 @@ public abstract class PageObject {
 
 	public void js_typeIntoDropDownSearchBox(String cssSelector, String value) {
 		((JavascriptExecutor) webDriver)
-				.executeScript("document.querySelectorAll('" + cssSelector + "')["+0+"].value='"+value+"'");
+				.executeScript("document.querySelectorAll('" + cssSelector + "')[" + 0 + "].value='" + value + "'");
 	}
 
 	/**
@@ -454,8 +454,7 @@ public abstract class PageObject {
 	protected WebElement element(final By by) {
 		return getWebDriver().findElement(by);
 	}
-	
-	
+
 	/**
 	 * Wrapper for driver.findElement
 	 *
@@ -493,5 +492,6 @@ public abstract class PageObject {
 		element(by).sendKeys(inputText);
 
 	}
+
 
 }
