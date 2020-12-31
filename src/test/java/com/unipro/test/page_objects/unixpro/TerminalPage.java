@@ -52,6 +52,16 @@ public class TerminalPage extends PageObject {
 		return waitForExpectedElement(ddlocator);
 
 	}
+	
+	public WebElement waitAndSelectDropDownUsingSerachBox_Dynamic(String valueToSearch, String forElement) {
+
+		By ddlocator = By.cssSelector(forElement);
+		waitForExpectedElement(ddlocator);
+		js_typeIntoDropDownSearchBox(forElement, valueToSearch);
+
+		return waitForExpectedElement(ddlocator);
+
+	}
 
 	public void selectingDropDownUsingSerachBox(String valueToSearch) {
 

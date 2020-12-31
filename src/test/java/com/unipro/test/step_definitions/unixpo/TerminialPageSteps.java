@@ -63,6 +63,24 @@ public class TerminialPageSteps {
 
 	}
 
+	@Then("I need to select the dropdown {string} value forElement {string} using Javascript")
+	public void i_need_to_select_the_dropdown_value_forElement_using_Javascript(String value, String forElement) {
+
+		WebElement dd_element = ter_Page.waitAndSelectDropDownUsingSerachBox_Dynamic(value, forElement);
+
+		dd_element.sendKeys(Keys.SPACE);
+		dd_element.sendKeys(Keys.SPACE);
+		dd_element.sendKeys(Keys.ARROW_DOWN);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		dd_element.sendKeys(Keys.ENTER);
+	}
+
 	@Then("Im press the sapce bar and enter key")
 	public void im_press_the_sapce_bar_and_enter_key() {
 
@@ -88,17 +106,15 @@ public class TerminialPageSteps {
 	}
 
 	@Then("I enter the value forElement {string} as {string}")
-	public void i_enter_the_value_forElement_as(String webele, String textToType)  {
-
+	public void i_enter_the_value_forElement_as(String webele, String textToType) {
 
 		ter_Page.terminal_waitClearEnterText_css(webele, textToType);
-		
+
 	}
-	
-	
+
 	@Then("I enter the value forElement {string} as FCNew")
 	public void i_enter_the_value_forElement_as_FCNew(String string) {
-	    
+
 	}
 
 	@Then("I click on the checkBox forElement {string}")
@@ -116,9 +132,8 @@ public class TerminialPageSteps {
 	public void i_select_radio_button_forElement(String webele) {
 
 		WebElement element = ter_Page.get_radioButton_element(webele);
-	
 
-			element.click();
+		element.click();
 	}
 
 }
