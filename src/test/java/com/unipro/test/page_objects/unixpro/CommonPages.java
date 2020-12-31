@@ -33,6 +33,18 @@ public class CommonPages extends PageObject {
 		waitForExpectedElement(By.cssSelector(element)).click();
 
 	}
+	
+	
+	public void clickOnElementByIndex(String ele,int index) {
+
+		List<WebElement> elementslist = elements(By.cssSelector(ele));
+		WebElement element = elementslist.get(index);
+
+		visibilityOf(element);
+		System.out.println(element.getText());
+		element.click();
+
+	}
 
 	public void confirmDelete(String ele) {
 

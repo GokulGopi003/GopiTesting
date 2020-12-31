@@ -492,6 +492,19 @@ public abstract class PageObject {
 		element(by).sendKeys(inputText);
 
 	}
+	
+	/**
+	 * Wrapper for wait, clear data and sendKeys in Input Text box
+	 * <p>
+	 * * @param by Element location found by css, xpath, id etc...
+	 *
+	 * @param inputText
+	 *            text to be entered
+	 **/
 
+	public void maxmize_browser_window() {
+
+		webDriver.manage().window().maximize();
+	}
 
 }
