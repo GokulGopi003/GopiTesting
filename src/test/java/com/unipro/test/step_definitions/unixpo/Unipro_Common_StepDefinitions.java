@@ -26,21 +26,20 @@ public class Unipro_Common_StepDefinitions {
 		cp.clickonButton(buttonName);
 
 	}
-	
-	
+
 	@When("I click dynamically on {string} button")
 	public void i_click_dynamically_on_button(String buttonName) {
-	 
+
 		cp.clickonButton_Dynamic(buttonName);
-		
-	}
-	@When("I click on button tag with value {string}")
-	public void i_click_on_button_tag_with_value(String buttonName) {
-	 
-		cp.clickUsingButtonTag(buttonName);
-		
+
 	}
 
+	@When("I click on button tag with value {string}")
+	public void i_click_on_button_tag_with_value(String buttonName) {
+
+		cp.clickUsingButtonTag(buttonName);
+
+	}
 
 	@When("Im waiting for {int} sec")
 	public void im_waiting_for_sec(Integer seconds) {
@@ -69,23 +68,33 @@ public class Unipro_Common_StepDefinitions {
 
 	@Then("I confirm delete operation by clicking on {string}")
 	public void i_confirm_delete_operation_by_clicking_on(String string) {
-		
+
 		cp.confirmDelete(string);
 	}
-	
-	
+
 	@When("I click on on element {string} in {string} alert box")
 	public void i_click_on_on_element_in_alert_box(String element, String forBox) {
-		
+
 		cp.clickon_element_inAlertBox(element);
-		
-		
+
 	}
 
 	@Then("I need to type the textvalue forElement {string} value as {string} using Javascript")
 	public void i_need_to_type_the_textvalue_forElement_value_as_using_Javascript(String string, String string2) {
-	    cp.js_waitAndTypeTextinsideTextBox(string2, string);
+		cp.js_waitAndTypeTextinsideTextBox(string2, string);
 	}
 
+	@Then("I need to press the BackSpace key forElement {string}")
+	public void i_need_to_press_the_BackSpace_key_forElement(String element) {
+		WebElement ele = cp.waitForExpectedElement(By.cssSelector(element), 3);
+		ele.sendKeys(Keys.BACK_SPACE);
+	}
+
+	@Given("I need to click on the  element {string}")
+	public void i_need_to_click_on_the_element(String element) {
+		WebElement ele = cp.waitForExpectedElement(By.cssSelector(element), 3);
+		ele.click();
+		
+	}
 
 }
