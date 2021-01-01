@@ -111,5 +111,19 @@ public class Unipro_Common_StepDefinitions {
 		ele.click();
 		
 	}
+	
+	@Then("I want to maxmize the browser")
+	public void i_want_to_maxmize_the_browser() {
+	    
+		cp.maxmize_browser_window();
+	}
+	
+	
+	@Given("I need to click on the  element {string} in index {int}")
+	public void i_need_to_click_on_the_element_in_index(String ele, Integer index) {
+	    
+		cp.clickOnElementByIndex(ele, index);
+	}
+
 
 }
