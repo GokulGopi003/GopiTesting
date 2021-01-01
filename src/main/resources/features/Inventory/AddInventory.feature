@@ -18,7 +18,7 @@ Feature: PoS Inventory > Add Inventory
     Then I enter the value forElement "input#ContentPlaceHolder1_txtBrand.form-control-res" as "BRITANIA"
     When Im waiting for 3 sec
     Then I need to click on Brand with text matching "BRITANIA"
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtItemName.form-control-res.ui-autocomplete-input" as "BISCUITS BRITANIA12"
+    Then I enter the value forElement "input#ContentPlaceHolder1_txtItemName.form-control-res.ui-autocomplete-input" as "BISCUITS BRITANIA13"
     Then I need to click on Short Name forElement "input#ContentPlaceHolder1_txtShortName.form-control-res"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtItemType.form-control-res" as "BULK"
     When Im waiting for 3 sec
@@ -34,7 +34,7 @@ Feature: PoS Inventory > Add Inventory
     Then I enter the value forElement "input#ContentPlaceHolder1_txtMRP" as "120"
     Then I need to type the textvalue forElement "input#ContentPlaceHolder1_txtMRP" value as "120" using Javascript
     Then I need to type the textvalue forElement "input#ContentPlaceHolder1_txtBasicCost" value as "65" using Javascript
-    Then I need to click on set price detail forElement "div.dialog-inv-container-set-price-detail"
+    Then I need to click to autopopulate forElement "div.dialog-inv-container-set-price-detail"
     Then I click on button tag with value "Back"
     Then I need to click on sub menu with text matching "Image"
     Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "/Users/prabhu/Downloads/imageupload.jpeg"
@@ -42,14 +42,15 @@ Feature: PoS Inventory > Add Inventory
     Then I click dynamically on "NewItemYes" button
     When Im waiting for 2 sec
     Then I need to click on the "ItemHistory" button
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "BISCUITS BRITANIA12"
+    Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "BISCUITS BRITANIA14"
     When Im waiting for 2 sec
     When I press downArrow from element "input#ContentPlaceHolder1_txtSearch"  and click enter key
     Then I click on the "input#ContentPlaceHolder1_grdInventoryList_imgbtnEdit_0" of "edit" icon
     When Im waiting for 2 sec
     Then I need to click on sub menu with text matching "Order & BreakPrice"
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtMinimumQty.form-control-res" as "10"
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtMaxQty.form-control-res" as "100"
+    Then I enter the value forElement "input#ContentPlaceHolder1_txtMinimumQty" as "10"
+    Then I enter the value forElement "input#ContentPlaceHolder1_txtMaxQty" as "100"
+    Then I need to click to autopopulate forElement "input#ContentPlaceHolder1_txtReOrderQty"
     Then I need to click on sub menu with text matching "Activation Settings"
     And I click on the checkBox forElement "input#ContentPlaceHolder1_chkSelectAll"
     Then I need to click on sub menu with text matching "Stock & Purchase"
