@@ -46,12 +46,13 @@ public class AddInventoryFormPage extends PageObject{
 		
 		//js_typeIntoDropDownSearchBox("a.dropdown-toggle", "Inventory");
 		WebElement table_invoke_ele = null;
-
+		System.out.println(defaultText);
 		List<WebElement> listofHref = getWebDriver().findElements(td_invoke_element);
 		for(Iterator iter =listofHref.iterator(); iter.hasNext();) {
+			System.out.println("Im inside for loop");
 			WebElement webElement = (WebElement) iter.next();
 			if(webElement.getText().equalsIgnoreCase(defaultText)) {
-				
+				System.out.println("Im inside if");
 			visibilityOf(webElement);
 			elementToBeClickable(webElement);
 			table_invoke_ele = webElement;

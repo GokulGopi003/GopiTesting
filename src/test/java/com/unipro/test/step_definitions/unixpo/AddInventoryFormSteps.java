@@ -97,8 +97,8 @@ public class AddInventoryFormSteps {
 		add_inventory.inventory_waitClearEnterText_css(webele, textToType);
 		
 	}
-	@Then("I need to click on set price detail forElement {string}")
-	public void i_need_to_click_on_set_price_detail_forElement(String string) throws InterruptedException {	
+	@Then("I need to click to autopopulate forElement {string}")
+	public void i_need_to_click_to_autopopulate_forElement(String string) throws InterruptedException {	
 	add_inventory.elementToBeClickable(By.cssSelector(string)).click();
 	}
 	

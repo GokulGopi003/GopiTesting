@@ -19,6 +19,24 @@ public class CommonPages extends PageObject {
 
 	}
 	
+	public void clickonBlueButton(String buttonName) {
+
+		WebElement button = waitForExpectedElement(
+				By.cssSelector("input#ContentPlaceHolder1_btn" + buttonName + ".button-blue"));
+
+		button.click();
+
+	}
+	
+	public void clickonFilterButton(String buttonName) {
+
+		WebElement button = waitForExpectedElement(
+				By.cssSelector("a#ContentPlaceHolder1_searchFilterUserControl_lnk" + buttonName + ".button-red"));
+
+		button.click();
+
+	}
+	
 	public void clickonButton_Dynamic(String buttonName) {
 
 		WebElement button = waitForExpectedElement(
