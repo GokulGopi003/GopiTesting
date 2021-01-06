@@ -67,6 +67,6 @@ Feature: PoS Master > Location
 
     Examples: 
       | DepartmentCode | DepartmentName | PersonInCharge | Remarks                         | Discount |
-      | "ECNew"        | "Electronics"  | "prabhu"       | "Newly added in 2020year"       | "5"      |
+      | "ECNew"        | "DemoToday"  | "prabhu"       | "Newly added in 2020year"       | "5"      |
      # | "FCNew"        | "FoodItem"     | "Kalaimathy"   | "Newly added in 2021year"       | "7"      |
      # | "FCNew"        | "Accessories"  | "Kalaimathy"   | "Newly added in  2020 Dec year" | "7"      |
