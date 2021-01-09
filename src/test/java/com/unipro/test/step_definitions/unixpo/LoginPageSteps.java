@@ -28,12 +28,14 @@ public class LoginPageSteps {
 	public void launching_the_valid_URL() {
 
 		WebDriverHelper.getWebDriver().get(loginPage.getTestURL());
+		loginPage.getWebDriver().manage().window().maximize();
 	}
 
 	@Given("I enter the username")
 	public void i_enter_the_username() {
 
 		loginPage.getUsernameElement().sendKeys("aa");
+		
 	}
 
 	@When("I enter the password")

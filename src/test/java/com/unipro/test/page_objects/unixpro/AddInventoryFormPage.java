@@ -46,13 +46,10 @@ public class AddInventoryFormPage extends PageObject{
 		
 		//js_typeIntoDropDownSearchBox("a.dropdown-toggle", "Inventory");
 		WebElement table_invoke_ele = null;
-		System.out.println(defaultText);
 		List<WebElement> listofHref = getWebDriver().findElements(td_invoke_element);
 		for(Iterator iter =listofHref.iterator(); iter.hasNext();) {
-			System.out.println("Im inside for loop");
 			WebElement webElement = (WebElement) iter.next();
 			if(webElement.getText().equalsIgnoreCase(defaultText)) {
-				System.out.println("Im inside if");
 			visibilityOf(webElement);
 			elementToBeClickable(webElement);
 			table_invoke_ele = webElement;
@@ -70,22 +67,42 @@ public class AddInventoryFormPage extends PageObject{
 	// Grab the table
 	//get table 1st data in a table automatically
 	
-	public WebElement getTableData() {
-	WebElement table = getWebDriver().findElement(table_element);
+	public WebElement getTableData(String childtable) {
+		// WebElement table = getWebDriver().findElement(table_element);
+		//WebElement table = getWebDriver()
+		//		.findElement(By.cssSelector("table#ContentPlaceHolder1_grdBulkItem.pshro_GridDgn.grdLoad"));
+		
+		WebElement table;
+		
+		if (childtable.equalsIgnoreCase("Child")) {
+			table = getWebDriver()
+					.findElement(By.cssSelector("table#ContentPlaceHolder1_grdChildItem.pshro_GridDgn.grdLoad"));
+		} else {
+			 table = getWebDriver()
+						.findElement(By.cssSelector("table#ContentPlaceHolder1_grdBulkItem.pshro_GridDgn.grdLoad"));
+		}
 
-	// Now get all the TR elements from the table
-	List<WebElement> allRows = table.findElements(By.tagName("tr"));
-	// And iterate over them, getting the cells
-	for (WebElement row : allRows) {
-	    List<WebElement> cells = row.findElements(By.tagName("td"));
-	    for (WebElement cell : cells) {
-	        System.out.println("content >>   " + cell.getText());
-	    	//cell.getText();
-	    	return cell;
-	    }
+		// Now get all the TR elements from the table
+		List<WebElement> allRows = table.findElements(By.tagName("tr"));
+		// And iterate over them, getting the cells
+		for (WebElement row : allRows) {
+			List<WebElement> cells = row.findElements(By.tagName("td"));
+			for (WebElement cell : cells) {
+				// System.out.println("content >> " + cell.getText());
+				// cell.getText();
+				if (childtable.equalsIgnoreCase("Child")) {
+					if (cell.getText() != null) {
+						return cell;
+					}
+				} else {
+					return cell;
+				}
+			}
+		}
+		return null;
 	}
-	return null;
-	}
+	
+	
 	public void inventory_waitClearEnterText_css(String webele, String textToEnter) {
 
 		By inventory_by = By.cssSelector(webele);
