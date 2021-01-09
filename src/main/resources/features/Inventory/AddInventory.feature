@@ -12,26 +12,26 @@ Feature: PoS Inventory > Add Inventory
     @inventory
     Scenario: Verifying Add Inventory Functionality
     Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/frmInventoryMaster.aspx"
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtInvcategory.form-control-res" as "BISCUITS"
-    When Im waiting for 3 sec
-    Then I need to click on link with text matching "BISCUITS"
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtBrand.form-control-res" as "BRITANIA"
-    When Im waiting for 3 sec
-    Then I need to click on Brand with text matching "BRITANIA"
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtItemName.form-control-res.ui-autocomplete-input" as "BISCUITS BRITANIA13"
-    Then I need to click on Short Name forElement "input#ContentPlaceHolder1_txtShortName.form-control-res"
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtItemType.form-control-res" as "BULK"
-    When Im waiting for 3 sec
-    Then I need to click on Item Type with text matching "BULK"
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtVendor.form-control-res" as "AKBAR AGENCIES"
-    When Im waiting for 3 sec
-    Then I need to click on Vendor with text matching "AKBAR AGENCIES"
-    Then I need to click on Open Selling Detail forElement "input#ContentPlaceHolder1_imgPriceChange"
-    Then I need to click on IGST DropDown forElement "div#ContentPlaceHolder1_ddlInputIGST_chzn.chzn-container.chzn-container-single"
-    Then I need to click on IGST search forElement "div.chzn-search"
-    Then I need to click on IGST value forElement "li#ContentPlaceHolder1_ddlInputIGST_chzn_o_2.active-result"
-    Then I enter the HSN code forElement "input#ContentPlaceHolder1_txtHSNCode.form-control-res" as "4321"
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtMRP" as "120"
+    #Then I enter the value forElement "input#ContentPlaceHolder1_txtInvcategory.form-control-res" as "BISCUITS"
+    #When Im waiting for 3 sec
+    #Then I need to click on link with text matching "BISCUITS"
+    #Then I enter the value forElement "input#ContentPlaceHolder1_txtBrand.form-control-res" as "BRITANIA"
+    #When Im waiting for 3 sec
+    #Then I need to click on Brand with text matching "BRITANIA"
+    #Then I enter the value forElement "input#ContentPlaceHolder1_txtItemName.form-control-res.ui-autocomplete-input" as "BISCUITS BRITANIA13"
+    #Then I need to click on Short Name forElement "input#ContentPlaceHolder1_txtShortName.form-control-res"
+    #Then I enter the value forElement "input#ContentPlaceHolder1_txtItemType.form-control-res" as "BULK"
+    #When Im waiting for 3 sec
+    #Then I need to click on Item Type with text matching "BULK"
+    #Then I enter the value forElement "input#ContentPlaceHolder1_txtVendor.form-control-res" as "AKBAR AGENCIES"
+    #When Im waiting for 3 sec
+    #Then I need to click on Vendor with text matching "AKBAR AGENCIES"
+    #Then I need to click on Open Selling Detail forElement "input#ContentPlaceHolder1_imgPriceChange"
+    #Then I need to click on IGST DropDown forElement "div#ContentPlaceHolder1_ddlInputIGST_chzn.chzn-container.chzn-container-single"
+    #Then I need to click on IGST search forElement "div.chzn-search"
+    #Then I need to click on IGST value forElement "li#ContentPlaceHolder1_ddlInputIGST_chzn_o_2.active-result"
+    #Then I enter the HSN code forElement "input#ContentPlaceHolder1_txtHSNCode.form-control-res" as "4321"
+    #Then I enter the value forElement "input#ContentPlaceHolder1_txtMRP" as "120"
     Then I need to type the textvalue forElement "input#ContentPlaceHolder1_txtMRP" value as "120" using Javascript
     Then I need to type the textvalue forElement "input#ContentPlaceHolder1_txtBasicCost" value as "65" using Javascript
     Then I need to click to autopopulate forElement "div.dialog-inv-container-set-price-detail"
