@@ -34,10 +34,24 @@ public class Unipro_Common_StepDefinitions {
 
 	}
 	
+	@Then("I need to click on the browse {string} button")
+	public void i_need_to_click_on_the_browse_button(String buttonName) {
+
+		cp.clickonBrowseButton(buttonName);
+
+	}
+	
 	@Then("I need to click on the filter {string} button")
 	public void i_need_to_click_on_the_filter_button(String buttonName) {
 
 		cp.clickonFilterButton(buttonName);
+
+	}
+	
+	@Then("I need to click on the dialogbox {string} button")
+	public void i_need_to_click_on_the_dialogbox_button(String buttonName) {
+
+		cp.clickonDialogFilterButton(buttonName);
 
 	}
 	
@@ -110,6 +124,10 @@ public class Unipro_Common_StepDefinitions {
 		WebElement ele = cp.waitForExpectedElement(By.cssSelector(element), 3);
 		ele.click();
 		
+	}
+	@Then("I need to click alert ok")
+	public void i_need_to_click_alert_ok() {
+		cp.getWebDriver().switchTo().alert().accept();
 	}
 
 }
