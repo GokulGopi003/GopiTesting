@@ -45,6 +45,17 @@ public class InventoryCalculationsPage extends PageObject {
 		return Double.parseDouble(cost);
 
 	}
+	
+	public void setTextValue(String by, String inputText) {
+		WebElement element = waitForExpectedElement(By.cssSelector(by));
+
+		js_typeIntoDropDownSearchBox(by, inputText);
+		
+		
+		element.sendKeys(Keys.NUMPAD2);
+		element.sendKeys(Keys.ENTER);
+
+	}
 
 	public void roundingOff(String roundingOff_userInput) {
 
@@ -70,13 +81,6 @@ public class InventoryCalculationsPage extends PageObject {
 		}
 	}
 
-	public void setTextValue(String by, String inputText) {
-		WebElement element = waitForExpectedElement(By.cssSelector(by));
 
-		js_typeIntoDropDownSearchBox(by, inputText);
-		element.sendKeys(Keys.NUMPAD2);
-		element.sendKeys(Keys.ENTER);
-
-	}
 
 }

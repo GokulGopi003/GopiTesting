@@ -139,9 +139,19 @@ public class Unipro_Common_StepDefinitions {
 		cp.clickOnElementByIndex(ele, index);
 	}
 
+
 	@Then("I need to click alert ok")
 	public void i_need_to_click_alert_ok() {
 		cp.getWebDriver().switchTo().alert().accept();
 	}
+
+	
+	@Then("I need to press the Enter key at {string}")
+	public void i_need_to_press_the_Enter_key_at(String string) {
+
+		WebElement ele = cp.waitForExpectedElement(By.cssSelector(string), 10);
+		ele.sendKeys(Keys.ENTER);
+	}
+
 
 }

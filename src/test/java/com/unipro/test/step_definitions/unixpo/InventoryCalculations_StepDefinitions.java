@@ -111,16 +111,16 @@ public class InventoryCalculations_StepDefinitions {
 			
 			
 			float percentage;
-			float total_marks;
-			float scored;
-			Scanner sc = new Scanner(System.in);
+			float Basic_Cost;
+			float Gross_Cost;
+
 			//System.out.println("Enter Gross Cost ::");
-			scored = (float) icp.Gross_Cost;
+			Gross_Cost = (float) icp.Gross_Cost;
 
 			//System.out.println("Enter Basic Cost  ::");
-			total_marks = (float) icp.Basic_Cost;
+			Basic_Cost = (float) icp.Basic_Cost;
 
-			percentage = (float) ((scored / total_marks) * 100);
+			percentage = (float) ((Gross_Cost / Basic_Cost) * 100);
 			System.out.println("Percentage ::" + percentage);
 
 			float ActualdiscountOffered = 100 - percentage;
