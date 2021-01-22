@@ -118,4 +118,14 @@ public class AddInventoryFormSteps {
 		    //add_inventory.js_typeIntoDropDownSearchBox(string, int1);
 		
 	}
+	@Then("I need to click on td forElement {string}")
+	public void i_need_to_click_on_td_forElement(String string) throws InterruptedException {	
+	
+	//add_inventory.elementToBeClickable(By.cssSelector(string)).click();
+		//add_inventory.return_td_invoke_element(string).click();
+		add_inventory.getTableData(string).click();
+		    //add_inventory.js_typeIntoDropDownSearchBox(string, int1);
+		
+	}
+	
 }
