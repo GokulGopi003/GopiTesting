@@ -27,6 +27,14 @@ public class CommonPages extends PageObject {
 		button.click();
 
 	}
+	public void clickonRedButton(String buttonName) {
+
+		WebElement button = waitForExpectedElement(
+				By.cssSelector("input#ContentPlaceHolder1_lnk" + buttonName + ".button-red"));
+
+		button.click();
+
+	}
 	public void clickonBrowseButton(String buttonName) {
 
 		WebElement button = waitForExpectedElement(
@@ -60,7 +68,36 @@ public class CommonPages extends PageObject {
 				By.cssSelector("a#ContentPlaceHolder1_lnk" + buttonName));
 
 		button.click();
-
+	}
+	
+	/*
+	 * button with id "a#ContentPlaceHolder1_LinkButton6.button-blue" 
+	 */
+	public void clickonLinkButton(String buttonName) {
+		WebElement button = null;
+		
+		if(buttonName.equalsIgnoreCase("Add")) {
+			buttonName = "Button6";
+			 button = waitForExpectedElement(
+					By.cssSelector("a#ContentPlaceHolder1_Link" + buttonName));
+			 
+		} else if(buttonName.equalsIgnoreCase("View")) {
+			buttonName = "Button8";
+			 button = waitForExpectedElement(
+					By.cssSelector("a#ContentPlaceHolder1_Link" + buttonName));
+			
+		} else if(buttonName.equalsIgnoreCase("Delete")) {
+			buttonName = "Button9";
+			 button = waitForExpectedElement(
+					By.cssSelector("a#ContentPlaceHolder1_Link" + buttonName));
+			
+		}else if(buttonName.equalsIgnoreCase("Refresh")) {
+			buttonName = "Button11";
+			 button = waitForExpectedElement(
+					By.cssSelector("a#ContentPlaceHolder1_Link" + buttonName));
+			
+		}
+		button.click();
 	}
 
 	public void clickonElement(String element) {

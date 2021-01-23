@@ -8,27 +8,14 @@ Feature: PoS Inventory > Add Inventory
     When I enter the password
     Then I clik on the login button
     Then I verify the page Title
-    
-    @inventory
-    Scenario: Verifying Inventory Configuration Functionality
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/frmFrancesMaster.aspx"
-    Then I click dynamically on "Fetch" button
-    Then I enter the value forElement "input#ContentPlaceHolder1_searchFilterUserControlForDialogBox_txtVendor.form-control-res" as "200"
-    When Im waiting for 3 sec
-    Then I need to press the BackSpace key forElement "input#txtSearch"
-    Then I click on the "#table-Search > tbody > tr" of "table row" icon
-    Then I need to click on the dialogbox "Filter" button
+
+  @inventory
+  Scenario: Verifying GST Change Functionality
+    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/frmInventoryGstChangeEdit.aspx"
+    Then I click dynamically on "New" button
+    Then I enter the value forElement "input#ContentPlaceHolder1_searchFilterUserControl_txtVendor" as "205"
     When Im waiting for 2 sec
-    And I click on the checkBox forElement "input#ContentPlaceHolder1_gvFranchise_cbSelect_1"
-    Then I click dynamically on "Save" button
-    When Im waiting for 2 sec
-    Then I need to click on the  element "div#ContentPlaceHolder1_lstLocation_chzn.chzn-container"
-    Then I need to click on the  element "li#ContentPlaceHolder1_lstLocation_chzn_o_1.active-result"
-    Then I need to click on the  element "div#ContentPlaceHolder1_lstVendor_chzn.chzn-container"
-    Then I need to click on the  element "li#ContentPlaceHolder1_lstVendor_chzn_o_1.active-result"
-    Then I click dynamically on "Ok" button
-    
-    
+    Then I need to click on Vendor with text matching "205"
     #Then I enter the value forElement "input#ContentPlaceHolder1_searchFilterUserControl_txtDepartment" as ""
     #When Im waiting for 2 sec
     #Then I need to click on Vendor with text matching ""
@@ -63,10 +50,19 @@ Feature: PoS Inventory > Add Inventory
     #Then I need to click on Vendor with text matching <Warehouse>
     #Then I enter the value forElement "input#ContentPlaceHolder1_searchFilterUserControl_txtItemCode.form-control-res" as <ItemCode>
     #Then I enter the value forElement "input#ContentPlaceHolder1_searchFilterUserControl_txtItemName.form-control-res" as <ItemName>
+    #Then I enter the value forElement "input#ContentPlaceHolder1_searchFilterUserControl_txtItemType.form-control-res" as <ItemType>
+    #Then I need to click on Vendor with text matching <ItemType>
+		#Then I enter the value forElement "input#ContentPlaceHolder1_searchFilterUserControl_txtPrice.form-control-res" as <Price>    
+		#Then I need to click on Vendor with text matching <Price>
+		#Then I enter the value forElement "input#ContentPlaceHolder1_searchFilterUserControl_txtGst.form-control-res" as <Gst>
+		#Then I need to click on Vendor with text matching <Gst>
+  	Then I need to click on the filter "Filter" button
+  	Then I need to click on IGST DropDown forElement "div#ContentPlaceHolder1_ddlIgst_chzn.chzn-container.chzn-container-single"
+    Then I need to click on IGST search forElement "div.chzn-search"
+    Then I need to click on IGST value forElement "li#ContentPlaceHolder1_ddlIgst_chzn_o_4.active-result"
+    Then I need to click on the red "Add" button
+  	And I click on the checkBox forElement "input#ContentPlaceHolder1_grdItemDetails_CheckBox1_0"
+  	Then I click dynamically on "Update" button
+  	Then I click on button tag with value "Ok"
   	
-  	
-  	
-  	#Examples: 
-    #  | Vendor | Department | Category | Brand | SubCategory | Class | SubClass | Merchandise | Manufacture | Floor | Section | Bin | Shelf | Warehouse | ItemCode | ItemName | 
-    #  | "205"        | ""  | ""       | ""       | ""      |
-  	
+ 
