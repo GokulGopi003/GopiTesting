@@ -33,6 +33,12 @@ public class Unipro_Common_StepDefinitions {
 		cp.clickonBlueButton(buttonName);
 
 	}
+	@Then("I need to click on the red {string} button")
+	public void i_need_to_click_on_the_red_button(String buttonName) {
+
+		cp.clickonRedButton(buttonName);
+
+	}
 	
 	@Then("I need to click on the browse {string} button")
 	public void i_need_to_click_on_the_browse_button(String buttonName) {
@@ -53,6 +59,12 @@ public class Unipro_Common_StepDefinitions {
 
 		cp.clickonDialogFilterButton(buttonName);
 
+	}
+	
+	@Then("I need to click on the link {string} button")
+	public void i_need_to_click_on_the_link_button(String buttonName) {
+		
+		cp.clickonLinkButton(buttonName);
 	}
 	
 	
@@ -154,4 +166,20 @@ public class Unipro_Common_StepDefinitions {
 	}
 
 
+	
+	@Then("I need to click on table forelement {string}")
+	public void i_need_to_click_on_table_forelement(String element) {
+		if(element.equalsIgnoreCase("View")) {
+		WebElement we = cp.elementToBeClickable((By.xpath("//*[@id=\"ContentPlaceHolder1_grdDistributionlist\"]/tbody/tr/td[3]/input[contains(@value, 'View')]")));
+		we.click();
+		} else if(element.equalsIgnoreCase("Delete")) {
+			WebElement we = cp.elementToBeClickable((By.xpath("//*[@id=\"ContentPlaceHolder1_grdDistribution\"]/tbody/tr[2]/td[1]/input[contains(@value, 'Delete')]")));
+			we.click();
+				
+		} else {
+		WebElement we = cp.elementToBeClickable((By.xpath("//*[@id=\"ContentPlaceHolder1_gvPackageInv\"]/tbody/tr[1]/td[1]/input[contains(@value, 'Remove')]")));
+		we.click();
+		}
+	}
+	
 }

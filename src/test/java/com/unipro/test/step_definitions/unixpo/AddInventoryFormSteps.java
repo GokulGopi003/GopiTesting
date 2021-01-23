@@ -1,6 +1,9 @@
 package com.unipro.test.step_definitions.unixpo;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import com.unipro.test.page_objects.unixpro.AddInventoryFormPage;
 
@@ -99,7 +102,19 @@ public class AddInventoryFormSteps {
 	}
 	@Then("I need to click to autopopulate forElement {string}")
 	public void i_need_to_click_to_autopopulate_forElement(String string) throws InterruptedException {	
-	add_inventory.elementToBeClickable(By.cssSelector(string)).click();
+		WebElement we = add_inventory.waitForExpectedElement((By.cssSelector("div#ContentPlaceHolder1_lstLocation_chzn.chzn-container")),3000);
+		we.click();
+		add_inventory.waitForExpectedElement(By.cssSelector("li#ContentPlaceHolder1_lstLocation_chzn_o_1.active-result"), 2000).click();
+		
+		//we.sendKeys(Keys.ARROW_DOWN);
+		//we.sendKeys(Keys.ARROW_DOWN);
+		//we.sendKeys(Keys.ENTER);
+	//add_inventory.elementToBeClickable(By.cssSelector("div#ContentPlaceHolder1_lstLocation_chzn.chzn-container.chzn-container-multi.chzn-container-active")).click();
+	//add_inventory.elementToBeClickable(By.id("ContentPlaceHolder1_lstLocation_chzn_o_1"));
+	
+	
+	
+	
 	}
 	
 	@Then("I need to click on sub menu with text matching {string}")

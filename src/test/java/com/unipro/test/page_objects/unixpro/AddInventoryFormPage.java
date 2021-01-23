@@ -77,6 +77,16 @@ public class AddInventoryFormPage extends PageObject{
 		if (childtable.equalsIgnoreCase("Child")) {
 			table = getWebDriver()
 					.findElement(By.cssSelector("table#ContentPlaceHolder1_grdChildItem.pshro_GridDgn.grdLoad"));
+		} else if(childtable.equalsIgnoreCase("Distribution")){
+			
+			//not completed
+			//not working
+			
+			//table = getWebDriver().findElement(By.cssSelector("table#ContentPlaceHolder1_grdDistributionlist.pshro_GridDgn"));
+			
+			table= getWebDriver().findElement(By.xpath("//*[@id="+"ContentPlaceHolder1_grdDistributionlist"+"]/tbody/tr[1]/td[1]/input[type=button]"));
+			//*[@id="ContentPlaceHolder1_grdDistributionlist"]/tbody/tr[1]/td[3]/input
+			
 		} else {
 			 table = getWebDriver()
 						.findElement(By.cssSelector("table#ContentPlaceHolder1_grdBulkItem.pshro_GridDgn.grdLoad"));
