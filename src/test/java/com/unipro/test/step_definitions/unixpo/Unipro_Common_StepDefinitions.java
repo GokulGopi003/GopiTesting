@@ -155,6 +155,9 @@ public class Unipro_Common_StepDefinitions {
 		cp.clickOnElementByIndex(ele, index);
 	}
 
+	/*
+	 * browser dialog box
+	 */
 	@Then("I need to click alert ok")
 	public void i_need_to_click_alert_ok() {
 		cp.getWebDriver().switchTo().alert().accept();

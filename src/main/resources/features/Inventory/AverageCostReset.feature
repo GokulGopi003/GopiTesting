@@ -54,7 +54,7 @@ Feature: PoS Inventory > Add Inventory
   	Then I need to click on the filter "Filter" button
   	And I click on the checkBox forElement "input#ContentPlaceHolder1_grdItemDetails_chkSelect_0"
   	#Then I click dynamically on "Report" button
-  	Then I enter the value forElement "input#ContentPlaceHolder1_grdItemDetails_txtNewCost_0.grid-textbox" as "2.25"
+  	Then I enter the value forElement "input#ContentPlaceHolder1_grdItemDetails_txtNewCost_0.grid-textbox" as "2.65"
   	#Then I enter the value forElement "input#ContentPlaceHolder1_grdItemDetails_txtNewCost_1.grid-textbox" as "5.55"
   	Then I click dynamically on "Update" button
   	Then I need to click alert ok

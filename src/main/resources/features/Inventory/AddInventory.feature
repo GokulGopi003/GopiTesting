@@ -18,7 +18,7 @@ Feature: PoS Inventory > Add Inventory
     Then I enter the value forElement "input#ContentPlaceHolder1_txtBrand.form-control-res" as "BELLA"
     When Im waiting for 3 sec
     Then I need to click on Brand with text matching "BRITANIA"
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtItemName.form-control-res.ui-autocomplete-input" as "BISCUITS BRITANIA18"
+    Then I enter the value forElement "input#ContentPlaceHolder1_txtItemName.form-control-res.ui-autocomplete-input" as "BISCUITS BRITANIA30"
     Then I need to click on Short Name forElement "input#ContentPlaceHolder1_txtShortName.form-control-res"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtItemType.form-control-res" as "BULK"
     When Im waiting for 3 sec
@@ -42,7 +42,7 @@ Feature: PoS Inventory > Add Inventory
     Then I click dynamically on "NewItemYes" button
     When Im waiting for 2 sec
     Then I need to click on the "ItemHistory" button
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "BISCUITS BRITANIA18"
+    Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "BISCUITS BRITANIA30"
     When Im waiting for 2 sec
     When I press downArrow from element "input#ContentPlaceHolder1_txtSearch"  and click enter key
     Then I click on the "input#ContentPlaceHolder1_grdInventoryList_imgbtnEdit_0" of "edit" icon
@@ -76,6 +76,7 @@ Feature: PoS Inventory > Add Inventory
     Then I need to click on sub menu with text matching "Promotion"
     Then I need to click on the blue "LiveDetail" button
     Then I need to click on the "Save" button
+    Then I click on button tag with value "Close"
     
     
 
