@@ -15,8 +15,8 @@ Feature: Management > Audit Trails #i cant run the code(comment)
     Then I enter the value forElement "input#ContentPlaceHolder1_txtFromDate " as "2018-12-30"
     Then I need to invoke the DropDown by Index 2 if text matching "-- Select --"
     Then I need to select the dropdown "CBE" value forElement "#ContentPlaceHolder1_DropDownLocation_chzn > div > div > input[type=text]" using Javascript
-    #Then I need to invoke the DropDown by Index 0 if text matching "-- Select --"
-    #Then I need to select the dropdown "EDIT" value forLabel "#ContentPlaceHolder1_DropDownAutitCode_chzn > div > div > input[type=text] " using Javascript
-    #Then I need to invoke the DropDown by Index 1 if text matching "-- Select --"
-    #Then I need to select the dropdown "DISTRIBUTION" value forLabel "#ContentPlaceHolder1_DropDownFormname_chzn > div > div > input[type=text]" using Javascript
-    #Given I need to click on the  element "a#ContentPlaceHolder1_lnkLoadReport"
+    Then I need to invoke the DropDown by Index 0 if text matching "-- Select --"
+    Then I need to select the dropdown "EDIT" value forLabel "#ContentPlaceHolder1_DropDownAutitCode_chzn > div > div > input[type=text] " using Javascript
+    Then I need to invoke the DropDown by Index 1 if text matching "-- Select --"
+    Then I need to select the dropdown "DISTRIBUTION" value forLabel "#ContentPlaceHolder1_DropDownFormname_chzn > div > div > input[type=text]" using Javascript
+    Given I need to click on the  element "a#ContentPlaceHolder1_lnkLoadReport"

@@ -40,6 +40,7 @@ Feature: master > Purchase > Display and Contact
     Then I need to select the dropdown "fifth floor" value forLabel "Floor" using Javascript
     Then I need to invoke the DropDown by Index 3 if text matching "-- Select --"
     Then I need to select the dropdown "SJJDFFJSD" value forLabel "Shelf" using Javascript
+    When Im waiting for 2 sec
     And I click on the checkBox forElement "input#ContentPlaceHolder1_chkActive"
     Given I need to click on the "Save" button
     When Im waiting for 2 sec

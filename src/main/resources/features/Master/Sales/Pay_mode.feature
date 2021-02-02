@@ -1,4 +1,4 @@
-Feature: PoS Master > Sales >pay mode
+Feature: PoS Master > Sales >pay mode  #pending for enterpriser web
 
   Background: 
     As a unixpro user i want to launch the valid URL
@@ -35,7 +35,7 @@ Feature: PoS Master > Sales >pay mode
     # And I click on the checkBox forElement "input#ContentPlaceHolder1_chkStatus"
     # And I click on the checkBox forElement  "input#ContentPlaceHolder1_chkDenamination"
     Given I need to click on the "Save" button
-    Then I confirm delete operation by clicking on "button.ui-button.ui-corner-all.ui-widget"
+    Then I need to click on OK button "button.ui-button.ui-corner-all.ui-widget"
     When Im waiting for 3 sec
     Then I click on the "input#ContentPlaceHolder1_gvPayMode_imgbtnEdit_0" of "edit" icon
     When Im waiting for 2 sec

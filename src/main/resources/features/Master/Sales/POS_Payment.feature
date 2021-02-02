@@ -1,4 +1,4 @@
-Feature: PoS Master > Sales > POS Payment
+Feature: PoS Master > Sales > POS Payment @done
 
   Background: 
     As a unixpro user i want to launch the valid URL

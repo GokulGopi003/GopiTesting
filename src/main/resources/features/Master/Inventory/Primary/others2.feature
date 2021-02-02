@@ -1,4 +1,4 @@
-Feature: PoS Master > Inventory
+Feature: PoS Master > Inventory @pending_edit_delete
 
   Background: 
     As a unixpro user i want to launch the valid URL

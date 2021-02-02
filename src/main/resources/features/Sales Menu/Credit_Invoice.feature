@@ -11,3 +11,5 @@ Background:
 @master 
 Scenario: checking for  Credit Invoice
 	Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Managements/frmCreditInvoice.aspx"
+	    Given I need to click on the "Clear" button
+	
