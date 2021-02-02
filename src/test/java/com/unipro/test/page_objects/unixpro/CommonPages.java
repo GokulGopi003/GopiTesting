@@ -128,7 +128,16 @@ public class CommonPages extends PageObject {
 		element.click();
 
 	}
-	
+	public void confirmOK(String ele) {
+
+		List<WebElement> elementslist = elements(By.cssSelector(ele));
+		WebElement element = elementslist.get(8);
+
+		visibilityOf(element);
+		System.out.println(element.getText());
+		element.click();
+
+	}
 	
 	
 	public void clickon_element_inAlertBox(String element) {
@@ -162,6 +171,12 @@ public class CommonPages extends PageObject {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+	}
+
+	public void clickOn_Indexwise(String string) {
+		
+		
 
 	}
 

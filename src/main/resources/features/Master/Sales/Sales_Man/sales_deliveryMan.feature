@@ -1,4 +1,4 @@
-Feature: PoS Master > Sales > Sales man >Delivery man
+Feature: PoS Master > Sales > Sales man >Delivery man @done
 
   Background: 
     As a unixpro user i want to launch the valid URL
@@ -34,6 +34,7 @@ Feature: PoS Master > Sales > Sales man >Delivery man
     # input#ContentPlaceHolder1_gvDelivery_imgbtnDelete_0
     Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "qw"
     When I press downArrow from element "input#ContentPlaceHolder1_txtSearch"  and click enter key
-    Then I click on the "input#ContentPlaceHolder1_grdDepartmentList_imgbtnDelete_0" of "delete" icon
+    When Im waiting for 5 sec
+    Then I click on the "input#ContentPlaceHolder1_gvDelivery_imgbtnDelete_0" of "delete" icon
     When Im waiting for 5 sec
     Then I confirm delete operation by clicking on "button.ui-button.ui-corner-all.ui-widget"

@@ -37,7 +37,7 @@ Feature: PoS Inventory > Add Inventory
     
     
     Then I need to invoke the DropDown by Index 0 if text matching "-- Select --"
-    Then I need to select the dr	opdown "AMARJYOT" value forLabel "PackageInv" using Javascript
+    Then I need to select the dropdown "AMARJYOT" value forLabel "PackageInv" using Javascript
     Then I click on the checkBox forElement "input#ContentPlaceHolder1_chkFestival"
     Then I need to click on table forelement ""
     Then I need to click alert ok

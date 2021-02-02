@@ -1,7 +1,7 @@
-Feature: PoS Master > Sales >Cashier Master
+Feature: PoS Master > Sales >Cashier Master @Done
 
   Background: 
-    As a unixpro user i want to launch the valid URL   #1 failed
+    As a unixpro user i want to launch the valid URL   #1 failed(enterpriser web)
 
     Given Launching the valid URL
     Given I enter the username

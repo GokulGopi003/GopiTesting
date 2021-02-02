@@ -1,4 +1,4 @@
-Feature: Master > Reason Master
+Feature: Master > Reason Master @done
 
   Background: 
     As a unixpro user i want to launch the valid URL

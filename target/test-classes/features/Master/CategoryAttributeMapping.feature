@@ -1,4 +1,4 @@
-Feature: PoS Master > Inventory > Category Attribute Mapping
+Feature: PoS Master > Inventory > Category Attribute Mapping @done
 
   Background: 
     As a unixpro user i want to launch the valid URL
@@ -20,3 +20,5 @@ Feature: PoS Master > Inventory > Category Attribute Mapping
     And I need to enter the Miscelenious cost as"1"
     Then I need to enter the margin as "3"
     And I select the  required attributes"SIZE-COLOR-DESIGN"
+    Given I need to click on the "Save" button
+    
