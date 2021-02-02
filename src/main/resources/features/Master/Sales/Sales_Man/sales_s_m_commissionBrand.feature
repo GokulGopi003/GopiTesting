@@ -1,4 +1,4 @@
-Feature: PoS Master > Sales > Sales man >commission brand
+Feature: PoS Master > Sales > Sales man >commission brand  @done
 
   Background: 
     As a unixpro user i want to launch the valid URL
@@ -12,8 +12,6 @@ Feature: PoS Master > Sales > Sales man >commission brand
   #@master
   #Scenario: checking for Commission Brand
   #	Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Masters/frmSalesManCommissionBrand.aspx"
-  #
-  #
   #	Then I need to invoke the DropDown by Index 0 if text matching "-- Select --"
   #Then I need to select the dropdown "3 ROSES" value forLabel "BrandCode" using Javascript
   #	Then I enter the value forElement "input#ContentPlaceHolder1_txtBrandName" as "5"
@@ -31,13 +29,13 @@ Feature: PoS Master > Sales > Sales man >commission brand
     Given I need to click on the "Save" button
     When Im waiting for 2 sec
     # Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as <BrandCode>
-    #When I press downArrow from element "input#ContentPlaceHolder1_txtSearch"  and click enter key
-    #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "3"
-    #Then I click on the "input#ContentPlaceHolder1_gvSalesManCommissionBrand_imgbtnEdit_0" of "edit" icon
-    #When Im waiting for 2 sec
-    #Then I enter the value forElement "input#input#ContentPlaceHolder1_txtCommission" as "2324 Editted"
-    #Given I need to click on the "Save" button
-    #When Im waiting for 5 sec
+    Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "3"
+    When I press downArrow from element "input#ContentPlaceHolder1_txtSearch"  and click enter key
+    Then I click on the "input#ContentPlaceHolder1_gvSalesManCommissionBrand_imgbtnEdit_0" of "edit" icon
+    When Im waiting for 2 sec
+    Then I enter the value forElement "input#ContentPlaceHolder1_txtBrandName" as "122"
+    Given I need to click on the "Save" button
+    When Im waiting for 5 sec
     #  Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as <DepartmentName>
     Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "3"
     When I press downArrow from element "input#ContentPlaceHolder1_txtSearch"  and click enter key

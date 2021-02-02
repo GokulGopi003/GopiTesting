@@ -33,41 +33,41 @@ public class Unipro_Common_StepDefinitions {
 		cp.clickonBlueButton(buttonName);
 
 	}
+
 	@Then("I need to click on the red {string} button")
 	public void i_need_to_click_on_the_red_button(String buttonName) {
 
 		cp.clickonRedButton(buttonName);
 
 	}
-	
+
 	@Then("I need to click on the browse {string} button")
 	public void i_need_to_click_on_the_browse_button(String buttonName) {
 
 		cp.clickonBrowseButton(buttonName);
 
 	}
-	
+
 	@Then("I need to click on the filter {string} button")
 	public void i_need_to_click_on_the_filter_button(String buttonName) {
 
 		cp.clickonFilterButton(buttonName);
 
 	}
-	
+
 	@Then("I need to click on the dialogbox {string} button")
 	public void i_need_to_click_on_the_dialogbox_button(String buttonName) {
 
 		cp.clickonDialogFilterButton(buttonName);
 
 	}
-	
+
 	@Then("I need to click on the link {string} button")
 	public void i_need_to_click_on_the_link_button(String buttonName) {
-		
+
 		cp.clickonLinkButton(buttonName);
 	}
-	
-	
+
 	@When("I click dynamically on {string} button")
 	public void i_click_dynamically_on_button(String buttonName) {
 
@@ -113,6 +113,11 @@ public class Unipro_Common_StepDefinitions {
 		cp.confirmDelete(string);
 	}
 
+	@Then("I need to click on OK button {string}")
+	public void i_need_to_click_on_OK_button(String string) {
+		cp.confirmOK(string);
+	}
+
 	@When("I click on on element {string} in {string} alert box")
 	public void i_click_on_on_element_in_alert_box(String element, String forBox) {
 
@@ -135,29 +140,26 @@ public class Unipro_Common_StepDefinitions {
 	public void i_need_to_click_on_the_element(String element) {
 		WebElement ele = cp.waitForExpectedElement(By.cssSelector(element), 3);
 		ele.click();
-		
-	}
-	
-	@Then("I want to maxmize the browser")
-	public void i_want_to_maxmize_the_browser() {
-	    
-		cp.maxmize_browser_window();
-	}
-	
-	
-	@Given("I need to click on the  element {string} in index {int}")
-	public void i_need_to_click_on_the_element_in_index(String ele, Integer index) {
-	    
-		cp.clickOnElementByIndex(ele, index);
+
 	}
 
+	@Then("I want to maxmize the browser")
+	public void i_want_to_maxmize_the_browser() {
+
+		cp.maxmize_browser_window();
+	}
+
+	@Given("I need to click on the  element {string} in index {int}")
+	public void i_need_to_click_on_the_element_in_index(String ele, Integer index) {
+
+		cp.clickOnElementByIndex(ele, index);
+	}
 
 	@Then("I need to click alert ok")
 	public void i_need_to_click_alert_ok() {
 		cp.getWebDriver().switchTo().alert().accept();
 	}
 
-	
 	@Then("I need to press the Enter key at {string}")
 	public void i_need_to_press_the_Enter_key_at(String string) {
 
@@ -165,21 +167,76 @@ public class Unipro_Common_StepDefinitions {
 		ele.sendKeys(Keys.ENTER);
 	}
 
-
-	
 	@Then("I need to click on table forelement {string}")
 	public void i_need_to_click_on_table_forelement(String element) {
-		if(element.equalsIgnoreCase("View")) {
-		WebElement we = cp.elementToBeClickable((By.xpath("//*[@id=\"ContentPlaceHolder1_grdDistributionlist\"]/tbody/tr/td[3]/input[contains(@value, 'View')]")));
-		we.click();
-		} else if(element.equalsIgnoreCase("Delete")) {
-			WebElement we = cp.elementToBeClickable((By.xpath("//*[@id=\"ContentPlaceHolder1_grdDistribution\"]/tbody/tr[2]/td[1]/input[contains(@value, 'Delete')]")));
+		if (element.equalsIgnoreCase("View")) {
+			WebElement we = cp.elementToBeClickable((By.xpath(
+					"//*[@id=\"ContentPlaceHolder1_grdDistributionlist\"]/tbody/tr/td[3]/input[contains(@value, 'View')]")));
 			we.click();
-				
+		} else if (element.equalsIgnoreCase("Delete")) {
+			WebElement we = cp.elementToBeClickable((By.xpath(
+					"//*[@id=\"ContentPlaceHolder1_grdDistribution\"]/tbody/tr[2]/td[1]/input[contains(@value, 'Delete')]")));
+			we.click();
+
+		} else if (element.equalsIgnoreCase("Select")) {
+			
+			WebElement we = cp.elementToBeClickable((By.xpath(
+					"//*[@id=\"ContentPlaceHolder1_gvCustomerReceipts\"]/tbody/tr[1]/td[1]/input[contains(@value, 'Select')]")));
+			
+			we.click();
 		} else {
-		WebElement we = cp.elementToBeClickable((By.xpath("//*[@id=\"ContentPlaceHolder1_gvPackageInv\"]/tbody/tr[1]/td[1]/input[contains(@value, 'Remove')]")));
-		we.click();
-		}
+			WebElement we = cp.elementToBeClickable((By.xpath(
+					"//*[@id=\"ContentPlaceHolder1_gvPackageInv\"]/tbody/tr[1]/td[1]/input[contains(@value, 'Remove')]")));
+			we.click();
+		} 
 	}
+
+	@Then("I click on the Active button")
+	public void i_click_on_the_Active_button() {
+		WebElement action = cp.waitForExpectedElement(By.cssSelector("input#ContentPlaceHolder1_chkActive"), 10);
+		action.click();
+	}
+	@Then("I need to click on DropDown forElement {string}")
+	public void i_need_to_click_on_DropDown_forElement(String string) throws InterruptedException {
+	    cp.elementToBeClickable(By.cssSelector(string)).click();
+	}
+
+@Then("I need to click on DropDown value forElement {string}")
+public void i_need_to_click_on_DropDown_value_forElement(String string) throws InterruptedException {
+    cp.elementToBeClickable(By.cssSelector(string)).click();
+
+}
+@Then("I need to click DropDown value {string}")
+public void i_need_to_click_DropDown_value(String string) {
+    
+}
+	@Then("I need to find and click on the element {string} with multiple indexs")
+	public void i_need_to_find_and_click_on_the_element_with_multiple_indexs(String webelement) {
+		
+		for (Integer index = 0; index < 7; index++) {
+			
+			try {
+				String locatorStirng = webelement+index.toString();
+				By locator = By.cssSelector(locatorStirng);
+				WebElement element = cp.waitForExpectedElement(locator, 2);
+				
+				element.click();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.err.println(index +"not avilable");
+				
+			}
+			
+		}
+		
 	
+		
+		
+		
+	
+		
+	   
+	}
+
 }

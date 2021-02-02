@@ -1,4 +1,4 @@
-Feature: PoS Master > Sales >home delivery tray
+Feature: PoS Master > Sales >home delivery tray @done
 
   Background: 
     As a unixpro user i want to launch the valid URL

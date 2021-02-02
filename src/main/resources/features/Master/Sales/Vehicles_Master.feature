@@ -1,4 +1,4 @@
-Feature: PoS Master > Sales >Vehicles master
+Feature: PoS Master > Sales >Vehicles master @done
 
   Background: 
     As a unixpro user i want to launch the valid URL

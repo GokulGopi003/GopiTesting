@@ -1,4 +1,4 @@
-Feature: PoS Master > Location
+Feature: PoS Master > Location @done
 
   Background: As a unixpro user i want to launch the valid URL
     Given Launching the valid URL

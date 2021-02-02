@@ -9,7 +9,7 @@ Feature: PoS Inventory > Add Inventory
     Then I clik on the login button
     Then I verify the page Title
 
-  @inventory
+  @inventory @done  @rework @error
   Scenario: Verifying Add Inventory Functionality
     Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/frmInventoryMaster.aspx"
     Given I need to click on the  element "input#ContentPlaceHolder1_imgPriceChange"
