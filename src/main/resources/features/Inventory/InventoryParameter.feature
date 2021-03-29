@@ -15,7 +15,7 @@ Feature: PoS Inventory > Add Inventory
     Then I need to click on td forElement ""
     Then I need to click on the "Delete" button
     Then I need to click alert ok
-    
+ 
     
     
   	

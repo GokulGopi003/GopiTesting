@@ -9,7 +9,7 @@ Feature: PoS Inventory > Add Inventory
     Then I clik on the login button
     Then I verify the page Title
     
-    @inventory
+    @inventory @addInventoryTest
     Scenario: Verifying Add Inventory Functionality
     Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/frmInventoryMaster.aspx"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtInvcategory.form-control-res" as "BISCUITS"
