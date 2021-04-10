@@ -52,7 +52,7 @@ public class InventoryCalculationsPage extends PageObject {
 		js_typeIntoDropDownSearchBox(by, inputText);
 		
 		
-		element.sendKeys(Keys.NUMPAD2);
+		element.sendKeys(Keys.NUMPAD0);
 		element.sendKeys(Keys.ENTER);
 
 	}
