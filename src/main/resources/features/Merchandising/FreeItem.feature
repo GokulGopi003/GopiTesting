@@ -8,7 +8,7 @@ Feature: PoS Master > Location @done
     Then I verify the page Title
 
   Scenario: Verifying the Category Attribute Mapping Functionality
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Merchandising/frmFreeItemView.aspx"
+    Given I want to launch the "http://uniproonlineorder.ddns.net/Enterpriser_New_Sales_Demo/Merchandising/frmFreeItemView.aspx"
     When I click dynamically on "New" button
     Then I enter the value forElement "input#ContentPlaceHolder1_txtGroupCode" as "Shampo2020"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtDesc" as "Year end offer"
@@ -25,11 +25,11 @@ Feature: PoS Master > Location @done
     Then I enter the value forElement "input#ContentPlaceHolder1_txtLimitQty" as "1"
     When I click dynamically on "AddFreeItem" button
     When I click dynamically on "Save" button
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Merchandising/frmFreeItemView.aspx"
+    Given I want to launch the "http://uniproonlineorder.ddns.net/Enterpriser_New_Sales_Demo/Merchandising/frmFreeItemView.aspx"
     When Im waiting for 4 sec
     And I click on the checkBox forElement "input#ContentPlaceHolder1_cbSelectAll"
     When I click dynamically on "RevokeGroup" button
     When Im waiting for 2 sec
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Merchandising/frmFreeItemView.aspx"
+    Given I want to launch the "http://uniproonlineorder.ddns.net/Enterpriser_New_Sales_Demo/Merchandising/frmFreeItemView.aspx"
     
     
