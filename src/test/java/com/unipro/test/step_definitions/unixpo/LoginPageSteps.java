@@ -53,7 +53,7 @@ public class LoginPageSteps {
 	@Then("I verify the page Title")
 	public void i_verify_the_page_Title() {
 
-		loginPage.checkPageTitle("MISDashboard-UNIPRO TECH SOLUTION PVT Ltd");
+		loginPage.checkPageTitle("MISDashboard-UNIPRO");
 	}
 
 	@Then("I click on Add Inventory")

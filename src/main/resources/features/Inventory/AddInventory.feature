@@ -11,10 +11,12 @@ Feature: PoS Inventory > Add Inventory
     
     @inventory @addInventoryTest
     Scenario: Verifying Add Inventory Functionality
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/frmInventoryMaster.aspx"
+
+    Given I want to launch the "http://uniproonlineorder.ddns.net/Enterpriser_New_Sales_Demo/Inventory/frmInventoryMaster.aspx"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtInvcategory.form-control-res" as "BISCUITS"
-    When Im waiting for 3 sec
+    When Im waiting for 5 sec
     Then I need to click on link with text matching "BISCUITS"
+    When Im waiting for 5 sec
     Then I enter the value forElement "input#ContentPlaceHolder1_txtBrand.form-control-res" as "BELLA"
     When Im waiting for 3 sec
     Then I need to click on Brand with text matching "BRITANIA"
@@ -24,7 +26,7 @@ Feature: PoS Inventory > Add Inventory
     When Im waiting for 3 sec
     Then I need to click on Item Type with text matching "BULK"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtVendor.form-control-res" as "AKBAR AGENCIES"
-    When Im waiting for 3 sec
+    When Im waiting for 7 sec
     Then I need to click on Vendor with text matching "AKBAR AGENCIES"
     Then I need to click on Open Selling Detail forElement "input#ContentPlaceHolder1_imgPriceChange"
     Then I need to click on IGST DropDown forElement "div#ContentPlaceHolder1_ddlInputIGST_chzn.chzn-container.chzn-container-single"
@@ -37,9 +39,10 @@ Feature: PoS Inventory > Add Inventory
     Then I need to click to autopopulate forElement "div.dialog-inv-container-set-price-detail"
     Then I click on button tag with value "Back"
     Then I need to click on sub menu with text matching "Image"
-    Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "/Users/prabhu/Downloads/imageupload.jpeg"
+    Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "/Users/jarvis/Downloads/WhatsApp.jpeg"
     Then I need to click on the "Save" button
-    Then I click dynamically on "NewItemYes" button
+    When Im waiting for 2 sec
+    #Then I click dynamically on "NewItemYes" button
     When Im waiting for 2 sec
     Then I need to click on the "ItemHistory" button
     Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "BISCUITS BRITANIA30"
