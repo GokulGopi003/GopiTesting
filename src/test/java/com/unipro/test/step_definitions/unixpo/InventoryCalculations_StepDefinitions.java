@@ -205,7 +205,9 @@ public class InventoryCalculations_StepDefinitions {
 		Globals.Inventory.NetSellingPrice = Globals.Inventory.inventoryrowwiseData.get("NetSellingPrice");
 		Globals.Inventory.spfixing = Globals.Inventory.inventoryrowwiseData.get("s.p.fixing%");
 		Globals.Inventory.netcost = Globals.Inventory.inventoryrowwiseData.get("netcost");
-
+		
+		Globals.Inventory.DiscountPer = Globals.Inventory.inventoryrowwiseData.get("DiscountPer");
+		Globals.Inventory.AddDiscountPer = Globals.Inventory.inventoryrowwiseData.get("AddDiscountPer");
 	}
 
 	@Then("I fill inventory calculations page using excel data")
@@ -233,6 +235,7 @@ public class InventoryCalculations_StepDefinitions {
 			}
 
 		}
+		
 		// Discount per 1
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscountPer1)) {
 
@@ -285,6 +288,59 @@ public class InventoryCalculations_StepDefinitions {
 				}
 
 
+	}
+	
+	@Then("I fill inventory calculations page for MRP using excel data")
+	public void i_fill_inventory_calculations_page_for_MRP_using_excel_data() {
+		
+		// MRP
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.MRP)) {
+					if (Globals.Inventory.MRP.contains(".")) {
+						icp.setTextValue_Decimal(icp.MRP_String, Globals.Inventory.MRP);
+					} else {
+						icp.setTextValue(icp.MRP_String, Globals.Inventory.MRP);
+					}
+				}
+		
+		// Discount per
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscountPer)) {
+
+			if (Globals.Inventory.DiscountPer.contains(".")) {
+				icp.setTextValue_Decimal(icp.Discount_String, Globals.Inventory.DiscountPer);
+
+			} else {
+
+				icp.setTextValue(icp.Discount_String, Globals.Inventory.DiscountPer);
+			}
+
+		}
+		
+		// Additional Discount per
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.AddDiscountPer)) {
+
+			if (Globals.Inventory.AddDiscountPer.contains(".")) {
+				icp.setTextValue_Decimal(icp.AddDiscountPer_String, Globals.Inventory.AddDiscountPer);
+
+			} else {
+
+				icp.setTextValue(icp.AddDiscountPer_String, Globals.Inventory.AddDiscountPer);
+			}
+
+		}
+		
+		// sp fixing %
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.spfixing)) {
+
+			if (Globals.Inventory.spfixing.contains(".")) {
+				icp.setTextValue_Decimal(icp.SP_String, Globals.Inventory.spfixing);
+
+			} else {
+
+				icp.setTextValue(icp.SP_String, Globals.Inventory.spfixing);
+			}
+
+		}
+		
 	}
 
 	@Then("I fill the GST values in the inventory page")

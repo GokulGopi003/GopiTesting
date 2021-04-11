@@ -49,6 +49,12 @@ public class InventoryCalculationsPage extends PageObject {
 	public By Discount3_text = By.cssSelector(Discount3_String);
 	public String dd_element_string = "div.chzn-search";
 	public By dd_element_value = By.cssSelector(dd_element_string);
+	
+	public String Discount_String = "input#ContentPlaceHolder1_txtMRPMarkDown";
+	public By Discount_text = By.cssSelector(Discount_String);
+	
+	public String AddDiscountPer_String = "input#ContentPlaceHolder1_txtAdDiscount";
+	public By AddDiscountPer_text = By.cssSelector(Discount_String);
 
 	public double getTextValue(By by) {
 
@@ -74,6 +80,7 @@ public class InventoryCalculationsPage extends PageObject {
 	}
 
 	public void pressArrowKey(int noOfpress, WebElement element) {
+		System.out.println("no press" + noOfpress);
 
 		for (int i = 0; i < noOfpress; i++) {
 
