@@ -1,6 +1,6 @@
 package com.unipro.test.framework.helpers.utils;
 
-import static  com.unipro.test.framework.helpers.utils.ApplicationLogger.log;
+import static com.unipro.test.framework.helpers.utils.ApplicationLogger.log;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
@@ -93,14 +93,11 @@ public class GenericWrappers {
 					cap.setCapability(MobileCapabilityType.UDID, "auto");
 					cap.setCapability("bundleId", properties("Bundleid"));
 				} else if (properties("IsmobileApp").equalsIgnoreCase("No")) {
-					cap.setCapability(MobileCapabilityType.BROWSER_NAME,
-							properties("Browser"));
+					cap.setCapability(MobileCapabilityType.BROWSER_NAME, properties("Browser"));
 					if (properties("Browser").equalsIgnoreCase("chrome"))
-						cap.setCapability(MobileCapabilityType.APP,
-								properties("AppPath"));
+						cap.setCapability(MobileCapabilityType.APP, properties("AppPath"));
 				} else if (properties("IsmobileApp").equalsIgnoreCase("Yes")) {
-					cap.setCapability(MobileCapabilityType.APP,
-							properties("AppPath"));
+					cap.setCapability(MobileCapabilityType.APP, properties("AppPath"));
 					if (properties("Reset").equalsIgnoreCase("Yes"))
 						cap.setCapability("fullReset", true);
 					else
@@ -112,10 +109,8 @@ public class GenericWrappers {
 				cap.setCapability("autoAcceptAlerts", true);
 				log.debug(cap);
 
-				webDriver = new IOSDriver<WebElement>(new URL(
-						properties("AppiumURL") + "/wd/hub"), cap);
-				webDriver.manage().timeouts()
-						.implicitlyWait(5, TimeUnit.SECONDS);
+				webDriver = new IOSDriver<WebElement>(new URL(properties("AppiumURL") + "/wd/hub"), cap);
+				webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 				log.debug("Application launched successfully");
 
 				isAppClosed = false;
@@ -141,8 +136,7 @@ public class GenericWrappers {
 				cap.setCapability("platformName", "iOS");
 				cap.setCapability("platformVersion", properties("SDKVersion"));
 				cap.setCapability("automationName", "XCUITest");
-				cap.setCapability(MobileCapabilityType.APP, new File(
-						properties("AppPath")).getAbsolutePath());
+				cap.setCapability(MobileCapabilityType.APP, new File(properties("AppPath")).getAbsolutePath());
 				cap.setCapability("noReset", true);
 				cap.setCapability("sendKeyStrategy", "oneByOne");
 				cap.setCapability("webkitResponseTimeout", 5000);
@@ -150,10 +144,8 @@ public class GenericWrappers {
 				cap.setCapability("noReset", true);
 				cap.setCapability("newCommandTimeout", 700000);
 				log.debug(cap);
-				webDriver = new IOSDriver<WebElement>(new URL(
-						properties("AppiumURL") + "/wd/hub"), cap);
-				webDriver.manage().timeouts()
-						.implicitlyWait(5, TimeUnit.SECONDS);
+				webDriver = new IOSDriver<WebElement>(new URL(properties("AppiumURL") + "/wd/hub"), cap);
+				webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 				log.debug("Application launched successfully");
 
 				isAppClosed = false;
@@ -195,26 +187,24 @@ public class GenericWrappers {
 
 	public static void launchBrowser() {
 		webDriver.get(properties("SIT.URL"));
-		//webDriver.get(properties("UAT.URL"));
-		//webDriver.get(properties("SC.URL"));
-		//webDriver.get(properties("DEV.URL"));
+		// webDriver.get(properties("UAT.URL"));
+		// webDriver.get(properties("SC.URL"));
+		// webDriver.get(properties("DEV.URL"));
 	}
 
 	/**
 	 * To scroll into view on given element
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 28-Apr-2017
 	 * @param element
 	 *            void
 	 */
 	public static void scrolltoViewElement(WebElement element) {
-		((JavascriptExecutor) webDriver).executeScript(
-				"arguments[0].scrollIntoView(true);", element);
+		((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
-	public static WebElement getElementByTextWithScroll(
-			List<WebElement> elements, String value) {
+	public static WebElement getElementByTextWithScroll(List<WebElement> elements, String value) {
 		WebElement returnElement = null;
 		for (WebElement element : elements) {
 			scrolltoViewElement(element);
@@ -230,7 +220,7 @@ public class GenericWrappers {
 	/**
 	 * To clck on given element using java script
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 28-Apr-2017
 	 * @param element
 	 *            void
@@ -238,8 +228,7 @@ public class GenericWrappers {
 	public static void jsClickOnElement(WebElement element) {
 		// waitForElementToBeClickable(element, 2);
 		try {
-			((JavascriptExecutor) webDriver).executeScript(
-					"arguments[0].click();", element);
+			((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", element);
 		} catch (StaleElementReferenceException e) {
 			e.printStackTrace();
 			jsClickOnElement(element);
@@ -252,8 +241,7 @@ public class GenericWrappers {
 	public static boolean jsGetChekedValueOnElement(WebElement element) {
 		boolean checked = false;
 		try {
-			checked = (boolean) ((JavascriptExecutor) webDriver).executeScript(
-					"arguments[0].checked;", element);
+			checked = (boolean) ((JavascriptExecutor) webDriver).executeScript("arguments[0].checked;", element);
 			log.debug("the checked value is " + checked);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -263,13 +251,12 @@ public class GenericWrappers {
 	}
 
 	public static String jsGetTextoFElement(WebElement element) {
-		return (String) ((JavascriptExecutor) webDriver).executeScript(
-				"arguments[0].innerHTML;", element);
+		return (String) ((JavascriptExecutor) webDriver).executeScript("arguments[0].innerHTML;", element);
 	}
 
 	/**
-	 * This method will capture the screen shot for the failed sceanrio and add
-	 * the path to the genie report
+	 * This method will capture the screen shot for the failed sceanrio and add the
+	 * path to the genie report
 	 * 
 	 * @param scenario
 	 * @author Vicky
@@ -282,10 +269,8 @@ public class GenericWrappers {
 
 			try {
 
-				File scrFile = ((TakesScreenshot) webDriver)
-						.getScreenshotAs(OutputType.FILE);
-				String Filename = (screenShotPath + scenarioName + ".png")
-						.replaceAll(" ", "_");
+				File scrFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+				String Filename = (screenShotPath + scenarioName + ".png").replaceAll(" ", "_");
 				System.out.println("Screen shot saved in location " + Filename);
 				try {
 					FileUtils.copyFile(scrFile, new File(Filename));
@@ -297,8 +282,7 @@ public class GenericWrappers {
 				// addImageFilePath(Filename);
 
 			} catch (WebDriverException somePlatformsDontSupportScreenshots) {
-				System.err.println(somePlatformsDontSupportScreenshots
-						.getMessage());
+				System.err.println(somePlatformsDontSupportScreenshots.getMessage());
 			}
 
 		}
@@ -308,7 +292,7 @@ public class GenericWrappers {
 	/**
 	 * This method will will close the appium and the browser
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 */
 	@SuppressWarnings("unchecked")
 	public void closeAppiumAndBrowser() {
@@ -325,8 +309,7 @@ public class GenericWrappers {
 	}
 
 	/**
-	 * This method will return the webelement based on the given string
-	 * parameter
+	 * This method will return the webelement based on the given string parameter
 	 * 
 	 * @param locators
 	 * @return
@@ -340,16 +323,13 @@ public class GenericWrappers {
 			ele = webDriver.findElement(By.name(loc[1]));
 			break;
 		case "FByName":
-			ele = ((AppiumDriver<WebElement>) webDriver)
-					.findElementByName(loc[1]);
+			ele = ((AppiumDriver<WebElement>) webDriver).findElementByName(loc[1]);
 			break;
 		case "FByClassName":
-			ele = ((AppiumDriver<WebElement>) webDriver)
-					.findElementByClassName(loc[1]);
+			ele = ((AppiumDriver<WebElement>) webDriver).findElementByClassName(loc[1]);
 			break;
 		case "FByXpath":
-			ele = ((AppiumDriver<WebElement>) webDriver)
-					.findElementByXPath(loc[1]);
+			ele = ((AppiumDriver<WebElement>) webDriver).findElementByXPath(loc[1]);
 			break;
 
 		default:
@@ -400,20 +380,18 @@ public class GenericWrappers {
 	}
 
 	/**
-	 * This method will wait for the presence of the element to be located
-	 * returns boolean
+	 * This method will wait for the presence of the element to be located returns
+	 * boolean
 	 * 
 	 * @param element
 	 * @param waitTimeInSec
 	 * @return boolean
 	 */
-	public static boolean waitForVisibilityOfElement(WebElement element,
-			int waitTimeInSec) {
+	public static boolean waitForVisibilityOfElement(WebElement element, int waitTimeInSec) {
 		WebElement visibleElement;
 		wait = new WebDriverWait(webDriver, waitTimeInSec);
 		try {
-			visibleElement = wait.until(ExpectedConditions
-					.visibilityOf(element));
+			visibleElement = wait.until(ExpectedConditions.visibilityOf(element));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -443,13 +421,11 @@ public class GenericWrappers {
 	 * @param waitTimeInSec
 	 * @return boolean
 	 */
-	public static boolean waitForElementToBeClickable(WebElement element,
-			int waitTimeInSec) {
+	public static boolean waitForElementToBeClickable(WebElement element, int waitTimeInSec) {
 		WebElement visibleElement;
 		wait = new WebDriverWait(webDriver, waitTimeInSec);
 		try {
-			visibleElement = wait.until(ExpectedConditions
-					.elementToBeClickable(element));
+			visibleElement = wait.until(ExpectedConditions.elementToBeClickable(element));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -460,21 +436,19 @@ public class GenericWrappers {
 	/**
 	 * Expected condition to wait for the element to invisible
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 28-Apr-2017
 	 * @param element
 	 * @param waitTimeInSec
 	 * @return boolean
 	 */
-	public static boolean waitForInVisibilityOfElement(WebElement element,
-			int waitTimeInSec) {
+	public static boolean waitForInVisibilityOfElement(WebElement element, int waitTimeInSec) {
 		boolean isVisible = false;
 		List<WebElement> elements = new ArrayList<>();
 		elements.add(element);
 		wait = new WebDriverWait(webDriver, waitTimeInSec);
 		try {
-			isVisible = wait.until(ExpectedConditions
-					.invisibilityOfAllElements(elements));
+			isVisible = wait.until(ExpectedConditions.invisibilityOfAllElements(elements));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return isVisible;
@@ -507,15 +481,13 @@ public class GenericWrappers {
 	}
 
 	/**
-	 * This method will wait for the visibility of the given cssSelector web
-	 * Element
+	 * This method will wait for the visibility of the given cssSelector web Element
 	 * 
 	 * @param locator
 	 */
 	public void waitForvisiblityOfGivenCssselector(String locator) {
 		wait = new WebDriverWait(webDriver, 100);
-		wait.until(ExpectedConditions.visibilityOf(webDriver.findElement(By
-				.cssSelector("." + locator))));
+		wait.until(ExpectedConditions.visibilityOf(webDriver.findElement(By.cssSelector("." + locator))));
 
 	}
 
@@ -536,12 +508,10 @@ public class GenericWrappers {
 	@SuppressWarnings("unchecked")
 	public static void switchFromNativeToWebView() {
 		if (isAppiumDriver()) {
-			if (!((AppiumDriver<WebElement>) webDriver).getContext().contains(
-					"NAT")) {
+			if (!((AppiumDriver<WebElement>) webDriver).getContext().contains("NAT")) {
 				return;
 			}
-			Set<String> AvailableContexts = ((AppiumDriver<WebElement>) webDriver)
-					.getContextHandles();
+			Set<String> AvailableContexts = ((AppiumDriver<WebElement>) webDriver).getContextHandles();
 			for (String context : AvailableContexts) {
 				if (context.contains("WEBVIEW"))
 					((AppiumDriver<WebElement>) webDriver).context(context);
@@ -556,12 +526,10 @@ public class GenericWrappers {
 	public static void switchToNativeApp() {
 
 		if (isAppiumDriver()) {
-			if (((AppiumDriver<WebElement>) webDriver).getContext().contains(
-					"NATIVE_APP")) {
+			if (((AppiumDriver<WebElement>) webDriver).getContext().contains("NATIVE_APP")) {
 				return;
 			}
-			Set<String> AvailableContexts = ((AppiumDriver<?>) webDriver)
-					.getContextHandles();
+			Set<String> AvailableContexts = ((AppiumDriver<?>) webDriver).getContextHandles();
 			for (String context : AvailableContexts) {
 				// log.debug("Available context" + context);
 				if (context.contains("NATIVE_APP"))
@@ -611,14 +579,13 @@ public class GenericWrappers {
 	/**
 	 * Hides the keyboard in WebView
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 30-Mar-2017 void
 	 */
 	public static void hideKeyboardOnWebView() {
 		switchToNativeApp();
 		try {
-			WebElement keyboard = webDriver.findElement(By
-					.name("Hide keyboard"));
+			WebElement keyboard = webDriver.findElement(By.name("Hide keyboard"));
 			keyboard.click();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -662,7 +629,7 @@ public class GenericWrappers {
 	/**
 	 * To launch application
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 19-Apr-2017 void
 	 */
 	public static void launchApp() {
@@ -675,7 +642,7 @@ public class GenericWrappers {
 	/**
 	 * To verify the driver instance
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 19-Apr-2017
 	 * @return boolean
 	 */
@@ -686,7 +653,7 @@ public class GenericWrappers {
 	/**
 	 * Quits Browser
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 30-Mar-2017 void
 	 */
 	public static void quitBrowser() {
@@ -700,33 +667,28 @@ public class GenericWrappers {
 	/**
 	 * To swipe in the iPad Settings panel
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 27-Apr-2017 void
 	 */
 	private static void swipeInIpadSettingPanel() {
 
-		int height = ((AppiumDriver) webDriver)
-				.findElementByClassName("UIAWindow").getSize().getHeight();
+		int height = ((AppiumDriver) webDriver).findElementByClassName("UIAWindow").getSize().getHeight();
 		// log.debug(height);
-		int width = ((AppiumDriver) webDriver)
-				.findElementByClassName("UIAWindow").getSize().getWidth();
+		int width = ((AppiumDriver) webDriver).findElementByClassName("UIAWindow").getSize().getWidth();
 		// log.debug(height);
-		((AppiumDriver) webDriver).swipe(width - 100, height, width - 100,
-				height - 200, 500);
+		((AppiumDriver) webDriver).swipe(width - 100, height, width - 100, height - 200, 500);
 		sleepInMilliSeconds(100);
 	}
 
 	/**
 	 * To swipe off the iPad Settings panel
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 27-Apr-2017 void
 	 */
 	private static void swipeOffIpadSettingPanel() {
-		int height = ((AppiumDriver) webDriver)
-				.findElementByClassName("UIAWindow").getSize().getHeight();
-		int width = ((AppiumDriver) webDriver)
-				.findElementByClassName("UIAWindow").getSize().getWidth();
+		int height = ((AppiumDriver) webDriver).findElementByClassName("UIAWindow").getSize().getHeight();
+		int width = ((AppiumDriver) webDriver).findElementByClassName("UIAWindow").getSize().getWidth();
 		((AppiumDriver) webDriver).tap(1, height / 2, width / 2, 1);
 		sleepInMilliSeconds(100);
 	}
@@ -734,27 +696,27 @@ public class GenericWrappers {
 	/**
 	 * To verify wifi is enabled
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 27-Apr-2017
 	 * @return boolean
 	 */
 	private static boolean isWifiEnabled() {
-		int value = Integer.parseInt(((AppiumDriver<?>) webDriver)
-				.findElementByAccessibilityId("Wi-Fi").getAttribute("value"));
+		int value = Integer
+				.parseInt(((AppiumDriver<?>) webDriver).findElementByAccessibilityId("Wi-Fi").getAttribute("value"));
 		return value == 1 ? true : false;
 	}
 
 	/**
 	 * To verify id wifi is enabled by swiping the settings
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 27-Apr-2017
 	 * @return boolean
 	 */
 	private boolean isIpadWifiEnabledWithSwipe() {
 		swipeInIpadSettingPanel();
-		int value = Integer.parseInt(((AppiumDriver<?>) webDriver)
-				.findElementByAccessibilityId("Wi-Fi").getAttribute("value"));
+		int value = Integer
+				.parseInt(((AppiumDriver<?>) webDriver).findElementByAccessibilityId("Wi-Fi").getAttribute("value"));
 		swipeOffIpadSettingPanel();
 		return value == 1 ? true : false;
 	}
@@ -762,15 +724,14 @@ public class GenericWrappers {
 	/**
 	 * To turn on the wifi on iPad
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 27-Apr-2017 void
 	 */
 	public static void turnOnIpadWifi() {
 		switchToNativeApp();
 		swipeInIpadSettingPanel();
 		if (!isWifiEnabled()) {
-			((AppiumDriver<?>) webDriver).findElementByAccessibilityId("Wi-Fi")
-					.click();
+			((AppiumDriver<?>) webDriver).findElementByAccessibilityId("Wi-Fi").click();
 		}
 		swipeOffIpadSettingPanel();
 		switchFromNativeToWebView();
@@ -779,15 +740,14 @@ public class GenericWrappers {
 	/**
 	 * To turn off the Wifi on iPad
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 27-Apr-2017 void
 	 */
 	public static void turnOffIpadWifi() {
 		switchToNativeApp();
 		swipeInIpadSettingPanel();
 		if (isWifiEnabled()) {
-			((AppiumDriver<?>) webDriver).findElementByAccessibilityId("Wi-Fi")
-					.click();
+			((AppiumDriver<?>) webDriver).findElementByAccessibilityId("Wi-Fi").click();
 		}
 		swipeOffIpadSettingPanel();
 		switchFromNativeToWebView();
@@ -796,29 +756,27 @@ public class GenericWrappers {
 	/**
 	 * To verify bluetooth is enabled
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 27-Apr-2017
 	 * @return boolean
 	 */
 	private static boolean isBluetoothEnabled() {
-		int value = Integer.parseInt(((AppiumDriver<?>) webDriver)
-				.findElementByAccessibilityId("Bluetooth")
-				.getAttribute("value"));
+		int value = Integer.parseInt(
+				((AppiumDriver<?>) webDriver).findElementByAccessibilityId("Bluetooth").getAttribute("value"));
 		return value == 1 ? true : false;
 	}
 
 	/**
 	 * To verify id bluetooth is enabled by swiping the settings
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 27-Apr-2017
 	 * @return boolean
 	 */
 	private static boolean isIpadBluetoothEnabledWithSwipe() {
 		swipeInIpadSettingPanel();
-		int value = Integer.parseInt(((AppiumDriver<?>) webDriver)
-				.findElementByAccessibilityId("Bluetooth")
-				.getAttribute("value"));
+		int value = Integer.parseInt(
+				((AppiumDriver<?>) webDriver).findElementByAccessibilityId("Bluetooth").getAttribute("value"));
 		swipeOffIpadSettingPanel();
 		return value == 1 ? true : false;
 	}
@@ -826,15 +784,14 @@ public class GenericWrappers {
 	/**
 	 * To turn on the bluetooth on iPad
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 27-Apr-2017 void
 	 */
 	public static void turnOnIpadBluetooth() {
 		switchToNativeApp();
 		swipeInIpadSettingPanel();
 		if (!isBluetoothEnabled()) {
-			((AppiumDriver<?>) webDriver).findElementByAccessibilityId(
-					"Bluetooth").click();
+			((AppiumDriver<?>) webDriver).findElementByAccessibilityId("Bluetooth").click();
 		}
 		swipeOffIpadSettingPanel();
 		switchFromNativeToWebView();
@@ -843,15 +800,14 @@ public class GenericWrappers {
 	/**
 	 * To turn on the Bluetooth on iPad
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 27-Apr-2017 void
 	 */
 	public static void turnOffIpadBluetooth() {
 		switchToNativeApp();
 		swipeInIpadSettingPanel();
 		if (isBluetoothEnabled()) {
-			((AppiumDriver<?>) webDriver).findElementByAccessibilityId(
-					"Bluetooth").click();
+			((AppiumDriver<?>) webDriver).findElementByAccessibilityId("Bluetooth").click();
 		}
 		swipeOffIpadSettingPanel();
 		switchFromNativeToWebView();
@@ -860,21 +816,22 @@ public class GenericWrappers {
 	/**
 	 * Use to get WebElement from List of WebElements by its tag text
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 27-Apr-2017
 	 * @param elements
 	 * @param value
 	 * @return WebElement
 	 */
-	public static WebElement getElementByText(List<WebElement> elements,
-			String value) {
-		//GenericWrappers.sleepInSeconds(2);
+	public static WebElement getElementByText(List<WebElement> elements, String value) {
+		// GenericWrappers.sleepInSeconds(2);
 		GenericWrappers.sleepInMilliSeconds(100);
 		WebElement returnElement = null;
 		for (WebElement element : elements) {
-			//log.info(element.getText().toLowerCase());
-			if (element.getText().toLowerCase().contains(value.toLowerCase())) {  // commented as LOV selection happening as "British Indian Ocean Territory" in iPad
-			//if (element.getText().toLowerCase().equalsIgnoreCase(value.toLowerCase())) {
+			// log.info(element.getText().toLowerCase());
+			if (element.getText().toLowerCase().contains(value.toLowerCase())) { // commented as LOV selection happening
+																					// as "British Indian Ocean
+																					// Territory" in iPad
+				// if (element.getText().toLowerCase().equalsIgnoreCase(value.toLowerCase())) {
 				returnElement = element;
 				break;
 			}
@@ -884,11 +841,10 @@ public class GenericWrappers {
 
 	public static WebElement getLOVElementByText(String value, WebElement ele) {
 		WebElement returnElement = null;
-		for (WebElement element : ele
-				.findElements(By
+		for (WebElement element : ele.findElements(By
 				// .cssSelector(".ui-select-choices-row-inner"))) {
 				// .xpath(".//div[@class='option']"))){
-						.xpath("./../following-sibling::*//div[contains(@class,'option')]"))) {
+				.xpath("./../following-sibling::*//div[contains(@class,'option')]"))) {
 			if (element.getText().toLowerCase().contains(value.toLowerCase())) {
 				returnElement = element;
 				break;
@@ -900,7 +856,7 @@ public class GenericWrappers {
 	/**
 	 * To get child element using locator
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 27-Apr-2017
 	 * @param element
 	 * @param locator
@@ -913,7 +869,7 @@ public class GenericWrappers {
 	/**
 	 * To get the tag Text of all the elements
 	 * 
-	 * @author Kalyan, Raipati
+	 * 
 	 * @since 27-Apr-2017
 	 * @param elements
 	 * @return List<String>
@@ -942,15 +898,13 @@ public class GenericWrappers {
 			switch (osName) {
 			case "Linux":
 				System.setProperty(chromeDriverStr, properties("Chrome.linux"));
-				log.debug("Operating System inside Linux Switch Case> "
-						+ properties("Chrome.linux"));
+				log.debug("Operating System inside Linux Switch Case> " + properties("Chrome.linux"));
 				break;
 			case "Mac OS X":
 				System.setProperty(chromeDriverStr, properties("Chrome.mac"));
 				break;
 			default:
-				System.setProperty(chromeDriverStr,
-						properties("Chrome.windows"));
+				System.setProperty(chromeDriverStr, properties("Chrome.windows"));
 				break;
 			}
 			ChromeOptions options = new ChromeOptions();
@@ -965,15 +919,13 @@ public class GenericWrappers {
 			options.addArguments("chrome.switches", "--disable-extensions");
 			options.addArguments("--test-type");
 			options.addArguments("disable-infobars");
-			if (System.getProperty("isHeadless") != null
-					&& Boolean.parseBoolean(System.getProperty("isHeadless"))) {
+			if (System.getProperty("isHeadless") != null && Boolean.parseBoolean(System.getProperty("isHeadless"))) {
 				options.addArguments("--headless");
 				options.addArguments("--disable-gpu");
 			}
 			DesiredCapabilities cap = DesiredCapabilities.chrome();
 			cap.setCapability(ChromeOptions.CAPABILITY, options);
-			cap.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR,
-					UnexpectedAlertBehaviour.ACCEPT);
+			cap.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
 			webDriver = new ChromeDriver(cap);
 			log.debug("Web Driver Initialsation" + webDriver);
 			break;
@@ -1014,10 +966,8 @@ public class GenericWrappers {
 		// if (Objects.isNull(extentReportFolder))
 		// setScreenshotPath();
 
-		String fileName = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-SSSa")
-				.format(new Date());
-		File scrFile = ((TakesScreenshot) webDriver)
-				.getScreenshotAs(OutputType.FILE);
+		String fileName = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-SSSa").format(new Date());
+		File scrFile = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 
 		String filename = screenShotPath;
 		filename = filename + "/" + fileName.replaceAll(" ", "_") + ".png";
@@ -1030,8 +980,7 @@ public class GenericWrappers {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		fileNameReport = Boolean.parseBoolean(GenericWrappers
-				.properties("EnableExtentx")) ? filename : fileNameReport;
+		fileNameReport = Boolean.parseBoolean(GenericWrappers.properties("EnableExtentx")) ? filename : fileNameReport;
 		return fileNameReport;
 	}
 
@@ -1078,12 +1027,10 @@ public class GenericWrappers {
 
 	public static String getReportPath() {
 
-		String reportDate = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-SSS-a")
-				.format(new Date());
+		String reportDate = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-SSS-a").format(new Date());
 
 		screenShotPath = "reports/" + reportDate;
-		String reportPath = "reports/" + reportDate
-				+ "/RTOBAutomationReport.html";
+		String reportPath = "reports/" + reportDate + "/RTOBAutomationReport.html";
 
 		return reportPath;
 
@@ -1091,11 +1038,9 @@ public class GenericWrappers {
 
 	public static String getFullPageScreenshotPath() {
 
-		Screenshot scrFile = new AShot().shootingStrategy(
-				ShootingStrategies.viewportRetina(500, 0, 0, 2))
+		Screenshot scrFile = new AShot().shootingStrategy(ShootingStrategies.viewportRetina(500, 0, 0, 2))
 				.takeScreenshot(webDriver);
-		String fileName = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-SSSa")
-				.format(new Date());
+		String fileName = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-SSSa").format(new Date());
 		String filename = screenShotPath;
 		filename = filename + "/" + fileName.replaceAll(" ", "_") + ".png";
 		String fileNameReport = fileName.replaceAll(" ", "_") + ".png";
@@ -1112,14 +1057,10 @@ public class GenericWrappers {
 
 	public static String getFullPageScreenshotPath(WebElement element) {
 		Screenshot scrFile = null;
-		scrFile = new AShot()
-				.coordsProvider(new WebDriverCoordsProvider())
-				.shootingStrategy(
-						ShootingStrategies.viewportRetina(5000, 0, 0, 2))
-				.takeScreenshot(webDriver, element);
+		scrFile = new AShot().coordsProvider(new WebDriverCoordsProvider())
+				.shootingStrategy(ShootingStrategies.viewportRetina(5000, 0, 0, 2)).takeScreenshot(webDriver, element);
 
-		String fileName = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-SSSa")
-				.format(new Date());
+		String fileName = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-SSSa").format(new Date());
 		String filename = screenShotPath;
 		filename = filename + "/" + fileName.replaceAll(" ", "_") + ".png";
 		String fileNameReport = fileName.replaceAll(" ", "_") + ".png";
@@ -1131,14 +1072,12 @@ public class GenericWrappers {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		fileNameReport = Boolean.parseBoolean(GenericWrappers
-				.properties("EnableExtentx")) ? filename : fileNameReport;
+		fileNameReport = Boolean.parseBoolean(GenericWrappers.properties("EnableExtentx")) ? filename : fileNameReport;
 		return fileNameReport;
 	}
 
 	public static void setStartTime() {
-		System.setProperty("current.date.time", new SimpleDateFormat(
-				"dd-MM-yyyy-hh-mm-ssa").format(new Date()));
+		System.setProperty("current.date.time", new SimpleDateFormat("dd-MM-yyyy-hh-mm-ssa").format(new Date()));
 	}
 
 	public static boolean isPresentAndDisplayed(final WebElement element) {
@@ -1152,8 +1091,7 @@ public class GenericWrappers {
 	}
 
 	public static void sendKeysOnMobile(String keysToSend) {
-		((AppiumDriver<WebElement>) GenericWrappers.webDriver).getKeyboard()
-				.sendKeys(keysToSend);
+		((AppiumDriver<WebElement>) GenericWrappers.webDriver).getKeyboard().sendKeys(keysToSend);
 	}
 
 	public static void seconds(int i) {
@@ -1168,32 +1106,26 @@ public class GenericWrappers {
 		// .click().moveByOffset(100, 70) // third point
 		// .doubleClick().build().perform();
 
-		TouchAction action = new TouchAction(
-				(AppiumDriver<WebElement>) webDriver);
-		action.longPress(element, 135, 15).waitAction(10).moveTo(100, 70)
-				.release().perform();
+		TouchAction action = new TouchAction((AppiumDriver<WebElement>) webDriver);
+		action.longPress(element, 135, 15).waitAction(10).moveTo(100, 70).release().perform();
 
 	}
 
 	public static void drawOnCanvas(String xpath) {
-		MobileElement element = (MobileElement) GenericWrappers.webDriver
-				.findElement(By.xpath(xpath));
-		TouchAction t = new TouchAction(
-				(AppiumDriver<MobileElement>) GenericWrappers.webDriver);
+		MobileElement element = (MobileElement) GenericWrappers.webDriver.findElement(By.xpath(xpath));
+		TouchAction t = new TouchAction((AppiumDriver<MobileElement>) GenericWrappers.webDriver);
 		t.press(element).moveTo(10, 10).release().perform();
 
 	}
-	
-	public static String getProductName(WebElement product)
-	{
+
+	public static String getProductName(WebElement product) {
 		String productName;
 		String xpathProductName = "./../../preceding-sibling::td/span";
 		productName = product.findElement(By.xpath(xpathProductName)).getText();
 		return productName;
 	}
-	
-	public static WebElement getApplyBtnFromProductName(WebElement productName)
-	{
+
+	public static WebElement getApplyBtnFromProductName(WebElement productName) {
 		WebElement ApplyBtn;
 		String xpathProductApplyBtn = "./../following-sibling::td/span/input";
 		ApplyBtn = productName.findElement(By.xpath(xpathProductApplyBtn));
