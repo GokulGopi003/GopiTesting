@@ -18,6 +18,8 @@ public class Globals {
 		public static String DiscountPer2;
 		public static String DiscountPer3;
 		public static String GSTPer;
+		public static String DiscountPer;
+		public static String AddDiscountPer;
 		public static String NetSellingPrice;
 		public static String spfixing;
 		public static String netcost;

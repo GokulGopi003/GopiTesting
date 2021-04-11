@@ -5,7 +5,7 @@ import com.google.common.collect.Table;
 /**
  * To load login details by country
  * 
- * @author Kalyan, Raipati
+
  * @since 12-Apr-2017
  */
 public class LoginTestData {
