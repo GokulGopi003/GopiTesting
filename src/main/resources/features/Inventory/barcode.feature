@@ -11,7 +11,7 @@ Feature: PoS Inventory > Add Inventory
     
     @inventory
     Scenario: Verifying Inventory Barcode Functionality
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/Barcode.aspx"
+    Given I want to launch the "Inventory/Barcode.aspx"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtInventoryCode" as "205"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtQty" as "20"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtBefore" as "189"

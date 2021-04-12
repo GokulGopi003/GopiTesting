@@ -11,7 +11,7 @@ Feature: PoS Inventory > Add Inventory
 
   @inventory @done @rework @error
   Scenario Outline: Verifying Add Inventory Functionality
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Enterpriser_New_Sales_Demo/Inventory/frmInventoryMaster.aspx"
+    Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Given I need to click on the  element "input#ContentPlaceHolder1_rbtMRP"
     Given I need to click on the  element "input#ContentPlaceHolder1_imgPriceChange"
     Then I load the testdata form excel to table
