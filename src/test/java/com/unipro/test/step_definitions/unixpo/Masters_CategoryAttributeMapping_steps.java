@@ -2,6 +2,7 @@ package com.unipro.test.step_definitions.unixpo;
 
 
 
+import com.unipro.test.page_objects.unixpro.LoginPage;
 import com.unipro.test.page_objects.unixpro.Masters_CategoryAtttributeMapping_Page;
 
 import cucumber.api.java.en.Given;
@@ -19,8 +20,13 @@ public class Masters_CategoryAttributeMapping_steps {
 
 	@Given("I want to launch the {string}")
 	public void i_want_to_launch_the(String string) {
+		
+		String baseurl = new LoginPage().getTestURL();
 
-		m_cap.get_Masters_CategoryAtttributeMapping_Url(string);
+		String completeUrl = baseurl;
+		
+
+		m_cap.get_Masters_CategoryAtttributeMapping_Url(completeUrl.concat(string));
 
 	}
 

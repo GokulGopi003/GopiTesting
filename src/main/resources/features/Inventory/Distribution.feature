@@ -11,7 +11,7 @@ Feature: PoS Inventory > Add Inventory
     
     @inventory
     Scenario: Verifying Inventory Distribution Functionality
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/frmDistributionlist.aspx"
+    Given I want to launch the "Inventory/frmDistributionlist.aspx"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtFromDate.form-control-res.hasDatepicker" as "07-01-2020"
     Then I need to click on the  element "button.ui-datepicker-close.ui-state-default.ui-priority-primary.ui-corner-all"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtToDate.form-control-res.hasDatepicker" as "04-01-2021"

@@ -12,7 +12,7 @@ Feature: PoS Inventory > Add Inventory
     @inventory @addInventoryTest
     Scenario: Verifying Add Inventory Functionality
 
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Enterpriser_New_Sales_Demo/Inventory/frmInventoryMaster.aspx"
+    Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtInvcategory.form-control-res" as "BISCUITS"
     When Im waiting for 5 sec
     Then I need to click on link with text matching "BISCUITS"

@@ -11,7 +11,7 @@ Feature: PoS Inventory > Add Inventory
     
     @inventory
     Scenario: Verifying Inventory Change Functionality
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Stock/frmAverageCostReset.aspx"
+    Given I want to launch the "Stock/frmAverageCostReset.aspx"
     Then I enter the value forElement "input#ContentPlaceHolder1_searchFilterUserControl_txtVendor" as "222"
     When Im waiting for 3 sec
     #Then I need to click on Vendor with text matching "62"
