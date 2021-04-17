@@ -11,7 +11,7 @@ Feature: PoS Inventory > Add Inventory
     
     @inventory
     Scenario: Verifying Inventory History Functionality
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/frmInventoryMasterView.aspx"
+    Given I want to launch the "Inventory/frmInventoryMasterView.aspx"
     When Im waiting for 2 sec
     Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "BISCUITS BRITANIA22"
     Then I click dynamically on "SearchGrid" button

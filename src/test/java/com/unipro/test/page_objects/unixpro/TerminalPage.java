@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 
 import com.unipro.test.framework.PageObject;
 
-
 public class TerminalPage extends PageObject {
 
 	private By new_button = By.cssSelector("a#ContentPlaceHolder1_lnkNew.button-blue");
@@ -52,7 +51,7 @@ public class TerminalPage extends PageObject {
 		return waitForExpectedElement(ddlocator);
 
 	}
-	
+
 	public WebElement waitAndSelectDropDownUsingSerachBox_Dynamic(String valueToSearch, String forElement) {
 
 		By ddlocator = By.cssSelector(forElement);
@@ -86,29 +85,26 @@ public class TerminalPage extends PageObject {
 	public void terminal_waitClearEnterText_css(String webele, String textToEnter) {
 
 		By terminal_System_name = By.cssSelector(webele);
-		waitClearEnterText(terminal_System_name, textToEnter);
+		//waitForExpectedElement(By.cssSelector(webele));
+		 waitClearEnterText(terminal_System_name, textToEnter);
+		//setTypeAheadValueOnElement(waitForExpectedElement(By.cssSelector(webele)), textToEnter);
 
 	}
-	
+
 	public WebElement get_checkBox_element(String webele) {
-		
-		
+
 		By checkBoxElement = By.cssSelector(webele);
-		
+
 		return waitForExpectedElement(checkBoxElement);
-		
+
 	}
-	
-	
-public WebElement get_radioButton_element(String webele) {
-		
-		
+
+	public WebElement get_radioButton_element(String webele) {
+
 		By radioButtonElement = By.cssSelector(webele);
-		
+
 		return waitForExpectedElement(radioButtonElement);
-		
+
 	}
-	
-	
 
 }

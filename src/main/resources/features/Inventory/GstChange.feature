@@ -11,7 +11,7 @@ Feature: PoS Inventory > Add Inventory
 
   @inventory
   Scenario: Verifying GST Change Functionality
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/frmInventoryGstChangeEdit.aspx"
+    Given I want to launch the "Inventory/frmInventoryGstChangeEdit.aspx"
     Then I click dynamically on "New" button
     Then I enter the value forElement "input#ContentPlaceHolder1_searchFilterUserControl_txtVendor" as "205"
     When Im waiting for 2 sec
