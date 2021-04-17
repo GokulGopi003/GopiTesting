@@ -109,6 +109,8 @@ public class TerminialPageSteps {
 	public void i_enter_the_value_forElement_as(String webele, String textToType) {
 
 		ter_Page.terminal_waitClearEnterText_css(webele, textToType);
+		
+	
 
 	}
 

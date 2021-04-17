@@ -11,7 +11,7 @@ Feature: PoS Inventory > Add Inventory
     
     @inventory
     Scenario: Verifying Inventory Configuration Functionality
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/frmFrancesMaster.aspx"
+    Given I want to launch the "Inventory/frmFrancesMaster.aspx"
     Then I click dynamically on "Fetch" button
     Then I enter the value forElement "input#ContentPlaceHolder1_searchFilterUserControlForDialogBox_txtVendor.form-control-res" as "200"
     When Im waiting for 3 sec
