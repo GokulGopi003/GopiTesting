@@ -10,9 +10,28 @@ Feature: PoS Inventory > Add Inventory
     Then I verify the page Title
 
   @ic
-  Scenario: Verifying Add Inventory Functionality
+  Scenario: Verifying Add Inventory Functionality1
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtInvcategory.form-control-res" as "BISCUITS"
-    #When Im waiting for 5 sec
+    When Im waiting for 5 sec
     Then i clear and retype the vlaue "BISCUITS" for the field "input#txtSearch"
     Then I need to click on link with text matching "BISCUITS"
+
+    
+      @ic
+  Scenario: Verifying Add Inventory Functionality2
+    Given I want to launch the "Inventory/frmInventoryMaster.aspx"
+    Then I enter the value forElement "input#ContentPlaceHolder1_txtInvcategory.form-control-res" as "BISCUITS"
+    When Im waiting for 5 sec
+    Then i clear and retype the vlaue "BISCUITS" for the field "input#txtSearch"
+    Then I need to click on link with text matching "BISCUITS"
+    
+    
+      @ic
+  Scenario: Verifying Add Inventory Functionality3
+    Given I want to launch the "Inventory/frmInventoryMaster.aspx"
+    Then I enter the value forElement "input#ContentPlaceHolder1_txtInvcategory.form-control-res" as "BISCUITS"
+    When Im waiting for 5 sec
+    Then i clear and retype the vlaue "BISCUITS" for the field "input#txtSearch"
+    Then I need to click on link with text matching "BISCUITS"
+    
