@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.unipro.test.framework.helpers.WebDriverHelper;
+import com.unipro.test.framework.helpers.utils.GenericWrappers;
 
 import java.util.List;
 
@@ -493,6 +494,34 @@ public abstract class PageObject {
 
 	}
 	
+	/**
+	 * Wrapper for wait, clear data and sendKeys in Input Text box
+	 * <p>
+	 * * @param by Element location found by css, xpath, id etc...
+	 *
+	 * @param inputText
+	 *            text to be entered
+	 **/
+
+	public static void setTypeAheadValueOnElement(WebElement element, String textValue) {
+		
+		
+
+	
+		if (GenericWrappers.isNotEmpty(textValue)) {
+			element.clear();
+			String[] textvalueArray = textValue.split("(?!^)");
+			for (String characterTextValue : textvalueArray) {
+				element.sendKeys(characterTextValue);
+				
+				GenericWrappers.sleepInMilliSeconds(500);
+				
+			}
+		}
+	
+
+	}
+
 	/**
 	 * Wrapper for wait, clear data and sendKeys in Input Text box
 	 * <p>

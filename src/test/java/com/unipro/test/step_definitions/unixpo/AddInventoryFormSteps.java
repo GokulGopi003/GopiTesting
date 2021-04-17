@@ -142,4 +142,13 @@ public class AddInventoryFormSteps {
 		
 	}
 	
+	
+	
+	@Then("i clear and retype the vlaue {string} for the field {string}")
+	public void i_clear_and_retype_the_vlaue_for_the_field(String textValue, String elementString) {
+	   
+		add_inventory.clearAndTypeSlowly(textValue, elementString);
+		
+	}
+
 }

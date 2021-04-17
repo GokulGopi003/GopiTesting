@@ -142,5 +142,14 @@ public class AddInventoryFormPage extends PageObject{
 		return menu_invoke_ele;
 
 	}
+	
+	
+	public void clearAndTypeSlowly(String textValue, String elementStirng) {
+		
+		
+		
+		setTypeAheadValueOnElement(getWebDriver().findElement(By.cssSelector(elementStirng)), textValue);
+		
+	}
 
 }

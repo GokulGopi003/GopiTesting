@@ -17,11 +17,12 @@ Feature: PoS Inventory > Add Inventory
     When Im waiting for 5 sec
     Then I need to click on link with text matching "BISCUITS"
     When Im waiting for 5 sec
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtBrand.form-control-res" as "BELLA"
+    Then I enter the value forElement "input#ContentPlaceHolder1_txtBrand.form-control-res" as "BRITANIA"
     When Im waiting for 3 sec
     Then I need to click on Brand with text matching "BRITANIA"
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtItemName.form-control-res.ui-autocomplete-input" as "BISCUITS BRITANIA30"
+    Then I enter the value forElement "input#ContentPlaceHolder1_txtItemName.form-control-res.ui-autocomplete-input" as "BISCUITS TestBistcut"
     Then I need to click on Short Name forElement "input#ContentPlaceHolder1_txtShortName.form-control-res"
+    When Im waiting for 3 sec
     Then I enter the value forElement "input#ContentPlaceHolder1_txtItemType.form-control-res" as "BULK"
     When Im waiting for 3 sec
     Then I need to click on Item Type with text matching "BULK"
