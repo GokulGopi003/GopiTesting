@@ -9,15 +9,6 @@ Feature: PoS Inventory > Add Inventory
     Then I clik on the login button
     Then I verify the page Title
 
-<<<<<<< Updated upstream
-  @ic
-  Scenario: Verifying Add Inventory Functionality
-    Given I want to launch the "Inventory/frmInventoryMaster.aspx"
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtInvcategory.form-control-res" as "BISCUITS"
-    #When Im waiting for 5 sec
-    Then i clear and retype the vlaue "BISCUITS" for the field "input#txtSearch"
-    Then I need to click on link with text matching "BISCUITS"
-=======
 
   Scenario Outline: Verifying Add Inventory Functionality
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
@@ -38,4 +29,3 @@ Feature: PoS Inventory > Add Inventory
     Examples: 
       | TestcaseRowName |
       | cost1           |
->>>>>>> Stashed changes

@@ -40,7 +40,8 @@ public class LoginPageSteps {
 
 	@When("I enter the password")
 	public void i_enter_the_password() {
-		loginPage.getPasswordElement().sendKeys("uniprosa");
+		//loginPage.getPasswordElement().sendKeys("uniprosa");
+		loginPage.getPasswordElement().sendKeys("ups@123");
 	}
 
 	@Then("I clik on the login button")
@@ -53,7 +54,9 @@ public class LoginPageSteps {
 	@Then("I verify the page Title")
 	public void i_verify_the_page_Title() {
 
-		loginPage.checkPageTitle("MISDashboard-UNIPRO");
+		//loginPage.checkPageTitle("MISDashboard-UNIPRO");
+		
+		loginPage.checkPageTitle("MISDashboard-NEW SEVEN HILLS SUPER BAZAAR");
 	}
 
 	@Then("I click on Add Inventory")
