@@ -38,6 +38,8 @@ Feature: PoS Inventory > Add Inventory
     Then I need to type the textvalue forElement "input#ContentPlaceHolder1_txtMRP" value as "120" using Javascript
     Then I need to type the textvalue forElement "input#ContentPlaceHolder1_txtBasicCost" value as "65" using Javascript
     Then I need to click to autopopulate forElement "div.dialog-inv-container-set-price-detail"
+    
+    
     Then I click on button tag with value "Back"
     Then I need to click on sub menu with text matching "Image"
     Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "/Users/jarvis/Downloads/WhatsApp.jpeg"
