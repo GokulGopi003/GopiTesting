@@ -17,21 +17,29 @@ import com.unipro.test.framework.helpers.utils.ApplicationLogger;
 import com.unipro.test.framework.helpers.utils.GenericWrappers;
 import com.unipro.test.framework.helpers.utils.ReadTestData;
 import com.unipro.test.framework.helpers.utils.ReadXLSXFile;
+import com.unipro.test.page_objects.unixpro.AddInventoryFormPage;
 import com.unipro.test.page_objects.unixpro.InventoryCalculationsPage;
+import com.unipro.test.page_objects.unixpro.InventoryCreationPage;
 import com.unipro.test.page_objects.unixpro.TerminalPage;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.bytebuddy.agent.builder.AgentBuilder.CircularityLock.Global;
 
 public class InventoryCalculations_StepDefinitions {
+	InventoryCreationPage inventoryCreation;
+	AddInventoryFormPage add_inventory;
 	InventoryCalculationsPage icp;
+	
 
 	TerminalPage terPage;
+	
 	public InventoryCalculations_StepDefinitions(InventoryCalculationsPage icp) {
-
+		inventoryCreation = new InventoryCreationPage();
 		this.icp = icp;
 		terPage= new TerminalPage();
 		
+		 add_inventory= new AddInventoryFormPage();
 	
 	}
 
@@ -173,12 +181,18 @@ public class InventoryCalculations_StepDefinitions {
 	public void i_load_the_testdata_form_excel_to_table() {
 
 		Globals.excelSheetData = ReadXLSXFile.getExcelAsMapTable("./testdata/sample mrp.xlsx");
+		
+		
 
 	}
 
 	@Then("I load the inventory sheet data to map")
 	public void i_load_the_inventory_sheet_data_to_map() {
-
+		
+		Globals.Inventory.inventorySheetData1 = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME_DATA);
+		
+	
+		
 		Globals.Inventory.inventorySheetData = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME);
 
 	}
@@ -188,6 +202,8 @@ public class InventoryCalculations_StepDefinitions {
 
 		Globals.Inventory.inventoryrowwiseData = ReadTestData
 				.getRowFilteredValueFromTable(Globals.Inventory.inventorySheetData, row_name);
+		
+	
 
 		System.out.println(Globals.Inventory.inventoryrowwiseData);
 
@@ -208,7 +224,63 @@ public class InventoryCalculations_StepDefinitions {
 		
 		Globals.Inventory.DiscountPer = Globals.Inventory.inventoryrowwiseData.get("DiscountPer");
 		Globals.Inventory.AddDiscountPer = Globals.Inventory.inventoryrowwiseData.get("AddDiscountPer");
+		
+		//data for inventory creation  
+		
+		Globals.Inventory.Category = Globals.Inventory.inventoryrowwiseData.get("Category");
+		Globals.Inventory.Brand = Globals.Inventory.inventoryrowwiseData.get("Brand");
+		Globals.Inventory.ItemName = Globals.Inventory.inventoryrowwiseData.get("ItemName");
+		Globals.Inventory.ShortName = Globals.Inventory.inventoryrowwiseData.get("ShortName");
+		Globals.Inventory.ItemType = Globals.Inventory.inventoryrowwiseData.get("Item Type");
+		Globals.Inventory.Vendor = Globals.Inventory.inventoryrowwiseData.get("Vendor");
 	}
+	
+	@Then("I fill new inventory data page using excel data")
+	public void i_fill_new_inventory_data_page_using_excel_data() {
+		
+		//category
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Category)) {
+			terPage.terminal_waitClearEnterText_css(icp.Category_String, Globals.Inventory.Category);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Category,"input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Category).click();
+			
+		}
+		
+		//Brand
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Brand)) {
+			terPage.terminal_waitClearEnterText_css(icp.Brand_String, Globals.Inventory.Brand);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Brand, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Brand).click();
+		}
+		
+		//Item Name
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemName)) {
+			terPage.terminal_waitClearEnterText_css(icp.ItemName_String, Globals.Inventory.ItemName);
+			
+		}
+		
+		//Short Name
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.ShortName)) {
+			terPage.terminal_waitClearEnterText_css(icp.ShortName_String, Globals.Inventory.ShortName);
+		}
+		
+		//Item Type
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemType)) {
+			terPage.terminal_waitClearEnterText_css(icp.ItemType_String, Globals.Inventory.ItemType);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.ItemType, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.ItemType).click();
+		}
+		
+		//vendor
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {
+			terPage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Vendor, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Vendor).click();
+		}
+		
+		
+	}
+	
 
 	@Then("I fill inventory calculations page using excel data")
 	public void i_fill_inventory_calculations_page_using_excel_data() {

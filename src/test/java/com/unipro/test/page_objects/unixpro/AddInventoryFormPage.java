@@ -148,6 +148,7 @@ public class AddInventoryFormPage extends PageObject{
 		
 		
 		
+		
 		setTypeAheadValueOnElement(getWebDriver().findElement(By.cssSelector(elementStirng)), textValue);
 		
 	}

@@ -10,8 +10,11 @@ public class Globals {
 
 	public static class Inventory {
 		final public static String SHEETNAME = "Inventory";
+		final public static String SHEETNAME_DATA = "InventoryData";
+		public static Table<String, String, String> inventorySheetData1;
 		public static Table<String, String, String> inventorySheetData;
 		public static Map<String, String> inventoryrowwiseData;
+		public static Map<String, String> inventoryrowwiseData1;
 		public static String MRP;
 		public static String BasicCost;
 		public static String DiscountPer1;
@@ -23,6 +26,13 @@ public class Globals {
 		public static String NetSellingPrice;
 		public static String spfixing;
 		public static String netcost;
+		
+		public static String Category;
+		public static String Brand;
+		public static String ItemName;
+		public static String ShortName;
+		public static String ItemType;
+		public static String Vendor;
 
 	}
 	

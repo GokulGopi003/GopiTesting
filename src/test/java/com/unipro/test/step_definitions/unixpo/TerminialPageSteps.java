@@ -110,8 +110,6 @@ public class TerminialPageSteps {
 
 		ter_Page.terminal_waitClearEnterText_css(webele, textToType);
 		
-	
-
 	}
 
 	@Then("I enter the value forElement {string} as FCNew")
