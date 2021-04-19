@@ -24,6 +24,21 @@ public class InventoryCalculationsPage extends PageObject {
 	double intermediateBasicCost = 0.0;
 	double roundoff_vlaue = 0.0;
 
+	// new inventory
+	
+	public String Category_String = "input#ContentPlaceHolder1_txtInvcategory.form-control-res";
+	public String Brand_String = "input#ContentPlaceHolder1_txtBrand.form-control-res";
+	public String ItemName_String = "input#ContentPlaceHolder1_txtItemName.form-control-res.ui-autocomplete-input";
+	public String ShortName_String = "input#ContentPlaceHolder1_txtShortName.form-control-res";
+	public String ItemType_String = "input#ContentPlaceHolder1_txtItemType.form-control-res";
+	public String Vendor_String = "input#ContentPlaceHolder1_txtVendor.form-control-res";
+	
+	
+	
+	
+	//public By MRP_By = By.cssSelector(MRP_String);
+	
+	
 	public String Basic_Cost_String = "input#ContentPlaceHolder1_txtBasicCost";
 	public By Basic_Cost_text = By.cssSelector(Basic_Cost_String);
 
