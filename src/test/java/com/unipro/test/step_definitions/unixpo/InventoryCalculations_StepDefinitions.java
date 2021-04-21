@@ -180,7 +180,9 @@ public class InventoryCalculations_StepDefinitions {
 	@Then("I load the testdata form excel to table")
 	public void i_load_the_testdata_form_excel_to_table() {
 
-		Globals.excelSheetData = ReadXLSXFile.getExcelAsMapTable("./testdata/sample mrp.xlsx");
+		//Globals.excelSheetData = ReadXLSXFile.getExcelAsMapTable("./testdata/sample mrp.xlsx");
+		Globals.excelSheetData = ReadXLSXFile.getExcelAsMapTable("./testdata/sample inventory all.xlsx");
+		
 		
 		
 
@@ -190,9 +192,7 @@ public class InventoryCalculations_StepDefinitions {
 	public void i_load_the_inventory_sheet_data_to_map() {
 		
 		Globals.Inventory.inventorySheetData1 = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME_DATA);
-		
 	
-		
 		Globals.Inventory.inventorySheetData = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME);
 
 	}
@@ -231,8 +231,34 @@ public class InventoryCalculations_StepDefinitions {
 		Globals.Inventory.Brand = Globals.Inventory.inventoryrowwiseData.get("Brand");
 		Globals.Inventory.ItemName = Globals.Inventory.inventoryrowwiseData.get("ItemName");
 		Globals.Inventory.ShortName = Globals.Inventory.inventoryrowwiseData.get("ShortName");
-		Globals.Inventory.ItemType = Globals.Inventory.inventoryrowwiseData.get("Item Type");
+		Globals.Inventory.ItemType = Globals.Inventory.inventoryrowwiseData.get("ItemType");
 		Globals.Inventory.Vendor = Globals.Inventory.inventoryrowwiseData.get("Vendor");
+		Globals.Inventory.UOMPurchase = Globals.Inventory.inventoryrowwiseData.get("UOMPurchase");
+		Globals.Inventory.SalesUOM = Globals.Inventory.inventoryrowwiseData.get("SalesUOM");
+		Globals.Inventory.StockType = Globals.Inventory.inventoryrowwiseData.get("StockType");
+		Globals.Inventory.Batch = Globals.Inventory.inventoryrowwiseData.get("Batch");
+		
+		//non mandatory fields update
+		Globals.Inventory.Remarks = Globals.Inventory.inventoryrowwiseData.get("Remarks");
+		Globals.Inventory.WareHouse = Globals.Inventory.inventoryrowwiseData.get("WareHouse");
+		Globals.Inventory.Manufacture = Globals.Inventory.inventoryrowwiseData.get("Manufacture");
+		Globals.Inventory.Merchandise = Globals.Inventory.inventoryrowwiseData.get("Merchandise");
+		Globals.Inventory.Style = Globals.Inventory.inventoryrowwiseData.get("Style");
+		Globals.Inventory.Size = Globals.Inventory.inventoryrowwiseData.get("Size");
+		Globals.Inventory.ModelNo = Globals.Inventory.inventoryrowwiseData.get("ModelNo");
+		Globals.Inventory.Origin = Globals.Inventory.inventoryrowwiseData.get("Origin");
+		Globals.Inventory.SubCategory = Globals.Inventory.inventoryrowwiseData.get("SubCategory");
+		Globals.Inventory.Package = Globals.Inventory.inventoryrowwiseData.get("Package");
+		Globals.Inventory.CCode = Globals.Inventory.inventoryrowwiseData.get("CCode");
+		Globals.Inventory.Class = Globals.Inventory.inventoryrowwiseData.get("Class");
+		Globals.Inventory.SubClass = Globals.Inventory.inventoryrowwiseData.get("SubClass");
+		Globals.Inventory.Bin = Globals.Inventory.inventoryrowwiseData.get("Bin");
+		Globals.Inventory.Section = Globals.Inventory.inventoryrowwiseData.get("Section");
+		Globals.Inventory.Shelf = Globals.Inventory.inventoryrowwiseData.get("Shelf");
+		Globals.Inventory.Weight = Globals.Inventory.inventoryrowwiseData.get("Weight");
+		Globals.Inventory.Height = Globals.Inventory.inventoryrowwiseData.get("Height");
+		Globals.Inventory.Width = Globals.Inventory.inventoryrowwiseData.get("Width");
+		Globals.Inventory.Length = Globals.Inventory.inventoryrowwiseData.get("Length");
 	}
 	
 	@Then("I fill new inventory data page using excel data")
@@ -270,6 +296,29 @@ public class InventoryCalculations_StepDefinitions {
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.ItemType, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.ItemType).click();
 		}
+		//UOMPurchase
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.UOMPurchase)) {
+			terPage.terminal_waitClearEnterText_css(icp.UOMPurchase_String, Globals.Inventory.UOMPurchase);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.UOMPurchase, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.UOMPurchase).click();
+		}
+		//StockType
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.StockType)) {
+			terPage.terminal_waitClearEnterText_css(icp.StockType_String, Globals.Inventory.StockType);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.StockType, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.StockType).click();
+		}
+		//SalesUOM
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.SalesUOM)) {
+			terPage.terminal_waitClearEnterText_css(icp.SalesUOM_String, Globals.Inventory.SalesUOM);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.SalesUOM, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.SalesUOM).click();
+		}
+		//Batch
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch)) {
+			terPage.get_checkBox_element(icp.Batch_String).click();
+			
+		}
 		
 		//vendor
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {
@@ -278,6 +327,127 @@ public class InventoryCalculations_StepDefinitions {
 			add_inventory.return_td_invoke_element(Globals.Inventory.Vendor).click();
 		}
 		
+		// Non mandatory fields
+		//Remarks
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Remarks)) {
+			terPage.terminal_waitClearEnterText_css(icp.Remarks_String, Globals.Inventory.Remarks);
+		}
+		
+		//WareHouse
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.WareHouse)) {
+			terPage.terminal_waitClearEnterText_css(icp.WareHouse_String, Globals.Inventory.WareHouse);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.WareHouse, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.WareHouse).click();
+		}
+		
+		//Manufacture
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Manufacture)) {
+			terPage.terminal_waitClearEnterText_css(icp.Manufacture_String, Globals.Inventory.Manufacture);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Manufacture, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Manufacture).click();
+		}
+		//Merchandise
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Merchandise)) {
+			terPage.terminal_waitClearEnterText_css(icp.Merchandise_String, Globals.Inventory.Merchandise);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Merchandise, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Merchandise).click();
+		}
+		//Style
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Style)) {
+			terPage.terminal_waitClearEnterText_css(icp.Style_String, Globals.Inventory.Style);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Style, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Style).click();
+		}
+		//Size
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Size)) {
+			terPage.terminal_waitClearEnterText_css(icp.Size_String, Globals.Inventory.Size);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Size, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Size).click();
+		}
+		//ModelNo
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.ModelNo)) {
+			terPage.terminal_waitClearEnterText_css(icp.ModelNo_String, Globals.Inventory.ModelNo);
+		}
+		//Origin
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Origin)) {
+			terPage.terminal_waitClearEnterText_css(icp.Origin_String, Globals.Inventory.Origin);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Origin, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Origin).click();
+		}
+		//Sub Category
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.SubCategory)) {
+			terPage.terminal_waitClearEnterText_css(icp.SubCategory_String, Globals.Inventory.SubCategory);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.SubCategory, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.SubCategory).click();
+		}
+		//Package
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Package)) {
+			terPage.terminal_waitClearEnterText_css(icp.Package_String, Globals.Inventory.Package);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Package, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Package).click();
+		}
+		//Class
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Class)) {
+			terPage.terminal_waitClearEnterText_css(icp.Class_String, Globals.Inventory.Class);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Class, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Class).click();
+		}
+		//SubClass
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.SubClass)) {
+			terPage.terminal_waitClearEnterText_css(icp.SubClass_String, Globals.Inventory.SubClass);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.SubClass, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.SubClass).click();
+		}
+		//Bin
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Bin)) {
+			terPage.terminal_waitClearEnterText_css(icp.Bin_String, Globals.Inventory.Bin);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Bin, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Bin).click();
+		}
+		//Section
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Section)) {
+			terPage.terminal_waitClearEnterText_css(icp.Section_String, Globals.Inventory.Section);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Section, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Section).click();
+		}
+		//Shelf
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Shelf)) {
+			terPage.terminal_waitClearEnterText_css(icp.Shelf_String, Globals.Inventory.Shelf);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Shelf, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Shelf).click();
+		}
+		// Weight
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Weight)) {
+			if (Globals.Inventory.Weight.contains(".")) {
+				icp.setTextValue_Decimal(icp.Weight_String, Globals.Inventory.Weight);
+			} else {
+				icp.setTextValue(icp.Weight_String, Globals.Inventory.Weight);
+			}
+		}
+		// Height
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Height)) {
+			if (Globals.Inventory.Height.contains(".")) {
+				icp.setTextValue_Decimal(icp.Height_String, Globals.Inventory.Height);
+			} else {
+				icp.setTextValue(icp.Height_String, Globals.Inventory.Height);
+			}
+		}
+		// Width
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Width)) {
+			if (Globals.Inventory.Width.contains(".")) {
+				icp.setTextValue_Decimal(icp.Width_String, Globals.Inventory.Width);
+			} else {
+				icp.setTextValue(icp.Width_String, Globals.Inventory.Width);
+			}
+		}
+		// Length
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Length)) {
+			if (Globals.Inventory.Length.contains(".")) {
+				icp.setTextValue_Decimal(icp.Length_String, Globals.Inventory.Length);
+			} else {
+				icp.setTextValue(icp.Length_String, Globals.Inventory.Length);
+			}
+		}
 		
 	}
 	
