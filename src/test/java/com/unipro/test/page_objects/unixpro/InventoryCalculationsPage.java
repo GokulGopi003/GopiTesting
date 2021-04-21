@@ -32,8 +32,32 @@ public class InventoryCalculationsPage extends PageObject {
 	public String ShortName_String = "input#ContentPlaceHolder1_txtShortName.form-control-res";
 	public String ItemType_String = "input#ContentPlaceHolder1_txtItemType.form-control-res";
 	public String Vendor_String = "input#ContentPlaceHolder1_txtVendor.form-control-res";
+	public String UOMPurchase_String = "input#ContentPlaceHolder1_txtUOMPurchase.form-control-res";
+	public String StockType_String = "input#ContentPlaceHolder1_txtStockType.form-control-res";
+	public String SalesUOM_String = "input#ContentPlaceHolder1_txtSalesUOM.form-control-res";
+	public String Batch_String = "input#ContentPlaceHolder1_chkBatch";
 	
-	
+	//non mandatory fields
+	public String Remarks_String = "input#ContentPlaceHolder1_txtRemarks.form-control-res";
+	public String WareHouse_String = "input#ContentPlaceHolder1_txtWareHouse.form-control-res";
+	public String Manufacture_String = "input#ContentPlaceHolder1_txtManafacture.form-control-res";
+	public String Merchandise_String = "input#ContentPlaceHolder1_txtMerchandise.form-control-res";
+	public String Style_String = "input#ContentPlaceHolder1_txtStyle.form-control-res";
+	public String Size_String = "input#ContentPlaceHolder1_txtSize.form-control-res";
+	public String ModelNo_String = "input#ContentPlaceHolder1_txtModelNo.form-control-res";
+	public String Origin_String = "input#ContentPlaceHolder1_txtOrigin.form-control-res";
+	public String SubCategory_String = "input#ContentPlaceHolder1_txtSubCategory.form-control-res";
+	public String Package_String = "input#ContentPlaceHolder1_txtPackage.form-control-res";
+	public String CCode_String = "input#ContentPlaceHolder1_txtCCode.form-control-res";
+	public String Class_String = "input#ContentPlaceHolder1_txtClass.form-control-res";
+	public String SubClass_String = "input#ContentPlaceHolder1_txtSubClass.form-control-res";
+	public String Bin_String = "input#ContentPlaceHolder1_txtBin.form-control-res";
+	public String Section_String = "input#ContentPlaceHolder1_txtSection.form-control-res";
+	public String Shelf_String = "input#ContentPlaceHolder1_txtShelf.form-control-res";
+	public String Weight_String = "input#ContentPlaceHolder1_txtWeight.form-control-res-right";
+	public String Height_String = "input#ContentPlaceHolder1_txtHeight.form-control-res-right";
+	public String Width_String = "input#ContentPlaceHolder1_txtWidth.form-control-res-right";
+	public String Length_String = "input#ContentPlaceHolder1_txtLength.form-control-res-right";
 	
 	
 	//public By MRP_By = By.cssSelector(MRP_String);
