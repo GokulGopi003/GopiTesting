@@ -30,10 +30,35 @@ public class Globals {
 		public static String Category;
 		public static String Brand;
 		public static String ItemName;
-		public static String ShortName;
 		public static String ItemType;
 		public static String Vendor;
-
+		public static String UOMPurchase;
+		public static String SalesUOM;
+		public static String StockType;
+		public static String Batch;
+		
+		public static String ShortName;
+		public static String Remarks;
+		public static String WareHouse;
+		public static String Manufacture;
+		public static String Merchandise;
+		public static String Style;
+		public static String Size;
+		public static String ModelNo;
+		public static String Origin;
+		public static String SubCategory;
+		public static String Package;
+		public static String CCode;
+		public static String Class;
+		public static String SubClass;
+		public static String Bin;
+		public static String Section;
+		public static String Shelf;
+		public static String Weight;
+		public static String Height;
+		public static String Width;
+		public static String Length;
+		
 	}
 	
 	

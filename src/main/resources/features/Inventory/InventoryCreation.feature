@@ -23,7 +23,7 @@ Feature: PoS Inventory > Add Inventory
     Then I verify the actual ui values with expected Excel values
     Then I click on button tag with value "Back"
     Then I need to click on sub menu with text matching "Image"
-    Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "/Users/prabhu/Desktop/se.jpeg"
+    #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "./src/test/resources/se.jpeg"
     Then I need to click on the "Save" button
 
     Examples: 
