@@ -1,9 +1,13 @@
 package com.unipro.test.step_definitions.unixpo;
 
+import java.io.File;
+import java.nio.file.Path;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.server.handler.MaximizeWindow;
 
+import com.unipro.test.framework.helpers.Props;
 import com.unipro.test.page_objects.unixpro.TerminalPage;
 
 import cucumber.api.java.en.Then;
@@ -108,8 +112,15 @@ public class TerminialPageSteps {
 	@Then("I enter the value forElement {string} as {string}")
 	public void i_enter_the_value_forElement_as(String webele, String textToType) {
 
-		ter_Page.terminal_waitClearEnterText_css(webele, textToType);
-		
+		try {
+			String path = new File(Props.getProp("image.path")).getAbsolutePath();
+			ter_Page.terminal_waitClearEnterText_css(webele,path);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println(" Invalid Fil Path - Please update the vlaue in config file");
+		}
+
 	}
 
 	@Then("I enter the value forElement {string} as FCNew")

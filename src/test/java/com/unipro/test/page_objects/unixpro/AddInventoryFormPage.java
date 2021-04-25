@@ -9,87 +9,89 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.unipro.test.framework.PageObject;
+import com.unipro.test.framework.helpers.utils.GenericWrappers;
 
-
-
-public class AddInventoryFormPage extends PageObject{
+public class AddInventoryFormPage extends PageObject {
 	private By menu_invoke_element = By.cssSelector("a.dropdown-toggle");
 	private By sub_menu_invoke_element = By.cssSelector("a");
 	private By td_invoke_element = By.cssSelector("td");
 	private By table_element = By.cssSelector("div.search-table");
 	private By selling_price_element = By.cssSelector("input#ContentPlaceHolder1_imgPriceChange");
-	
-	
+
 	public WebElement return_menu_invoke_element(String defaultText) {
-		
-		//js_typeIntoDropDownSearchBox("a.dropdown-toggle", "Inventory");
+
+		// js_typeIntoDropDownSearchBox("a.dropdown-toggle", "Inventory");
 		WebElement menu_invoke_ele = null;
 
 		List<WebElement> listofHref = getWebDriver().findElements(menu_invoke_element);
-		for(Iterator iter =listofHref.iterator(); iter.hasNext();) {
+		for (Iterator iter = listofHref.iterator(); iter.hasNext();) {
 			WebElement webElement = (WebElement) iter.next();
-			if(webElement.getText().equalsIgnoreCase(defaultText)) {
-				
-			visibilityOf(webElement);
-			elementToBeClickable(webElement);
-			menu_invoke_ele = webElement;
-			//System.out.println("Matching with default Value");
-			return menu_invoke_ele;
+			if (webElement.getText().equalsIgnoreCase(defaultText)) {
+
+				visibilityOf(webElement);
+				elementToBeClickable(webElement);
+				menu_invoke_ele = webElement;
+				// System.out.println("Matching with default Value");
+				return menu_invoke_ele;
 			} else {
 				// System.out.println("Text did not Match with default Value");
 			}
 		}
 		return menu_invoke_ele;
-		
+
 	}
+
 	public WebElement return_td_invoke_element(String defaultText) {
-		
-		//js_typeIntoDropDownSearchBox("a.dropdown-toggle", "Inventory");
+		GenericWrappers.sleepInSeconds(2);
+
+		// js_typeIntoDropDownSearchBox("a.dropdown-toggle", "Inventory");
 		WebElement table_invoke_ele = null;
 		List<WebElement> listofHref = getWebDriver().findElements(td_invoke_element);
-		for(Iterator iter =listofHref.iterator(); iter.hasNext();) {
+		for (Iterator iter = listofHref.iterator(); iter.hasNext();) {
 			WebElement webElement = (WebElement) iter.next();
-			if(webElement.getText().equalsIgnoreCase(defaultText)) {
-			visibilityOf(webElement);
-			elementToBeClickable(webElement);
-			table_invoke_ele = webElement;
-			//System.out.println("Matching with default Value");
-			return table_invoke_ele;
+			if (webElement.getText().equalsIgnoreCase(defaultText)) {
+				visibilityOf(webElement);
+				elementToBeClickable(webElement);
+				table_invoke_ele = webElement;
+				// System.out.println("Matching with default Value");
+				return table_invoke_ele;
 			} else {
-				 //System.out.println("Text did not Match with default Value");
+				// System.out.println("Text did not Match with default Value");
 			}
 		}
 		return table_invoke_ele;
-		
+
 	}
-	
-	//fetch data from search table
+
+	// fetch data from search table
 	// Grab the table
-	//get table 1st data in a table automatically
-	
+	// get table 1st data in a table automatically
+
 	public WebElement getTableData(String childtable) {
 		// WebElement table = getWebDriver().findElement(table_element);
-		//WebElement table = getWebDriver()
-		//		.findElement(By.cssSelector("table#ContentPlaceHolder1_grdBulkItem.pshro_GridDgn.grdLoad"));
-		
+		// WebElement table = getWebDriver()
+		// .findElement(By.cssSelector("table#ContentPlaceHolder1_grdBulkItem.pshro_GridDgn.grdLoad"));
+
 		WebElement table;
-		
+
 		if (childtable.equalsIgnoreCase("Child")) {
 			table = getWebDriver()
 					.findElement(By.cssSelector("table#ContentPlaceHolder1_grdChildItem.pshro_GridDgn.grdLoad"));
-		} else if(childtable.equalsIgnoreCase("Distribution")){
-			
-			//not completed
-			//not working
-			
-			//table = getWebDriver().findElement(By.cssSelector("table#ContentPlaceHolder1_grdDistributionlist.pshro_GridDgn"));
-			
-			table= getWebDriver().findElement(By.xpath("//*[@id="+"ContentPlaceHolder1_grdDistributionlist"+"]/tbody/tr[1]/td[1]/input[type=button]"));
-			//*[@id="ContentPlaceHolder1_grdDistributionlist"]/tbody/tr[1]/td[3]/input
-			
+		} else if (childtable.equalsIgnoreCase("Distribution")) {
+
+			// not completed
+			// not working
+
+			// table =
+			// getWebDriver().findElement(By.cssSelector("table#ContentPlaceHolder1_grdDistributionlist.pshro_GridDgn"));
+
+			table = getWebDriver().findElement(By.xpath(
+					"//*[@id=" + "ContentPlaceHolder1_grdDistributionlist" + "]/tbody/tr[1]/td[1]/input[type=button]"));
+			// *[@id="ContentPlaceHolder1_grdDistributionlist"]/tbody/tr[1]/td[3]/input
+
 		} else {
-			 table = getWebDriver()
-						.findElement(By.cssSelector("table#ContentPlaceHolder1_grdBulkItem.pshro_GridDgn.grdLoad"));
+			table = getWebDriver()
+					.findElement(By.cssSelector("table#ContentPlaceHolder1_grdBulkItem.pshro_GridDgn.grdLoad"));
 		}
 
 		// Now get all the TR elements from the table
@@ -111,19 +113,17 @@ public class AddInventoryFormPage extends PageObject{
 		}
 		return null;
 	}
-	
-	
+
 	public void inventory_waitClearEnterText_css(String webele, String textToEnter) {
 
 		By inventory_by = By.cssSelector(webele);
 		waitClearEnterText(inventory_by, textToEnter);
 
 	}
-	
-	//image menu upload
+
+	// image menu upload
 	public WebElement return_submenu_invoke_element(String defaultText) {
 
-		
 		WebElement menu_invoke_ele = null;
 
 		List<WebElement> listofHref = getWebDriver().findElements(sub_menu_invoke_element);
@@ -142,15 +142,19 @@ public class AddInventoryFormPage extends PageObject{
 		return menu_invoke_ele;
 
 	}
-	
-	
+
 	public void clearAndTypeSlowly(String textValue, String elementStirng) {
-		
-		
-		
-		
-		setTypeAheadValueOnElement(getWebDriver().findElement(By.cssSelector(elementStirng)), textValue);
-		
+
+		try {
+			setTypeAheadValueOnElement(waitForExpectedElement(By.cssSelector(elementStirng)), textValue);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(" Unable to fill the vlaue for  webelemnt " + elementStirng);
+			GenericWrappers.sleepInSeconds(4);
+			e.printStackTrace();
+
+		}
+
 	}
 
 }
