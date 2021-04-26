@@ -9,7 +9,6 @@ Feature: PoS Inventory > Add Inventory
     Then I clik on the login button
     Then I verify the page Title
 
-
   Scenario Outline: Verifying Add Inventory Functionality
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Then I load the testdata form excel to table
@@ -23,7 +22,8 @@ Feature: PoS Inventory > Add Inventory
     Then I verify the actual ui values with expected Excel values
     Then I click on button tag with value "Back"
     Then I need to click on sub menu with text matching "Image"
-    #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "./src/test/resources/se.jpeg"
+    When Im waiting for 5 sec
+    Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
     Then I need to click on the "Save" button
 
     Examples: 
