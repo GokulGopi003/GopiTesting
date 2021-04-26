@@ -602,7 +602,14 @@ public class InventoryCalculations_StepDefinitions {
 	@Then("I fill the GST values in the inventory page")
 	public void i_fill_the_GST_values_in_the_inventory_page() {
 
-		terPage.return_dd_invoke_element("-- Select --", 0).click();
+		try {
+			terPage.return_dd_invoke_element("-- Select --", 0).click();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			terPage.return_dd_invoke_element("-- Select --", 0).click();
+			
+		}
 
 		// WebElement dd_element =
 		// terPage.waitAndSelectDropDownUsingSerachBox(Globals.Inventory.GSTPer,
