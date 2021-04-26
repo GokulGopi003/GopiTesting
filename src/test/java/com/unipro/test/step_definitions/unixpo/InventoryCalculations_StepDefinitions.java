@@ -15,6 +15,7 @@ import com.google.common.collect.Table;
 import com.unipro.test.framework.Globals;
 import com.unipro.test.framework.helpers.utils.ApplicationLogger;
 import com.unipro.test.framework.helpers.utils.GenericWrappers;
+import com.unipro.test.framework.helpers.utils.RandomGenerator;
 import com.unipro.test.framework.helpers.utils.ReadTestData;
 import com.unipro.test.framework.helpers.utils.ReadXLSXFile;
 import com.unipro.test.page_objects.unixpro.AddInventoryFormPage;
@@ -30,17 +31,16 @@ public class InventoryCalculations_StepDefinitions {
 	InventoryCreationPage inventoryCreation;
 	AddInventoryFormPage add_inventory;
 	InventoryCalculationsPage icp;
-	
 
 	TerminalPage terPage;
-	
+
 	public InventoryCalculations_StepDefinitions(InventoryCalculationsPage icp) {
 		inventoryCreation = new InventoryCreationPage();
 		this.icp = icp;
-		terPage= new TerminalPage();
-		
-		 add_inventory= new AddInventoryFormPage();
-	
+		terPage = new TerminalPage();
+
+		add_inventory = new AddInventoryFormPage();
+
 	}
 
 	@Then("I verify default values of selling price calcualtion page for {string} as BasicCost")
@@ -180,19 +180,17 @@ public class InventoryCalculations_StepDefinitions {
 	@Then("I load the testdata form excel to table")
 	public void i_load_the_testdata_form_excel_to_table() {
 
-		//Globals.excelSheetData = ReadXLSXFile.getExcelAsMapTable("./testdata/sample mrp.xlsx");
+		// Globals.excelSheetData = ReadXLSXFile.getExcelAsMapTable("./testdata/sample
+		// mrp.xlsx");
 		Globals.excelSheetData = ReadXLSXFile.getExcelAsMapTable("./testdata/sample inventory all.xlsx");
-		
-		
-		
 
 	}
 
 	@Then("I load the inventory sheet data to map")
 	public void i_load_the_inventory_sheet_data_to_map() {
-		
+
 		Globals.Inventory.inventorySheetData1 = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME_DATA);
-	
+
 		Globals.Inventory.inventorySheetData = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME);
 
 	}
@@ -202,8 +200,6 @@ public class InventoryCalculations_StepDefinitions {
 
 		Globals.Inventory.inventoryrowwiseData = ReadTestData
 				.getRowFilteredValueFromTable(Globals.Inventory.inventorySheetData, row_name);
-		
-	
 
 		System.out.println(Globals.Inventory.inventoryrowwiseData);
 
@@ -221,12 +217,12 @@ public class InventoryCalculations_StepDefinitions {
 		Globals.Inventory.NetSellingPrice = Globals.Inventory.inventoryrowwiseData.get("NetSellingPrice");
 		Globals.Inventory.spfixing = Globals.Inventory.inventoryrowwiseData.get("s.p.fixing%");
 		Globals.Inventory.netcost = Globals.Inventory.inventoryrowwiseData.get("netcost");
-		
+
 		Globals.Inventory.DiscountPer = Globals.Inventory.inventoryrowwiseData.get("DiscountPer");
 		Globals.Inventory.AddDiscountPer = Globals.Inventory.inventoryrowwiseData.get("AddDiscountPer");
-		
-		//data for inventory creation  
-		
+
+		// data for inventory creation
+
 		Globals.Inventory.Category = Globals.Inventory.inventoryrowwiseData.get("Category");
 		Globals.Inventory.Brand = Globals.Inventory.inventoryrowwiseData.get("Brand");
 		Globals.Inventory.ItemName = Globals.Inventory.inventoryrowwiseData.get("ItemName");
@@ -237,8 +233,8 @@ public class InventoryCalculations_StepDefinitions {
 		Globals.Inventory.SalesUOM = Globals.Inventory.inventoryrowwiseData.get("SalesUOM");
 		Globals.Inventory.StockType = Globals.Inventory.inventoryrowwiseData.get("StockType");
 		Globals.Inventory.Batch = Globals.Inventory.inventoryrowwiseData.get("Batch");
-		
-		//non mandatory fields update
+
+		// non mandatory fields update
 		Globals.Inventory.Remarks = Globals.Inventory.inventoryrowwiseData.get("Remarks");
 		Globals.Inventory.WareHouse = Globals.Inventory.inventoryrowwiseData.get("WareHouse");
 		Globals.Inventory.Manufacture = Globals.Inventory.inventoryrowwiseData.get("Manufacture");
@@ -260,157 +256,178 @@ public class InventoryCalculations_StepDefinitions {
 		Globals.Inventory.Width = Globals.Inventory.inventoryrowwiseData.get("Width");
 		Globals.Inventory.Length = Globals.Inventory.inventoryrowwiseData.get("Length");
 	}
-	
+
 	@Then("I fill new inventory data page using excel data")
 	public void i_fill_new_inventory_data_page_using_excel_data() {
-		
-		//category
+
+		// category
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Category)) {
 			terPage.terminal_waitClearEnterText_css(icp.Category_String, Globals.Inventory.Category);
-			add_inventory.clearAndTypeSlowly(Globals.Inventory.Category,"input#txtSearch");
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Category, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Category).click();
-			
+
 		}
-		
-		//Brand
+
+		// Brand
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Brand)) {
 			terPage.terminal_waitClearEnterText_css(icp.Brand_String, Globals.Inventory.Brand);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Brand, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Brand).click();
 		}
-		
-		//Item Name
+
+		// Item Name
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemName)) {
-			terPage.terminal_waitClearEnterText_css(icp.ItemName_String, Globals.Inventory.ItemName);
-			
+
+			terPage.terminal_waitClearEnterText_css(icp.ItemName_String,
+					Globals.Inventory.ItemName + RandomGenerator.randomAlphabetic(5));
 		}
-		
-		//Short Name
+
+		// Short Name
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.ShortName)) {
 			terPage.terminal_waitClearEnterText_css(icp.ShortName_String, Globals.Inventory.ShortName);
 		}
-		
-		//Item Type
+
+		// Item Type
+
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemType)) {
+
 			terPage.terminal_waitClearEnterText_css(icp.ItemType_String, Globals.Inventory.ItemType);
+
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.ItemType, "input#txtSearch");
+
+			GenericWrappers.sleepInSeconds(3);
 			add_inventory.return_td_invoke_element(Globals.Inventory.ItemType).click();
 		}
-		//UOMPurchase
+		// UOMPurchase
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.UOMPurchase)) {
 			terPage.terminal_waitClearEnterText_css(icp.UOMPurchase_String, Globals.Inventory.UOMPurchase);
+
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.UOMPurchase, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.UOMPurchase).click();
 		}
-		//StockType
+		// StockType
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.StockType)) {
 			terPage.terminal_waitClearEnterText_css(icp.StockType_String, Globals.Inventory.StockType);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.StockType, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.StockType).click();
 		}
-		//SalesUOM
+		// SalesUOM
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.SalesUOM)) {
 			terPage.terminal_waitClearEnterText_css(icp.SalesUOM_String, Globals.Inventory.SalesUOM);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.SalesUOM, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.SalesUOM).click();
 		}
-		//Batch
+		// Batch
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch)) {
 			terPage.get_checkBox_element(icp.Batch_String).click();
-			
+
 		}
-		
-		//vendor
+
+		// vendor
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {
 			terPage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Vendor, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Vendor).click();
 		}
-		
+
 		// Non mandatory fields
-		//Remarks
+		// Remarks
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Remarks)) {
 			terPage.terminal_waitClearEnterText_css(icp.Remarks_String, Globals.Inventory.Remarks);
 		}
-		
-		//WareHouse
+
+		// WareHouse
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.WareHouse)) {
 			terPage.terminal_waitClearEnterText_css(icp.WareHouse_String, Globals.Inventory.WareHouse);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.WareHouse, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.WareHouse).click();
 		}
-		
-		//Manufacture
+
+		// Manufacture
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Manufacture)) {
 			terPage.terminal_waitClearEnterText_css(icp.Manufacture_String, Globals.Inventory.Manufacture);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Manufacture, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Manufacture).click();
 		}
-		//Merchandise
+		// Merchandise
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Merchandise)) {
 			terPage.terminal_waitClearEnterText_css(icp.Merchandise_String, Globals.Inventory.Merchandise);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Merchandise, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Merchandise).click();
 		}
-		//Style
+		// Style
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Style)) {
 			terPage.terminal_waitClearEnterText_css(icp.Style_String, Globals.Inventory.Style);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Style, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Style).click();
 		}
-		//Size
+		// Size
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Size)) {
 			terPage.terminal_waitClearEnterText_css(icp.Size_String, Globals.Inventory.Size);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Size, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Size).click();
 		}
-		//ModelNo
+		// ModelNo
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.ModelNo)) {
 			terPage.terminal_waitClearEnterText_css(icp.ModelNo_String, Globals.Inventory.ModelNo);
 		}
-		//Origin
+		// Origin
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Origin)) {
 			terPage.terminal_waitClearEnterText_css(icp.Origin_String, Globals.Inventory.Origin);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Origin, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Origin).click();
 		}
-		//Sub Category
+		// Sub Category
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.SubCategory)) {
 			terPage.terminal_waitClearEnterText_css(icp.SubCategory_String, Globals.Inventory.SubCategory);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.SubCategory, "input#txtSearch");
-			add_inventory.return_td_invoke_element(Globals.Inventory.SubCategory).click();
+			try {
+				add_inventory.return_td_invoke_element(Globals.Inventory.SubCategory).click();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+
+				add_inventory.return_td_invoke_element(Globals.Inventory.SubCategory).click();
+			}
 		}
-		//Package
+		// Package
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Package)) {
 			terPage.terminal_waitClearEnterText_css(icp.Package_String, Globals.Inventory.Package);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Package, "input#txtSearch");
-			add_inventory.return_td_invoke_element(Globals.Inventory.Package).click();
+			try {
+				add_inventory.return_td_invoke_element(Globals.Inventory.Package).click();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+
+				add_inventory.return_td_invoke_element(Globals.Inventory.Package).click();
+			}
 		}
-		//Class
+		// Class
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Class)) {
 			terPage.terminal_waitClearEnterText_css(icp.Class_String, Globals.Inventory.Class);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Class, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Class).click();
 		}
-		//SubClass
+		// SubClass
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.SubClass)) {
 			terPage.terminal_waitClearEnterText_css(icp.SubClass_String, Globals.Inventory.SubClass);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.SubClass, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.SubClass).click();
 		}
-		//Bin
+		// Bin
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Bin)) {
 			terPage.terminal_waitClearEnterText_css(icp.Bin_String, Globals.Inventory.Bin);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Bin, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Bin).click();
 		}
-		//Section
+		// Section
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Section)) {
 			terPage.terminal_waitClearEnterText_css(icp.Section_String, Globals.Inventory.Section);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Section, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Section).click();
 		}
-		//Shelf
+		// Shelf
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Shelf)) {
 			terPage.terminal_waitClearEnterText_css(icp.Shelf_String, Globals.Inventory.Shelf);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Shelf, "input#txtSearch");
@@ -448,14 +465,12 @@ public class InventoryCalculations_StepDefinitions {
 				icp.setTextValue(icp.Length_String, Globals.Inventory.Length);
 			}
 		}
-		
+
 	}
-	
 
 	@Then("I fill inventory calculations page using excel data")
 	public void i_fill_inventory_calculations_page_using_excel_data() {
 
-		
 		// MRP
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.MRP)) {
 			if (Globals.Inventory.MRP.contains(".")) {
@@ -477,7 +492,7 @@ public class InventoryCalculations_StepDefinitions {
 			}
 
 		}
-		
+
 		// Discount per 1
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscountPer1)) {
 
@@ -515,61 +530,7 @@ public class InventoryCalculations_StepDefinitions {
 			}
 
 		}
-		
-		// sp fixing %
-				if (GenericWrappers.isNotEmpty(Globals.Inventory.spfixing)) {
 
-					if (Globals.Inventory.spfixing.contains(".")) {
-						icp.setTextValue_Decimal(icp.SP_String, Globals.Inventory.spfixing);
-
-					} else {
-
-						icp.setTextValue(icp.SP_String, Globals.Inventory.spfixing);
-					}
-
-				}
-
-
-	}
-	
-	@Then("I fill inventory calculations page for MRP using excel data")
-	public void i_fill_inventory_calculations_page_for_MRP_using_excel_data() {
-		
-		// MRP
-				if (GenericWrappers.isNotEmpty(Globals.Inventory.MRP)) {
-					if (Globals.Inventory.MRP.contains(".")) {
-						icp.setTextValue_Decimal(icp.MRP_String, Globals.Inventory.MRP);
-					} else {
-						icp.setTextValue(icp.MRP_String, Globals.Inventory.MRP);
-					}
-				}
-		
-		// Discount per
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscountPer)) {
-
-			if (Globals.Inventory.DiscountPer.contains(".")) {
-				icp.setTextValue_Decimal(icp.Discount_String, Globals.Inventory.DiscountPer);
-
-			} else {
-
-				icp.setTextValue(icp.Discount_String, Globals.Inventory.DiscountPer);
-			}
-
-		}
-		
-		// Additional Discount per
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.AddDiscountPer)) {
-
-			if (Globals.Inventory.AddDiscountPer.contains(".")) {
-				icp.setTextValue_Decimal(icp.AddDiscountPer_String, Globals.Inventory.AddDiscountPer);
-
-			} else {
-
-				icp.setTextValue(icp.AddDiscountPer_String, Globals.Inventory.AddDiscountPer);
-			}
-
-		}
-		
 		// sp fixing %
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.spfixing)) {
 
@@ -582,46 +543,102 @@ public class InventoryCalculations_StepDefinitions {
 			}
 
 		}
-		
+
+	}
+
+	@Then("I fill inventory calculations page for MRP using excel data")
+	public void i_fill_inventory_calculations_page_for_MRP_using_excel_data() {
+
+		// MRP
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.MRP)) {
+			if (Globals.Inventory.MRP.contains(".")) {
+				icp.setTextValue_Decimal(icp.MRP_String, Globals.Inventory.MRP);
+			} else {
+				icp.setTextValue(icp.MRP_String, Globals.Inventory.MRP);
+			}
+		}
+
+		// Discount per
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscountPer)) {
+
+			if (Globals.Inventory.DiscountPer.contains(".")) {
+				icp.setTextValue_Decimal(icp.Discount_String, Globals.Inventory.DiscountPer);
+
+			} else {
+
+				icp.setTextValue(icp.Discount_String, Globals.Inventory.DiscountPer);
+			}
+
+		}
+
+		// Additional Discount per
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.AddDiscountPer)) {
+
+			if (Globals.Inventory.AddDiscountPer.contains(".")) {
+				icp.setTextValue_Decimal(icp.AddDiscountPer_String, Globals.Inventory.AddDiscountPer);
+
+			} else {
+
+				icp.setTextValue(icp.AddDiscountPer_String, Globals.Inventory.AddDiscountPer);
+			}
+
+		}
+
+		// sp fixing %
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.spfixing)) {
+
+			if (Globals.Inventory.spfixing.contains(".")) {
+				icp.setTextValue_Decimal(icp.SP_String, Globals.Inventory.spfixing);
+
+			} else {
+
+				icp.setTextValue(icp.SP_String, Globals.Inventory.spfixing);
+			}
+
+		}
+
 	}
 
 	@Then("I fill the GST values in the inventory page")
 	public void i_fill_the_GST_values_in_the_inventory_page() {
-		
-		terPage.return_dd_invoke_element("-- Select --", 0).click();
-		
-		//WebElement dd_element = terPage.waitAndSelectDropDownUsingSerachBox(Globals.Inventory.GSTPer, "IGST");
+
+		try {
+			terPage.return_dd_invoke_element("-- Select --", 0).click();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			terPage.return_dd_invoke_element("-- Select --", 0).click();
+			
+		}
+
+		// WebElement dd_element =
+		// terPage.waitAndSelectDropDownUsingSerachBox(Globals.Inventory.GSTPer,
+		// "IGST");
 		GenericWrappers.sleepInSeconds(4);
-		
-		
+
 		icp.search_dd_value(Globals.Inventory.GSTPer);
-	
-		
-//		dd_element.sendKeys(Keys.SPACE);
-//		dd_element.sendKeys(Keys.SPACE);
-//		dd_element.sendKeys(Keys.ARROW_DOWN);
-//		try {
-//			Thread.sleep(1000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		dd_element.sendKeys(Keys.ENTER);
+
+		// dd_element.sendKeys(Keys.SPACE);
+		// dd_element.sendKeys(Keys.SPACE);
+		// dd_element.sendKeys(Keys.ARROW_DOWN);
+		// try {
+		// Thread.sleep(1000);
+		// } catch (InterruptedException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		//
+		// dd_element.sendKeys(Keys.ENTER);
 
 	}
 
 	@Then("I verify the actual ui values with expected Excel values")
 	public void i_verify_the_actual_ui_values_with_expected_Excel_values() {
-		
-		icp.NetSellingPrice= icp.getTextValue(icp.NetSellingPrice_text);
-		
 
-		Assert.assertEquals(icp.NetSellingPrice,Double.parseDouble(Globals.Inventory.NetSellingPrice));
+		icp.NetSellingPrice = icp.getTextValue(icp.NetSellingPrice_text);
+
+		Assert.assertEquals(icp.NetSellingPrice, Double.parseDouble(Globals.Inventory.NetSellingPrice));
 
 	}
-	
-	
-
 
 }
