@@ -15,6 +15,8 @@ public class Globals {
 		public static Table<String, String, String> inventorySheetData;
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> inventoryrowwiseData1;
+		public static String Cess;
+		public static String AdlCsAmt;
 		public static String MRP;
 		public static String BasicCost;
 		public static String DiscountPer1;
@@ -26,6 +28,9 @@ public class Globals {
 		public static String NetSellingPrice;
 		public static String spfixing;
 		public static String netcost;
+		public static String WPrice1;
+		public static String WPrice2;
+		public static String WPrice3;
 		
 		public static String Category;
 		public static String Brand;
