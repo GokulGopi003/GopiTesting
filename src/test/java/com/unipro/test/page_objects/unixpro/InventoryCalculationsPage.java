@@ -68,15 +68,29 @@ public class InventoryCalculationsPage extends PageObject {
 
 	public String MRP_String = "input#ContentPlaceHolder1_txtMRP";
 	public By MRP_By = By.cssSelector(MRP_String);
+	
+	public String Cess_String = "input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right";
+	public By Cess_By = By.cssSelector(Cess_String);
+	
+	public String AdlCsAmt_String = "input#ContentPlaceHolder1_txtAddCessAmt.form-control-res.text-right";
+	public By AdlCsAmt_By = By.cssSelector(AdlCsAmt_String);
 
 	public By Net_Cost_text = By.cssSelector("input#ContentPlaceHolder1_txtNetCost");
 	public By Gross_Cost_text = By.cssSelector("input#ContentPlaceHolder1_txtGrossCost");
 	public By Basic_Selling_text = By.cssSelector("input#ContentPlaceHolder1_txtBasicSelling");
 	public By NetSellingPrice_text = By.cssSelector("input#ContentPlaceHolder1_txtSellingPrice");
-	public By WPrice1_text = By.cssSelector("input#ContentPlaceHolder1_txtWholePrice1Popup");
-	public By WPrice2_text = By.cssSelector("input#ContentPlaceHolder1_txtWholePrice2Popup");
-	public By WPrice3_text = By.cssSelector("input#ContentPlaceHolder1_txtWholePrice3Popup");
-
+	//public By WPrice1_text = By.cssSelector("input#ContentPlaceHolder1_txtWholePrice1Popup");
+	//public By WPrice2_text = By.cssSelector("input#ContentPlaceHolder1_txtWholePrice2Popup");
+	//public By WPrice3_text = By.cssSelector("input#ContentPlaceHolder1_txtWholePrice3Popup");
+	
+	public String WPrice1_String = "input#ContentPlaceHolder1_txtMarginWPrice1.form-control-res.text_right";
+	public String WPrice2_String = "input#ContentPlaceHolder1_txtMarginWPrice2.form-control-res.text_right";
+	public String WPrice3_String = "input#ContentPlaceHolder1_txtMarginWPrice3.form-control-res.text_right";
+	
+	public By WPrice1_text = By.cssSelector(WPrice1_String);
+	public By WPrice2_text = By.cssSelector(WPrice2_String);
+	public By WPrice3_text = By.cssSelector(WPrice3_String);
+	
 	public String SP_String = "input#ContentPlaceHolder1_txtFixedMargin";
 	public By SP_text = By.cssSelector(SP_String);
 
@@ -184,6 +198,23 @@ public class InventoryCalculationsPage extends PageObject {
 
 		default:
 			break;
+		}
+
+	}
+	
+	//check and click cost, MRP1, MRP2, MRP3, MRP4
+	public void clickPurchasedByRadioButton(String purchaseText) {
+		
+		if(purchaseText.equalsIgnoreCase("cost1")) {
+			waitForExpectedElement(By.cssSelector("input#ContentPlaceHolder1_rbtCost")).click();
+		} else if(purchaseText.equalsIgnoreCase("mrp1")) {
+			waitForExpectedElement(By.cssSelector("input#ContentPlaceHolder1_rbtMRP")).click();
+		} else if(purchaseText.equalsIgnoreCase("mrp2")) {
+			waitForExpectedElement(By.cssSelector("input#ContentPlaceHolder1_rbnMRP2")).click();
+		} else if(purchaseText.equalsIgnoreCase("mrp3")) {
+			waitForExpectedElement(By.cssSelector("input#ContentPlaceHolder1_rbnMRP3")).click();
+		} else if(purchaseText.equalsIgnoreCase("mrp4")) {
+			waitForExpectedElement(By.cssSelector("input#ContentPlaceHolder1_rbnMRP4")).click();
 		}
 
 	}
