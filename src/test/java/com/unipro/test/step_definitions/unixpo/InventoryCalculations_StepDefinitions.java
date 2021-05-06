@@ -6,9 +6,12 @@ import static org.testng.Assert.assertNotEquals;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.google.common.collect.Table;
@@ -28,14 +31,13 @@ import cucumber.api.java.en.When;
 import net.bytebuddy.agent.builder.AgentBuilder.CircularityLock.Global;
 
 public class InventoryCalculations_StepDefinitions {
-	InventoryCreationPage inventoryCreation;
+	
 	AddInventoryFormPage add_inventory;
 	InventoryCalculationsPage icp;
 
 	TerminalPage terPage;
 
 	public InventoryCalculations_StepDefinitions(InventoryCalculationsPage icp) {
-		inventoryCreation = new InventoryCreationPage();
 		this.icp = icp;
 		terPage = new TerminalPage();
 
@@ -189,7 +191,7 @@ public class InventoryCalculations_StepDefinitions {
 	@Then("I load the inventory sheet data to map")
 	public void i_load_the_inventory_sheet_data_to_map() {
 
-		Globals.Inventory.inventorySheetData1 = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME_DATA);
+		//Globals.Inventory.inventorySheetData1 = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME_DATA);
 
 		Globals.Inventory.inventorySheetData = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME);
 
@@ -204,6 +206,13 @@ public class InventoryCalculations_StepDefinitions {
 		System.out.println(Globals.Inventory.inventoryrowwiseData);
 
 	}
+	
+	@Then("I check the purchased by radio button for {string}")
+	public void i_check_the_purchased_by_radio_button_for (String row_name) {
+
+		icp.clickPurchasedByRadioButton(row_name);
+
+	}
 
 	@Then("I update value to the inventory page global Variables")
 	public void i_update_value_to_the_inventory_page_global_Variables() {
@@ -214,9 +223,16 @@ public class InventoryCalculations_StepDefinitions {
 		Globals.Inventory.DiscountPer2 = Globals.Inventory.inventoryrowwiseData.get("DiscountPer2");
 		Globals.Inventory.DiscountPer3 = Globals.Inventory.inventoryrowwiseData.get("DiscountPer3");
 		Globals.Inventory.GSTPer = Globals.Inventory.inventoryrowwiseData.get("GSTPer");
+		
+		Globals.Inventory.Cess = Globals.Inventory.inventoryrowwiseData.get("Cess");
+		Globals.Inventory.AdlCsAmt = Globals.Inventory.inventoryrowwiseData.get("AdlCsAmt");
+		
 		Globals.Inventory.NetSellingPrice = Globals.Inventory.inventoryrowwiseData.get("NetSellingPrice");
 		Globals.Inventory.spfixing = Globals.Inventory.inventoryrowwiseData.get("s.p.fixing%");
 		Globals.Inventory.netcost = Globals.Inventory.inventoryrowwiseData.get("netcost");
+		Globals.Inventory.WPrice1 = Globals.Inventory.inventoryrowwiseData.get("WPrice1");
+		Globals.Inventory.WPrice2 = Globals.Inventory.inventoryrowwiseData.get("WPrice2");
+		Globals.Inventory.WPrice3 = Globals.Inventory.inventoryrowwiseData.get("WPrice3");
 
 		Globals.Inventory.DiscountPer = Globals.Inventory.inventoryrowwiseData.get("DiscountPer");
 		Globals.Inventory.AddDiscountPer = Globals.Inventory.inventoryrowwiseData.get("AddDiscountPer");
@@ -470,6 +486,24 @@ public class InventoryCalculations_StepDefinitions {
 
 	@Then("I fill inventory calculations page using excel data")
 	public void i_fill_inventory_calculations_page_using_excel_data() {
+		
+		// cess
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Cess) && !(Globals.Inventory.GSTPer).matches("0")) {
+			if (Globals.Inventory.Cess.contains(".")) {
+				icp.setTextValue_Decimal(icp.Cess_String, Globals.Inventory.Cess);
+			} else {
+				icp.setTextValue(icp.Cess_String, Globals.Inventory.Cess);
+			}
+		}
+		
+		// Additional cess amount
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.AdlCsAmt) && !(Globals.Inventory.GSTPer).matches("0")) {
+			if (Globals.Inventory.AdlCsAmt.contains(".")) {
+				icp.setTextValue_Decimal(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
+			} else {
+				icp.setTextValue(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
+			}
+		}
 
 		// MRP
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.MRP)) {
@@ -544,10 +578,68 @@ public class InventoryCalculations_StepDefinitions {
 
 		}
 
+		// WPrice1
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice1)) {
+
+					if (Globals.Inventory.WPrice1.contains(".")) {
+						icp.setTextValue_Decimal(icp.WPrice1_String, Globals.Inventory.WPrice1);
+
+					} else {
+
+						icp.setTextValue(icp.WPrice1_String, Globals.Inventory.WPrice1);
+					}
+
+				}
+				
+				// WPrice2
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice2)) {
+
+					if (Globals.Inventory.WPrice2.contains(".")) {
+						icp.setTextValue_Decimal(icp.WPrice2_String, Globals.Inventory.WPrice2);
+
+					} else {
+
+						icp.setTextValue(icp.WPrice2_String, Globals.Inventory.WPrice2);
+					}
+
+				}
+				// WPrice3
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice3)) {
+
+					if (Globals.Inventory.WPrice3.contains(".")) {
+						icp.setTextValue_Decimal(icp.WPrice3_String, Globals.Inventory.WPrice3);
+
+					} else {
+
+						icp.setTextValue(icp.WPrice3_String, Globals.Inventory.WPrice3);
+					}
+
+				}
+
 	}
 
 	@Then("I fill inventory calculations page for MRP using excel data")
 	public void i_fill_inventory_calculations_page_for_MRP_using_excel_data() {
+		
+		// cess
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Cess) && !(Globals.Inventory.GSTPer).matches("0")) {
+			if (Globals.Inventory.Cess.contains(".")) {
+				icp.setTextValue_Decimal(icp.Cess_String, Globals.Inventory.Cess);
+			} else {
+				icp.setTextValue(icp.Cess_String, Globals.Inventory.Cess);
+			}
+		}
+		
+		// Additional cess amount
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.AdlCsAmt) && !(Globals.Inventory.GSTPer).matches("0")) {
+			if (Globals.Inventory.AdlCsAmt.contains(".")) {
+				icp.setTextValue_Decimal(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
+			} else {
+				icp.setTextValue(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
+			}
+		}
+		
+		
 
 		// MRP
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.MRP)) {
@@ -596,7 +688,45 @@ public class InventoryCalculations_StepDefinitions {
 			}
 
 		}
+		
+		// WPrice1
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice1)) {
 
+			if (Globals.Inventory.WPrice1.contains(".")) {
+				icp.setTextValue_Decimal(icp.WPrice1_String, Globals.Inventory.WPrice1);
+
+			} else {
+
+				icp.setTextValue(icp.WPrice1_String, Globals.Inventory.WPrice1);
+			}
+
+		}
+		
+		// WPrice2
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice2)) {
+
+			if (Globals.Inventory.WPrice2.contains(".")) {
+				icp.setTextValue_Decimal(icp.WPrice2_String, Globals.Inventory.WPrice2);
+
+			} else {
+
+				icp.setTextValue(icp.WPrice2_String, Globals.Inventory.WPrice2);
+			}
+
+		}
+		// WPrice3
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice3)) {
+
+			if (Globals.Inventory.WPrice3.contains(".")) {
+				icp.setTextValue_Decimal(icp.WPrice3_String, Globals.Inventory.WPrice3);
+
+			} else {
+
+				icp.setTextValue(icp.WPrice3_String, Globals.Inventory.WPrice3);
+			}
+
+		}
+		
 	}
 
 	@Then("I fill the GST values in the inventory page")
@@ -634,11 +764,28 @@ public class InventoryCalculations_StepDefinitions {
 
 	@Then("I verify the actual ui values with expected Excel values")
 	public void i_verify_the_actual_ui_values_with_expected_Excel_values() {
-
+		
 		icp.NetSellingPrice = icp.getTextValue(icp.NetSellingPrice_text);
-
+	
 		Assert.assertEquals(icp.NetSellingPrice, Double.parseDouble(Globals.Inventory.NetSellingPrice));
 
+	}
+	
+	@Then("I verify mrp and selling price")
+	public void i_verify_mrp_and_selling_price() {
+		
+		icp.NetSellingPrice = icp.getTextValue(icp.NetSellingPrice_text);
+				
+		try {
+		    WebDriverWait wait = new WebDriverWait(icp.getWebDriver(), 2);
+		    wait.until(ExpectedConditions.alertIsPresent());
+		    Alert alert = icp.getWebDriver().switchTo().alert();
+		    System.out.println(alert.getText());
+		    alert.accept();
+		    Assert.assertTrue(alert.getText().contains("Selling Price should be less than MRP"));
+		} catch (Exception e) {
+			System.out.println("Exception occured"+ e);
+		}
 	}
 
 }
