@@ -10,11 +10,8 @@ public class Globals {
 
 	public static class Inventory {
 		final public static String SHEETNAME = "Inventory";
-		final public static String SHEETNAME_DATA = "InventoryData";
-		public static Table<String, String, String> inventorySheetData1;
 		public static Table<String, String, String> inventorySheetData;
 		public static Map<String, String> inventoryrowwiseData;
-		public static Map<String, String> inventoryrowwiseData1;
 		public static String Cess;
 		public static String AdlCsAmt;
 		public static String MRP;

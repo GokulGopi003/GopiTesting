@@ -215,7 +215,7 @@ public class InventoryCalculationsPage extends PageObject {
 			waitForExpectedElement(By.cssSelector("input#ContentPlaceHolder1_rbnMRP3")).click();
 		} else if(purchaseText.equalsIgnoreCase("mrp4")) {
 			waitForExpectedElement(By.cssSelector("input#ContentPlaceHolder1_rbnMRP4")).click();
-		}
+		} 
 
 	}
 

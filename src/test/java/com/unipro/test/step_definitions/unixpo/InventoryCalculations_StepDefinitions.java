@@ -6,9 +6,12 @@ import static org.testng.Assert.assertNotEquals;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.google.common.collect.Table;
@@ -188,7 +191,7 @@ public class InventoryCalculations_StepDefinitions {
 	@Then("I load the inventory sheet data to map")
 	public void i_load_the_inventory_sheet_data_to_map() {
 
-		Globals.Inventory.inventorySheetData1 = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME_DATA);
+		//Globals.Inventory.inventorySheetData1 = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME_DATA);
 
 		Globals.Inventory.inventorySheetData = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME);
 
@@ -220,6 +223,10 @@ public class InventoryCalculations_StepDefinitions {
 		Globals.Inventory.DiscountPer2 = Globals.Inventory.inventoryrowwiseData.get("DiscountPer2");
 		Globals.Inventory.DiscountPer3 = Globals.Inventory.inventoryrowwiseData.get("DiscountPer3");
 		Globals.Inventory.GSTPer = Globals.Inventory.inventoryrowwiseData.get("GSTPer");
+		
+		Globals.Inventory.Cess = Globals.Inventory.inventoryrowwiseData.get("Cess");
+		Globals.Inventory.AdlCsAmt = Globals.Inventory.inventoryrowwiseData.get("AdlCsAmt");
+		
 		Globals.Inventory.NetSellingPrice = Globals.Inventory.inventoryrowwiseData.get("NetSellingPrice");
 		Globals.Inventory.spfixing = Globals.Inventory.inventoryrowwiseData.get("s.p.fixing%");
 		Globals.Inventory.netcost = Globals.Inventory.inventoryrowwiseData.get("netcost");
@@ -757,11 +764,28 @@ public class InventoryCalculations_StepDefinitions {
 
 	@Then("I verify the actual ui values with expected Excel values")
 	public void i_verify_the_actual_ui_values_with_expected_Excel_values() {
-
+		
 		icp.NetSellingPrice = icp.getTextValue(icp.NetSellingPrice_text);
-
+	
 		Assert.assertEquals(icp.NetSellingPrice, Double.parseDouble(Globals.Inventory.NetSellingPrice));
 
+	}
+	
+	@Then("I verify mrp and selling price")
+	public void i_verify_mrp_and_selling_price() {
+		
+		icp.NetSellingPrice = icp.getTextValue(icp.NetSellingPrice_text);
+				
+		try {
+		    WebDriverWait wait = new WebDriverWait(icp.getWebDriver(), 2);
+		    wait.until(ExpectedConditions.alertIsPresent());
+		    Alert alert = icp.getWebDriver().switchTo().alert();
+		    System.out.println(alert.getText());
+		    alert.accept();
+		    Assert.assertTrue(alert.getText().contains("Selling Price should be less than MRP"));
+		} catch (Exception e) {
+			System.out.println("Exception occured"+ e);
+		}
 	}
 
 }
