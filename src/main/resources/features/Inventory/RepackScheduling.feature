@@ -11,7 +11,7 @@ Feature: PoS Inventory > Add Inventory
     
     @inventory
     Scenario: Verifying RePack Scheduling Functionality
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/frmRepackingList.aspx"
+    Given I want to launch the "Inventory/frmRepackingList.aspx"
     Then I need to click on the link "Add" button
     #Then I need to click on the link "View" button
     #Then I need to click on the link "Delete" button

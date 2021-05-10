@@ -11,7 +11,7 @@ Feature: PoS Master > Location
 
   @inventory @Department  @Pending_all_delete_and_edit_button_for_all 
   Scenario: Home > Master > Inventory > Department Master
-    Given I want to launch the"http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/frmDepartmentMaster.aspx"
+    Given I want to launch the"Inventory/frmDepartmentMaster.aspx"
     Given I need to click on the "Clear" button
     When Im waiting for 2 sec
     Then I enter the value forElement "input#ContentPlaceHolder1_txtDeptCode.form-control-res" as "1548780"
