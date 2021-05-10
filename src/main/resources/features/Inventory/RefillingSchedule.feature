@@ -11,7 +11,7 @@ Feature: PoS Inventory > Add Inventory
     
     @inventory
     Scenario: Verifying Refilling Schedule Functionality
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Inventory/frmRefillingSchedule.aspx"
+    Given I want to launch the "Inventory/frmRefillingSchedule.aspx"
     Then I click dynamically on "Filter" button
     Then I enter the value forElement "input#ContentPlaceHolder1_searchFilterUserControlForDialogBox_txtVendor.form-control-res" as "205"
     When Im waiting for 2 sec

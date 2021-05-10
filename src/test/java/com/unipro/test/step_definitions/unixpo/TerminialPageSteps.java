@@ -109,16 +109,30 @@ public class TerminialPageSteps {
 
 	}
 
-	@Then("I enter the value forElement {string} as {string}")
-	public void i_enter_the_value_forElement_as(String webele, String textToType) {
+	@Then("I enter the value forimageElement {string}")
+	public void i_enter_the_value_forimageElement_as(String webele) {
 
 		try {
 			String path = new File(Props.getProp("image.path")).getAbsolutePath();
-			ter_Page.terminal_waitClearEnterText_css(webele,path);
+			ter_Page.terminal_waitClearEnterText_css(webele, path);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println(" Invalid Fil Path - Please update the vlaue in config file");
+		}
+
+	}
+
+	@Then("I enter the value forElement {string} as {string}")
+	public void i_enter_the_value_forElement_as(String webele, String textToType) {
+
+		try {
+
+			ter_Page.terminal_waitClearEnterText_css(webele, textToType);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
 		}
 
 	}
