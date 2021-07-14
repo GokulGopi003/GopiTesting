@@ -12,6 +12,7 @@ import com.unipro.test.framework.helpers.utils.GenericWrappers;
 
 public class InventoryCalculationsPage extends PageObject {
 
+	
 	public double Basic_Cost = 0.00;
 	public double Net_Cost = 0.00;
 	public double Gross_Cost = 0.00;
@@ -26,7 +27,9 @@ public class InventoryCalculationsPage extends PageObject {
 
 	// new inventory
 	
+	
 	public String Category_String = "input#ContentPlaceHolder1_txtInvcategory.form-control-res";
+	public String Department_String = "input#ContentPlaceHolder1_txtDepartment.form-control-res";
 	public String Brand_String = "input#ContentPlaceHolder1_txtBrand.form-control-res";
 	public String ItemName_String = "input#ContentPlaceHolder1_txtItemName.form-control-res.ui-autocomplete-input";
 	public String ShortName_String = "input#ContentPlaceHolder1_txtShortName.form-control-res";

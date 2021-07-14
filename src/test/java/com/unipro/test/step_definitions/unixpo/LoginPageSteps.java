@@ -56,7 +56,8 @@ public class LoginPageSteps {
 
 		//loginPage.checkPageTitle("MISDashboard-UNIPRO");
 		
-		loginPage.checkPageTitle("MISDashboard-NEW SEVEN HILLS SUPER BAZAAR");
+		//loginPage.checkPageTitle("MISDashboard-NEW SEVEN HILLS SUPER BAZAAR");
+		loginPage.checkPageTitle("MisDashBoard-NEW SEVEN HILLS SUPER BAZAAR");
 	}
 
 	@Then("I click on Add Inventory")

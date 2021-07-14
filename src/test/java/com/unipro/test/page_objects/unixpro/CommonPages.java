@@ -18,20 +18,31 @@ public class CommonPages extends PageObject {
 		button.click();
 
 	}
+	public void clickonButtongreen(String buttonName) {
+
+	
+		WebElement button = waitForExpectedElement(
+				By.cssSelector("a#ContentPlaceHolder1_lnk" + buttonName + ".button-red"));
+
+		button.click();
+	
+	}
 	
 	public void clickonBlueButton(String buttonName) {
 
 		WebElement button = waitForExpectedElement(
-				By.cssSelector("input#ContentPlaceHolder1_btn" + buttonName + ".button-blue"));
-
+				//By.cssSelector("a#ContentPlaceHolder1_lnkbtn" + buttonName + ".button-blue"));
+		By.cssSelector("a#ContentPlaceHolder1_lnk" + buttonName + ".button-blue"));
+		
 		button.click();
+		
 
 	}
 	public void clickonRedButton(String buttonName) {
 
 		WebElement button = waitForExpectedElement(
-				By.cssSelector("input#ContentPlaceHolder1_lnk" + buttonName + ".button-red"));
-
+				By.cssSelector("a#ContentPlaceHolder1_lnkbtn" + buttonName + ".button-red"));
+		//ContentPlaceHolder1_lnkbtnYes
 		button.click();
 
 	}

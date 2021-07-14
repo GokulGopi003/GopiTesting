@@ -82,12 +82,13 @@ public class TerminalPage extends PageObject {
 
 	}
 
-	public void terminal_waitClearEnterText_css(String webele, String textToEnter) {
+	public WebElement terminal_waitClearEnterText_css(String webele, String textToEnter) {
 
 		By terminal_System_name = By.cssSelector(webele);
 		//waitForExpectedElement(By.cssSelector(webele));
 		 waitClearEnterText(terminal_System_name, textToEnter);
 		//setTypeAheadValueOnElement(waitForExpectedElement(By.cssSelector(webele)), textToEnter);
+		return null;
 
 	}
 

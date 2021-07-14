@@ -9,6 +9,7 @@ import java.util.Scanner;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -240,6 +241,7 @@ public class InventoryCalculations_StepDefinitions {
 		// data for inventory creation
 
 		Globals.Inventory.Category = Globals.Inventory.inventoryrowwiseData.get("Category");
+		Globals.Inventory.Department = Globals.Inventory.inventoryrowwiseData.get("Department");
 		Globals.Inventory.Brand = Globals.Inventory.inventoryrowwiseData.get("Brand");
 		Globals.Inventory.ItemName = Globals.Inventory.inventoryrowwiseData.get("ItemName");
 		Globals.Inventory.ShortName = Globals.Inventory.inventoryrowwiseData.get("ShortName");
@@ -283,7 +285,12 @@ public class InventoryCalculations_StepDefinitions {
 			add_inventory.return_td_invoke_element(Globals.Inventory.Category).click();
 
 		}
-
+		//Department
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Department)) {
+			terPage.terminal_waitClearEnterText_css(icp.Department_String, Globals.Inventory.Department);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.Department, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.Department).click();
+		}
 		// Brand
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Brand)) {
 			terPage.terminal_waitClearEnterText_css(icp.Brand_String, Globals.Inventory.Brand);
@@ -382,6 +389,12 @@ public class InventoryCalculations_StepDefinitions {
 			terPage.terminal_waitClearEnterText_css(icp.Size_String, Globals.Inventory.Size);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Size, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Size).click();
+		}
+		//c.code
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.CCode)) {
+			terPage.terminal_waitClearEnterText_css(icp.CCode_String, Globals.Inventory.Size);
+			add_inventory.clearAndTypeSlowly(Globals.Inventory.CCode, "input#txtSearch");
+			add_inventory.return_td_invoke_element(Globals.Inventory.CCode).click();
 		}
 		// ModelNo
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.ModelNo)) {
@@ -619,7 +632,7 @@ public class InventoryCalculations_StepDefinitions {
 	}
 
 	@Then("I fill inventory calculations page for MRP using excel data")
-	public void i_fill_inventory_calculations_page_for_MRP_using_excel_data() {
+	public void i_fill_inventory_calculations_page_for_MRP_using_excel_data(Object driver) {
 		
 		// cess
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Cess) && !(Globals.Inventory.GSTPer).matches("0")) {
@@ -724,9 +737,17 @@ public class InventoryCalculations_StepDefinitions {
 
 				icp.setTextValue(icp.WPrice3_String, Globals.Inventory.WPrice3);
 			}
+			
+			//driver.findElement(By.id("lst-ib")).sendKeys(Keys.RETURN);
+
 
 		}
 		
+	}
+
+	private WebElement findElement(SearchContext id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Then("I fill the GST values in the inventory page")

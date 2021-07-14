@@ -536,4 +536,9 @@ public abstract class PageObject {
 		webDriver.manage().window().maximize();
 	}
 
+	public void minimize_browser_window() {
+
+		webDriver.manage().window().setSize(new Dimension(1000,800));
+	}
+
 }

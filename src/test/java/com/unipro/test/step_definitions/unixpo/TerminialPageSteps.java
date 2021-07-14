@@ -4,6 +4,7 @@ import java.io.File;
 import java.nio.file.Path;
 
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.server.handler.MaximizeWindow;
 
@@ -128,7 +129,9 @@ public class TerminialPageSteps {
 
 		try {
 
-			ter_Page.terminal_waitClearEnterText_css(webele, textToType);
+		 ter_Page.terminal_waitClearEnterText_css(webele,textToType).sendKeys(Keys.ENTER);
+			
+	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -136,6 +139,8 @@ public class TerminialPageSteps {
 		}
 
 	}
+
+
 
 	@Then("I enter the value forElement {string} as FCNew")
 	public void i_enter_the_value_forElement_as_FCNew(String string) {

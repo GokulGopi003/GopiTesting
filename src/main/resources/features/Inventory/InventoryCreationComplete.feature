@@ -8,7 +8,7 @@ Feature: PoS Inventory > Add Inventory
     When I enter the password
     Then I clik on the login button
     Then I verify the page Title
-
+  @july2021
   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Then I load the testdata form excel to table
@@ -22,15 +22,15 @@ Feature: PoS Inventory > Add Inventory
     Then I fill inventory calculations page using excel data
     Then I verify the actual ui values with expected Excel values
     Then I click on button tag with value "Back"
-    Then I need to click on sub menu with text matching "Image"
-    When Im waiting for 5 sec
-    Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
+    #Then I need to click on sub menu with text matching "Image"
+    #When Im waiting for 5 sec
+    #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
     Then I need to click on the "Save" button
     Then I click dynamically on "NewItemNo" button
 
     Examples: 
       | TestcaseRowName |
-      | cost4           |
+      | cost3           |
 
   Scenario Outline: Verifying Add Inventory Functionality Purchased by MRP1
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"

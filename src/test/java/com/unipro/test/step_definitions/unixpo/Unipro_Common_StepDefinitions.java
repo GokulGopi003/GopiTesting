@@ -148,7 +148,11 @@ public class Unipro_Common_StepDefinitions {
 
 		cp.maxmize_browser_window();
 	}
+	@Then("I want to minimize the browser")
+	public void i_want_to_minimize_the_browser() {
 
+		cp.minimize_browser_window();
+	}
 	@Given("I need to click on the  element {string} in index {int}")
 	public void i_need_to_click_on_the_element_in_index(String ele, Integer index) {
 
