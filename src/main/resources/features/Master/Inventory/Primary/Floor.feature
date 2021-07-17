@@ -11,10 +11,13 @@ Feature: PoS Master > Location
     
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmFloor.aspx"
-    #Then I need to click on the  element "input#ContentPlaceHolder1_grdDepartmentList_imgbtnEdit_0"
-    #Then I need to click on the  element "input#ContentPlaceHolder1_grdDepartmentList_imgbtnDelete_0"
-    #Then I click on button tag with value "YES"
-    Given I need to click on the "Clear" button
+    Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
+    Then i send to enter key
+    When Im waiting for 2 sec
+    #Then I need to click on the  element "input#ContentPlaceHolder1_gvFloor_imgbtnEdit_0"
+    Then I need to click on the  element "input#ContentPlaceHolder1_gvFloor_imgbtnDelete_0"
+    Then I click on button tag with value "YES"
+    #Given I need to click on the "Clear" button
     When Im waiting for 2 sec
     Then I need to invoke the DropDown by Index 0 if text matching "-- Select --"
     Then I need to select the dropdown "HQ" value forLabel "Location" using Javascript
