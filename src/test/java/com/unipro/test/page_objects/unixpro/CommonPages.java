@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import com.unipro.test.framework.PageObject;
@@ -16,6 +17,14 @@ public class CommonPages extends PageObject {
 				By.cssSelector("a#ContentPlaceHolder1_lnk" + buttonName + ".button-red"));
 
 		button.click();
+
+	}
+	public void sendkey(String buttonName) {
+
+		WebElement button = waitForExpectedElement(
+				By.cssSelector("input##ContentPlaceHolder1_txt" + buttonName));
+
+		button.sendKeys(Keys.RETURN);
 
 	}
 	public void clickonButtongreen(String buttonName) {
@@ -33,7 +42,6 @@ public class CommonPages extends PageObject {
 		WebElement button = waitForExpectedElement(
 				//By.cssSelector("a#ContentPlaceHolder1_lnkbtn" + buttonName + ".button-blue"));
 		By.cssSelector("a#ContentPlaceHolder1_lnk" + buttonName + ".button-blue"));
-		
 		button.click();
 		
 

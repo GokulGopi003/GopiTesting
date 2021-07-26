@@ -8,7 +8,7 @@ Feature: PoS Inventory > Add Inventory
     When I enter the password
     Then I clik on the login button
     Then I verify the page Title
-  @july2021
+  @22july2021
   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Then I load the testdata form excel to table
@@ -20,7 +20,10 @@ Feature: PoS Inventory > Add Inventory
     Then I need to click on the  element "input#ContentPlaceHolder1_imgPriceChange"
     Then I fill the GST values in the inventory page
     Then I fill inventory calculations page using excel data
+    When Im waiting for 2 sec
     Then I verify the actual ui values with expected Excel values
+    #Then I enter the send Keys "input#ContentPlaceHolder1_txtItemCodeAdd" as "CONTROL+-"
+    #Then i send to enter key
     Then I click on button tag with value "Back"
     #Then I need to click on sub menu with text matching "Image"
     #When Im waiting for 5 sec

@@ -10,22 +10,22 @@ Feature: PoS Master > Location
     Then I verify the page Title
     
     Scenario Outline: Home > Master > Inventory > Category Master
-    Given I want to launch the "Masters/frmClass.aspx"
+    Given I want to launch the "Masters/frmSubClass.aspx"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "Gopi"
     Then i send to enter key
     When Im waiting for 2 sec
-    #Then I need to click on the  element "input#ContentPlaceHolder1_gvClass_imgbtnEdit_0"
-    Then I need to click on the  element "input#ContentPlaceHolder1_gvClass_imgbtnDelete_0"
+    Then I need to click on the  element "input#ContentPlaceHolder1_gvSubclass_imgbtnEdit_0"
+    #Then I need to click on the  element "input#ContentPlaceHolder1_gvFloor_imgbtnDelete_0"
     #Then I click on button tag with value "YES"
     #Given I need to click on the "Clear" button
     When Im waiting for 2 sec
     Then I load the testdatas form excel to table
-    Then I load the Class sheet data to map
-    Then I load the rowise Class data for "<TestcaseRowName>" rowname
-    Then I update value to the Class page global Variables
-    Then I fill new Class data page using excel data
+    Then I load the Subclass sheet data to map
+    Then I load the rowise Subclass data for "<TestcaseRowName>" rowname
+    Then I update value to the Subclass page global Variables
+    Then I fill new Subclass data page using excel data
     Then I need to click on the "Save" button
     
       Examples: 
       | TestcaseRowName |
-      |Class      |
+      |Subclass      |

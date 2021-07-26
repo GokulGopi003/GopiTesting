@@ -139,6 +139,21 @@ public class TerminialPageSteps {
 		}
 
 	}
+	@Then("I enter the send Keys {string} as {string}")
+	public void i_enter_the_send_keys(String webele, String textToType) {
+
+		try {
+
+		 ter_Page.terminal_waitClearEnterKey(webele,textToType);
+			
+	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+
+	}
 
 
 

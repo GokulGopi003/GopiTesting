@@ -1,4 +1,8 @@
 package com.unipro.test.page_objects.unixpro;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.By;
 
 import org.openqa.selenium.Keys;
@@ -7,6 +11,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.server.handler.SendKeys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.asserts.SoftAssert;
 
 import com.unipro.test.framework.Globals;
 import com.unipro.test.framework.PageObject;
@@ -15,6 +21,7 @@ import com.unipro.test.framework.helpers.utils.ReadTestData;
 import com.unipro.test.framework.helpers.utils.ReadXLSXFile;
 import com.unipro.test.step_definitions.unixpo.Unipro_Common_StepDefinitions;
 
+import bsh.Console;
 import cucumber.api.java.en.Then;
 
 public class GRNcreate extends PageObject {
@@ -99,13 +106,15 @@ public class GRNcreate extends PageObject {
 
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.InvQty)) {
-						if (Globals.Inventory.InvQty.contains(".")) {
-							icp.setTextValue_Decimal(icp.InvQty_String, Globals.Inventory.InvQty);
-						} else {
-							icp.setTextValue(icp.InvQty_String, Globals.Inventory.InvQty);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.InvQty_String, Globals.Inventory.InvQty);
+						//if (Globals.Inventory.InvQty.contains(".")) {
+							//icp.setTextValue_Decimal(icp.InvQty_String, Globals.Inventory.InvQty);
+						//} else {
+							//icp.setTextValue(icp.InvQty_String, Globals.Inventory.InvQty);
+						//}
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.RecvQty)) {
+						//terPage.terminal_waitClearEnterText_css(icp.RecvQty_String, Globals.Inventory.RecvQty);
 						if (Globals.Inventory.RecvQty.contains(".")) {
 							icp.setTextValue_Decimal(icp.RecvQty_String, Globals.Inventory.RecvQty);
 						} else {
@@ -113,98 +122,131 @@ public class GRNcreate extends PageObject {
 						}
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.MRP)) {
-						if (Globals.Inventory.MRP.contains(".")) {
-							icp.setTextValue_Decimal(icp.MRP_String, Globals.Inventory.MRP);
-						} else {
-							icp.setTextValue(icp.MRP_String, Globals.Inventory.MRP);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.MRP_String, Globals.Inventory.MRP);
+						//if (Globals.Inventory.MRP.contains(".")) {
+							//icp.setTextValue_Decimal(icp.MRP_String, Globals.Inventory.MRP);
+						//} else {
+							//icp.setTextValue(icp.MRP_String, Globals.Inventory.MRP);
+						//}
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.BasicCost)) {
-						if (Globals.Inventory.BasicCost.contains(".")) {
-							icp.setTextValue_Decimal(icp.BasicCost_String, Globals.Inventory.BasicCost);
-						} else {
-							icp.setTextValue(icp.BasicCost_String, Globals.Inventory.BasicCost);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.BasicCost_String, Globals.Inventory.BasicCost);
+						//if (Globals.Inventory.BasicCost.contains(".")) {
+							//icp.setTextValue_Decimal(icp.BasicCost_String, Globals.Inventory.BasicCost);
+						//} else {
+							//icp.setTextValue(icp.BasicCost_String, Globals.Inventory.BasicCost);
+						//}
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscP)) {
-						if (Globals.Inventory.DiscP.contains(".")) {
-							icp.setTextValue_Decimal(icp.DiscP_String, Globals.Inventory.DiscP);
-						} else {
-							icp.setTextValue(icp.DiscP_String, Globals.Inventory.DiscP);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.DiscP_String, Globals.Inventory.DiscP);
+						//if (Globals.Inventory.DiscP.contains(".")) {
+							//icp.setTextValue_Decimal(icp.DiscP_String, Globals.Inventory.DiscP);
+						//} else {
+							//icp.setTextValue(icp.DiscP_String, Globals.Inventory.DiscP);
+						//}
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscA)) {
-						if (Globals.Inventory.DiscA.contains(".")) {
-							icp.setTextValue_Decimal(icp.DiscA_String, Globals.Inventory.DiscA);
-						} else {
-							icp.setTextValue(icp.DiscA_String, Globals.Inventory.DiscA);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.DiscA_String, Globals.Inventory.DiscA);
+						//if (Globals.Inventory.DiscA.contains(".")) {
+							//icp.setTextValue_Decimal(icp.DiscA_String, Globals.Inventory.DiscA);
+						//} else {
+							//icp.setTextValue(icp.DiscA_String, Globals.Inventory.DiscA);
+						//}
 					}		
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.SDP)) {
-						if (Globals.Inventory.SDP.contains(".")) {
-							icp.setTextValue_Decimal(icp.SDP_String, Globals.Inventory.SDP);
-						} else {
-							icp.setTextValue(icp.SDP_String, Globals.Inventory.SDP);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.SDP_String, Globals.Inventory.SDP);
+						//if (Globals.Inventory.SDP.contains(".")) {
+							//icp.setTextValue_Decimal(icp.SDP_String, Globals.Inventory.SDP);
+						//} else {
+							//icp.setTextValue(icp.SDP_String, Globals.Inventory.SDP);
+						//}
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.SDA)) {
-						if (Globals.Inventory.SDA.contains(".")) {
-							icp.setTextValue_Decimal(icp.SDA_String, Globals.Inventory.SDA);
-						} else {
-							icp.setTextValue(icp.SDA_String, Globals.Inventory.SDA);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.SDA_String, Globals.Inventory.SDA);
+						//if (Globals.Inventory.SDA.contains(".")) {
+							//icp.setTextValue_Decimal(icp.SDA_String, Globals.Inventory.SDA);
+						//} else {
+							//icp.setTextValue(icp.SDA_String, Globals.Inventory.SDA);
+						//}
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.spfixing)) {
-						if (Globals.Inventory.spfixing.contains(".")) {
-							icp.setTextValue_Decimal(icp.spfixing_String, Globals.Inventory.spfixing);
-						} else {
-							icp.setTextValue(icp.spfixing_String, Globals.Inventory.spfixing);
-						}
-						//webDriver.findElement(By.xpath("/html/body/div[9]/div[1]/button/span[1]")).click();
+						terPage.terminal_waitClearEnterText_css(icp.spfixing_String, Globals.Inventory.spfixing);
+						//if (Globals.Inventory.spfixing.contains(".")) {
+							//icp.setTextValue_Decimal(icp.spfixing_String, Globals.Inventory.spfixing);
+						//} else {
+							//icp.setTextValue(icp.spfixing_String, Globals.Inventory.spfixing);
+						//}
 						
-					}
+						    
+						     try {
+
+						    	 webDriver.findElement(By.xpath("/html/body/div[9]/div[1]/button/span[1]")).click();
+								} catch (Exception e) {
+									System.out.println("Element  not found");
+								}
+						     
+
+							}
+						
+						
+					
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.D1)) {
-						if (Globals.Inventory.D1.contains(".")) {
-							icp.setTextValue_Decimal(icp.D1_String, Globals.Inventory.D1);
-						} else {
-							icp.setTextValue(icp.D1_String, Globals.Inventory.D1);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.D1_String, Globals.Inventory.D1);
+						//if (Globals.Inventory.D1.contains(".")) {
+							//icp.setTextValue_Decimal(icp.D1_String, Globals.Inventory.D1);
+						//} else {
+							//icp.setTextValue(icp.D1_String, Globals.Inventory.D1);
+						//}
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.D2)) {
-						if (Globals.Inventory.D2.contains(".")) {
-							icp.setTextValue_Decimal(icp.D2_String, Globals.Inventory.D2);
-						} else {
-							icp.setTextValue(icp.D2_String, Globals.Inventory.D2);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.D2_String, Globals.Inventory.D2);
+						//if (Globals.Inventory.D2.contains(".")) {
+							//icp.setTextValue_Decimal(icp.D2_String, Globals.Inventory.D2);
+						//} else {
+							//icp.setTextValue(icp.D2_String, Globals.Inventory.D2);
+						//}
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.D3)) {
-						if (Globals.Inventory.D3.contains(".")) {
-							icp.setTextValue_Decimal(icp.D3_String, Globals.Inventory.D3);
-						} else {
-							icp.setTextValue(icp.D3_String, Globals.Inventory.D3);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.D3_String, Globals.Inventory.D3);
+						//if (Globals.Inventory.D3.contains(".")) {
+							//icp.setTextValue_Decimal(icp.D3_String, Globals.Inventory.D3);
+						//} else {
+							//icp.setTextValue(icp.D3_String, Globals.Inventory.D3);
+						//}
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice1)) {
-						if (Globals.Inventory.WPrice1.contains(".")) {
-							icp.setTextValue_Decimal(icp.WPrice1_String, Globals.Inventory.WPrice1);
-						} else {
-							icp.setTextValue(icp.WPrice1_String, Globals.Inventory.WPrice1);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.WPrice1_String, Globals.Inventory.WPrice1);
+						//if (Globals.Inventory.WPrice1.contains(".")) {
+							//icp.setTextValue_Decimal(icp.WPrice1_String, Globals.Inventory.WPrice1);
+						//} else {
+							//icp.setTextValue(icp.WPrice1_String, Globals.Inventory.WPrice1);
+						//}
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice2)) {
-						if (Globals.Inventory.WPrice2.contains(".")) {
-							icp.setTextValue_Decimal(icp.WPrice2_String, Globals.Inventory.WPrice2);
-						} else {
-							icp.setTextValue(icp.WPrice2_String, Globals.Inventory.WPrice2);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.WPrice2_String, Globals.Inventory.WPrice2);
+						//if (Globals.Inventory.WPrice2.contains(".")) {
+							//icp.setTextValue_Decimal(icp.WPrice2_String, Globals.Inventory.WPrice2);
+						//} else {
+							//icp.setTextValue(icp.WPrice2_String, Globals.Inventory.WPrice2);
+						//}
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice3)) {
-						if (Globals.Inventory.WPrice3.contains(".")) {
-							icp.setTextValue_Decimal(icp.WPrice3_String, Globals.Inventory.WPrice3);
-						} else {
-							icp.setTextValue(icp.WPrice3_String, Globals.Inventory.WPrice3);
-						}
-						//webDriver.findElement(By.xpath("/html/body/div[10]/div[1]/button/span[1]")).click();
+						terPage.terminal_waitClearEnterText_css(icp.WPrice3_String, Globals.Inventory.WPrice3);
+						//if (Globals.Inventory.WPrice3.contains(".")) {
+							//icp.setTextValue_Decimal(icp.WPrice3_String, Globals.Inventory.WPrice3);
+						//} else {
+							//icp.setTextValue(icp.WPrice3_String, Globals.Inventory.WPrice3);
+						//}
+						 try {
+
+							 webDriver.findElement(By.xpath("/html/body/div[10]/div[1]/button/span[1]")).click();
+							} catch (Exception e) {
+								System.out.println("Element  not found");
+							}
+						
+						
+						
+						
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.GrossAmount)) {
 						if (Globals.Inventory.GrossAmount.contains(".")) {
