@@ -3,6 +3,7 @@ package com.unipro.test.page_objects.unixpro;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import com.unipro.test.framework.PageObject;
@@ -87,6 +88,16 @@ public class TerminalPage extends PageObject {
 		By terminal_System_name = By.cssSelector(webele);
 		//waitForExpectedElement(By.cssSelector(webele));
 		 waitClearEnterText(terminal_System_name, textToEnter);
+		//setTypeAheadValueOnElement(waitForExpectedElement(By.cssSelector(webele)), textToEnter);
+		return null;
+
+	}
+	public WebElement terminal_waitClearEnterKey(String webele, String textToEnter) {
+
+		By terminal_System_name = By.cssSelector(webele);
+		//waitForExpectedElement(By.cssSelector(webele));
+		webDriver.findElement(By.cssSelector(webele)).sendKeys(Keys.valueOf(textToEnter));
+		
 		//setTypeAheadValueOnElement(waitForExpectedElement(By.cssSelector(webele)), textToEnter);
 		return null;
 

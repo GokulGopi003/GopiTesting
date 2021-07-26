@@ -18,6 +18,11 @@ Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Then I update value to the GRN page global Variables
     Then I fill new GRN data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkAdd"
+    Then I load the testdata form excel to table
+    Then I load the GRN sheet data to map
+    Then I load the rowise GRN data for "<TestcaseRowName1>" rowname
+    Then I update value to the GRN page global Variables
+    Then I fill new GRN data page using excel data
     Then I need to click on the  element "input#ContentPlaceHolder1_chFillGA"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtAD" as "0.00"
     #Then I need to click on the blue "Yes" button
@@ -33,5 +38,7 @@ Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Examples: 
       | TestcaseRowName |
       |GRN           |
+      | TestcaseRowName1 |
+      |GRN1           |
 
       

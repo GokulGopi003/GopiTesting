@@ -1,5 +1,8 @@
 package com.unipro.test.step_definitions.unixpo;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.Iterator;
 import java.util.List;
 
@@ -25,10 +28,11 @@ public class LoginPageSteps {
 	}
 
 	@Given("Launching the valid URL")
-	public void launching_the_valid_URL() {
+	public void launching_the_valid_URL()  {
 
 		WebDriverHelper.getWebDriver().get(loginPage.getTestURL());
 		loginPage.getWebDriver().manage().window().maximize();
+		
 	}
 
 	@Given("I enter the username")
@@ -52,12 +56,16 @@ public class LoginPageSteps {
 	}
 
 	@Then("I verify the page Title")
-	public void i_verify_the_page_Title() {
+	public void i_verify_the_page_Title()    {
 
 		//loginPage.checkPageTitle("MISDashboard-UNIPRO");
 		
 		//loginPage.checkPageTitle("MISDashboard-NEW SEVEN HILLS SUPER BAZAAR");
 		loginPage.checkPageTitle("MisDashBoard-NEW SEVEN HILLS SUPER BAZAAR");
+
+		
+		
+
 	}
 
 	@Then("I click on Add Inventory")

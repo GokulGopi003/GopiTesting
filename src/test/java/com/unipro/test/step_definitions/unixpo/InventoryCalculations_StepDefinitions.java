@@ -3,6 +3,9 @@ package com.unipro.test.step_definitions.unixpo;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -276,14 +279,15 @@ public class InventoryCalculations_StepDefinitions {
 	}
 
 	@Then("I fill new inventory data page using excel data")
-	public void i_fill_new_inventory_data_page_using_excel_data() {
+	public void i_fill_new_inventory_data_page_using_excel_data()   {
 
 		// category
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Category)) {
 			terPage.terminal_waitClearEnterText_css(icp.Category_String, Globals.Inventory.Category);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Category, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Category).click();
-
+			
+			
 		}
 		//Department
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Department)) {
@@ -784,16 +788,16 @@ public class InventoryCalculations_StepDefinitions {
 	}
 
 	@Then("I verify the actual ui values with expected Excel values")
-	public void i_verify_the_actual_ui_values_with_expected_Excel_values() {
+	public void i_verify_the_actual_ui_values_with_expected_Excel_values()  {
 		
 		icp.NetSellingPrice = icp.getTextValue(icp.NetSellingPrice_text);
 	
 		Assert.assertEquals(icp.NetSellingPrice, Double.parseDouble(Globals.Inventory.NetSellingPrice));
-
+	
 	}
 	
 	@Then("I verify mrp and selling price")
-	public void i_verify_mrp_and_selling_price() {
+	public void i_verify_mrp_and_selling_price()  {
 		
 		icp.NetSellingPrice = icp.getTextValue(icp.NetSellingPrice_text);
 				
@@ -807,6 +811,7 @@ public class InventoryCalculations_StepDefinitions {
 		} catch (Exception e) {
 			System.out.println("Exception occured"+ e);
 		}
+		 
 	}
 
 }

@@ -1,10 +1,14 @@
 package com.unipro.test.page_objects.unixpro;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.server.handler.SendKeys;
-
+import java.awt.AWTException;
 import com.unipro.test.framework.Globals;
 import com.unipro.test.framework.PageObject;
 import com.unipro.test.framework.helpers.utils.GenericWrappers;
@@ -137,9 +141,16 @@ public class Department  extends PageObject{
 		icp.getDeleteButtonElement().click();
 	}
 	@Then ("i send to enter key")
-	public void i_send_to_enter_key() {
+	public void i_send_to_enter_key()  {
 		
 		webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSearch")).sendKeys(Keys.RETURN);
+		
+
+			 
+		 
+		
 	}
-}
+		
+	}
+
 

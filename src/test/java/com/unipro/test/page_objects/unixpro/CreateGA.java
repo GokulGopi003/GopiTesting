@@ -158,7 +158,8 @@ public class CreateGA extends PageObject {
 		   //webDriver.findElement(By.xpath("//*[@id=\"Tabs\"]/ul/li[3]/a")).click();
 		   
 		   //webDriver.findElement(By.xpath("//*[@id=\"Tabs\"]/ul/li[4]/a")).click();
-		   webDriver.findElement(By.xpath("//*[@id=\"Tabs\"]/ul/li[2]/a")).click();
+		   //webDriver.findElement(By.xpath("//*[@id=\"Tabs\"]/ul/li[2]/a")).click();
+		   webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_lnkAddInv\"]")).click();
 		 
 		 
 	   }

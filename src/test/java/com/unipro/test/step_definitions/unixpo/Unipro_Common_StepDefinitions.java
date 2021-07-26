@@ -1,5 +1,9 @@
 package com.unipro.test.step_definitions.unixpo;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -22,6 +26,12 @@ public class Unipro_Common_StepDefinitions {
 
 	@Given("I need to click on the {string} button")
 	public void i_need_to_click_on_the_button(String buttonName) {
+
+		cp.clickonButton(buttonName);
+
+	}
+	@Given("I need to sendkey {string}")
+	public void i_need_to_send_key(String buttonName) {
 
 		cp.clickonButton(buttonName);
 
@@ -83,7 +93,12 @@ public class Unipro_Common_StepDefinitions {
 	}
 
 	@When("Im waiting for {int} sec")
-	public void im_waiting_for_sec(Integer seconds) {
+	public void im_waiting_for_sec(Integer seconds)  throws AWTException, InterruptedException {
+		//Robot rb=new Robot();
+		//  rb.keyPress(KeyEvent.VK_CONTROL);
+		 // rb.keyPress(KeyEvent.VK_MINUS);
+		
+
 		try {
 			Thread.sleep(seconds * 1000);
 		} catch (InterruptedException e) {
@@ -139,6 +154,12 @@ public class Unipro_Common_StepDefinitions {
 	@Given("I need to click on the  element {string}")
 	public void i_need_to_click_on_the_element(String element) {
 		WebElement ele = cp.waitForExpectedElement(By.cssSelector(element), 3);
+		ele.click();
+
+	}
+	@Given("I need to click on the  Xpath {string}")
+	public void i_need_to_click_on_the_Xpath(String element) {
+		WebElement ele = cp.waitForExpectedElement(By.xpath(element), 3);
 		ele.click();
 
 	}

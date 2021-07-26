@@ -1,1 +1,1 @@
-target\test-classes\features\Inventory\InventoryCreationComplete.feature:33
+target\test-classes\features\Purchase\CreateGRNmultipleData.feature:31
