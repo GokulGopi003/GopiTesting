@@ -28,7 +28,7 @@ Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     
     Examples: 
       | TestcaseRowName |
-      |GRN           |
+      |GRN          |
       
       
       
@@ -47,7 +47,7 @@ Scenario Outline:
 
      Examples: 
       | TestcaseRowName |
-      |GRN1           |
+            |GRN1           |
       |GRN2           |
       |GRN3           |
       |GRN4           |
@@ -96,7 +96,7 @@ Scenario Outline:
       |GRN47           |
       |GRN48           |
       |GRN49           |
-                  |GRN50           |
+      |GRN50           |
       |GRN51           |
       |GRN52           |
       |GRN53           |
@@ -164,7 +164,6 @@ Scenario Outline:
       |GRN116          |
       |GRN117          |
       |GRN118          |
-      |GRN119          |
       |GRN120          | 
       |GRN121          |
       |GRN122          |
@@ -172,7 +171,6 @@ Scenario Outline:
       |GRN124          |
       |GRN125          |
       |GRN126          |
-      |GRN127          |
       |GRN128          |
       |GRN129          |
       |GRN130          |
@@ -180,7 +178,6 @@ Scenario Outline:
       |GRN132          |
       |GRN133          |
       |GRN134          |
-      |GRN135          |
       |GRN136          |
       |GRN137          |
       |GRN138          |

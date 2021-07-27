@@ -1,5 +1,6 @@
 package com.unipro.test.page_objects.unixpro;
 
+
 	import org.openqa.selenium.By;
 	import org.openqa.selenium.Keys;
 	import org.openqa.selenium.WebDriver;
@@ -16,10 +17,10 @@ package com.unipro.test.page_objects.unixpro;
 
 	import cucumber.api.java.en.Then;
 
-	public class Purchaseorder  extends PageObject {
+	public class Purchasereturn  extends PageObject {
 
 		AddInventoryFormPage add_inventory;
-		Purchaseorder1 icp;
+		Purchasereturn1 icp;
 		CommonPages cp;
 		
 		
@@ -28,7 +29,7 @@ package com.unipro.test.page_objects.unixpro;
 		
 		
 
-		public Purchaseorder(Purchaseorder1 icp,CommonPages cp) {
+		public Purchasereturn(Purchasereturn1 icp,CommonPages cp) {
 			this.icp = icp;
 			terPage = new TerminalPage();
 			
@@ -38,59 +39,58 @@ package com.unipro.test.page_objects.unixpro;
 		}
 		
 
-		@Then("I load the PO sheet data to map")
-		public void i_load_the_GA_sheet_data_to_map() {
+		@Then("I load the PR sheet data to map")
+		public void i_load_the_PR_sheet_data_to_map() {
 
 			//Globals.Inventory.inventorySheetData1 = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME_DATA);
 
-			Globals.Inventory.PurchaseorderSheetData = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME8);
+			Globals.Inventory.PurchasereturnSheetData = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME12);
 
 		}
-		@Then("I load the rowise PO data for {string} rowname")
-		public void i_load_the_rowise_GA_data_for_rowname(String row_name) {
+		@Then("I load the rowise PR data for {string} rowname")
+		public void i_load_the_rowise_PR_data_for_rowname(String row_name) {
 
-			Globals.Inventory.PurchaseorderrowwiseData = ReadTestData
-					.getRowFilteredValueFromTable(Globals.Inventory.PurchaseorderSheetData, row_name);
+			Globals.Inventory.PurchasereturnrowwiseData = ReadTestData
+					.getRowFilteredValueFromTable(Globals.Inventory.PurchasereturnSheetData, row_name);
 
-			System.out.println(Globals.Inventory.PurchaseorderrowwiseData);
+			System.out.println(Globals.Inventory.PurchasereturnrowwiseData);
 
 		}
-		@Then("I update value to the PO page global Variables")
-		public void i_update_value_to_the_GA_page_global_Variables() {
-			Globals.Inventory.Vendor = Globals.Inventory.PurchaseorderrowwiseData.get("Vendor");
-			Globals.Inventory.Brand = Globals.Inventory.PurchaseorderrowwiseData.get("Brand");
-			Globals.Inventory.Batch = Globals.Inventory.PurchaseorderrowwiseData.get("Batch");
-			Globals.Inventory.ItemName = Globals.Inventory.PurchaseorderrowwiseData.get("ItemName");
-			Globals.Inventory.ItemCode = Globals.Inventory.PurchaseorderrowwiseData.get("ItemCode");
-			Globals.Inventory.InvQty = Globals.Inventory.PurchaseorderrowwiseData.get("InvQty");
-			Globals.Inventory.RecvQty = Globals.Inventory.PurchaseorderrowwiseData.get("RecvQty");
-			Globals.Inventory.foc = Globals.Inventory.PurchaseorderrowwiseData.get("foc");
-			Globals.Inventory.MRP = Globals.Inventory.PurchaseorderrowwiseData.get("MRP");
-			Globals.Inventory.BasicCost = Globals.Inventory.PurchaseorderrowwiseData.get("BasicCost");
-			Globals.Inventory.SDP = Globals.Inventory.PurchaseorderrowwiseData.get("SDP");
-			Globals.Inventory.AddDed = Globals.Inventory.PurchaseorderrowwiseData.get("AddDed");
+		@Then("I update value to the PR page global Variables")
+		public void i_update_value_to_the_PR_page_global_Variables() {
+			Globals.Inventory.Vendor = Globals.Inventory.PurchasereturnrowwiseData.get("Vendor");
+			Globals.Inventory.Brand = Globals.Inventory.PurchasereturnrowwiseData.get("Brand");
+			Globals.Inventory.Batch = Globals.Inventory.PurchasereturnrowwiseData.get("Batch");
+			Globals.Inventory.ItemName = Globals.Inventory.PurchasereturnrowwiseData.get("ItemName");
+			Globals.Inventory.ItemCode = Globals.Inventory.PurchasereturnrowwiseData.get("ItemCode");
+			Globals.Inventory.InvQty = Globals.Inventory.PurchasereturnrowwiseData.get("InvQty");
+			Globals.Inventory.RecvQty = Globals.Inventory.PurchasereturnrowwiseData.get("RecvQty");
+			Globals.Inventory.foc = Globals.Inventory.PurchasereturnrowwiseData.get("foc");
+			Globals.Inventory.BasicCost = Globals.Inventory.PurchasereturnrowwiseData.get("BasicCost");
+			Globals.Inventory.SDP = Globals.Inventory.PurchasereturnrowwiseData.get("SDP");
+			Globals.Inventory.SDA = Globals.Inventory.PurchasereturnrowwiseData.get("SDA");
 		}
 
-		@Then("I fill new PO data page using excel data")
-		public void i_fill_new_GA_data_page_using_excel_data() {
+		@Then("I fill new PR data page using excel data")
+		public void i_fill_new_PR_data_page_using_excel_data() {
 			
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {
 						terPage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
 						add_inventory.clearAndTypeSlowly(Globals.Inventory.Vendor, "input#txtSearch");
 						add_inventory.return_td_invoke_element(Globals.Inventory.Vendor).click();
-					    webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtItemCodeAdd")).sendKeys(Keys.F3);
+						
 						//webDriver.findElement(By.cssSelector("//*[@id=\"ContentPlaceHolder1_lnkAddInv\"]")).click();						
 
 						}
 					
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.Brand)) {
 						terPage.terminal_waitClearEnterText_css(icp.Brand_String, Globals.Inventory.Brand);
-						add_inventory.clearAndTypeSlowly(Globals.Inventory.Brand, "input#txtSearch");
-						add_inventory.return_td_invoke_element(Globals.Inventory.Brand).click();
 						
 					}
 				    if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch)) {
 				        terPage.get_checkBox_element(icp.Batch_String).click();
+				        webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWQty")).sendKeys(Keys.F3);
+				        
 
 			        }
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemName)) {
@@ -100,8 +100,9 @@ package com.unipro.test.page_objects.unixpro;
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemCode)) {
 						terPage.terminal_waitClearEnterText_css(icp.ItemCode_String, Globals.Inventory.ItemCode);
-						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtItemCodeAdd")).sendKeys(Keys.RETURN);
-						
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWQty")).sendKeys(Keys.ENTER);
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWQty")).sendKeys(Keys.ENTER);
+						webDriver.findElement(By.cssSelector("#dataGridBatchTable_master_row0 > td.BatchNo")).click();
 
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.InvQty)) {
@@ -129,14 +130,7 @@ package com.unipro.test.page_objects.unixpro;
 						}
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFoc")).sendKeys(Keys.RETURN);
 					}
-					if (GenericWrappers.isNotEmpty(Globals.Inventory.MRP)) {
-						if (Globals.Inventory.MRP.contains(".")) {
-							icp.setTextValue_Decimal(icp.MRP_String, Globals.Inventory.MRP);
-						} else {
-							icp.setTextValue(icp.MRP_String, Globals.Inventory.MRP);
-						}
-						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMrp")).sendKeys(Keys.RETURN);
-					}
+
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.BasicCost)) {
 						if (Globals.Inventory.BasicCost.contains(".")) {
 							icp.setTextValue_Decimal(icp.BasicCost_String, Globals.Inventory.BasicCost);
@@ -153,26 +147,20 @@ package com.unipro.test.page_objects.unixpro;
 						}
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSDPrc")).sendKeys(Keys.RETURN);
 					}
-					if (GenericWrappers.isNotEmpty(Globals.Inventory.AddDed)) {
-						 {
-							
-							 terPage.terminal_waitClearEnterText_css(icp.AddDed_String, Globals.Inventory.AddDed);
+					if (GenericWrappers.isNotEmpty(Globals.Inventory.SDA)) {
+						if (Globals.Inventory.SDA.contains(".")) {
+							icp.setTextValue_Decimal(icp.SDA_String, Globals.Inventory.SDA);
+						} else {
+							icp.setTextValue(icp.SDA_String, Globals.Inventory.SDA);
 						}
-						 webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCess")).sendKeys(Keys.RETURN);
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSDPrc")).sendKeys(Keys.RETURN);
 					}
-			 
+				
 		   }
 		   
-		@Then("I need to search vendor")
-		public void i_fill_new_PO_data_page_using_excel_data() {
-			
-					if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {
-						terPage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
-						add_inventory.clearAndTypeSlowly(Globals.Inventory.Vendor, "input#txtSearch");
-						add_inventory.return_td_invoke_element(Globals.Inventory.Vendor).click();
-					}
-		}
-		}
 
 
 
+
+
+}

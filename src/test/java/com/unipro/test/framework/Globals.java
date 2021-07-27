@@ -22,6 +22,7 @@ public class Globals {
 		final public static String SHEETNAME9 = "Class";
 		final public static String SHEETNAME10 = "Subclass";
 		final public static String SHEETNAME11 = "Itemtype";
+		final public static String SHEETNAME12 = "Purchasereturn";
 		public static Table<String, String, String> inventorySheetData;
 		public static Table<String, String, String> DepartmentSheetData;
 		public static Table<String, String, String> CategorySheetData;
@@ -34,6 +35,7 @@ public class Globals {
 		public static Table<String, String, String> ClassSheetData;
 		public static Table<String, String, String> SubclassSheetData;
 		public static Table<String, String, String> ItemtypeSheetData;
+		public static Table<String, String, String> PurchasereturnSheetData;
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
 		public static Map<String, String> CategoryrowwiseData;
@@ -46,6 +48,7 @@ public class Globals {
 		public static Map<String, String> ClassrowwiseData;
 		public static Map<String, String> SubclassrowwiseData;
 		public static Map<String, String> ItemtyperowwiseData;
+		public static Map<String, String> PurchasereturnrowwiseData;
 		
 		public static String Cess;
 		public static String AdlCsAmt;
