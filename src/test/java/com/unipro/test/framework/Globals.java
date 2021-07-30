@@ -23,6 +23,8 @@ public class Globals {
 		final public static String SHEETNAME10 = "Subclass";
 		final public static String SHEETNAME11 = "Itemtype";
 		final public static String SHEETNAME12 = "Purchasereturn";
+		final public static String SHEETNAME13 = "Tax";
+		final public static String SHEETNAME14 = "Uom";
 		public static Table<String, String, String> inventorySheetData;
 		public static Table<String, String, String> DepartmentSheetData;
 		public static Table<String, String, String> CategorySheetData;
@@ -36,6 +38,8 @@ public class Globals {
 		public static Table<String, String, String> SubclassSheetData;
 		public static Table<String, String, String> ItemtypeSheetData;
 		public static Table<String, String, String> PurchasereturnSheetData;
+		public static Table<String, String, String> TaxSheetData;
+		public static Table<String, String, String> UomSheetData;
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
 		public static Map<String, String> CategoryrowwiseData;
@@ -49,6 +53,8 @@ public class Globals {
 		public static Map<String, String> SubclassrowwiseData;
 		public static Map<String, String> ItemtyperowwiseData;
 		public static Map<String, String> PurchasereturnrowwiseData;
+		public static Map<String, String> TaxrowwiseData;
+		public static Map<String, String> UomrowwiseData;
 		
 		public static String Cess;
 		public static String AdlCsAmt;
@@ -109,6 +115,7 @@ public class Globals {
 		public static String Categoryname;
 		public static String Billno;
 		public static String Billdate;
+		public static String Date;
 		public static String GrossAmount;
 		public static String GST;
 		public static String TotalAmount;
@@ -131,12 +138,19 @@ public class Globals {
 		public static String D3;
 		public static String BillAmt;
 		public static String Batch2;
+		public static String Batch1;
 		public static String Floorcode;
 		public static String Description;
 		public static String Classcode;
 		public static String Subclasscode;
 		public static String Itemtypecode;
 		public static String foc;
+		public static String Taxcode;
+		public static String IGST;
+		public static String SGST;
+		public static String CGST;
+		public static String Uomcode;
+		public static String Units;
 		
 	
 		
