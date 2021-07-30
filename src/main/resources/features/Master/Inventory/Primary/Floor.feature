@@ -21,8 +21,8 @@ Feature: PoS Master > Location
     #When Im waiting for 2 sec
     #Then I need to invoke the DropDown by Index 0 if text matching "-- Select --"
     #Then I need to select the dropdown "HQ" value forLabel "Location" using Javascript
-    #Then I load the testdatas form excel to table
-    #Then I load the Floor sheet data to map
+    Then I load the testdatas form excel to table
+    Then I load the Floor sheet data to map
     #Then I load the rowise Floor data for "<TestcaseRowName>" rowname
     #Then I update value to the Floor page global Variables
     #Then I fill new Floor data page using excel data
