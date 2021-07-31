@@ -43,7 +43,7 @@ public class CreateGA extends PageObject {
 
 		// Globals.excelSheetData = ReadXLSXFile.getExcelAsMapTable("./testdata/sample
 		// mrp.xlsx");
-		Globals.excelSheetData = ReadXLSXFile.getExcelAsMapTable("./testdata/sample inventory all.xlsx");
+		Globals.excelSheetData = ReadXLSXFile.getExcelAsMapTable("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
 
 	}
 	@Then("I load the GA sheet data to map")

@@ -9,7 +9,7 @@ Feature: PoS Master > Location
     Then I clik on the login button
     Then I verify the page Title
     
-    Scenario Outline: Home > Master > Inventory > Category Master
+    Scenario Outline:
     Given I want to launch the "Masters/frmUOM.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "1"
     #When Im waiting for 2 sec
