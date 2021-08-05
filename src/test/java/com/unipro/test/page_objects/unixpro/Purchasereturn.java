@@ -78,7 +78,7 @@ package com.unipro.test.page_objects.unixpro;
 						terPage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
 						add_inventory.clearAndTypeSlowly(Globals.Inventory.Vendor, "input#txtSearch");
 						add_inventory.return_td_invoke_element(Globals.Inventory.Vendor).click();
-						
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWQty")).sendKeys(Keys.F3);
 						//webDriver.findElement(By.cssSelector("//*[@id=\"ContentPlaceHolder1_lnkAddInv\"]")).click();						
 
 						}

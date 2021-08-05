@@ -11,7 +11,7 @@ Feature: PoS Inventory > Add Inventory
 
   @july2020
   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
-    Given I want to launch the "Purchase/frmPurchaseReturnView.aspx"
+    Given I want to launch the "Purchase/frmPurchaseReturnList.aspx"
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkAdd"
     #Then I need to search vendor
     When Im waiting for 2 sec
@@ -19,10 +19,12 @@ Feature: PoS Inventory > Add Inventory
     #Then I need to click on the  element "input#ContentPlaceHolder1_gvPR_imgbtnDelete_0"
     #Then I need to click on the  Xpath "/html/body/div[6]/div[3]/div/button[1]"
     Then I load the testdatas form excel to table
-    Then I load the PR sheet data to map
-    Then I load the rowise PR data for "<TestcaseRowName>" rowname
-    Then I update value to the PR page global Variables
-    Then I fill new PR data page using excel data
+    Then I load the PRR sheet data to map
+    Then I load the rowise PRR data for "<TestcaseRowName>" rowname
+    Then I update value to the PRR page global Variables
+    Then I fill new PRR data page using excel data
+    Then I need to click on the  element "#ContentPlaceHolder1_DropDownVendor_chzn"
+    Then I need to select the dropdown "A.K.H. TRADERS" value forLabel "Vendor" using Javascript          
     When Im waiting for 2 sec
     #Then I enter the value forElement "input#ContentPlaceHolder1_gvVendorItem_txtLQty_0" as "1"
     #Then I enter the value forElement "input#ContentPlaceHolder1_gvVendorLoadItemList_txtQty_1" as "1"
@@ -33,9 +35,7 @@ Feature: PoS Inventory > Add Inventory
     #Then I enter the send Keys "input#ContentPlaceHolder1_txtItemCodeAdd" as "F3"
     #When Im waiting for 2 sec
     Then I need to click on the blue "AddInv" button
-    Then I need to invoke the DropDown by Index 1 if text matching "-- Select --"
-    Then I need to click on the  element "#ContentPlaceHolder1_ddlRemarks_chzn > a > span"
-    Then I need to select the dropdown "DAMAGE" value forLabel "Remarks" using Javascript
+    Then I need to invoke the DropDown by Index 1 if text matching "-- Select --"   
     Then I need to click on the "Save" button
     Then I need to click on the  Xpath "/html/body/div[6]/div[3]/div/button"
     
@@ -43,4 +43,4 @@ Feature: PoS Inventory > Add Inventory
     
      Examples: 
       | TestcaseRowName |
-      |PR1           |
+      |PRR           |

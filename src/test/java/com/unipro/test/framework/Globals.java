@@ -26,6 +26,9 @@ public class Globals {
 		final public static String SHEETNAME13 = "Tax";
 		final public static String SHEETNAME14 = "Uom";
 		final public static String SHEETNAME15 = "Section";
+		final public static String SHEETNAME16 = "Bin";
+		final public static String SHEETNAME17 = "PurchasereturnReq";
+		final public static String SHEETNAME18 = "Shelf";
 		public static Table<String, String, String> inventorySheetData;
 		public static Table<String, String, String> DepartmentSheetData;
 		public static Table<String, String, String> CategorySheetData;
@@ -39,9 +42,12 @@ public class Globals {
 		public static Table<String, String, String> SubclassSheetData;
 		public static Table<String, String, String> ItemtypeSheetData;
 		public static Table<String, String, String> PurchasereturnSheetData;
+		public static Table<String, String, String> PurchasereturnReqSheetData;
 		public static Table<String, String, String> TaxSheetData;
 		public static Table<String, String, String> UomSheetData;
 		public static Table<String, String, String> SectionSheetData;
+		public static Table<String, String, String> BinSheetData;
+		public static Table<String, String, String> ShelfSheetData;
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
 		public static Map<String, String> CategoryrowwiseData;
@@ -58,6 +64,9 @@ public class Globals {
 		public static Map<String, String> TaxrowwiseData;
 		public static Map<String, String> UomrowwiseData;
 		public static Map<String, String> SectionrowwiseData;
+		public static Map<String, String> BinrowwiseData;
+		public static Map<String, String> PurchasereturnReqrowwiseData;
+		public static Map<String, String> ShelfrowwiseData;
 		
 		public static String Cess;
 		public static String AdlCsAmt;
@@ -133,9 +142,9 @@ public class Globals {
 		public static String InvQty;
 		public static String RecvQty;
 		public static String DiscP;
+		public static String SDA;
 		public static String DiscA;
 		public static String SDP;
-		public static String SDA;
 		public static String D1;
 		public static String D2;
 		public static String D3;
@@ -154,6 +163,10 @@ public class Globals {
 		public static String CGST;
 		public static String Uomcode;
 		public static String Units;
+		public static String Qty;
+		public static String Bincode;
+		public static String LocationCode;
+		public static String ShelfCode;
 		
 	
 		
