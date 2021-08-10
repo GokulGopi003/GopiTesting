@@ -75,7 +75,7 @@ import org.openqa.selenium.By;
 					add_inventory.clearAndTypeSlowly(Globals.Inventory.LocationCode, "input#txtSearch");
 					add_inventory.return_td_invoke_element(Globals.Inventory.LocationCode).click();
 					
-
+                    
 				       }
 			       if (GenericWrappers.isNotEmpty(Globals.Inventory.Remark)) {
 				   terPage.terminal_waitClearEnterText_css(icp.Remark_String, Globals.Inventory.Remark);
@@ -84,9 +84,9 @@ import org.openqa.selenium.By;
 			        }
 			
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemCode)) {
-						terPage.terminal_waitClearEnterText_css(icp.ItemCode_String, Globals.Inventory.ItemCode);
-						//webDriver.findElement(By.cssSelector("//*[@id=\"ContentPlaceHolder1_lnkAddInv\"]")).click();						
+						terPage.terminal_waitClearEnterText_css(icp.ItemCode_String, Globals.Inventory.ItemCode);				
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtInventoryCode")).sendKeys(Keys.ENTER);
+						webDriver.findElement(By.cssSelector("#dataGridBatchTable_master_row0 > td.BatchNo")).click();
 						}
 					
 					
@@ -96,7 +96,7 @@ import org.openqa.selenium.By;
 						} else {
 							icp.setTextValue(icp.InvQty_String, Globals.Inventory.InvQty);
 						}
-						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWQty")).sendKeys(Keys.RETURN    );
+						
 					}
 					
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {

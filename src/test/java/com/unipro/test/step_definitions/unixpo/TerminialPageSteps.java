@@ -68,6 +68,26 @@ public class TerminialPageSteps {
 
 	}
 
+	@Then("I need to select the Vendor {string} value forLabel {string} using Javascript")
+	public void i_need_to_select_the_Vendor_value_forLabel_using_Javascript(String value, String forLabel) {
+
+		WebElement dd_element = ter_Page.SelectDropDownUsingSerachBox(value, forLabel);
+
+		dd_element.sendKeys(Keys.SPACE);
+		dd_element.sendKeys(Keys.SPACE);
+		dd_element.sendKeys(Keys.ARROW_DOWN);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		dd_element.sendKeys(Keys.ENTER);
+
+	}
+	
+
 	@Then("I need to select the dropdown {string} value forElement {string} using Javascript")
 	public void i_need_to_select_the_dropdown_value_forElement_using_Javascript(String value, String forElement) {
 

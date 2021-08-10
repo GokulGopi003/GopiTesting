@@ -29,6 +29,8 @@ public class Globals {
 		final public static String SHEETNAME16 = "Bin";
 		final public static String SHEETNAME17 = "PurchasereturnReq";
 		final public static String SHEETNAME18 = "Shelf";
+		final public static String SHEETNAME19 = "Warehouse";
+		final public static String SHEETNAME20 = "Size";
 		public static Table<String, String, String> inventorySheetData;
 		public static Table<String, String, String> DepartmentSheetData;
 		public static Table<String, String, String> CategorySheetData;
@@ -48,6 +50,8 @@ public class Globals {
 		public static Table<String, String, String> SectionSheetData;
 		public static Table<String, String, String> BinSheetData;
 		public static Table<String, String, String> ShelfSheetData;
+		public static Table<String, String, String> WarehouseSheetData;
+		public static Table<String, String, String> SizeSheetData;
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
 		public static Map<String, String> CategoryrowwiseData;
@@ -67,6 +71,8 @@ public class Globals {
 		public static Map<String, String> BinrowwiseData;
 		public static Map<String, String> PurchasereturnReqrowwiseData;
 		public static Map<String, String> ShelfrowwiseData;
+		public static Map<String, String> WarehouserowwiseData;
+		public static Map<String, String> SizerowwiseData;
 		
 		public static String Cess;
 		public static String AdlCsAmt;
@@ -167,8 +173,16 @@ public class Globals {
 		public static String Bincode;
 		public static String LocationCode;
 		public static String ShelfCode;
-		
-	
+		public static String WarehouseCode;
+		public static String WarehouseName;
+		public static String Address;
+		public static String Address1;
+		public static String Address2;
+		public static String Pincode;
+		public static String Phone;
+		public static String Fax;
+		public static String Netcost;
+		public static String SizeCode;
 		
 	}
 	
