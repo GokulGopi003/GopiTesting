@@ -65,6 +65,7 @@ import org.openqa.selenium.By;
 			Globals.Inventory.Remark = Globals.Inventory.PurchasereturnReqrowwiseData.get("Remark");
 			Globals.Inventory.LocationCode = Globals.Inventory.PurchasereturnReqrowwiseData.get("LocationCode");
 			Globals.Inventory.Vendor = Globals.Inventory.PurchasereturnReqrowwiseData.get("Vendor");
+			Globals.Inventory.Batchrowno = Globals.Inventory.PurchasereturnReqrowwiseData.get("Batchrowno");
 		}
 
 		@Then("I fill new PRR data page using excel data")
@@ -86,8 +87,19 @@ import org.openqa.selenium.By;
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemCode)) {
 						terPage.terminal_waitClearEnterText_css(icp.ItemCode_String, Globals.Inventory.ItemCode);				
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtInventoryCode")).sendKeys(Keys.ENTER);
-						webDriver.findElement(By.cssSelector("#dataGridBatchTable_master_row0 > td.BatchNo")).click();
+						GenericWrappers.sleepInSeconds(1);
+
 						}
+					if (GenericWrappers.isNotEmpty(Globals.Inventory.Batchrowno)) {
+						try {
+
+							webDriver.findElement(By.cssSelector("#dataGridBatchTable_master_row"+ Globals.Inventory.Batchrowno +"> td.BatchNo")).click();
+							} catch (Exception e) {
+								System.out.println("Element  not found");
+							}
+
+					}
+						
 					
 					
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.InvQty)) {
@@ -100,9 +112,23 @@ import org.openqa.selenium.By;
 					}
 					
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {
-						webDriver.findElement(By.cssSelector("div#ContentPlaceHolder1_DropDownVendor_chzn.chzn-container.chzn-container-single.chzn-container-single-nosearch")).click();
-						terPage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
-						//webDriver.findElement(By.cssSelector("//*[@id=\"ContentPlaceHolder1_lnkAddInv\"]")).click();						
+						webDriver.findElement(By.cssSelector("div#ContentPlaceHolder1_DropDownVendor_chzn.chzn-container.chzn-container-single")).click();
+						GenericWrappers.sleepInSeconds(1);
+						//terPage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
+						WebElement itemCodeValue = webDriver.findElement(By.cssSelector("#ContentPlaceHolder1_DropDownVendor_chzn > div > div > input[type=text]"));
+						String css_location_dropDownValue = "#ContentPlaceHolder1_DropDownVendor_chzn > div > div > input[type=text]";
+						By ddlocator = By.cssSelector(css_location_dropDownValue);
+						waitForExpectedElement(ddlocator);
+						js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.Vendor);
+						GenericWrappers.sleepInSeconds(1);
+						itemCodeValue.sendKeys(Keys.SPACE);
+						itemCodeValue.sendKeys(Keys.SPACE);
+						itemCodeValue.sendKeys(Keys.ARROW_DOWN);
+						GenericWrappers.sleepInSeconds(1);
+						itemCodeValue.sendKeys(Keys.ENTER);
+                       
+					}
+											
 
 						}
 					
@@ -115,6 +141,6 @@ import org.openqa.selenium.By;
 
 
 
-}
+
 
 

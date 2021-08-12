@@ -8,6 +8,8 @@ Feature: PoS Inventory > Add Inventory
     When I enter the password
     Then I clik on the login button
     Then I verify the page Title
+    
+    
 
   @july2020
   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
@@ -32,7 +34,7 @@ Feature: PoS Inventory > Add Inventory
     #Then I enter the value forElement "input#ContentPlaceHolder1_gvVendorLoadItemList_txtQty_5" as "1"
     #Then I enter the send Keys "input#ContentPlaceHolder1_txtItemCodeAdd" as "F3"
     #When Im waiting for 2 sec
-    Then I need to click on the blue "AddInv" button
+    Then I need to click on the "Add" button
     Then I need to invoke the DropDown by Index 1 if text matching "-- Select --"
     Then I need to click on the  element "#ContentPlaceHolder1_ddlRemarks_chzn > a > span"
     Then I need to select the dropdown "DAMAGE" value forLabel "Remarks" using Javascript

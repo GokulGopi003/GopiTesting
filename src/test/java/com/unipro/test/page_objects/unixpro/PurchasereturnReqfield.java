@@ -15,7 +15,7 @@ package com.unipro.test.page_objects.unixpro;
 		public class PurchasereturnReqfield  extends PageObject {
 			public String LocationCode_String = "input#ContentPlaceHolder1_txtLocation";
 			public String Remark_String = "input#ContentPlaceHolder1_txtRemarks";
-			public String Vendor_String = "div#ContentPlaceHolder1_DropDownVendorchzn-container chzn-container-single";
+			public String Vendor_String = "div#ContentPlaceHolder1_DropDownVendor_chzn.chzn-container.chzn-container-single";
 			public String ItemCode_String = "input#ContentPlaceHolder1_txtInventoryCode";
 			
 			public String InvQty_String = "input#ContentPlaceHolder1_txtPRRQty";

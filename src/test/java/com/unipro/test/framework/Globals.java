@@ -183,6 +183,7 @@ public class Globals {
 		public static String Fax;
 		public static String Netcost;
 		public static String SizeCode;
+		public static String Batchrowno;
 		
 	}
 	
