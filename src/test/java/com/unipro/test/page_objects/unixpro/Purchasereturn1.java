@@ -15,10 +15,11 @@ package com.unipro.test.page_objects.unixpro;
 
 		public class Purchasereturn1  extends PageObject {
 			public String Vendor_String = "input#ContentPlaceHolder1_txtVendor";
-			public String Brand_String = "input#ContentPlaceHolder1_txtItemCode";
+			public String Date_String = "input#ContentPlaceHolder1_txtReturnDate";
 			public String Batch_String = "input#ContentPlaceHolder1_cbVendorItem";
-			public String ItemName_String = "input#ContentPlaceHolder1_txtItemCodeAdd";
+			public String ItemName_String = "input#ContentPlaceHolder1_txtItemCode";
 			public String ItemCode_String = "input#ContentPlaceHolder1_txtItemCodeAdd";
+			public String LocationCode_String = "input#ContentPlaceHolder1_txtLocation";
 			
 			public String InvQty_String = "input#ContentPlaceHolder1_txtWQty";
 			public By InvQty_By = By.cssSelector(InvQty_String);

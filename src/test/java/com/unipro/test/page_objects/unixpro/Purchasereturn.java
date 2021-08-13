@@ -58,7 +58,7 @@ public class Purchasereturn extends PageObject {
 	@Then("I update value to the PR page global Variables")
 	public void i_update_value_to_the_PR_page_global_Variables() {
 		Globals.Inventory.Vendor = Globals.Inventory.PurchasereturnrowwiseData.get("Vendor");
-		Globals.Inventory.Brand = Globals.Inventory.PurchasereturnrowwiseData.get("Brand");
+		Globals.Inventory.Date = Globals.Inventory.PurchasereturnrowwiseData.get("Date");
 		Globals.Inventory.Batch = Globals.Inventory.PurchasereturnrowwiseData.get("Batch");
 		Globals.Inventory.ItemName = Globals.Inventory.PurchasereturnrowwiseData.get("ItemName");
 		Globals.Inventory.ItemCode = Globals.Inventory.PurchasereturnrowwiseData.get("ItemCode");
@@ -69,22 +69,74 @@ public class Purchasereturn extends PageObject {
 		Globals.Inventory.SDP = Globals.Inventory.PurchasereturnrowwiseData.get("SDP");
 		Globals.Inventory.SDA = Globals.Inventory.PurchasereturnrowwiseData.get("SDA");
 		Globals.Inventory.Batchrowno = Globals.Inventory.PurchasereturnrowwiseData.get("Batchrowno");
+		Globals.Inventory.LocationCode = Globals.Inventory.PurchasereturnrowwiseData.get("LocationCode");
+		Globals.Inventory.Vendorbillno = Globals.Inventory.PurchasereturnrowwiseData.get("Vendorbillno");
+		Globals.Inventory.Gidno = Globals.Inventory.PurchasereturnrowwiseData.get("Gidno");
 	}
 
 	@Then("I fill new PR data page using excel data")
 	public void i_fill_new_PR_data_page_using_excel_data() {
+		  if (GenericWrappers.isNotEmpty(Globals.Inventory.LocationCode)) {
+				terPage.terminal_waitClearEnterText_css(icp.LocationCode_String, Globals.Inventory.LocationCode);
+				add_inventory.clearAndTypeSlowly(Globals.Inventory.LocationCode, "input#txtSearch");
+				add_inventory.return_td_invoke_element(Globals.Inventory.LocationCode).click();
+				
+              
+		}
 
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {
 			terPage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Vendor, "input#txtSearch");
+			GenericWrappers.sleepInSeconds(1);
 			add_inventory.return_td_invoke_element(Globals.Inventory.Vendor).click();
-			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtVendor")).sendKeys(Keys.F3);
+			//webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtVendor")).sendKeys(Keys.F3);
 			// webDriver.findElement(By.cssSelector("//*[@id=\"ContentPlaceHolder1_lnkAddInv\"]")).click();
 
 		}
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemName)) {
+			terPage.terminal_waitClearEnterText_css(icp.ItemName_String, Globals.Inventory.ItemName);
+			
 
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Brand)) {
-			terPage.terminal_waitClearEnterText_css(icp.Brand_String, Globals.Inventory.Brand);
+	    }
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendorbillno)) {
+			webDriver.findElement(By.cssSelector("div#ContentPlaceHolder1_ddlVendorBillNo_chzn")).click();
+			GenericWrappers.sleepInSeconds(1);
+			//terPage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
+			WebElement itemCodeValue = webDriver.findElement(By.cssSelector("#ContentPlaceHolder1_ddlVendorBillNo_chzn > div > div > input[type=text]"));
+			String css_location_dropDownValue = "#ContentPlaceHolder1_ddlVendorBillNo_chzn > div > div > input[type=text]";
+			By ddlocator = By.cssSelector(css_location_dropDownValue);
+			waitForExpectedElement(ddlocator);
+			js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.Vendorbillno);
+			GenericWrappers.sleepInSeconds(1);
+			itemCodeValue.sendKeys(Keys.SPACE);
+			itemCodeValue.sendKeys(Keys.SPACE);
+			itemCodeValue.sendKeys(Keys.ARROW_DOWN);
+			GenericWrappers.sleepInSeconds(1);
+			itemCodeValue.sendKeys(Keys.ENTER);
+           
+		}
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Gidno)) {
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("div#ContentPlaceHolder1_ddlGIDNo_chzn")).click();
+			GenericWrappers.sleepInSeconds(1);
+			//terPage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
+			WebElement itemCodeValue = webDriver.findElement(By.cssSelector("#ContentPlaceHolder1_ddlGIDNo_chzn > div > div > input[type=text]"));
+			String css_location_dropDownValue = "#ContentPlaceHolder1_ddlGIDNo_chzn > div > div > input[type=text]";
+			By ddlocator = By.cssSelector(css_location_dropDownValue);
+			waitForExpectedElement(ddlocator);
+			js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.Gidno);
+			GenericWrappers.sleepInSeconds(1);
+			itemCodeValue.sendKeys(Keys.SPACE);
+			itemCodeValue.sendKeys(Keys.SPACE);
+			itemCodeValue.sendKeys(Keys.ARROW_DOWN);
+			GenericWrappers.sleepInSeconds(1);
+			itemCodeValue.sendKeys(Keys.ENTER);
+           
+		}
+
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Date)) {
+			terPage.terminal_waitClearEnterText_css(icp.Date_String, Globals.Inventory.Date);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtReturnDate")).sendKeys(Keys.ENTER);
 
 		}
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch)) {
@@ -92,10 +144,7 @@ public class Purchasereturn extends PageObject {
 			
 
 		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemName)) {
-			terPage.terminal_waitClearEnterText_css(icp.ItemName_String, Globals.Inventory.ItemName);
-
-		}
+		
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemCode)) {
 			terPage.terminal_waitClearEnterText_css(icp.ItemCode_String, Globals.Inventory.ItemCode);
 			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtItemCodeAdd")).sendKeys(Keys.ENTER);

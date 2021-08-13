@@ -184,6 +184,8 @@ public class Globals {
 		public static String Netcost;
 		public static String SizeCode;
 		public static String Batchrowno;
+		public static String Vendorbillno;
+		public static String Gidno;
 		
 	}
 	
