@@ -18,7 +18,7 @@ Feature: PoS Inventory > Add Inventory
     #Then I need to click on the blue "Yes" button
     Then I load the testdatas form excel to table
     Then I load the CreditDebitnote sheet data to map
-    Then I load the rowise GA data for "<TestcaseRowName>" rowname
+    Then I load the rowise CreditDebitnote data for "<TestcaseRowName>" rowname
     Then I update value to the GA page global Variables
     Then I fill new GA data page using excel data
     #When Im waiting for 2 sec
