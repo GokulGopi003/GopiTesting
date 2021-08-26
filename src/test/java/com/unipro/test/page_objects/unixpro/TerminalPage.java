@@ -55,8 +55,8 @@ public class TerminalPage extends PageObject {
 
 	public WebElement SelectDropDownUsingSerachBox(String valueToSearch, String forLabel) {
 
-		String css_location_dropDownValue = "#ContentPlaceHolder1_DropDown" + forLabel
-				+ "_chzn > div > div > input[type=text]";
+		String css_location_dropDownValue = "#ContentPlaceHolder1_" + forLabel
+				+ "DropDown_chzn > div > div > input[type=text]";
 		By ddlocator = By.cssSelector(css_location_dropDownValue);
 		waitForExpectedElement(ddlocator);
 		js_typeIntoDropDownSearchBox(css_location_dropDownValue, valueToSearch);

@@ -31,6 +31,8 @@ public class Globals {
 		final public static String SHEETNAME18 = "Shelf";
 		final public static String SHEETNAME19 = "Warehouse";
 		final public static String SHEETNAME20 = "Size";
+		final public static String SHEETNAME21 = "Style";
+		final public static String SHEETNAME22 = "Baseuom";
 		public static Table<String, String, String> inventorySheetData;
 		public static Table<String, String, String> DepartmentSheetData;
 		public static Table<String, String, String> CategorySheetData;
@@ -52,6 +54,8 @@ public class Globals {
 		public static Table<String, String, String> ShelfSheetData;
 		public static Table<String, String, String> WarehouseSheetData;
 		public static Table<String, String, String> SizeSheetData;
+		public static Table<String, String, String> StyleSheetData;
+		public static Table<String, String, String> BaseuomSheetData;
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
 		public static Map<String, String> CategoryrowwiseData;
@@ -73,6 +77,8 @@ public class Globals {
 		public static Map<String, String> ShelfrowwiseData;
 		public static Map<String, String> WarehouserowwiseData;
 		public static Map<String, String> SizerowwiseData;
+		public static Map<String, String> StylerowwiseData;
+		public static Map<String, String> BaseuomrowwiseData;
 		
 		public static String Cess;
 		public static String AdlCsAmt;
@@ -186,6 +192,10 @@ public class Globals {
 		public static String Batchrowno;
 		public static String Vendorbillno;
 		public static String Gidno;
+		public static String StyleCode;
+		public static String Origion;
+		public static String Baseuomcode;
+		public static String Baseuomdescription;
 		
 	}
 	

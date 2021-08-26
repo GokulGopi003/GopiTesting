@@ -77,7 +77,7 @@ import org.openqa.selenium.By;
 					add_inventory.return_td_invoke_element(Globals.Inventory.LocationCode).click();
 					
                     
-				       }
+				    }
 			       if (GenericWrappers.isNotEmpty(Globals.Inventory.Remark)) {
 				   terPage.terminal_waitClearEnterText_css(icp.Remark_String, Globals.Inventory.Remark);
 			
