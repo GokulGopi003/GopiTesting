@@ -33,6 +33,9 @@ public class Globals {
 		final public static String SHEETNAME20 = "Size";
 		final public static String SHEETNAME21 = "Style";
 		final public static String SHEETNAME22 = "Baseuom";
+		final public static String SHEETNAME23 = "CreditDebitnote";
+		final public static String SHEETNAME24 = "AddDed";
+		
 		public static Table<String, String, String> inventorySheetData;
 		public static Table<String, String, String> DepartmentSheetData;
 		public static Table<String, String, String> CategorySheetData;
@@ -56,6 +59,9 @@ public class Globals {
 		public static Table<String, String, String> SizeSheetData;
 		public static Table<String, String, String> StyleSheetData;
 		public static Table<String, String, String> BaseuomSheetData;
+		public static Table<String, String, String> CreditDebitnoteSheetData;
+		public static Table<String, String, String> AddDedSheetData;
+		
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
 		public static Map<String, String> CategoryrowwiseData;
@@ -79,6 +85,8 @@ public class Globals {
 		public static Map<String, String> SizerowwiseData;
 		public static Map<String, String> StylerowwiseData;
 		public static Map<String, String> BaseuomrowwiseData;
+		public static Map<String, String> CreditDebitnoterowwiseData;
+		public static Map<String, String> AddDedrowwiseData;
 		
 		public static String Cess;
 		public static String AdlCsAmt;
@@ -196,6 +204,10 @@ public class Globals {
 		public static String Origion;
 		public static String Baseuomcode;
 		public static String Baseuomdescription;
+		public static String Vendorno;
+		public static String Reason;
+		public static String Dicountcode;
+		public static String Type;
 		
 	}
 	
