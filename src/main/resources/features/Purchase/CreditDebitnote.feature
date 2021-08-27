@@ -27,4 +27,4 @@ Feature: PoS Inventory > Add Inventory
     
      Examples: 
       | TestcaseRowName |
-      |CreditDebitnote1           |
+      |CreditDebitnote           |
