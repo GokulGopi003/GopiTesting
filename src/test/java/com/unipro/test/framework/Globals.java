@@ -35,6 +35,16 @@ public class Globals {
 		final public static String SHEETNAME22 = "Baseuom";
 		final public static String SHEETNAME23 = "CreditDebitnote";
 		final public static String SHEETNAME24 = "AddDed";
+		final public static String SHEETNAME25 = "Zone";
+		final public static String SHEETNAME26 = "PoVendorChange";
+		final public static String SHEETNAME27 = "CompanySettings";
+		final public static String SHEETNAME28 = "DisplayandContracts";
+		final public static String SHEETNAME29 = "StockAdjustmentType";
+		final public static String SHEETNAME30 = "Merchandise";
+		final public static String SHEETNAME31 = "ConsolidatedPocreate";
+		final public static String SHEETNAME32 = "PurchaseOrderStatus";
+		final public static String SHEETNAME33 = "Manufacturer";
+		
 		
 		public static Table<String, String, String> inventorySheetData;
 		public static Table<String, String, String> DepartmentSheetData;
@@ -61,6 +71,15 @@ public class Globals {
 		public static Table<String, String, String> BaseuomSheetData;
 		public static Table<String, String, String> CreditDebitnoteSheetData;
 		public static Table<String, String, String> AddDedSheetData;
+		public static Table<String, String, String> ZoneSheetData;
+		public static Table<String, String, String> PoVendorChangeSheetData;
+		public static Table<String, String, String> CompanySettingsSheetData;
+		public static Table<String, String, String> DisplayandContractsSheetData;
+		public static Table<String, String, String> StockAdjustmentTypeSheetData;
+		public static Table<String, String, String> MerchandiseSheetData;
+		public static Table<String, String, String> ConsolidatedPocreateSheetData;
+		public static Table<String, String, String> PurchaseOrderStatusSheetData;
+		public static Table<String, String, String> ManufacturerSheetData;
 		
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
@@ -87,6 +106,17 @@ public class Globals {
 		public static Map<String, String> BaseuomrowwiseData;
 		public static Map<String, String> CreditDebitnoterowwiseData;
 		public static Map<String, String> AddDedrowwiseData;
+		public static Map<String, String> ZonerowwiseData;
+		public static Map<String, String> PoVendorChangerowwiseData;
+		public static Map<String, String> CompanySettingsrowwiseData;
+		public static Map<String, String> DisplayandContractsrowwiseData;
+		public static Map<String, String> StockAdjustmentTyperowwiseData;
+		public static Map<String, String> MerchandiserowwiseData;
+		public static Map<String, String> ConsolidatedPocreaterowwiseData;
+		public static Map<String, String> PurchaseOrderStatusrowwiseData;
+		public static Map<String, String> ManufacturerrowwiseData;
+		
+		
 		
 		public static String Cess;
 		public static String AdlCsAmt;
@@ -208,6 +238,26 @@ public class Globals {
 		public static String Reason;
 		public static String Dicountcode;
 		public static String Type;
+		public static String Zonecode;
+		public static String ZoneName;
+		public static String PoNo;
+		public static String CompanyCode;
+		public static String CompanyName;
+		public static String Amount;
+		public static String PaymentDate;
+		public static String Refno;
+		public static String RefDate;
+		public static String AdjtypeCode;
+		public static String AdjtypeName;
+		public static String MerchandiseCode;
+		public static String Summary;
+		public static String Proceed;
+		public static String NewVendornum;
+		public static String Status;
+		public static String ManufacturerCode;
+		public static String ManufacturerName;
+		public static String Email;
+		
 		
 	}
 	

@@ -13,7 +13,7 @@ Feature: PoS Inventory > Add Inventory
   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Purchase/frmSupplierNoteSummary.aspx"
     #Then I need to click on the  element "a#ContentPlaceHolder1_lnkNewButton"
-    Then I need to click on the  element "a#ContentPlaceHolder1_lnkrefresh"
+    #Then I need to click on the  element "a#ContentPlaceHolder1_lnkrefresh"
     #Then I need to click on the  print
     #Then I need to click on the  Delete
     #Given I need to click on the  Xpath "/html/body/div[6]/div[3]/div/button[1]"
@@ -27,4 +27,4 @@ Feature: PoS Inventory > Add Inventory
     
      Examples: 
       | TestcaseRowName |
-      |CreditDebitnote           |
+      |CreditDebitnote2 |
