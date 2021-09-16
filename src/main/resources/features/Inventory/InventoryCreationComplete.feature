@@ -8,7 +8,7 @@ Feature: PoS Inventory > Add Inventory
     When I enter the password
     Then I clik on the login button
     Then I verify the page Title
-  @22july2021
+  @07092021
   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Then I load the testdata form excel to table
@@ -27,7 +27,7 @@ Feature: PoS Inventory > Add Inventory
     Then I click on button tag with value "Back"
     #Then I need to click on sub menu with text matching "Image"
     #When Im waiting for 5 sec
-    #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
+    #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "12"
     Then I need to click on the "Save" button
     Then I click dynamically on "NewItemNo" button
 
@@ -48,9 +48,9 @@ Feature: PoS Inventory > Add Inventory
     Then I fill inventory calculations page for MRP using excel data
     Then I verify the actual ui values with expected Excel values
     Then I click on button tag with value "Back"
-    Then I need to click on sub menu with text matching "Image"
+    #Then I need to click on sub menu with text matching "Image"
     When Im waiting for 5 sec
-    Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
+    #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
     Then I need to click on the "Save" button
     Then I click dynamically on "NewItemNo" button
 
@@ -71,9 +71,9 @@ Feature: PoS Inventory > Add Inventory
     Then I fill inventory calculations page for MRP using excel data
     Then I verify the actual ui values with expected Excel values
     Then I click on button tag with value "Back"
-    Then I need to click on sub menu with text matching "Image"
+    #Then I need to click on sub menu with text matching "Image"
     When Im waiting for 5 sec
-    Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
+    #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
     Then I need to click on the "Save" button
     Then I click dynamically on "NewItemNo" button
 
@@ -94,9 +94,9 @@ Feature: PoS Inventory > Add Inventory
     Then I fill inventory calculations page for MRP using excel data
     Then I verify the actual ui values with expected Excel values
     Then I click on button tag with value "Back"
-    Then I need to click on sub menu with text matching "Image"
+    #Then I need to click on sub menu with text matching "Image"
     When Im waiting for 5 sec
-    Then I enter the value forimageElement "input#ContentPlaceHolder1_fuimage"
+    #Then I enter the value forimageElement "input#ContentPlaceHolder1_fuimage"
     Then I need to click on the "Save" button
     Then I click dynamically on "NewItemNo" button
 

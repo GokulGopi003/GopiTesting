@@ -44,6 +44,9 @@ public class Globals {
 		final public static String SHEETNAME31 = "ConsolidatedPocreate";
 		final public static String SHEETNAME32 = "PurchaseOrderStatus";
 		final public static String SHEETNAME33 = "Manufacturer";
+		final public static String SHEETNAME34 = "AutoPO";
+		final public static String SHEETNAME35 = "Vendorcatelog";
+		final public static String SHEETNAME36 = "ConsolidatedPO";
 		
 		
 		public static Table<String, String, String> inventorySheetData;
@@ -80,6 +83,9 @@ public class Globals {
 		public static Table<String, String, String> ConsolidatedPocreateSheetData;
 		public static Table<String, String, String> PurchaseOrderStatusSheetData;
 		public static Table<String, String, String> ManufacturerSheetData;
+		public static Table<String, String, String> AutoPOSheetData;
+		public static Table<String, String, String> VendorcatelogSheetData;
+		public static Table<String, String, String> ConsolidatedPOSheetData;
 		
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
@@ -115,6 +121,10 @@ public class Globals {
 		public static Map<String, String> ConsolidatedPocreaterowwiseData;
 		public static Map<String, String> PurchaseOrderStatusrowwiseData;
 		public static Map<String, String> ManufacturerrowwiseData;
+		public static Map<String, String> AutoPOrowwiseData;
+		public static Map<String, String> VendorcatelogrowwiseData;
+		public static Map<String, String> ConsolidatedPOrowwiseData;
+	
 		
 		
 		
@@ -257,6 +267,19 @@ public class Globals {
 		public static String ManufacturerCode;
 		public static String ManufacturerName;
 		public static String Email;
+		public static String MinMax;
+		public static String Bulkchild;
+		public static String Presupplywise;
+		public static String Basedoninventory;
+		public static String Soldqty;
+		public static String Reorderbynoofdays;
+		public static String Soldqtyinlastpurchase;
+		public static String Reqtycycledays;
+		public static String Barcode;
+		public static String LocationCode1;
+		public static String LocationCode2;
+
+		
 		
 		
 	}
