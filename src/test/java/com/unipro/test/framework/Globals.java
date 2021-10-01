@@ -47,6 +47,8 @@ public class Globals {
 		final public static String SHEETNAME34 = "AutoPO";
 		final public static String SHEETNAME35 = "Vendorcatelog";
 		final public static String SHEETNAME36 = "ConsolidatedPO";
+		final public static String SHEETNAME37 = "Inventorychange";
+		final public static String SHEETNAME38 = "InventoryCostReset";
 		
 		
 		public static Table<String, String, String> inventorySheetData;
@@ -86,6 +88,8 @@ public class Globals {
 		public static Table<String, String, String> AutoPOSheetData;
 		public static Table<String, String, String> VendorcatelogSheetData;
 		public static Table<String, String, String> ConsolidatedPOSheetData;
+		public static Table<String, String, String> InventorychangeSheetData;
+		public static Table<String, String, String> InventoryCostResetSheetData;
 		
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
@@ -124,6 +128,8 @@ public class Globals {
 		public static Map<String, String> AutoPOrowwiseData;
 		public static Map<String, String> VendorcatelogrowwiseData;
 		public static Map<String, String> ConsolidatedPOrowwiseData;
+		public static Map<String, String> InventorychangerowwiseData;
+		public static Map<String, String> InventoryCostResetrowwiseData;
 	
 		
 		
@@ -278,6 +284,10 @@ public class Globals {
 		public static String Barcode;
 		public static String LocationCode1;
 		public static String LocationCode2;
+		public static String Price;
+		public static String Batch3;
+		public static String Selectfield;
+		public static String Changefield;
 
 		
 		

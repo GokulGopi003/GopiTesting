@@ -21,6 +21,10 @@ Feature: PoS Inventory > Add Inventory
     Then I fill new ConsolidatedPO data page using excel data
     When Im waiting for 2 sec
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkFilter"
+    Then I need to click on the  element "a#ContentPlaceHolder1_lnkFilter"
+    Then I need to click on the  element "a#ContentPlaceHolder1_lnkUpdate"
+    Then I need to click on the  element "a#ContentPlaceHolder1_lnkClearAll"
+    Then I need to click on the  element "a#ContentPlaceHolder1_lnkExport"
     
     
     
