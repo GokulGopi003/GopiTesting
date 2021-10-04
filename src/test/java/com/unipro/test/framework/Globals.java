@@ -49,6 +49,7 @@ public class Globals {
 		final public static String SHEETNAME36 = "ConsolidatedPO";
 		final public static String SHEETNAME37 = "Inventorychange";
 		final public static String SHEETNAME38 = "InventoryCostReset";
+		final public static String SHEETNAME39 = "Inventorymovement";
 		
 		
 		public static Table<String, String, String> inventorySheetData;
@@ -90,6 +91,7 @@ public class Globals {
 		public static Table<String, String, String> ConsolidatedPOSheetData;
 		public static Table<String, String, String> InventorychangeSheetData;
 		public static Table<String, String, String> InventoryCostResetSheetData;
+		public static Table<String, String, String> InventorymovementSheetData;
 		
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
@@ -130,6 +132,7 @@ public class Globals {
 		public static Map<String, String> ConsolidatedPOrowwiseData;
 		public static Map<String, String> InventorychangerowwiseData;
 		public static Map<String, String> InventoryCostResetrowwiseData;
+		public static Map<String, String> InventorymovementrowwiseData;
 	
 		
 		
