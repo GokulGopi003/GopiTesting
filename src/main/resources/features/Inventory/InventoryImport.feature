@@ -9,9 +9,11 @@ Feature: PoS Inventory > Add Inventory
     Then I clik on the login button
     Then I verify the page Title
     
-    @inventory
-    Scenario: Verifying Inventory Import Functionality
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Masters/frmInventoryUpload.aspx"
-    Then I need to click on the browse "Browse" button
     
-  	
+    Scenario: Verifying Inventory Import Functionality
+     Given I want to launch the "Masters/frmInventoryUpload.aspx"
+    Then I Browse the Excelsheetdata
+    Then I need to click on the  element "a#ContentPlaceHolder1_btnUpload" 
+ 
+    
+     

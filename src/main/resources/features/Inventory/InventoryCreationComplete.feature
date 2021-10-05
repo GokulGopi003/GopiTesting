@@ -25,7 +25,7 @@ Feature: PoS Inventory > Add Inventory
     #Then I enter the send Keys "input#ContentPlaceHolder1_txtItemCodeAdd" as "CONTROL+-"
     #Then i send to enter key
     Then I click on button tag with value "Back"
-    #Then I need to click on sub menu with text matching "Image"
+    Then I need to click on sub menu with text matching "Image"
     #When Im waiting for 5 sec
     #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "12"
     Then I need to click on the "Save" button

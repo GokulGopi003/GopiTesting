@@ -50,6 +50,9 @@ public class Globals {
 		final public static String SHEETNAME37 = "Inventorychange";
 		final public static String SHEETNAME38 = "InventoryCostReset";
 		final public static String SHEETNAME39 = "Inventorymovement";
+		final public static String SHEETNAME40 = "Origion";
+		final public static String SHEETNAME41 = "Transport";
+		final public static String SHEETNAME42 = "Barcode";
 		
 		
 		public static Table<String, String, String> inventorySheetData;
@@ -92,6 +95,9 @@ public class Globals {
 		public static Table<String, String, String> InventorychangeSheetData;
 		public static Table<String, String, String> InventoryCostResetSheetData;
 		public static Table<String, String, String> InventorymovementSheetData;
+		public static Table<String, String, String> OrigionSheetData;
+		public static Table<String, String, String> TransportSheetData;
+		public static Table<String, String, String> BarcodeSheetData;
 		
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
@@ -133,6 +139,9 @@ public class Globals {
 		public static Map<String, String> InventorychangerowwiseData;
 		public static Map<String, String> InventoryCostResetrowwiseData;
 		public static Map<String, String> InventorymovementrowwiseData;
+		public static Map<String, String> OrigionrowwiseData;
+		public static Map<String, String> TransportrowwiseData;
+		public static Map<String, String> BarcoderowwiseData;
 	
 		
 		
@@ -291,6 +300,15 @@ public class Globals {
 		public static String Batch3;
 		public static String Selectfield;
 		public static String Changefield;
+		public static String OrigionCode;
+		public static String Transportname;
+		public static String Person;
+		public static String URL;
+		public static String Batch4;
+		public static String Dateformat;
+		public static String Template;
+		public static String Printername;
+		
 
 		
 		
