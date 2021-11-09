@@ -1,1 +1,1 @@
-target\test-classes\features\Purchase\CreateGRNmultipleData.feature:31
+target/test-classes/features/Inventory/Barcodenew.feature:31

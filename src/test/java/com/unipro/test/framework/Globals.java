@@ -308,6 +308,7 @@ public class Globals {
 		public static String Dateformat;
 		public static String Template;
 		public static String Printername;
+		public static String result;
 		
 
 		

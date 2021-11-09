@@ -9,6 +9,7 @@ Feature: PoS Master > Location
     Then I clik on the login button
     Then I verify the page Title
     
+    @gokul
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Inventory/Barcode.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "C0000"
@@ -22,9 +23,10 @@ Feature: PoS Master > Location
     Then I load the rowise Barcode data for "<TestcaseRowName>" rowname
     Then I update value to the Barcode page global Variables
     Then I fill new Barcode data page using excel data
-    Then I need to click on the blue "btnPrint" button
-    Then I need to click on the blue "btnClear" button
+    #Then I need to click on the blue "btnPrint" button
+    #Then I need to click on the blue "btnClear" button
     
       Examples: 
       | TestcaseRowName |
       |Barcode      |
+      |Barcode1      |
