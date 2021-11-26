@@ -30,3 +30,5 @@ Feature: PoS Master > Location
       | TestcaseRowName |
       |Barcode      |
       |Barcode1      |
+     
+      

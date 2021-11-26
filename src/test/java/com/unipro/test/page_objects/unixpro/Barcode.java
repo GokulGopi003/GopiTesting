@@ -36,8 +36,8 @@ public class Barcode extends PageObject {
 
 		terPage = new TerminalPage();
 		Category = new AddInventoryFormPage();
-		Scr= new ScreenshotHook();
-		
+		Scr = new ScreenshotHook();
+
 	}
 
 	@Then("I load the Barcode sheet data to map")
@@ -51,7 +51,7 @@ public class Barcode extends PageObject {
 		Globals.Inventory.BarcoderowwiseData = ReadTestData
 				.getRowFilteredValueFromTable(Globals.Inventory.BarcodeSheetData, row_name);
 
-		System.out.println(Globals.Inventory.BarcodeSheetData+"Gopi1");
+		System.out.println(Globals.Inventory.BarcodeSheetData + "Gopi1");
 
 	}
 
@@ -84,176 +84,165 @@ public class Barcode extends PageObject {
 		// webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtInventoryCode\"]")).sendKeys(Keys.RETURN);
 
 		// }
-		
-		for(int i=0;i<1;i++)
-		{
-		try {
-		
-		
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemCode)) {
-			
-			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtInventoryCode\"]")).sendKeys(Keys.F1);
-			Category.clearAndTypeSlowly(Globals.Inventory.ItemCode, "input#txtSearch");
-			Category.return_td_invoke_element(Globals.Inventory.ItemCode).click();
-			
-				
-			} 
-			
-
 
 		
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batchrowno)) {
 			try {
-				GenericWrappers.sleepInSeconds(1);
-				webDriver
-						.findElement(By.xpath(
-								"//*[@id=\"dataGridBatchTable_master_row" + Globals.Inventory.Batchrowno + "\"]"))
-						.click();
 
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemCode)) {
+
+					webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtInventoryCode\"]"))
+							.sendKeys(Keys.F1);
+					Category.clearAndTypeSlowly(Globals.Inventory.ItemCode, "input#txtSearch");
+					Category.return_td_invoke_element(Globals.Inventory.ItemCode).click();
+
+				}
+
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Batchrowno)) {
+					try {
+						GenericWrappers.sleepInSeconds(1);
+						webDriver.findElement(By.xpath(
+								"//*[@id=\"dataGridBatchTable_master_row" + Globals.Inventory.Batchrowno + "\"]"))
+								.click();
+
+					} catch (Exception e) {
+						System.out.println("Element  not found");
+					}
+
+				}
+
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Remarks)) {
+					terPage.terminal_waitClearEnterText_Xpath(icp.Remarks_String, Globals.Inventory.Remarks);
+
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Qty)) {
+					terPage.terminal_waitClearEnterText_Xpath(icp.Qty_String, Globals.Inventory.Qty);
+
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Reorderbynoofdays)) {
+					terPage.terminal_waitClearEnterText_Xpath(icp.Reorderbynoofdays_String,
+							Globals.Inventory.Reorderbynoofdays);
+
+				}
+
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Date)) {
+					terPage.terminal_waitClearEnterText_Xpath(icp.Date_String, Globals.Inventory.Date);
+					webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtPkdData\"]"))
+							.sendKeys(Keys.RETURN);
+
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Dateformat)) {
+					webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_ddlDateformat_chzn\"]")).click();
+					GenericWrappers.sleepInSeconds(1);
+					// terPage.terminal_waitClearEnterText_css(icp.Vendor_String,
+					// Globals.Inventory.Vendor);
+					WebElement itemCodeValue = webDriver.findElement(
+							By.cssSelector("#ContentPlaceHolder1_ddlDateformat_chzn > div > div > input[type=text]"));
+					String css_location_dropDownValue = "#ContentPlaceHolder1_ddlDateformat_chzn > div > div > input[type=text]";
+					By ddlocator = By.cssSelector(css_location_dropDownValue);
+					waitForExpectedElement(ddlocator);
+					js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.Dateformat);
+					GenericWrappers.sleepInSeconds(1);
+					itemCodeValue.sendKeys(Keys.SPACE);
+					itemCodeValue.sendKeys(Keys.SPACE);
+					itemCodeValue.sendKeys(Keys.ARROW_DOWN);
+					GenericWrappers.sleepInSeconds(1);
+					itemCodeValue.sendKeys(Keys.ENTER);
+
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch)) {
+					terPage.get_checkBox_element_Xpath(icp.Batch_String).click();
+
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch1)) {
+					terPage.get_checkBox_element_Xpath(icp.Batch1_String).click();
+
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch2)) {
+					terPage.get_checkBox_element_Xpath(icp.Batch2_String).click();
+
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch3)) {
+					terPage.get_checkBox_element_Xpath(icp.Batch3_String).click();
+
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch4)) {
+					terPage.get_checkBox_element_Xpath(icp.Batch4_String).click();
+
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Template)) {
+					webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_ddlTemplate_chzn\"]")).click();
+					GenericWrappers.sleepInSeconds(1);
+					// terPage.terminal_waitClearEnterText_css(icp.Vendor_String,
+					// Globals.Inventory.Vendor);
+					WebElement itemCodeValue = webDriver.findElement(
+							By.cssSelector("#ContentPlaceHolder1_ddlTemplate_chzn > div > div > input[type=text]"));
+					String css_location_dropDownValue = "#ContentPlaceHolder1_ddlTemplate_chzn > div > div > input[type=text]";
+					By ddlocator = By.cssSelector(css_location_dropDownValue);
+					waitForExpectedElement(ddlocator);
+					js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.Template);
+					GenericWrappers.sleepInSeconds(1);
+					itemCodeValue.sendKeys(Keys.SPACE);
+					itemCodeValue.sendKeys(Keys.SPACE);
+					itemCodeValue.sendKeys(Keys.ARROW_DOWN);
+					GenericWrappers.sleepInSeconds(1);
+					itemCodeValue.sendKeys(Keys.ENTER);
+
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Printername)) {
+					webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_ddlPrinterName_chzn\"]")).click();
+					GenericWrappers.sleepInSeconds(1);
+					// terPage.terminal_waitClearEnterText_css(icp.Vendor_String,
+					// Globals.Inventory.Vendor);
+					WebElement itemCodeValue = webDriver.findElement(
+							By.cssSelector("#ContentPlaceHolder1_ddlPrinterName_chzn > div > div > input[type=text]"));
+					String css_location_dropDownValue = "#ContentPlaceHolder1_ddlPrinterName_chzn > div > div > input[type=text]";
+					By ddlocator = By.cssSelector(css_location_dropDownValue);
+					waitForExpectedElement(ddlocator);
+					js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.Printername);
+					GenericWrappers.sleepInSeconds(1);
+					itemCodeValue.sendKeys(Keys.SPACE);
+					itemCodeValue.sendKeys(Keys.SPACE);
+					itemCodeValue.sendKeys(Keys.ARROW_DOWN);
+					GenericWrappers.sleepInSeconds(1);
+					itemCodeValue.sendKeys(Keys.ENTER);
+
+				}
+
+				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+				FileInputStream fis = new FileInputStream(file);
+				XSSFWorkbook xs = new XSSFWorkbook(fis);
+				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME42);
+				int row= sh.getLastRowNum()+1;
+				sh.createRow(row).createCell(16).setCellValue("passed");
+				FileOutputStream fos = new FileOutputStream(file);
+				xs.write(fos);
+				
 			} catch (Exception e) {
-				System.out.println("Element  not found");
+				// screen shot
+				System.out.println(e.getMessage());
+				TakesScreenshot tsc = (TakesScreenshot) webDriver;
+
+				File source = tsc.getScreenshotAs(OutputType.FILE);
+
+				String screenshotname = webDriver.getCurrentUrl();
+				FileUtils.copyFile(source, new File("./Screenshots/" + screenshotname + ".png"));
+
+				System.out.println("Screenshot captured  " + screenshotname.getBytes());
+
+				// Xl sheet write
+				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+				FileInputStream fis = new FileInputStream(file);
+				XSSFWorkbook xs = new XSSFWorkbook(fis);
+				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME42);
+				int row= sh.getLastRowNum()+1;
+				sh.createRow(row).createCell(16).setCellValue("failed");
+				FileOutputStream fos = new FileOutputStream(file);
+				xs.write(fos);
+				
+
 			}
 
 		}
-
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Remarks)) {
-			terPage.terminal_waitClearEnterText_Xpath(icp.Remarks_String, Globals.Inventory.Remarks);
-
-		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Qty)) {
-			terPage.terminal_waitClearEnterText_Xpath(icp.Qty_String, Globals.Inventory.Qty);
-
-		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Reorderbynoofdays)) {
-			terPage.terminal_waitClearEnterText_Xpath(icp.Reorderbynoofdays_String,
-					Globals.Inventory.Reorderbynoofdays);
-
-		}
-
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Date)) {
-			terPage.terminal_waitClearEnterText_Xpath(icp.Date_String, Globals.Inventory.Date);
-			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtPkdData\"]")).sendKeys(Keys.RETURN);
-
-		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Dateformat)) {
-			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_ddlDateformat_chzn\"]")).click();
-			GenericWrappers.sleepInSeconds(1);
-			// terPage.terminal_waitClearEnterText_css(icp.Vendor_String,
-			// Globals.Inventory.Vendor);
-			WebElement itemCodeValue = webDriver.findElement(
-					By.cssSelector("#ContentPlaceHolder1_ddlDateformat_chzn > div > div > input[type=text]"));
-			String css_location_dropDownValue = "#ContentPlaceHolder1_ddlDateformat_chzn > div > div > input[type=text]";
-			By ddlocator = By.cssSelector(css_location_dropDownValue);
-			waitForExpectedElement(ddlocator);
-			js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.Dateformat);
-			GenericWrappers.sleepInSeconds(1);
-			itemCodeValue.sendKeys(Keys.SPACE);
-			itemCodeValue.sendKeys(Keys.SPACE);
-			itemCodeValue.sendKeys(Keys.ARROW_DOWN);
-			GenericWrappers.sleepInSeconds(1);
-			itemCodeValue.sendKeys(Keys.ENTER);
-
-		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch)) {
-			terPage.get_checkBox_element_Xpath(icp.Batch_String).click();
-
-		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch1)) {
-			terPage.get_checkBox_element_Xpath(icp.Batch1_String).click();
-
-		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch2)) {
-			terPage.get_checkBox_element_Xpath(icp.Batch2_String).click();
-
-		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch3)) {
-			terPage.get_checkBox_element_Xpath(icp.Batch3_String).click();
-
-		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch4)) {
-			terPage.get_checkBox_element_Xpath(icp.Batch4_String).click();
-
-		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Template)) {
-			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_ddlTemplate_chzn\"]")).click();
-			GenericWrappers.sleepInSeconds(1);
-			// terPage.terminal_waitClearEnterText_css(icp.Vendor_String,
-			// Globals.Inventory.Vendor);
-			WebElement itemCodeValue = webDriver.findElement(
-					By.cssSelector("#ContentPlaceHolder1_ddlTemplate_chzn > div > div > input[type=text]"));
-			String css_location_dropDownValue = "#ContentPlaceHolder1_ddlTemplate_chzn > div > div > input[type=text]";
-			By ddlocator = By.cssSelector(css_location_dropDownValue);
-			waitForExpectedElement(ddlocator);
-			js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.Template);
-			GenericWrappers.sleepInSeconds(1);
-			itemCodeValue.sendKeys(Keys.SPACE);
-			itemCodeValue.sendKeys(Keys.SPACE);
-			itemCodeValue.sendKeys(Keys.ARROW_DOWN);
-			GenericWrappers.sleepInSeconds(1);
-			itemCodeValue.sendKeys(Keys.ENTER);
-
-		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Printername)) {
-			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_ddlPrinterName_chzn\"]")).click();
-			GenericWrappers.sleepInSeconds(1);
-			// terPage.terminal_waitClearEnterText_css(icp.Vendor_String,
-			// Globals.Inventory.Vendor);
-			WebElement itemCodeValue = webDriver.findElement(
-					By.cssSelector("#ContentPlaceHolder1_ddlPrinterName_chzn > div > div > input[type=text]"));
-			String css_location_dropDownValue = "#ContentPlaceHolder1_ddlPrinterName_chzn > div > div > input[type=text]";
-			By ddlocator = By.cssSelector(css_location_dropDownValue);
-			waitForExpectedElement(ddlocator);
-			js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.Printername);
-			GenericWrappers.sleepInSeconds(1);
-			itemCodeValue.sendKeys(Keys.SPACE);
-			itemCodeValue.sendKeys(Keys.SPACE);
-			itemCodeValue.sendKeys(Keys.ARROW_DOWN);
-			GenericWrappers.sleepInSeconds(1);
-			itemCodeValue.sendKeys(Keys.ENTER);
-
-		}
-		
-			
-		
 	
-		File file=new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample1.xlsx");
-		FileInputStream fis=new FileInputStream(file);
-		XSSFWorkbook xs=new XSSFWorkbook(fis);
-		XSSFSheet sh=xs.getSheetAt(0);
-		sh.createRow(i).createCell(16).setCellValue("passed");
-		FileOutputStream fos=new FileOutputStream(file);
-		xs.write(fos);
-		
 
-		
-		
-		}
-		catch (Exception e) {
-          //screen shot
-			System.out.println(e.getMessage());
-			TakesScreenshot tsc = (TakesScreenshot) webDriver;
-
-			File source = tsc.getScreenshotAs(OutputType.FILE);
-			
-
-			String screenshotname=webDriver.getCurrentUrl();
-			FileUtils.copyFile(source, new File("./Screenshots/" + screenshotname + ".png"));
-
-			System.out.println("Screenshot captured  " + screenshotname.getBytes());
-			
-					
-			//Xl sheet write
-			File file=new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample1.xlsx");
-			FileInputStream fis=new FileInputStream(file);
-			XSSFWorkbook xs=new XSSFWorkbook(fis);
-			XSSFSheet sh=xs.getSheetAt(0);
-			sh.createRow(i).createCell(16).setCellValue("Failed");
-			FileOutputStream fos=new FileOutputStream(file);
-			xs.write(fos);
-			
-			
-		}
-		
-		}
-	}
 }

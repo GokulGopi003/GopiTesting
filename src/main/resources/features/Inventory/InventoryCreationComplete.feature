@@ -30,6 +30,12 @@ Feature: PoS Inventory > Add Inventory
     #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "12"
     Then I need to click on the "Save" button
     Then I click dynamically on "NewItemNo" button
+    Then I establish connection to DB
+    Then I read the values from table "tblinventory" in DB
+    Then I read the values from table "tblinventorypricing" in DB
+    Then I read the values from table "TBLBATCHINVENTORYCONTROL" in DB
+    Then I read the values from table "tblInventoryShelfQty" in DB
+    Then I close connection to DB
 
     Examples: 
       | TestcaseRowName |

@@ -6,6 +6,8 @@ import static org.testng.Assert.assertNotEquals;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -18,7 +20,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.gk.test.MssqlConnect;
 import com.google.common.collect.Table;
+import com.mysql.jdbc.Statement;
 import com.unipro.test.framework.Globals;
 import com.unipro.test.framework.helpers.utils.ApplicationLogger;
 import com.unipro.test.framework.helpers.utils.GenericWrappers;
@@ -30,6 +34,7 @@ import com.unipro.test.page_objects.unixpro.InventoryCalculationsPage;
 import com.unipro.test.page_objects.unixpro.InventoryCreationPage;
 import com.unipro.test.page_objects.unixpro.TerminalPage;
 
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.bytebuddy.agent.builder.AgentBuilder.CircularityLock.Global;
@@ -786,6 +791,82 @@ public class InventoryCalculations_StepDefinitions {
 		// dd_element.sendKeys(Keys.ENTER);
 
 	}
+	@Then("I close connection to DB")
+	public void I_close_connection_to_DB() throws SQLException {
+
+		mysqlConnect.disconnect();
+		System.out.println(" closed succesfully");
+
+		// mysqlConnect.disconnect();
+
+	}
+	MssqlConnect mysqlConnect;
+	java.sql.Statement st;
+	ResultSet rs;
+	@Then("I establish connection to DB")
+	public void I_establish_connection_to_DB() throws SQLException {
+
+		mysqlConnect = new MssqlConnect();
+		st = mysqlConnect.connect().createStatement();
+		System.out.println(" Connected succesfully");
+
+	}
+	@Given("I read the values from table {string} in DB")
+	public void i_want_to_launch_the(String tablename ) throws SQLException {
+		
+		
+		 rs = 
+				st.executeQuery("select * from "+tablename+" where inventorycode='859539'");
+		
+		//ResultSet rs = st.executeQuery("");
+
+		while (rs.next()) {
+
+			switch (tablename) {
+			case "tblinventory":
+				String CategoryCode = rs.getString("CategoryCode");
+				    System.out.println(CategoryCode);
+				    Assert.assertEquals(Globals.Inventory.Category.trim(), CategoryCode.trim());
+				    
+				break;
+
+			case "tblinventorypricing":
+				String BasicSelling = rs.getString("BasicSelling");
+				  System.out.println(BasicSelling);
+				   Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), BasicSelling.trim());
+				 
+				break;
+				
+			case "TBLBATCHINVENTORYCONTROL":
+				String SellingPrice = rs.getString("SellingPrice");
+				  System.out.println(SellingPrice);
+				   Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), SellingPrice.trim());
+				 
+				break;
+				
+				
+			case "tblInventoryShelfQty":
+				String CreateUser = rs.getString("CreateUser");
+				  System.out.println(CreateUser);
+				   Assert.assertEquals("AA", CreateUser.trim());
+				 
+				break;
+	
+
+			default:
+				break;
+			}
+			
+		
+	   
+	     
+		}
+
+		
+		
+	}
+
+
 
 	@Then("I verify the actual ui values with expected Excel values")
 	public void i_verify_the_actual_ui_values_with_expected_Excel_values()  {
