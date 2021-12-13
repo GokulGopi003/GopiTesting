@@ -35,5 +35,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/macpc/Downloads/sqljdbc_9.4\enu/mssql-jdbc-9.4.0.jre8.jar"/>
+	<classpathentry kind="lib" path="/Users/macpc/Downloads/sqljdbc_8.2/enu/mssql-jdbc-8.2.2.jre8.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

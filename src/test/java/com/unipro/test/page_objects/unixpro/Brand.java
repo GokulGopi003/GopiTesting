@@ -1,22 +1,38 @@
 package com.unipro.test.page_objects.unixpro;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
 import com.unipro.test.framework.Globals;
+import com.unipro.test.framework.PageObject;
+import com.unipro.test.framework.helpers.screenshot_helper.Screenshot;
 import com.unipro.test.framework.helpers.utils.GenericWrappers;
 import com.unipro.test.framework.helpers.utils.ReadTestData;
 
 import cucumber.api.java.en.Then;
 
-public class Brand {
+public class Brand extends PageObject{
 	AddInventoryFormPage Category;
 	Brandfield icp;
 
 	TerminalPage terPage;
+	 Screenshot scr;
 
 	public  Brand(Brandfield icp) {
 		this.icp = icp;
 		terPage = new TerminalPage();
 
 		Category = new AddInventoryFormPage();
+		scr =new Screenshot();
 	}
 	
 	@Then("I load the Brand sheet data to map")
@@ -45,7 +61,10 @@ public class Brand {
 	}
 
 	@Then("I fill new Brand data page using excel data")
-	public void i_fill_new_Subcategory_data_page_using_excel_data() {
+	public void i_fill_new_Subcategory_data_page_using_excel_data() throws Exception {
+		
+		try {
+			
 		
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Brandcode)) {
 			terPage.terminal_waitClearEnterText_css(icp.Brandcode_string, Globals.Inventory.Brandcode);
@@ -69,8 +88,20 @@ public class Brand {
 			
 			
 }
+		}
+		catch (Exception e) {
+			// screen shot
+			scr.Screenshots();
+			// Xl sheet write
+			System.out.println("Screen shot ");
+
+		}
+			
+		}
+		
+		
 	
-	}
+	
 
 		@Then("I fill the Category values in the inventory page")
 		public void i_fill_the_Category_values_in_the_inventory_page() {

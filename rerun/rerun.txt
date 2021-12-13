@@ -1,1 +1,1 @@
-target/test-classes/features/Inventory/Barcodenew.feature:31
+target/test-classes/features/Inventory/inventorycreationexample.feature:42

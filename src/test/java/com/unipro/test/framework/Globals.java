@@ -162,6 +162,10 @@ public class Globals {
 		public static String WPrice1;
 		public static String WPrice2;
 		public static String WPrice3;
+		public static String WAPrice1;
+		public static String WAPrice2;
+		public static String WAPrice3;
+		public static String Batchno;
 		
 		public static String Category;
 		public static String Department;
@@ -196,6 +200,7 @@ public class Globals {
 		public static String Height;
 		public static String Width;
 		public static String Length;
+		public static String Purchasetype;
 		public static String Departmentcode;
 		public static String Departmentname;
 		public static String Personincharge;

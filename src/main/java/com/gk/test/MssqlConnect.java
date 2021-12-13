@@ -7,8 +7,9 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class MssqlConnect {
-    // init database constants
-    private static final String DATABASE_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    // init database constants/com.microsoft.jdbc.sqlserver.SQLServerDriver
+    //private static final String DATABASE_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	private static final String DATABASE_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private static final String DATABASE_URL = "jdbc:sqlserver://103.231.211.145:1433";
     private static final String USERNAME = "SA";
     private static final String PASSWORD = "UniTechLic@01112018";

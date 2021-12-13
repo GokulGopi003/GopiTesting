@@ -2,15 +2,32 @@ package com.unipro.test.page_objects.unixpro;
 
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.server.handler.SendKeys;
+import org.testng.Assert;
+
 import java.awt.AWTException;
+
+import com.gk.test.MssqlConnect;
 import com.unipro.test.framework.Globals;
 import com.unipro.test.framework.PageObject;
+import com.unipro.test.framework.helpers.screenshot_helper.Screenshot;
 import com.unipro.test.framework.helpers.utils.GenericWrappers;
 import com.unipro.test.framework.helpers.utils.ReadTestData;
 import com.unipro.test.framework.helpers.utils.ReadXLSXFile;
@@ -18,17 +35,18 @@ import com.unipro.test.framework.helpers.utils.ReadXLSXFile;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
-public class Department  extends PageObject{
+public class Department  extends PageObject  {
 	AddInventoryFormPage Department;
 	DepartmentField icp;
 	CommonPages cp;
 	TerminalPage terPage;
 	TerminalPage ter_Page;
+	Screenshot scr;
 
 	public  Department(DepartmentField icp) {
 		this.icp = icp;
 		terPage = new TerminalPage();
-
+		scr =new Screenshot();
 		Department = new AddInventoryFormPage();
 		this.ter_Page = ter_Page;
 		this.cp = cp;
@@ -71,8 +89,8 @@ public class Department  extends PageObject{
 		
 	}
 	@Then("I fill new Department data page using excel data")
-	public void i_fill_new_Department_data_page_using_excel_data() {
-
+	public void i_fill_new_Department_data_page_using_excel_data() throws Exception {
+try {
 		
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Departmentcode)) {
 			terPage.terminal_waitClearEnterText_css(icp.Departmentcode_string, Globals.Inventory.Departmentcode);
@@ -100,10 +118,35 @@ public class Department  extends PageObject{
 			terPage.terminal_waitClearEnterText_css(icp.Remark_String, Globals.Inventory.Remark);
 		
 		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.search)) {
-			terPage.terminal_waitClearEnterText_css(icp.search_String, Globals.Inventory.search);
+		File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook xs = new XSSFWorkbook(fis);
+		XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME1);
+		int row= sh.getLastRowNum()+1;
+		sh.createRow(row).createCell(7).setCellValue("passed");
+		FileOutputStream fos = new FileOutputStream(file);
+		xs.write(fos);
+}
+catch (Exception e) {
+	// screen shot
+	scr.Screenshots();
+	System.out.println("Screen shot ");
+	// Xl sheet write
+	File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+	FileInputStream fis = new FileInputStream(file);
+	XSSFWorkbook xs = new XSSFWorkbook(fis);
+	XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME1);
+	int row= sh.getLastRowNum()+1;
+	sh.createRow(row).createCell(7).setCellValue("failed");
+	FileOutputStream fos = new FileOutputStream(file);
+	xs.write(fos);
+	
+
+}
+		//if (GenericWrappers.isNotEmpty(Globals.Inventory.search)) {
+			//terPage.terminal_waitClearEnterText_css(icp.search_String, Globals.Inventory.search);
 			//Department.clearAndTypeSlowly(Globals.Inventory.search, "input#txtSearch");
-			Department.return_td_invoke_element(Globals.Inventory.search).click();
+			//Department.return_td_invoke_element(Globals.Inventory.search).click();
 			//WebElement dd_element = ter_Page.waitAndSelectDropDownUsingSerachBox(icp.search_String, Globals.Inventory.search);
 
 		    
@@ -120,8 +163,56 @@ public class Department  extends PageObject{
 			//dd_element.sendKeys(Keys.ENTER);
 
 		}
+	@Then("I close connection  DB")
+	public void I_close_connection_to_DB() throws SQLException {
 
+		mysqlConnect.disconnect();
+		System.out.println(" closed succesfully");
+
+		// mysqlConnect.disconnect();
+
+	}
+	MssqlConnect mysqlConnect;
+	Statement st;
+	 
+	@Then("I establish connection  DB")
+	public void I_establish_connection_to_DB() throws SQLException {
+
+		mysqlConnect = new MssqlConnect();
+		st = mysqlConnect.connect().createStatement();
+		System.out.println(" Connected succesfully");
+
+	}
+	@Given("I read the values from department table {string} in DB")
+	public void i_want_to_launch_the(String tablename ) throws SQLException {
+		
+		
+		ResultSet rs = st.executeQuery("select * from "+tablename+" where DeptCode='Gopi'");
+		
+		System.out.println(rs);
+		//ResultSet rs = st.executeQuery("");
+
+		while (rs.next()) {
+
+			switch (tablename) {
+			
+			case "tbldepartment":
+				String DepartmentCode = rs.getString("DeptCode");
+				    System.out.println(DepartmentCode);
+				    Assert.assertEquals(Globals.Inventory.Departmentcode.trim(), DepartmentCode.trim());
+				break;
+			case "tblinventorypricing":
+				String BasicSelling = rs.getString("BasicSelling");
+				  System.out.println(BasicSelling);
+				   Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), BasicSelling.trim());
+				 
+				break;
+			default:
+				break;
+			}}
 		}
+	
+	
 	
 	@Then("I search the value forElement {string} as {string}")
 	public void i_enter_the_value_forElement_as(String webele, String textToType) {

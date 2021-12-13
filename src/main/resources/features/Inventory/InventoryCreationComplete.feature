@@ -8,7 +8,7 @@ Feature: PoS Inventory > Add Inventory
     When I enter the password
     Then I clik on the login button
     Then I verify the page Title
-  @07092021
+  @07122021
   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Then I load the testdata form excel to table
@@ -22,8 +22,6 @@ Feature: PoS Inventory > Add Inventory
     Then I fill inventory calculations page using excel data
     When Im waiting for 2 sec
     Then I verify the actual ui values with expected Excel values
-    #Then I enter the send Keys "input#ContentPlaceHolder1_txtItemCodeAdd" as "CONTROL+-"
-    #Then i send to enter key
     Then I click on button tag with value "Back"
     Then I need to click on sub menu with text matching "Image"
     #When Im waiting for 5 sec
@@ -33,6 +31,8 @@ Feature: PoS Inventory > Add Inventory
     Then I establish connection to DB
     Then I read the values from table "tblinventory" in DB
     Then I read the values from table "tblinventorypricing" in DB
+    Then I read the values from table "tblinventorystock" in DB
+    Then I read the values from table "tbloutletpricingcontrol" in DB
     Then I read the values from table "TBLBATCHINVENTORYCONTROL" in DB
     Then I read the values from table "tblInventoryShelfQty" in DB
     Then I close connection to DB

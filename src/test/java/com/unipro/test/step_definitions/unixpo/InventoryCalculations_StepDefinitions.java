@@ -1,20 +1,32 @@
 package com.unipro.test.step_definitions.unixpo;
 
 import static org.testng.Assert.assertEquals;
+
 import static org.testng.Assert.assertNotEquals;
 
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,8 +34,9 @@ import org.testng.Assert;
 
 import com.gk.test.MssqlConnect;
 import com.google.common.collect.Table;
-import com.mysql.jdbc.Statement;
 import com.unipro.test.framework.Globals;
+import com.unipro.test.framework.PageObject;
+import com.unipro.test.framework.helpers.screenshot_helper.Screenshot;
 import com.unipro.test.framework.helpers.utils.ApplicationLogger;
 import com.unipro.test.framework.helpers.utils.GenericWrappers;
 import com.unipro.test.framework.helpers.utils.RandomGenerator;
@@ -32,28 +45,36 @@ import com.unipro.test.framework.helpers.utils.ReadXLSXFile;
 import com.unipro.test.page_objects.unixpro.AddInventoryFormPage;
 import com.unipro.test.page_objects.unixpro.InventoryCalculationsPage;
 import com.unipro.test.page_objects.unixpro.InventoryCreationPage;
+import com.unipro.test.page_objects.unixpro.LoginPage;
 import com.unipro.test.page_objects.unixpro.TerminalPage;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.cucumber.datatable.dependency.difflib.myers.MyersDiff;
 import net.bytebuddy.agent.builder.AgentBuilder.CircularityLock.Global;
 
-public class InventoryCalculations_StepDefinitions {
+public class InventoryCalculations_StepDefinitions extends PageObject {
+	
+		
 	
 	AddInventoryFormPage add_inventory;
 	InventoryCalculationsPage icp;
-
+	Screenshot scr;
 	TerminalPage terPage;
 
+	
+	
+	
 	public InventoryCalculations_StepDefinitions(InventoryCalculationsPage icp) {
 		this.icp = icp;
 		terPage = new TerminalPage();
-
+		scr =new Screenshot();
 		add_inventory = new AddInventoryFormPage();
 
 	}
-
+ 
 	@Then("I verify default values of selling price calcualtion page for {string} as BasicCost")
 	public void i_verify_default_values_of_selling_price_calcualtion_page_for_as_BasicCost(String basicCostInput) {
 
@@ -185,6 +206,7 @@ public class InventoryCalculations_StepDefinitions {
 		Globals.Inventory.NetSellingPrice = Globals.Inventory.inventoryrowwiseData.get("NetSellingPrice");
 		Globals.Inventory.spfixing = Globals.Inventory.inventoryrowwiseData.get("spfixing");
 		Globals.Inventory.netcost = Globals.Inventory.inventoryrowwiseData.get("netcost");
+		
 
 	}
 
@@ -242,6 +264,9 @@ public class InventoryCalculations_StepDefinitions {
 		Globals.Inventory.WPrice1 = Globals.Inventory.inventoryrowwiseData.get("WPrice1");
 		Globals.Inventory.WPrice2 = Globals.Inventory.inventoryrowwiseData.get("WPrice2");
 		Globals.Inventory.WPrice3 = Globals.Inventory.inventoryrowwiseData.get("WPrice3");
+		Globals.Inventory.WAPrice1 = Globals.Inventory.inventoryrowwiseData.get("WAPrice1");
+		Globals.Inventory.WAPrice2 = Globals.Inventory.inventoryrowwiseData.get("WAPrice2");
+		Globals.Inventory.WAPrice3 = Globals.Inventory.inventoryrowwiseData.get("WAPrice3");
 
 		Globals.Inventory.DiscountPer = Globals.Inventory.inventoryrowwiseData.get("DiscountPer");
 		Globals.Inventory.AddDiscountPer = Globals.Inventory.inventoryrowwiseData.get("AddDiscountPer");
@@ -281,11 +306,16 @@ public class InventoryCalculations_StepDefinitions {
 		Globals.Inventory.Height = Globals.Inventory.inventoryrowwiseData.get("Height");
 		Globals.Inventory.Width = Globals.Inventory.inventoryrowwiseData.get("Width");
 		Globals.Inventory.Length = Globals.Inventory.inventoryrowwiseData.get("Length");
+		Globals.Inventory.Purchasetype = Globals.Inventory.inventoryrowwiseData.get("Purchasetype");
+		Globals.Inventory.ItemCode = Globals.Inventory.inventoryrowwiseData.get("ItemCode");
+		Globals.Inventory.Barcode = Globals.Inventory.inventoryrowwiseData.get("Barcode");
+		Globals.Inventory.Batchno = Globals.Inventory.inventoryrowwiseData.get("Batchno");
 	}
 
 	@Then("I fill new inventory data page using excel data")
-	public void i_fill_new_inventory_data_page_using_excel_data()   {
-
+	public void i_fill_new_inventory_data_page_using_excel_data() throws Exception   {
+		try {
+			
 		// category
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Category)) {
 			terPage.terminal_waitClearEnterText_css(icp.Category_String, Globals.Inventory.Category);
@@ -401,7 +431,7 @@ public class InventoryCalculations_StepDefinitions {
 		}
 		//c.code
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.CCode)) {
-			terPage.terminal_waitClearEnterText_css(icp.CCode_String, Globals.Inventory.Size);
+			terPage.terminal_waitClearEnterText_css(icp.CCode_String, Globals.Inventory.CCode);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.CCode, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.CCode).click();
 		}
@@ -503,12 +533,37 @@ public class InventoryCalculations_StepDefinitions {
 				icp.setTextValue(icp.Length_String, Globals.Inventory.Length);
 			}
 		}
+		
+		File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook xs = new XSSFWorkbook(fis);
+		XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
+		int row= sh.getLastRowNum()+1;
+		sh.createRow(row).createCell(51).setCellValue("passed");
+		FileOutputStream fos = new FileOutputStream(file);
+		xs.write(fos);
+		}
+	catch (Exception e) {
+		//screen shot
+		scr.Screenshots();
+		System.out.println("Screen shot ");
+	    //Xl sheet write
+		File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook xs = new XSSFWorkbook(fis);
+		XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
+		int row= sh.getLastRowNum()+1;
+	    sh.createRow(row).createCell(51).setCellValue("failed");
+		FileOutputStream fos = new FileOutputStream(file);
+		xs.write(fos);
+		
 
+	}
 	}
 
 	@Then("I fill inventory calculations page using excel data")
-	public void i_fill_inventory_calculations_page_using_excel_data() {
-		
+	public void i_fill_inventory_calculations_page_using_excel_data() throws Exception {
+		try {
 		// cess
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Cess) && !(Globals.Inventory.GSTPer).matches("0")) {
 			if (Globals.Inventory.Cess.contains(".")) {
@@ -637,12 +692,37 @@ public class InventoryCalculations_StepDefinitions {
 					}
 
 				}
+				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+				FileInputStream fis = new FileInputStream(file);
+				XSSFWorkbook xs = new XSSFWorkbook(fis);
+				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
+				int row= sh.getLastRowNum()+1;
+				sh.createRow(row).createCell(52).setCellValue("passed");
+				FileOutputStream fos = new FileOutputStream(file);
+				xs.write(fos);
+				}
+			catch (Exception e) {
+				// screen shot
+				scr.Screenshots();
+				System.out.println("Screen shot ");
+				// Xl sheet write
+				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+				FileInputStream fis = new FileInputStream(file);
+				XSSFWorkbook xs = new XSSFWorkbook(fis);
+				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
+				int row= sh.getLastRowNum()+1;
+				sh.createRow(row).createCell(52).setCellValue("failed");
+				FileOutputStream fos = new FileOutputStream(file);
+				xs.write(fos);
+				
+
+			}
 
 	}
 
-	@Then("I fill inventory calculations page for MRP using excel data")
-	public void i_fill_inventory_calculations_page_for_MRP_using_excel_data(Object driver) {
-		
+        @Then("I fill inventory calculations MRP page using excel data")
+        public void i_fill_inventory_calculations_page_MRP_using_excel_data() throws Exception {
+		try {
 		// cess
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Cess) && !(Globals.Inventory.GSTPer).matches("0")) {
 			if (Globals.Inventory.Cess.contains(".")) {
@@ -751,6 +831,34 @@ public class InventoryCalculations_StepDefinitions {
 
 
 		}
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Barcode)) {
+			terPage.terminal_waitClearEnterText_css(icp.Barcode_String, Globals.Inventory.Barcode);
+		}
+		File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook xs = new XSSFWorkbook(fis);
+		XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
+		int row= sh.getLastRowNum()+1;
+		sh.createRow(row).createCell(52).setCellValue("passed");
+		FileOutputStream fos = new FileOutputStream(file);
+		xs.write(fos);
+		}
+	catch (Exception e) {
+		// screen shot
+		scr.Screenshots();
+		System.out.println("Screen shot ");
+		// Xl sheet write
+		File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook xs = new XSSFWorkbook(fis);
+		XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
+		int row= sh.getLastRowNum()+1;
+		sh.createRow(row).createCell(52).setCellValue("failed");
+		FileOutputStream fos = new FileOutputStream(file);
+		xs.write(fos);
+		
+
+	}
 		
 	}
 
@@ -801,8 +909,8 @@ public class InventoryCalculations_StepDefinitions {
 
 	}
 	MssqlConnect mysqlConnect;
-	java.sql.Statement st;
-	ResultSet rs;
+	Statement st;
+	
 	@Then("I establish connection to DB")
 	public void I_establish_connection_to_DB() throws SQLException {
 
@@ -814,42 +922,348 @@ public class InventoryCalculations_StepDefinitions {
 	@Given("I read the values from table {string} in DB")
 	public void i_want_to_launch_the(String tablename ) throws SQLException {
 		
+		System.out.println(tablename);
+		//ResultSet rs =st.executeQuery("select * from "+tablename+" where DeptCode='Gopi'");
+				
+		ResultSet rs = st.executeQuery("select * from "+tablename+" where inventorycode='859593'");
 		
-		 rs = 
-				st.executeQuery("select * from "+tablename+" where inventorycode='859539'");
 		
 		//ResultSet rs = st.executeQuery("");
 
 		while (rs.next()) {
 
 			switch (tablename) {
+			
+			case "tbldepartment":
+				String DepartmentCode = rs.getString("DeptCode");
+				    System.out.println(DepartmentCode);
+				    Assert.assertEquals(Globals.Inventory.Department.trim(), DepartmentCode.trim());
+				    
+				break;
+			
 			case "tblinventory":
 				String CategoryCode = rs.getString("CategoryCode");
 				    System.out.println(CategoryCode);
 				    Assert.assertEquals(Globals.Inventory.Category.trim(), CategoryCode.trim());
-				    
+				    String Departmentcode = rs.getString("Departmentcode");
+				    System.out.println(Departmentcode);
+				    Assert.assertEquals(Globals.Inventory.Department.trim(), Departmentcode.trim());
+				    String Brandcode = rs.getString("BrandCode");
+				    System.out.println(Brandcode);
+				    Assert.assertEquals(Globals.Inventory.Brand.trim(), Brandcode.trim());
+				    String Barcode = rs.getString("Barcode");
+				    System.out.println(Barcode);
+				    Assert.assertEquals(Globals.Inventory.Barcode.trim(), Barcode.trim());
+				    String Subcategory = rs.getString("Subcategorycode");
+				    System.out.println(Subcategory);
+				    Assert.assertEquals(Globals.Inventory.SubCategory.trim(), Subcategory.trim());
+				    String Class = rs.getString("Class");
+				    System.out.println(Class);
+				    Assert.assertEquals(Globals.Inventory.Class.trim(), Class.trim());
+				    String SubClass = rs.getString("SubClass");
+				    System.out.println(SubClass);
+				    Assert.assertEquals(Globals.Inventory.SubClass.trim(), SubClass.trim());
+				    String Origion = rs.getString("Origin");
+				    System.out.println(Origion);
+				    Assert.assertEquals(Globals.Inventory.Origin.trim(), Origion.trim());
+				    String Warehouse = rs.getString("Warehouse");
+				    System.out.println(Warehouse);
+				    Assert.assertEquals(Globals.Inventory.WareHouse.trim(), Warehouse.trim());
+				    String UOM = rs.getString("UOM");
+				    System.out.println(UOM);
+				    Assert.assertEquals(Globals.Inventory.UOMPurchase.trim(), UOM.trim());
+				    String Manufacture = rs.getString("Manufacturer");
+				    System.out.println(Manufacture);
+				    Assert.assertEquals(Globals.Inventory.Manufacture.trim(), Manufacture.trim());
+				    String ItemType = rs.getString("ItemType");
+				    System.out.println(ItemType);
+				    Assert.assertEquals(Globals.Inventory.ItemType.trim(), ItemType.trim());
+				    String Weight = rs.getString("Weight");
+				    System.out.println(Weight);
+				    Assert.assertEquals(Globals.Inventory.Weight.trim(), Weight.trim());
+				    //String Width = rs.getString("Width");
+				    //System.out.println(Width);
+				    //Assert.assertEquals(Globals.Inventory.Width.trim(), Width.trim());
+				    String Height = rs.getString("Height");
+				    System.out.println(Height);
+				    Assert.assertEquals(Globals.Inventory.Height.trim(), Height.trim());
+				    String Length = rs.getString("Length");
+				    System.out.println(Length);
+				    Assert.assertEquals(Globals.Inventory.Length.trim(), Length.trim());
+				    String Vendorcode = rs.getString("VendorCode");
+				    System.out.println(Vendorcode);
+				    Assert.assertEquals(Globals.Inventory.Vendor.trim(), Vendorcode.trim());
+				    String Basicost = rs.getString("UnitCost");
+				    System.out.println(Basicost);
+				    Assert.assertEquals(Globals.Inventory.BasicCost.trim(), Basicost.trim());
+				    String Sellingprice = rs.getString("SellingPrice");
+				    System.out.println(Sellingprice);
+				    Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), Sellingprice.trim());
+				    String MRP = rs.getString("MRP");
+				    System.out.println(MRP);
+				    Assert.assertEquals(Globals.Inventory.MRP.trim(), MRP.trim());
 				break;
 
 			case "tblinventorypricing":
-				String BasicSelling = rs.getString("BasicSelling");
-				  System.out.println(BasicSelling);
-				   Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), BasicSelling.trim());
-				 
+				String BasicSelling = rs.getString("NetSellingPrice");
+				System.out.println(BasicSelling);
+				Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), BasicSelling.trim());
+				String Purchasetype = rs.getString("PurchasedBy");
+				System.out.println(Purchasetype);
+				Assert.assertEquals(Globals.Inventory.Purchasetype.trim(), Purchasetype.trim());
+				String MRP1 = rs.getString("MRP");
+			    System.out.println(MRP1);
+			    Assert.assertEquals(Globals.Inventory.MRP.trim(), MRP1.trim());
+			    String Basicost1 = rs.getString("BasicCost");
+			    System.out.println(Basicost1);
+			    Assert.assertEquals(Globals.Inventory.BasicCost.trim(), Basicost1.trim());
+			    String DiscountPer1 = rs.getString("DiscountBasicPer");
+			    System.out.println(DiscountPer1);
+			    Assert.assertEquals(Globals.Inventory.DiscountPer1.trim(), DiscountPer1.trim());
+			    String DiscountPer2 = rs.getString("DiscountBasicPer2");
+			    System.out.println(DiscountPer2);
+			    Assert.assertEquals(Globals.Inventory.DiscountPer2.trim(), DiscountPer2.trim());
+			    String DiscountPer3 = rs.getString("DiscountBasicPer3");
+			    System.out.println(DiscountPer3);
+			    Assert.assertEquals(Globals.Inventory.DiscountPer3.trim(), DiscountPer3.trim());
+			    String W1 = rs.getString("MPWPrice1");
+			    System.out.println(W1);
+			    Assert.assertEquals(Globals.Inventory.WPrice1.trim(), W1.trim());
+			    String W2 = rs.getString("MPWPrice2");
+			    System.out.println(W2);
+			    Assert.assertEquals(Globals.Inventory.WPrice2.trim(), W2.trim());
+			    String W3 = rs.getString("MPWPrice3");
+			    System.out.println(W3);
+			    Assert.assertEquals(Globals.Inventory.WPrice3.trim(), W3.trim());
 				break;
 				
 			case "TBLBATCHINVENTORYCONTROL":
 				String SellingPrice = rs.getString("SellingPrice");
 				  System.out.println(SellingPrice);
 				   Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), SellingPrice.trim());
+				   String MRP2 = rs.getString("MRP");
+				    System.out.println(MRP2);
+				    Assert.assertEquals(Globals.Inventory.MRP.trim(), MRP2.trim());
+				    String Basicost2 = rs.getString("Unitcost");
+				    System.out.println(Basicost2);
+				    Assert.assertEquals(Globals.Inventory.BasicCost.trim(), Basicost2.trim());
+				    String W11 = rs.getString("WPrice1");
+				    System.out.println(W11);
+				    Assert.assertEquals(Globals.Inventory.WAPrice1.trim(), W11.trim());
+				    String W22 = rs.getString("WPrice2");
+				    System.out.println(W22);
+				    Assert.assertEquals(Globals.Inventory.WAPrice2.trim(), W22.trim());
+				    String W33 = rs.getString("WPrice3");
+				    System.out.println(W33);
+				    Assert.assertEquals(Globals.Inventory.WAPrice3.trim(), W33.trim());
+				    String Batchno = rs.getString("BatchNo");
+				    System.out.println(Batchno);
+				    Assert.assertEquals(Globals.Inventory.Batchno.trim(), Batchno.trim());
+				break;
+			case "tblInventoryShelfQty":
+				   String Inventorycode = rs.getString("InventoryCode");
+					  System.out.println(Inventorycode);
+					   Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Inventorycode.trim());
 				 
 				break;
 				
+			case "tblinventorystock":
+				//String SellingPrice1 = rs.getString("Price");
+				  //System.out.println(SellingPrice1);
+				   //Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), SellingPrice1.trim());
+				   String Inventorycode1 = rs.getString("InventoryCode");
+					  System.out.println(Inventorycode1);
+					   Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Inventorycode1.trim());
+					   break;   
+						
+			case "tblbarcode":
+				String Brandcode1 = rs.getString("BarCode");
+				  System.out.println(Brandcode1);
+				   Assert.assertEquals(Globals.Inventory.Barcode.trim(), Brandcode1.trim());
+				   String Inventorycode11 = rs.getString("InventoryCode");
+					  System.out.println(Inventorycode11);
+					   Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Inventorycode11.trim());		   
+				   
+				break;
+	
+
+			default:
+				break;
+			}
+			
+		
+	   
+	     
+		}
+
+		
+		
+	}
+	@Given("I read the values from table MRP1 {string} in DB")
+	public void i_want_to_launch_the_MRP1(String tablename ) throws SQLException {
+		
+		System.out.println(tablename);
+		//ResultSet rs =st.executeQuery("select * from "+tablename+" where DeptCode='Gopi'");
 				
+		ResultSet rs = st.executeQuery("select * from "+tablename+" where inventorycode='859597'");
+		
+		
+		//ResultSet rs = st.executeQuery("");
+
+		while (rs.next()) {
+
+			switch (tablename) {
+			
+			case "tbldepartment":
+				String DepartmentCode = rs.getString("DeptCode");
+				    System.out.println(DepartmentCode);
+				    Assert.assertEquals(Globals.Inventory.Department.trim(), DepartmentCode.trim());
+				    
+				break;
+			
+			case "tblinventory":
+				String CategoryCode = rs.getString("CategoryCode");
+				    System.out.println(CategoryCode);
+				    Assert.assertEquals(Globals.Inventory.Category.trim(), CategoryCode.trim());
+				    String Departmentcode = rs.getString("Departmentcode");
+				    System.out.println(Departmentcode);
+				    Assert.assertEquals(Globals.Inventory.Department.trim(), Departmentcode.trim());
+				    String Brandcode = rs.getString("BrandCode");
+				    System.out.println(Brandcode);
+				    Assert.assertEquals(Globals.Inventory.Brand.trim(), Brandcode.trim());
+				    String Barcode = rs.getString("Barcode");
+				    System.out.println(Barcode);
+				    Assert.assertEquals(Globals.Inventory.Barcode.trim(), Barcode.trim());
+				    String Subcategory = rs.getString("Subcategorycode");
+				    System.out.println(Subcategory);
+				    Assert.assertEquals(Globals.Inventory.SubCategory.trim(), Subcategory.trim());
+				    String Class = rs.getString("Class");
+				    System.out.println(Class);
+				    Assert.assertEquals(Globals.Inventory.Class.trim(), Class.trim());
+				    String SubClass = rs.getString("SubClass");
+				    System.out.println(SubClass);
+				    Assert.assertEquals(Globals.Inventory.SubClass.trim(), SubClass.trim());
+				    String Origion = rs.getString("Origin");
+				    System.out.println(Origion);
+				    Assert.assertEquals(Globals.Inventory.Origin.trim(), Origion.trim());
+				    String Warehouse = rs.getString("Warehouse");
+				    System.out.println(Warehouse);
+				    Assert.assertEquals(Globals.Inventory.WareHouse.trim(), Warehouse.trim());
+				    String UOM = rs.getString("UOM");
+				    System.out.println(UOM);
+				    Assert.assertEquals(Globals.Inventory.UOMPurchase.trim(), UOM.trim());
+				    String Manufacture = rs.getString("Manufacturer");
+				    System.out.println(Manufacture);
+				    Assert.assertEquals(Globals.Inventory.Manufacture.trim(), Manufacture.trim());
+				    String ItemType = rs.getString("ItemType");
+				    System.out.println(ItemType);
+				    Assert.assertEquals(Globals.Inventory.ItemType.trim(), ItemType.trim());
+				    String Weight = rs.getString("Weight");
+				    System.out.println(Weight);
+				    Assert.assertEquals(Globals.Inventory.Weight.trim(), Weight.trim());
+				    //String Width = rs.getString("Width");
+				    //System.out.println(Width);
+				    //Assert.assertEquals(Globals.Inventory.Width.trim(), Width.trim());
+				    String Height = rs.getString("Height");
+				    System.out.println(Height);
+				    Assert.assertEquals(Globals.Inventory.Height.trim(), Height.trim());
+				    String Length = rs.getString("Length");
+				    System.out.println(Length);
+				    Assert.assertEquals(Globals.Inventory.Length.trim(), Length.trim());
+				    String Vendorcode = rs.getString("VendorCode");
+				    System.out.println(Vendorcode);
+				    Assert.assertEquals(Globals.Inventory.Vendor.trim(), Vendorcode.trim());
+				    String Basicost = rs.getString("UnitCost");
+				    System.out.println(Basicost);
+				    Assert.assertEquals(Globals.Inventory.BasicCost.trim(), Basicost.trim());
+				    String Sellingprice = rs.getString("SellingPrice");
+				    System.out.println(Sellingprice);
+				    Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), Sellingprice.trim());
+				    String MRP = rs.getString("MRP");
+				    System.out.println(MRP);
+				    Assert.assertEquals(Globals.Inventory.MRP.trim(), MRP.trim());
+				break;
+
+			case "tblinventorypricing":
+				String BasicSelling = rs.getString("NetSellingPrice");
+				System.out.println(BasicSelling);
+				Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), BasicSelling.trim());
+				String Purchasetype = rs.getString("PurchasedBy");
+				System.out.println(Purchasetype);
+				Assert.assertEquals(Globals.Inventory.Purchasetype.trim(), Purchasetype.trim());
+				String MRP1 = rs.getString("MRP");
+			    System.out.println(MRP1);
+			    Assert.assertEquals(Globals.Inventory.MRP.trim(), MRP1.trim());
+			    String Basicost1 = rs.getString("BasicCost");
+			    System.out.println(Basicost1);
+			    Assert.assertEquals(Globals.Inventory.BasicCost.trim(), Basicost1.trim());
+			    String DiscountPer1 = rs.getString("DiscountBasicPer");
+			    System.out.println(DiscountPer1);
+			    Assert.assertEquals(Globals.Inventory.DiscountPer1.trim(), DiscountPer1.trim());
+			    String DiscountPer2 = rs.getString("DiscountBasicPer2");
+			    System.out.println(DiscountPer2);
+			    Assert.assertEquals(Globals.Inventory.DiscountPer2.trim(), DiscountPer2.trim());
+			    String DiscountPer3 = rs.getString("DiscountBasicPer3");
+			    System.out.println(DiscountPer3);
+			    Assert.assertEquals(Globals.Inventory.DiscountPer3.trim(), DiscountPer3.trim());
+			    String W1 = rs.getString("MPWPrice1");
+			    System.out.println(W1);
+			    Assert.assertEquals(Globals.Inventory.WPrice1.trim(), W1.trim());
+			    String W2 = rs.getString("MPWPrice2");
+			    System.out.println(W2);
+			    Assert.assertEquals(Globals.Inventory.WPrice2.trim(), W2.trim());
+			    String W3 = rs.getString("MPWPrice3");
+			    System.out.println(W3);
+			    Assert.assertEquals(Globals.Inventory.WPrice3.trim(), W3.trim());
+				break;
+				
+			case "TBLBATCHINVENTORYCONTROL":
+				String SellingPrice = rs.getString("SellingPrice");
+				  System.out.println(SellingPrice);
+				   Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), SellingPrice.trim());
+				   String MRP2 = rs.getString("MRP");
+				    System.out.println(MRP2);
+				    Assert.assertEquals(Globals.Inventory.MRP.trim(), MRP2.trim());
+				    String Basicost2 = rs.getString("Unitcost");
+				    System.out.println(Basicost2);
+				    Assert.assertEquals(Globals.Inventory.BasicCost.trim(), Basicost2.trim());
+				    String W11 = rs.getString("WPrice1");
+				    System.out.println(W11);
+				    Assert.assertEquals(Globals.Inventory.WAPrice1.trim(), W11.trim());
+				    String W22 = rs.getString("WPrice2");
+				    System.out.println(W22);
+				    Assert.assertEquals(Globals.Inventory.WAPrice2.trim(), W22.trim());
+				    String W33 = rs.getString("WPrice3");
+				    System.out.println(W33);
+				    Assert.assertEquals(Globals.Inventory.WAPrice3.trim(), W33.trim());
+				    String Batchno = rs.getString("BatchNo");
+				    System.out.println(Batchno);
+				    Assert.assertEquals(Globals.Inventory.Batchno.trim(), Batchno.trim());
+				break;
 			case "tblInventoryShelfQty":
-				String CreateUser = rs.getString("CreateUser");
-				  System.out.println(CreateUser);
-				   Assert.assertEquals("AA", CreateUser.trim());
+				   String Inventorycode = rs.getString("InventoryCode");
+					  System.out.println(Inventorycode);
+					   Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Inventorycode.trim());
 				 
+				break;
+				
+			case "tblinventorystock":
+				//String SellingPrice1 = rs.getString("Price");
+				  //System.out.println(SellingPrice1);
+				   //Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), SellingPrice1.trim());
+				   String Inventorycode1 = rs.getString("InventoryCode");
+					  System.out.println(Inventorycode1);
+					   Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Inventorycode1.trim());
+					   break;   
+						
+			case "tblbarcode":
+				String Brandcode1 = rs.getString("BarCode");
+				  System.out.println(Brandcode1);
+				   Assert.assertEquals(Globals.Inventory.Barcode.trim(), Brandcode1.trim());
+				   String Inventorycode11 = rs.getString("InventoryCode");
+					  System.out.println(Inventorycode11);
+					   Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Inventorycode11.trim());		   
+				   
 				break;
 	
 
@@ -866,8 +1280,7 @@ public class InventoryCalculations_StepDefinitions {
 		
 	}
 
-
-
+	
 	@Then("I verify the actual ui values with expected Excel values")
 	public void i_verify_the_actual_ui_values_with_expected_Excel_values()  {
 		
@@ -894,5 +1307,6 @@ public class InventoryCalculations_StepDefinitions {
 		}
 		 
 	}
-
+	
+	
 }

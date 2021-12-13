@@ -61,6 +61,7 @@ public class InventoryCalculationsPage extends PageObject {
 	public String Height_String = "input#ContentPlaceHolder1_txtHeight.form-control-res-right";
 	public String Width_String = "input#ContentPlaceHolder1_txtWidth.form-control-res-right";
 	public String Length_String = "input#ContentPlaceHolder1_txtLength.form-control-res-right";
+	public String Barcode_String = "input#ContentPlaceHolder1_txtBarcode";
 	
 	
 	//public By MRP_By = By.cssSelector(MRP_String);

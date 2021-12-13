@@ -176,7 +176,7 @@ public class Inventorychange extends PageObject {
 			Inventorychange.return_td_invoke_element(Globals.Inventory.Selectfield).click();
 		}
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Changefield)) {
-			terpage.terminal_waitClearEnterText_css(icp.Changefield_String, Globals.Inventory.GST);
+			terpage.terminal_waitClearEnterText_css(icp.Changefield_String, Globals.Inventory.Changefield);
 			Inventorychange.clearAndTypeSlowly(Globals.Inventory.Changefield, "input#txtSearch");
 			Inventorychange.return_td_invoke_element(Globals.Inventory.Changefield).click();
 		}

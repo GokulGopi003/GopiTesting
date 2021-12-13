@@ -22,6 +22,7 @@ Feature: InventoryChange
     Then I fill new Inventorychange data page using excel data
     When Im waiting for 2 sec
     Then I need to click on the  element "a#ContentPlaceHolder1_searchFilterUserControl_lnkFilter"
+    When Im waiting for 2 sec
     
     
     
@@ -44,15 +45,15 @@ Feature: InventoryChange
       | TestcaseRowName |
       |Inventorychange2| 
      
-    Scenario Outline: Title of your scenario outline
+   # Scenario Outline: Title of your scenario outline
    
-    Then I load the testdatas form excel to table
-    Then I load the Inventorychange sheet data to map
-    Then I load the rowise Inventorychange data for "<TestcaseRowName>" rowname
-    Then I update value to the Inventorychange page global Variables
-    Then I fill new Inventorychange data page using excel data
-    Then I need to click on the  element "a#ContentPlaceHolder1_lnkReport"  
+    #Then I load the testdatas form excel to table
+    #Then I load the Inventorychange sheet data to map
+    #Then I load the rowise Inventorychange data for "<TestcaseRowName>" rowname
+    #Then I update value to the Inventorychange page global Variables
+    #Then I fill new Inventorychange data page using excel data
+    #Then I need to click on the  element "a#ContentPlaceHolder1_lnkReport"  
     
-     Examples: 
-      | TestcaseRowName |
-      |Inventorychange3|
+    # Examples: 
+     # | TestcaseRowName |
+     # |Inventorychange3|
