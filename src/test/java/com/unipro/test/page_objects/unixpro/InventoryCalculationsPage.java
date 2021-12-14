@@ -62,8 +62,38 @@ public class InventoryCalculationsPage extends PageObject {
 	public String Width_String = "input#ContentPlaceHolder1_txtWidth.form-control-res-right";
 	public String Length_String = "input#ContentPlaceHolder1_txtLength.form-control-res-right";
 	public String Barcode_String = "input#ContentPlaceHolder1_txtBarcode";
+	public String MinQty_String = "input#ContentPlaceHolder1_txtMinimumQty";
+	public String MaxQty_String = "input#ContentPlaceHolder1_txtMaxQty";
+	public String ReorderQty_String = "input#ContentPlaceHolder1_txtReOrderQty";
+	public String Orderby_String = "select#ContentPlaceHolder1_ddlOrderBy";
+	public String Cycledays_String = "input#ContentPlaceHolder1_txtCycleDays";
+	public String CheckBox1_String = "select#ContentPlaceHolder1_ddlMiniBy";
 	
-	
+	public String Batch1_String = "input#ContentPlaceHolder1_chkSelectAllRight";
+	public String Expireddate_String = "input#ContentPlaceHolder1_chkExpiryDate";
+	public String SerialnoEntry_String = "input#ContentPlaceHolder1_chkSerialNo";
+	public String AutoPO_String = "input#ContentPlaceHolder1_chkAutoPO";
+	public String Packageitem_String = "input#ContentPlaceHolder1_chkPackage";
+	public String Loyality_String = "input#ContentPlaceHolder1_chkLoyality";
+	public String Special_String = "input#ContentPlaceHolder1_chkSpecial";
+	public String ShelfStorage_String = "input#ContentPlaceHolder1_chkShelf";
+	public String HideDataOnBarcode_String = "input#ContentPlaceHolder1_chkHideData";
+	public String NeedBarcodePrint_String = "input#ContentPlaceHolder1_chkBarcodePrint";
+	public String AllowCostEditinGRN_String = "input#ContentPlaceHolder1_chkAllowCost";
+	public String CheckBox2_String = "select#ContentPlaceHolder1_ddlByReOrder";
+	public String Weightbased_String = "input#ContentPlaceHolder1_cbWeightbased";
+	public String Markingitem_String = "input#ContentPlaceHolder1_chkMarking";
+	public String PurchaseOrder_String = "input#ContentPlaceHolder1_chkPurchaseOrder";	
+	public String GRNPurchase_String = "input#ContentPlaceHolder1_chkGRN";
+	public String PurchaseReturn_String = "input#ContentPlaceHolder1_chkPurchaseReturn";
+	public String PointOfSale_String = "input#ContentPlaceHolder1_chkPointOfSale";
+	public String AllowNegative_String = "input#ContentPlaceHolder1_chkAllowNeg";
+	public String TransferDC_String = "input#ContentPlaceHolder1_chkTransfer";
+	public String SalesReturn_String = "input#ContentPlaceHolder1_chkSalesReturn";
+	public String OrderBooking_String = "input#ContentPlaceHolder1_chkOrderBooking";
+	public String Estimation_String = "input#ContentPlaceHolder1_chkEstimate";
+	public String Quatation_String = "input#ContentPlaceHolder1_chkQuatation";
+	public String OnlineOrder_String = "input#ContentPlaceHolder1_chkOnlineOrder";
 	//public By MRP_By = By.cssSelector(MRP_String);
 	
 	

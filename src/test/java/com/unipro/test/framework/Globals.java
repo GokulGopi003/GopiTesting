@@ -211,6 +211,15 @@ public class Globals {
 		public static String Billno;
 		public static String Billdate;
 		public static String Date;
+		public static String EarnedMargin;
+		public static String FromDate;
+		public static String ToDate;
+		public static String Earnedmarginclick;
+		public static String MRPclick;
+		public static String Netcostclick;
+		public static String NewFromDate;
+		public static String NewToDate;
+		public static String Selectall;
 		public static String GrossAmount;
 		public static String GST;
 		public static String TotalAmount;
@@ -314,6 +323,36 @@ public class Globals {
 		public static String Template;
 		public static String Printername;
 		public static String result;
+		public static String MinQty;
+		public static String MaxQty;
+		public static String ReorderQty;
+		public static String Cycledays;
+		public static String Orderby;
+		public static String CheckBox1;
+		public static String CheckBox2;
+		public static String Expireddate;
+		public static String SerialnoEntry;
+		public static String AutoPO;
+		public static String Packageitem;
+		public static String Loyality;
+		public static String Special;
+		public static String ShelfStorage;
+		public static String HideDataOnBarcode;
+		public static String Markingitem;
+		public static String NeedBarcodePrint;
+		public static String AllowCostEditinGRN;
+		public static String Weightbased;
+		public static String PurchaseOrder;
+		public static String GRNPurchase;
+		public static String PointOfSale;
+		public static String AllowNegative;
+		public static String TransferDC;
+		public static String SalesReturn;
+		public static String OrderBooking;
+		public static String Estimation;
+		public static String Quatation;
+		public static String OnlineOrder;
+		public static String Purchasereturn;
 		
 
 		

@@ -27,7 +27,18 @@ public class InventorychangeField {
 	public String Selectfield_String = "input#ContentPlaceHolder1_txtInventoryType";
 	public String Changefield_String = "input#ContentPlaceHolder1_txtSelectedInventoryType";
 	public String Billdate_String = "input#ContentPlaceHolder1_txtFromDate";
+	public String EarnedMargin_String = "input#ContentPlaceHolder1_txtMargin";
+	public String Earnedmarginclick_String = "input#ContentPlaceHolder1_txtMargin";
+	public String MRP_String = "input#ContentPlaceHolder1_txtMRP";
+	public String Netcost_String = "input#ContentPlaceHolder1_txtBasicCost";
+	public String MRPclick_String = "input#ContentPlaceHolder1_rdoGreater";
+	public String Netcostclick_String = "input#ContentPlaceHolder1_rdoLesser";
 	public String Date_String = "input#ContentPlaceHolder1_txtToDate";
+	public String FromDate_String = "input#ContentPlaceHolder1_txtSalesFromDate";
+	public String ToDate_String = "input#ContentPlaceHolder1_txtSalesToDate";
+	public String NewFromDate_String = "input#ContentPlaceHolder1_txtNewFromDate";
+	public String NewToDate_String = "input#ContentPlaceHolder1_txtNewToDate";
+	public String Selectall_String = "input#ContentPlaceHolder1_chkSelectAllRight";
 	
 	
 	

@@ -102,7 +102,7 @@ Feature: PoS Inventory > Add Inventory
     Then I click on button tag with value "Back"
     #Then I need to click on sub menu with text matching "Image"
     When Im waiting for 5 sec
-    #Then I enter the value forimageElement "input#ContentPlaceHolder1_fuimage"
+    Then I enter the value forimageElement "input#ContentPlaceHolder1_fuimage"
     Then I need to click on the "Save" button
     Then I click dynamically on "NewItemNo" button
 

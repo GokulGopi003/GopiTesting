@@ -23,9 +23,13 @@ Feature: PoS Inventory > Add Inventory
     When Im waiting for 2 sec
     Then I verify the actual ui values with expected Excel values
     Then I click on button tag with value "Back"
+    Then I need to click on sub menu with text matching "Order & BreakPrice"
+    Then I fill Order and break price
+    Then I need to click on sub menu with text matching "Activation Settings"
+    Then I fill Activationsettings
     Then I need to click on sub menu with text matching "Image"
-    #When Im waiting for 5 sec
-    #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "12"
+    When Im waiting for 5 sec
+    Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "12"
     Then I need to click on the "Save" button
     Then I click dynamically on "NewItemNo" button
     Then I establish connection to DB
@@ -39,7 +43,7 @@ Feature: PoS Inventory > Add Inventory
 
     Examples: 
       | TestcaseRowName |
-      | cost3           |
+      | cost1           |
       
       
     Scenario Outline: Verifying Add Inventory Functionality Purchased by MRP1
@@ -55,18 +59,22 @@ Feature: PoS Inventory > Add Inventory
     Then I fill inventory calculations MRP page using excel data
     Then I verify the actual ui values with expected Excel values
     Then I click on button tag with value "Back"
+    Then I need to click on sub menu with text matching "Order & BreakPrice"
+    Then I fill Order and break price
+    Then I need to click on sub menu with text matching "Activation Settings"
+    Then I fill Activationsettings
     #Then I need to click on sub menu with text matching "Image"
     When Im waiting for 5 sec
     #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
     Then I need to click on the "Save" button
     Then I click dynamically on "NewItemNo" button
     Then I establish connection to DB
-    Then I read the values from table MRP1 "tblinventory" in DB
-    Then I read the values from table MRP1 "tblinventorypricing" in DB
-    Then I read the values from table MRP1 "tblinventorystock" in DB
-    Then I read the values from table MRP1 "tblbarcode" in DB
-    Then I read the values from table MRP1 "TBLBATCHINVENTORYCONTROL" in DB
-    Then I read the values from table MRP1 "tblInventoryShelfQty" in DB
+    Then I read the values from table MRP "tblinventory" in DB
+    Then I read the values from table MRP "tblinventorypricing" in DB
+    Then I read the values from table MRP "tblinventorystock" in DB
+    Then I read the values from table MRP "tblbarcode" in DB
+    Then I read the values from table MRP "TBLBATCHINVENTORYCONTROL" in DB
+    Then I read the values from table MRP "tblInventoryShelfQty" in DB
     Then I close connection to DB
     Examples: 
       | TestcaseRowName |
@@ -85,18 +93,22 @@ Feature: PoS Inventory > Add Inventory
     Then I fill inventory calculations MRP page using excel data
     Then I verify the actual ui values with expected Excel values
     Then I click on button tag with value "Back"
+    Then I need to click on sub menu with text matching "Order & BreakPrice"
+    Then I fill Order and break price
+    Then I need to click on sub menu with text matching "Activation Settings"
+    Then I fill Activationsettings
     #Then I need to click on sub menu with text matching "Image"
     When Im waiting for 5 sec
     #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
     Then I need to click on the "Save" button
     Then I click dynamically on "NewItemNo" button
     Then I establish connection to DB
-    Then I read the values from table MRP1 "tblinventory" in DB
-    Then I read the values from table MRP1 "tblinventorypricing" in DB
-    Then I read the values from table MRP1 "tblinventorystock" in DB
-    Then I read the values from table MRP1 "tblbarcode" in DB
-    Then I read the values from table MRP1 "TBLBATCHINVENTORYCONTROL" in DB
-    Then I read the values from table MRP1 "tblInventoryShelfQty" in DB
+    Then I read the values from table MRP "tblinventory" in DB
+    Then I read the values from table MRP "tblinventorypricing" in DB
+    Then I read the values from table MRP "tblinventorystock" in DB
+    Then I read the values from table MRP "tblbarcode" in DB
+    Then I read the values from table MRP "TBLBATCHINVENTORYCONTROL" in DB
+    Then I read the values from table MRP "tblInventoryShelfQty" in DB
     Then I close connection to DB
     Examples: 
       | TestcaseRowName |

@@ -29,6 +29,7 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -309,7 +310,37 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 		Globals.Inventory.Purchasetype = Globals.Inventory.inventoryrowwiseData.get("Purchasetype");
 		Globals.Inventory.ItemCode = Globals.Inventory.inventoryrowwiseData.get("ItemCode");
 		Globals.Inventory.Barcode = Globals.Inventory.inventoryrowwiseData.get("Barcode");
-		Globals.Inventory.Batchno = Globals.Inventory.inventoryrowwiseData.get("Batchno");
+		Globals.Inventory.MinQty = Globals.Inventory.inventoryrowwiseData.get("MinQty");
+		Globals.Inventory.MaxQty = Globals.Inventory.inventoryrowwiseData.get("MaxQty");
+		Globals.Inventory.ReorderQty = Globals.Inventory.inventoryrowwiseData.get("ReorderQty");
+		Globals.Inventory.Cycledays = Globals.Inventory.inventoryrowwiseData.get("Cycledays");
+		Globals.Inventory.Orderby = Globals.Inventory.inventoryrowwiseData.get("Orderby");
+		Globals.Inventory.CheckBox1 = Globals.Inventory.inventoryrowwiseData.get("CheckBox1");
+		Globals.Inventory.CheckBox2 = Globals.Inventory.inventoryrowwiseData.get("CheckBox2");
+		Globals.Inventory.Batch1 = Globals.Inventory.inventoryrowwiseData.get("Batch1");
+		Globals.Inventory.Expireddate = Globals.Inventory.inventoryrowwiseData.get("Expireddate");
+		Globals.Inventory.SerialnoEntry = Globals.Inventory.inventoryrowwiseData.get("SerialnoEntry");
+		Globals.Inventory.AutoPO = Globals.Inventory.inventoryrowwiseData.get("AutoPO");
+		Globals.Inventory.Packageitem = Globals.Inventory.inventoryrowwiseData.get("Packageitem");
+		Globals.Inventory.Loyality = Globals.Inventory.inventoryrowwiseData.get("Loyality");
+		Globals.Inventory.Special = Globals.Inventory.inventoryrowwiseData.get("Special");
+		Globals.Inventory.ShelfStorage = Globals.Inventory.inventoryrowwiseData.get("ShelfStorage");
+		Globals.Inventory.HideDataOnBarcode = Globals.Inventory.inventoryrowwiseData.get("HideDataOnBarcode");
+		Globals.Inventory.Markingitem = Globals.Inventory.inventoryrowwiseData.get("Markingitem");
+		Globals.Inventory.NeedBarcodePrint = Globals.Inventory.inventoryrowwiseData.get("NeedBarcodePrint");
+		Globals.Inventory.AllowCostEditinGRN = Globals.Inventory.inventoryrowwiseData.get("AllowCostEditinGRN");
+		Globals.Inventory.Weightbased = Globals.Inventory.inventoryrowwiseData.get("Weightbased");
+		Globals.Inventory.PurchaseOrder = Globals.Inventory.inventoryrowwiseData.get("PurchaseOrder");
+		Globals.Inventory.GRNPurchase = Globals.Inventory.inventoryrowwiseData.get("GRNPurchase");
+		Globals.Inventory.PointOfSale = Globals.Inventory.inventoryrowwiseData.get("PointOfSale");
+		Globals.Inventory.AllowNegative = Globals.Inventory.inventoryrowwiseData.get("AllowNegative");
+		Globals.Inventory.TransferDC = Globals.Inventory.inventoryrowwiseData.get("TransferDC");
+		Globals.Inventory.SalesReturn = Globals.Inventory.inventoryrowwiseData.get("SalesReturn");
+		Globals.Inventory.OrderBooking = Globals.Inventory.inventoryrowwiseData.get("OrderBooking");
+		Globals.Inventory.Estimation = Globals.Inventory.inventoryrowwiseData.get("Estimation");
+		Globals.Inventory.Quatation = Globals.Inventory.inventoryrowwiseData.get("Quatation");
+		Globals.Inventory.OnlineOrder = Globals.Inventory.inventoryrowwiseData.get("OnlineOrder");
+		Globals.Inventory.Purchasereturn = Globals.Inventory.inventoryrowwiseData.get("Purcasereturn");
 	}
 
 	@Then("I fill new inventory data page using excel data")
@@ -720,6 +751,166 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 
 	}
 
+	@Then("I fill Order and break price")
+	public void i_fill_order_and_break_price() throws Exception {
+		try {
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.MinQty)) {
+			terPage.terminal_waitClearEnterText_css(icp.MinQty_String, Globals.Inventory.MinQty);
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.MaxQty)) {
+				terPage.terminal_waitClearEnterText_css(icp.MaxQty_String, Globals.Inventory.MaxQty);
+			}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.ReorderQty)) {
+				terPage.terminal_waitClearEnterText_css(icp.ReorderQty_String, Globals.Inventory.ReorderQty);
+			}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.Orderby)) {
+				Select checkbox=new Select(webDriver.findElement((By.id("ContentPlaceHolder1_ddlOrderBy"))));
+				checkbox.selectByVisibleText(Globals.Inventory.Orderby);
+				
+			}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.Cycledays)) {
+				terPage.terminal_waitClearEnterText_css(icp.Cycledays_String, Globals.Inventory.Cycledays);
+			}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.CheckBox1)) {
+				Select checkbox=new Select(webDriver.findElement((By.id("ContentPlaceHolder1_ddlMiniBy"))));
+				checkbox.selectByVisibleText(Globals.Inventory.CheckBox1);
+			}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.CheckBox2)) {
+				Select checkbox=new Select(webDriver.findElement((By.id("ContentPlaceHolder1_ddlByReOrder"))));
+				checkbox.selectByVisibleText(Globals.Inventory.CheckBox2);
+			}
+		}
+		
+				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+				FileInputStream fis = new FileInputStream(file);
+				XSSFWorkbook xs = new XSSFWorkbook(fis);
+				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
+				int row= sh.getLastRowNum()+1;
+				sh.createRow(row).createCell(52).setCellValue("passed");
+				FileOutputStream fos = new FileOutputStream(file);
+				xs.write(fos);
+				}
+			catch (Exception e) {
+				// screen shot
+				scr.Screenshots();
+				System.out.println("Screen shot ");
+				// Xl sheet write
+				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+				FileInputStream fis = new FileInputStream(file);
+				XSSFWorkbook xs = new XSSFWorkbook(fis);
+				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
+				int row= sh.getLastRowNum()+1;
+				sh.createRow(row).createCell(52).setCellValue("failed");
+				FileOutputStream fos = new FileOutputStream(file);
+				xs.write(fos);
+				
+
+			}
+
+	}
+
+	@Then("I fill Activationsettings")
+	public void i_fill_Activationsettings_price() throws Exception {
+		try {
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch1)) {
+				terPage.get_checkBox_element(icp.Batch1_String).click();
+			}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Expireddate)) {
+					terPage.get_checkBox_element(icp.Expireddate_String).click();
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.SerialnoEntry)) {
+					terPage.get_checkBox_element(icp.SerialnoEntry_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.AutoPO)) {
+					terPage.get_checkBox_element(icp.AutoPO_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Packageitem)) {
+					terPage.get_checkBox_element(icp.Packageitem_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Loyality)) {
+					terPage.get_checkBox_element(icp.Loyality_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Special)) {
+					terPage.get_checkBox_element(icp.Special_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.ShelfStorage)) {
+					terPage.get_checkBox_element(icp.ShelfStorage_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.HideDataOnBarcode)) {
+					terPage.get_checkBox_element(icp.HideDataOnBarcode_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Markingitem)) {
+					terPage.get_checkBox_element(icp.Markingitem_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.NeedBarcodePrint)) {
+					terPage.get_checkBox_element(icp.NeedBarcodePrint_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.AllowCostEditinGRN)) {
+					terPage.get_checkBox_element(icp.AllowCostEditinGRN_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Weightbased)) {
+					terPage.get_checkBox_element(icp.Weightbased_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.PurchaseOrder)) {
+					terPage.get_checkBox_element(icp.PurchaseOrder_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.GRNPurchase)) {
+					terPage.get_checkBox_element(icp.GRNPurchase_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Purchasereturn)) {
+					terPage.get_checkBox_element(icp.PurchaseReturn_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.PointOfSale)) {
+					terPage.get_checkBox_element(icp.PointOfSale_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.AllowNegative)) {
+					terPage.get_checkBox_element(icp.AllowNegative_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.TransferDC)) {
+					terPage.get_checkBox_element(icp.TransferDC_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.SalesReturn)) {
+					terPage.get_checkBox_element(icp.SalesReturn_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.OrderBooking)) {
+					terPage.get_checkBox_element(icp.OrderBooking_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Estimation)) {
+					terPage.get_checkBox_element(icp.Estimation_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Quatation)) {
+					terPage.get_checkBox_element(icp.Quatation_String).click();
+					}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.OnlineOrder)) {
+					terPage.get_checkBox_element(icp.OnlineOrder_String).click();
+					}
+
+				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+				FileInputStream fis = new FileInputStream(file);
+				XSSFWorkbook xs = new XSSFWorkbook(fis);
+				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
+				int row= sh.getLastRowNum()+1;
+				sh.createRow(row).createCell(52).setCellValue("passed");
+				FileOutputStream fos = new FileOutputStream(file);
+				xs.write(fos);
+				}
+			catch (Exception e) {
+				// screen shot
+				scr.Screenshots();
+				System.out.println("Screen shot ");
+				// Xl sheet write
+				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
+				FileInputStream fis = new FileInputStream(file);
+				XSSFWorkbook xs = new XSSFWorkbook(fis);
+				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
+				int row= sh.getLastRowNum()+1;
+				sh.createRow(row).createCell(52).setCellValue("failed");
+				FileOutputStream fos = new FileOutputStream(file);
+				xs.write(fos);
+				
+
+			}
+
+	}
         @Then("I fill inventory calculations MRP page using excel data")
         public void i_fill_inventory_calculations_page_MRP_using_excel_data() throws Exception {
 		try {
@@ -1099,7 +1290,7 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 		
 		
 	}
-	@Given("I read the values from table MRP1 {string} in DB")
+	@Given("I read the values from table MRP {string} in DB")
 	public void i_want_to_launch_the_MRP1(String tablename ) throws SQLException {
 		
 		System.out.println(tablename);

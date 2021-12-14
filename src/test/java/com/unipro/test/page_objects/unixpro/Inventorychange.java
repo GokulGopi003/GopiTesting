@@ -1,13 +1,23 @@
 package com.unipro.test.page_objects.unixpro;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Iterator;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
+import com.gk.test.MssqlConnect;
 import com.unipro.test.framework.Globals;
 import com.unipro.test.framework.PageObject;
 import com.unipro.test.framework.helpers.utils.GenericWrappers;
 import com.unipro.test.framework.helpers.utils.ReadTestData;
 
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import net.bytebuddy.agent.builder.AgentBuilder.CircularityLock.Global;
 
@@ -69,6 +79,18 @@ public class Inventorychange extends PageObject {
 		Globals.Inventory.Changefield = Globals.Inventory.InventorychangerowwiseData.get("Changefield");
 		Globals.Inventory.Billdate = Globals.Inventory.InventorychangerowwiseData.get("Billdate");
 		Globals.Inventory.Date = Globals.Inventory.InventorychangerowwiseData.get("Date");
+		Globals.Inventory.EarnedMargin = Globals.Inventory.InventorychangerowwiseData.get("EarnedMargin");
+		Globals.Inventory.MRP = Globals.Inventory.InventorychangerowwiseData.get("MRP");
+		Globals.Inventory.Netcost = Globals.Inventory.InventorychangerowwiseData.get("Netcost");
+		Globals.Inventory.FromDate = Globals.Inventory.InventorychangerowwiseData.get("FromDate");
+		Globals.Inventory.ToDate = Globals.Inventory.InventorychangerowwiseData.get("ToDate");
+		Globals.Inventory.Earnedmarginclick = Globals.Inventory.InventorychangerowwiseData.get("Earnedmarginclick");
+		Globals.Inventory.MRPclick = Globals.Inventory.InventorychangerowwiseData.get("MRPclick");
+		Globals.Inventory.Netcostclick = Globals.Inventory.InventorychangerowwiseData.get("Netcostclick");
+		Globals.Inventory.NewFromDate = Globals.Inventory.InventorychangerowwiseData.get("NewFromDate");
+		Globals.Inventory.NewToDate = Globals.Inventory.InventorychangerowwiseData.get("NewToDate");
+		Globals.Inventory.Selectall = Globals.Inventory.InventorychangerowwiseData.get("Selectall");
+		
 		
 		
 	}
@@ -156,20 +178,12 @@ public class Inventorychange extends PageObject {
 			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_searchFilterUserControl_txtItemName")).sendKeys(Keys.RETURN);
 
 		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemType)) {
-			terpage.terminal_waitClearEnterText_css(icp.ItemType_String, Globals.Inventory.ItemType);
-			Inventorychange.clearAndTypeSlowly(Globals.Inventory.ItemType, "input#txtSearch");
-			Inventorychange.return_td_invoke_element(Globals.Inventory.ItemType).click();
-		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Price)) {
-			terpage.terminal_waitClearEnterText_css(icp.Price_String, Globals.Inventory.Price);
-			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_searchFilterUserControl_txtItemType")).sendKeys(Keys.RETURN);
-		}
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.GST)) {
 			terpage.terminal_waitClearEnterText_css(icp.GST_String, Globals.Inventory.GST);
 			Inventorychange.clearAndTypeSlowly(Globals.Inventory.GST, "input#txtSearch");
 			Inventorychange.return_td_invoke_element(Globals.Inventory.GST).click();
 		}
+		
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Selectfield)) {
 			terpage.terminal_waitClearEnterText_css(icp.Selectfield_String, Globals.Inventory.Selectfield);
 			Inventorychange.clearAndTypeSlowly(Globals.Inventory.Selectfield, "input#txtSearch");
@@ -182,18 +196,64 @@ public class Inventorychange extends PageObject {
 		}
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch)) {
 			terpage.get_checkBox_element(icp.Batch_String).click();
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.Earnedmarginclick)) {
+			terpage.get_checkBox_element(icp.Earnedmarginclick_String).click();
+			terpage.terminal_waitClearEnterText_css(icp.EarnedMargin_String, Globals.Inventory.EarnedMargin);
+			}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.MRPclick)) {
+				terpage.get_checkBox_element(icp.MRPclick_String).click();
+				terpage.terminal_waitClearEnterText_css(icp.MRP_String, Globals.Inventory.MRP);
+				}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.Netcostclick)) {
+				terpage.get_checkBox_element(icp.Netcostclick_String).click();
+				terpage.terminal_waitClearEnterText_css(icp.Netcost_String, Globals.Inventory.Netcost);
+				}
+
 
 		}
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch1)) {
 			terpage.get_checkBox_element(icp.Batch1_String).click();
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.FromDate)) {
+				terpage.terminal_waitClearEnterText_css(icp.FromDate_String, Globals.Inventory.FromDate);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSalesFromDate")).sendKeys(Keys.RETURN);
+
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.ToDate)) {
+					terpage.terminal_waitClearEnterText_css(icp.ToDate_String, Globals.Inventory.ToDate);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSalesToDate")).sendKeys(Keys.RETURN);
+					}
+			
 
 	    }
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch2)) {
 			terpage.get_checkBox_element(icp.Batch2_String).click();
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.NewFromDate)) {
+				terpage.terminal_waitClearEnterText_css(icp.NewFromDate_String, Globals.Inventory.NewFromDate);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtNewFromDate")).sendKeys(Keys.RETURN);
+
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.NewToDate)) {
+					terpage.terminal_waitClearEnterText_css(icp.NewToDate_String, Globals.Inventory.NewToDate);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtNewToDate")).sendKeys(Keys.RETURN);
+					}
 
 	    }
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch3)) {
 			terpage.get_checkBox_element(icp.Batch3_String).click();
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.Selectall)) {
+			terpage.get_checkBox_element(icp.Selectall_String).click();
+			try {
+				List<WebElement> weList = getWebDriver().findElements(By.tagName("button"));
+				for (Iterator iterator = weList.iterator(); iterator.hasNext();) {
+					WebElement button = (WebElement) iterator.next();
+					if (button.getText().equalsIgnoreCase("confirm")) {
+						button.click();
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			}
 
 	    }
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Billdate)) {
@@ -211,4 +271,62 @@ public class Inventorychange extends PageObject {
 
 	}
 
-}
+	@Then("I click filter")
+	public void i_click_filter() {
+		
+		webDriver.findElement(By.cssSelector("a#ContentPlaceHolder1_searchFilterUserControl_lnkFilter.button-red")).click();
+		
+		
+	}
+	@Then("I close connection  DB for inventorychange")
+	public void I_close_connection_to_DB() throws SQLException {
+
+		mysqlConnect.disconnect();
+		System.out.println(" closed succesfully");
+
+		// mysqlConnect.disconnect();
+
+	}
+	MssqlConnect mysqlConnect;
+	Statement st;
+	 
+	@Then("I establish connection  DB for inventorychange")
+	public void I_establish_connection_to_DB() throws SQLException {
+
+		mysqlConnect = new MssqlConnect();
+		st = mysqlConnect.connect().createStatement();
+		System.out.println(" Connected succesfully");
+
+	}
+	@Given("I read the values from inventorychange table {string} in DB")
+	public void i_want_to_launch_the(String tablename ) throws SQLException {
+		
+		
+		ResultSet rs = st.executeQuery("select * from "+tablename+" where InventoryCode='000001'");
+		
+		System.out.println(rs);
+		//ResultSet rs = st.executeQuery("");
+
+		while (rs.next()) {
+
+			switch (tablename) {
+			
+			case "tblinventory":
+				    String classCode = rs.getString("InventoryCode");
+				    System.out.println(classCode);
+				    Assert.assertEquals(Globals.Inventory.ItemCode.trim(), classCode.trim());
+				break;
+			case "tblinventorypricing":
+				String BasicSelling = rs.getString("BasicSelling");
+				  System.out.println(BasicSelling);
+				   Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), BasicSelling.trim());
+				 
+				break;
+			default:
+				break;
+			}}
+		}
+	
+	}
+		
+
