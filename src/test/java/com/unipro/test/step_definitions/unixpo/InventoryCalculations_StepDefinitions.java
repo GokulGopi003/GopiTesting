@@ -2,6 +2,7 @@ package com.unipro.test.step_definitions.unixpo;
 
 import static org.testng.Assert.assertEquals;
 
+
 import static org.testng.Assert.assertNotEquals;
 
 import java.awt.AWTException;
@@ -35,6 +36,7 @@ import org.testng.Assert;
 
 import com.gk.test.MssqlConnect;
 import com.google.common.collect.Table;
+import com.unipro.ExcelWrite;
 import com.unipro.test.framework.Globals;
 import com.unipro.test.framework.PageObject;
 import com.unipro.test.framework.helpers.screenshot_helper.Screenshot;
@@ -64,16 +66,20 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 	InventoryCalculationsPage icp;
 	Screenshot scr;
 	TerminalPage terPage;
+	ExcelWrite pass;
+	
 
 	
 	
 	
-	public InventoryCalculations_StepDefinitions(InventoryCalculationsPage icp) {
+	public InventoryCalculations_StepDefinitions(InventoryCalculationsPage icp) throws IOException {
 		this.icp = icp;
 		terPage = new TerminalPage();
 		scr =new Screenshot();
 		add_inventory = new AddInventoryFormPage();
-
+		pass=new ExcelWrite();
+		
+	
 	}
  
 	@Then("I verify default values of selling price calcualtion page for {string} as BasicCost")
@@ -341,8 +347,19 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 		Globals.Inventory.Quatation = Globals.Inventory.inventoryrowwiseData.get("Quatation");
 		Globals.Inventory.OnlineOrder = Globals.Inventory.inventoryrowwiseData.get("OnlineOrder");
 		Globals.Inventory.Purchasereturn = Globals.Inventory.inventoryrowwiseData.get("Purcasereturn");
+		Globals.Inventory.inventorysearch = Globals.Inventory.inventoryrowwiseData.get("inventorysearch");
+		Globals.Inventory.Batchno = Globals.Inventory.inventoryrowwiseData.get("Batchno");
 	}
-
+	@Then("I Search Inventory")
+	public void i_Search_inventory(){
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.inventorysearch)) {
+			terPage.terminal_waitClearEnterText_css(icp.inventorysearch_String, Globals.Inventory.inventorysearch);
+			webDriver.findElement(By.xpath("//a[@href=\"javascript:__doPostBack('ctl00$ContentPlaceHolder1$lnkSearchGrid','')\"]")).click();
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_grdInventoryList_imgbtnEdit_0")).click();			
+			
+		}
+	}
 	@Then("I fill new inventory data page using excel data")
 	public void i_fill_new_inventory_data_page_using_excel_data() throws Exception   {
 		try {
@@ -388,7 +405,7 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.ItemType, "input#txtSearch");
 
-			GenericWrappers.sleepInSeconds(3);
+			GenericWrappers.sleepInSeconds(1);
 			add_inventory.return_td_invoke_element(Globals.Inventory.ItemType).click();
 		}
 		// UOMPurchase
@@ -531,62 +548,78 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 			terPage.terminal_waitClearEnterText_css(icp.Shelf_String, Globals.Inventory.Shelf);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.Shelf, "input#txtSearch");
 			add_inventory.return_td_invoke_element(Globals.Inventory.Shelf).click();
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtShelf.form-control-res")).sendKeys(Keys.RETURN);
 		}
 		// Weight
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Weight)) {
-			if (Globals.Inventory.Weight.contains(".")) {
-				icp.setTextValue_Decimal(icp.Weight_String, Globals.Inventory.Weight);
-			} else {
-				icp.setTextValue(icp.Weight_String, Globals.Inventory.Weight);
-			}
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWeight.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWeight.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWeight.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWeight.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWeight.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWeight.form-control-res-right")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.Weight_String, Globals.Inventory.Weight);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWeight.form-control-res-right")).sendKeys(Keys.RETURN);
+			//GenericWrappers.sleepInSeconds(1);
+			//if (Globals.Inventory.Weight.contains(".")) {
+				//icp.setTextValue_Decimal(icp.Weight_String, Globals.Inventory.Weight);
+			//} else {
+				//icp.setTextValue(icp.Weight_String, Globals.Inventory.Weight);
+			//}
 		}
 		// Height
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Height)) {
-			if (Globals.Inventory.Height.contains(".")) {
-				icp.setTextValue_Decimal(icp.Height_String, Globals.Inventory.Height);
-			} else {
-				icp.setTextValue(icp.Height_String, Globals.Inventory.Height);
-			}
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtHeight.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtHeight.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtHeight.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtHeight.form-control-res-right")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.Height_String, Globals.Inventory.Height);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtHeight.form-control-res-right")).sendKeys(Keys.RETURN);
+			//if (Globals.Inventory.Height.contains(".")) {
+			//icp.setTextValue_Decimal(icp.Height_String, Globals.Inventory.Height);
+			//} else {
+				//icp.setTextValue(icp.Height_String, Globals.Inventory.Height);
+			//}
 		}
 		// Width
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Width)) {
-			if (Globals.Inventory.Width.contains(".")) {
-				icp.setTextValue_Decimal(icp.Width_String, Globals.Inventory.Width);
-			} else {
-				icp.setTextValue(icp.Width_String, Globals.Inventory.Width);
-			}
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWidth.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWidth.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWidth.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWidth.form-control-res-right")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.Width_String, Globals.Inventory.Width);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWidth.form-control-res-right")).sendKeys(Keys.RETURN);
+			//if (Globals.Inventory.Width.contains(".")) {
+				//icp.setTextValue_Decimal(icp.Width_String, Globals.Inventory.Width);
+			//} else {
+				//icp.setTextValue(icp.Width_String, Globals.Inventory.Width);
+			//}
 		}
 		// Length
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Length)) {
-			if (Globals.Inventory.Length.contains(".")) {
-				icp.setTextValue_Decimal(icp.Length_String, Globals.Inventory.Length);
-			} else {
-				icp.setTextValue(icp.Length_String, Globals.Inventory.Length);
-			}
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtLength.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtLength.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtLength.form-control-res-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtLength.form-control-res-right")).sendKeys(Keys.DELETE);
+			GenericWrappers.sleepInSeconds(1);
+			terPage.terminal_waitClearEnterText_css(icp.Length_String, Globals.Inventory.Length);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtLength.form-control-res-right")).sendKeys(Keys.RETURN);
+			//if (Globals.Inventory.Length.contains(".")) {
+				//icp.setTextValue_Decimal(icp.Length_String, Globals.Inventory.Length);
+			//} else {
+		      //icp.setTextValue(icp.Length_String, Globals.Inventory.Length);
+			//}
 		}
 		
-		File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
-		FileInputStream fis = new FileInputStream(file);
-		XSSFWorkbook xs = new XSSFWorkbook(fis);
-		XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
-		int row= sh.getLastRowNum()+1;
-		sh.createRow(row).createCell(51).setCellValue("passed");
-		FileOutputStream fos = new FileOutputStream(file);
-		xs.write(fos);
+		
+		pass.Excelcreate("Inventory","MASTERS","PASS",0,0,0,1);
 		}
 	catch (Exception e) {
 		//screen shot
 		scr.Screenshots();
-		System.out.println("Screen shot ");
+		System.out.println("Screen shot taken");
 	    //Xl sheet write
-		File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
-		FileInputStream fis = new FileInputStream(file);
-		XSSFWorkbook xs = new XSSFWorkbook(fis);
-		XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
-		int row= sh.getLastRowNum()+1;
-	    sh.createRow(row).createCell(51).setCellValue("failed");
-		FileOutputStream fos = new FileOutputStream(file);
-		xs.write(fos);
+		pass.Excelcreate("Inventory","MASTERS","FAIL",0,0,0,1);
 		
 
 	}
@@ -597,156 +630,232 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 		try {
 		// cess
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Cess) && !(Globals.Inventory.GSTPer).matches("0")) {
-			if (Globals.Inventory.Cess.contains(".")) {
-				icp.setTextValue_Decimal(icp.Cess_String, Globals.Inventory.Cess);
-			} else {
-				icp.setTextValue(icp.Cess_String, Globals.Inventory.Cess);
-			}
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.Cess_String, Globals.Inventory.Cess);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right")).sendKeys(Keys.RETURN);
+			//if (Globals.Inventory.Cess.contains(".")) {
+				//icp.setTextValue_Decimal(icp.Cess_String, Globals.Inventory.Cess);
+			//} else {
+				//icp.setTextValue(icp.Cess_String, Globals.Inventory.Cess);
+			//}
 		}
 		
 		// Additional cess amount
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.AdlCsAmt) && !(Globals.Inventory.GSTPer).matches("0")) {
-			if (Globals.Inventory.AdlCsAmt.contains(".")) {
-				icp.setTextValue_Decimal(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
-			} else {
-				icp.setTextValue(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
-			}
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCessAmt.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCessAmt.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCessAmt.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCessAmt.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCessAmt.form-control-res.text-right")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCessAmt.form-control-res.text-right")).sendKeys(Keys.RETURN);
+			//if (Globals.Inventory.AdlCsAmt.contains(".")) {
+				//icp.setTextValue_Decimal(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
+			//} else {
+				//icp.setTextValue(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
+			//}
 		}
 
 		// MRP
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.MRP)) {
-			if (Globals.Inventory.MRP.contains(".")) {
-				icp.setTextValue_Decimal(icp.MRP_String, Globals.Inventory.MRP);
-			} else {
-				icp.setTextValue(icp.MRP_String, Globals.Inventory.MRP);
-			}
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.CONTROL,"a");
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.DELETE);			
+			terPage.terminal_waitClearEnterText_css(icp.MRP_String, Globals.Inventory.MRP);
+			//webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.RETURN);
+			//if (Globals.Inventory.MRP.contains(".")) {
+				//icp.setTextValue_Decimal(icp.MRP_String, Globals.Inventory.MRP);
+			//} else {
+				//icp.setTextValue(icp.MRP_String, Globals.Inventory.MRP);
+			//}
 		}
 
 		// Basic cost
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.BasicCost)) {
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.Basic_Cost_String, Globals.Inventory.BasicCost);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost")).sendKeys(Keys.RETURN);
 
-			if (Globals.Inventory.BasicCost.contains(".")) {
-				icp.setTextValue_Decimal(icp.Basic_Cost_String, Globals.Inventory.BasicCost);
+			//if (Globals.Inventory.BasicCost.contains(".")) {
+				//icp.setTextValue_Decimal(icp.Basic_Cost_String, Globals.Inventory.BasicCost);
 
-			} else {
+			//} else {
 
-				icp.setTextValue(icp.Basic_Cost_String, Globals.Inventory.BasicCost);
-			}
+				//icp.setTextValue(icp.Basic_Cost_String, Globals.Inventory.BasicCost);
+			//}
 
 		}
 
 		// Discount per 1
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscountPer1)) {
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc1")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc1")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc1")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc1")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc1")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.Discount1_String, Globals.Inventory.DiscountPer1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc1")).sendKeys(Keys.RETURN);
 
-			if (Globals.Inventory.DiscountPer1.contains(".")) {
-				icp.setTextValue_Decimal(icp.Discount1_String, Globals.Inventory.DiscountPer1);
+			//if (Globals.Inventory.DiscountPer1.contains(".")) {
+				//icp.setTextValue_Decimal(icp.Discount1_String, Globals.Inventory.DiscountPer1);
 
-			} else {
+			//} else {
 
-				icp.setTextValue(icp.Discount1_String, Globals.Inventory.DiscountPer1);
-			}
+				//icp.setTextValue(icp.Discount1_String, Globals.Inventory.DiscountPer1);
+			//}
 
 		}
 
 		// Discount per 2
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscountPer2)) {
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc2")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc2")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc2")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc2")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc2")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.Discount2_String, Globals.Inventory.DiscountPer2);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc2")).sendKeys(Keys.RETURN);
 
-			if (Globals.Inventory.DiscountPer2.contains(".")) {
-				icp.setTextValue_Decimal(icp.Discount2_String, Globals.Inventory.DiscountPer2);
+			//if (Globals.Inventory.DiscountPer2.contains(".")) {
+				//icp.setTextValue_Decimal(icp.Discount2_String, Globals.Inventory.DiscountPer2);
 
-			} else {
+			//} else {
 
-				icp.setTextValue(icp.Discount2_String, Globals.Inventory.DiscountPer2);
-			}
+				//icp.setTextValue(icp.Discount2_String, Globals.Inventory.DiscountPer2);
+			//}
 
 		}
 		// Discount per 3
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscountPer3)) {
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc3")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc3")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc3")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc3")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc3")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.Discount3_String, Globals.Inventory.DiscountPer3);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscountPrc3")).sendKeys(Keys.RETURN);
 
-			if (Globals.Inventory.DiscountPer3.contains(".")) {
-				icp.setTextValue_Decimal(icp.Discount3_String, Globals.Inventory.DiscountPer3);
+			//if (Globals.Inventory.DiscountPer3.contains(".")) {
+				
+				//icp.setTextValue_Decimal(icp.Discount3_String, Globals.Inventory.DiscountPer3);
 
-			} else {
+			//} else {
 
-				icp.setTextValue(icp.Discount3_String, Globals.Inventory.DiscountPer3);
-			}
+				//icp.setTextValue(icp.Discount3_String, Globals.Inventory.DiscountPer3);
+			//}
 
 		}
 
 		// sp fixing %
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.spfixing)) {
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFixedMargin")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFixedMargin")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFixedMargin")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFixedMargin")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFixedMargin")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.SP_String, Globals.Inventory.spfixing);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFixedMargin")).sendKeys(Keys.RETURN);
 
-			if (Globals.Inventory.spfixing.contains(".")) {
-				icp.setTextValue_Decimal(icp.SP_String, Globals.Inventory.spfixing);
+			//if (Globals.Inventory.spfixing.contains(".")) {
+				//icp.setTextValue_Decimal(icp.SP_String, Globals.Inventory.spfixing);
 
-			} else {
+			//} else {
 
-				icp.setTextValue(icp.SP_String, Globals.Inventory.spfixing);
-			}
+				//icp.setTextValue(icp.SP_String, Globals.Inventory.spfixing);
+			//}
 
 		}
 
 		// WPrice1
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice1)) {
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice1.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice1.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice1.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice1.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+					GenericWrappers.sleepInSeconds(1);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice1.form-control-res.text_right")).sendKeys(Keys.DELETE);
+					terPage.terminal_waitClearEnterText_css(icp.WPrice1_String, Globals.Inventory.WPrice1);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice1.form-control-res.text_right")).sendKeys(Keys.RETURN);
 
-					if (Globals.Inventory.WPrice1.contains(".")) {
-						icp.setTextValue_Decimal(icp.WPrice1_String, Globals.Inventory.WPrice1);
+					//if (Globals.Inventory.WPrice1.contains(".")) {
+						//icp.setTextValue_Decimal(icp.WPrice1_String, Globals.Inventory.WPrice1);
 
-					} else {
+					//} else {
 
-						icp.setTextValue(icp.WPrice1_String, Globals.Inventory.WPrice1);
-					}
+						//icp.setTextValue(icp.WPrice1_String, Globals.Inventory.WPrice1);
+					//}
 
 				}
 				
 				// WPrice2
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice2)) {
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice2.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice2.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice2.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice2.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+					GenericWrappers.sleepInSeconds(1);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice2.form-control-res.text_right")).sendKeys(Keys.DELETE);
+					terPage.terminal_waitClearEnterText_css(icp.WPrice2_String, Globals.Inventory.WPrice2);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice2.form-control-res.text_right")).sendKeys(Keys.RETURN);
 
-					if (Globals.Inventory.WPrice2.contains(".")) {
-						icp.setTextValue_Decimal(icp.WPrice2_String, Globals.Inventory.WPrice2);
+					//if (Globals.Inventory.WPrice2.contains(".")) {
+						//icp.setTextValue_Decimal(icp.WPrice2_String, Globals.Inventory.WPrice2);
 
-					} else {
+					//} else {
 
-						icp.setTextValue(icp.WPrice2_String, Globals.Inventory.WPrice2);
-					}
+						//icp.setTextValue(icp.WPrice2_String, Globals.Inventory.WPrice2);
+					//}
 
 				}
 				// WPrice3
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice3)) {
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice3.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice3.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice3.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice3.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+					GenericWrappers.sleepInSeconds(1);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice3.form-control-res.text_right")).sendKeys(Keys.DELETE);
+					terPage.terminal_waitClearEnterText_css(icp.WPrice3_String, Globals.Inventory.WPrice3);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice3.form-control-res.text_right")).sendKeys(Keys.RETURN);
 
-					if (Globals.Inventory.WPrice3.contains(".")) {
-						icp.setTextValue_Decimal(icp.WPrice3_String, Globals.Inventory.WPrice3);
+					//if (Globals.Inventory.WPrice3.contains(".")) {
+						//icp.setTextValue_Decimal(icp.WPrice3_String, Globals.Inventory.WPrice3);
 
-					} else {
+					//} else {
 
-						icp.setTextValue(icp.WPrice3_String, Globals.Inventory.WPrice3);
-					}
+						//icp.setTextValue(icp.WPrice3_String, Globals.Inventory.WPrice3);
+					//}
 
 				}
-				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
-				FileInputStream fis = new FileInputStream(file);
-				XSSFWorkbook xs = new XSSFWorkbook(fis);
-				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
-				int row= sh.getLastRowNum()+1;
-				sh.createRow(row).createCell(52).setCellValue("passed");
-				FileOutputStream fos = new FileOutputStream(file);
-				xs.write(fos);
+				pass.Excelcreate("Inventory","Calculation","Pass",1,0,1,1);
+				
 				}
 			catch (Exception e) {
-				// screen shot
+				//screen shot
 				scr.Screenshots();
-				System.out.println("Screen shot ");
-				// Xl sheet write
-				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
-				FileInputStream fis = new FileInputStream(file);
-				XSSFWorkbook xs = new XSSFWorkbook(fis);
-				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
-				int row= sh.getLastRowNum()+1;
-				sh.createRow(row).createCell(52).setCellValue("failed");
-				FileOutputStream fos = new FileOutputStream(file);
-				xs.write(fos);
+				System.out.println("Screen shot taken");
+			    //Xl sheet write
+				pass.Excelcreate("Inventory","Calculation","FAIL",1,0,1,1);
 				
-
 			}
 
 	}
@@ -780,28 +889,14 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 			}
 		}
 		
-				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
-				FileInputStream fis = new FileInputStream(file);
-				XSSFWorkbook xs = new XSSFWorkbook(fis);
-				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
-				int row= sh.getLastRowNum()+1;
-				sh.createRow(row).createCell(52).setCellValue("passed");
-				FileOutputStream fos = new FileOutputStream(file);
-				xs.write(fos);
+		pass.Excelcreate("Inventory","Breakprice","Pass",2,0,2,1);
 				}
 			catch (Exception e) {
 				// screen shot
 				scr.Screenshots();
 				System.out.println("Screen shot ");
 				// Xl sheet write
-				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
-				FileInputStream fis = new FileInputStream(file);
-				XSSFWorkbook xs = new XSSFWorkbook(fis);
-				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
-				int row= sh.getLastRowNum()+1;
-				sh.createRow(row).createCell(52).setCellValue("failed");
-				FileOutputStream fos = new FileOutputStream(file);
-				xs.write(fos);
+				pass.Excelcreate("Inventory","Breakprice","FAIL",2,0,2,1);
 				
 
 			}
@@ -884,28 +979,14 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 					terPage.get_checkBox_element(icp.OnlineOrder_String).click();
 					}
 
-				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
-				FileInputStream fis = new FileInputStream(file);
-				XSSFWorkbook xs = new XSSFWorkbook(fis);
-				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
-				int row= sh.getLastRowNum()+1;
-				sh.createRow(row).createCell(52).setCellValue("passed");
-				FileOutputStream fos = new FileOutputStream(file);
-				xs.write(fos);
+				pass.Excelcreate("Inventory","Activationsettings","Pass",3,0,3,1);
 				}
 			catch (Exception e) {
 				// screen shot
 				scr.Screenshots();
 				System.out.println("Screen shot ");
 				// Xl sheet write
-				File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
-				FileInputStream fis = new FileInputStream(file);
-				XSSFWorkbook xs = new XSSFWorkbook(fis);
-				XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
-				int row= sh.getLastRowNum()+1;
-				sh.createRow(row).createCell(52).setCellValue("failed");
-				FileOutputStream fos = new FileOutputStream(file);
-				xs.write(fos);
+				pass.Excelcreate("Inventory","Activationsettings","Fail",3,0,3,1);
 				
 
 			}
@@ -916,107 +997,179 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 		try {
 		// cess
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Cess) && !(Globals.Inventory.GSTPer).matches("0")) {
-			if (Globals.Inventory.Cess.contains(".")) {
-				icp.setTextValue_Decimal(icp.Cess_String, Globals.Inventory.Cess);
-			} else {
-				icp.setTextValue(icp.Cess_String, Globals.Inventory.Cess);
-			}
+
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.Cess_String, Globals.Inventory.Cess);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right")).sendKeys(Keys.RETURN);
+			//if (Globals.Inventory.Cess.contains(".")) {
+				//icp.setTextValue_Decimal(icp.Cess_String, Globals.Inventory.Cess);
+			//} else {
+				//icp.setTextValue(icp.Cess_String, Globals.Inventory.Cess);
+			//}
 		}
 		
 		// Additional cess amount
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.AdlCsAmt) && !(Globals.Inventory.GSTPer).matches("0")) {
-			if (Globals.Inventory.AdlCsAmt.contains(".")) {
-				icp.setTextValue_Decimal(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
-			} else {
-				icp.setTextValue(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
-			}
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCessAmt.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCessAmt.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCessAmt.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCessAmt.form-control-res.text-right")).sendKeys(Keys.SHIFT,Keys.LEFT);	
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCessAmt.form-control-res.text-right")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCessAmt.form-control-res.text-right")).sendKeys(Keys.RETURN);
+			//if (Globals.Inventory.AdlCsAmt.contains(".")) {
+				//icp.setTextValue_Decimal(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
+			//} else {
+				//icp.setTextValue(icp.AdlCsAmt_String, Globals.Inventory.AdlCsAmt);
+			//}
 		}
 		
 		
 
 		// MRP
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.MRP)) {
-			if (Globals.Inventory.MRP.contains(".")) {
-				icp.setTextValue_Decimal(icp.MRP_String, Globals.Inventory.MRP);
-			} else {
-				icp.setTextValue(icp.MRP_String, Globals.Inventory.MRP);
-			}
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.CONTROL,"a");
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.DELETE);	
+			terPage.terminal_waitClearEnterText_css(icp.MRP_String, Globals.Inventory.MRP);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP")).sendKeys(Keys.RETURN);
+			//if (Globals.Inventory.MRP.contains(".")) {
+				//icp.setTextValue_Decimal(icp.MRP_String, Globals.Inventory.MRP);
+			//} else {
+				//icp.setTextValue(icp.MRP_String, Globals.Inventory.MRP);
+			//}
 		}
 
 		// Discount per
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscountPer)) {
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRPMarkDown")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRPMarkDown")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRPMarkDown")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRPMarkDown")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRPMarkDown")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.Discount_String, Globals.Inventory.DiscountPer);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRPMarkDown")).sendKeys(Keys.RETURN);
+			//if (Globals.Inventory.DiscountPer.contains(".")) {
+			//	icp.setTextValue_Decimal(icp.Discount_String, Globals.Inventory.DiscountPer);
 
-			if (Globals.Inventory.DiscountPer.contains(".")) {
-				icp.setTextValue_Decimal(icp.Discount_String, Globals.Inventory.DiscountPer);
+			//} else {
 
-			} else {
-
-				icp.setTextValue(icp.Discount_String, Globals.Inventory.DiscountPer);
-			}
+				//icp.setTextValue(icp.Discount_String, Globals.Inventory.DiscountPer);
+			//}
 
 		}
 
 		// Additional Discount per
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.AddDiscountPer)) {
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAdDiscount")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAdDiscount")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAdDiscount")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAdDiscount")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAdDiscount")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.AddDiscountPer_String, Globals.Inventory.AddDiscountPer);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAdDiscount")).sendKeys(Keys.RETURN);
 
-			if (Globals.Inventory.AddDiscountPer.contains(".")) {
-				icp.setTextValue_Decimal(icp.AddDiscountPer_String, Globals.Inventory.AddDiscountPer);
+			//if (Globals.Inventory.AddDiscountPer.contains(".")) {
+				//icp.setTextValue_Decimal(icp.AddDiscountPer_String, Globals.Inventory.AddDiscountPer);
 
-			} else {
+			//} else {
 
-				icp.setTextValue(icp.AddDiscountPer_String, Globals.Inventory.AddDiscountPer);
-			}
+				//icp.setTextValue(icp.AddDiscountPer_String, Globals.Inventory.AddDiscountPer);
+			//}
 
 		}
 
 		// sp fixing %
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.spfixing)) {
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFixedMargin")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFixedMargin")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFixedMargin")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFixedMargin")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFixedMargin")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.SP_String, Globals.Inventory.spfixing);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFixedMargin")).sendKeys(Keys.RETURN);
 
-			if (Globals.Inventory.spfixing.contains(".")) {
-				icp.setTextValue_Decimal(icp.SP_String, Globals.Inventory.spfixing);
+			//if (Globals.Inventory.spfixing.contains(".")) {
+				//icp.setTextValue_Decimal(icp.SP_String, Globals.Inventory.spfixing);
 
-			} else {
+			//} else {
 
-				icp.setTextValue(icp.SP_String, Globals.Inventory.spfixing);
-			}
+				//icp.setTextValue(icp.SP_String, Globals.Inventory.spfixing);
+			//}
 
 		}
 		
 		// WPrice1
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice1)) {
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice1.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice1.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice1.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice1.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice1.form-control-res.text_right")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.WPrice1_String, Globals.Inventory.WPrice1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice1.form-control-res.text_right")).sendKeys(Keys.RETURN);
 
-			if (Globals.Inventory.WPrice1.contains(".")) {
-				icp.setTextValue_Decimal(icp.WPrice1_String, Globals.Inventory.WPrice1);
+			//if (Globals.Inventory.WPrice1.contains(".")) {
+				//icp.setTextValue_Decimal(icp.WPrice1_String, Globals.Inventory.WPrice1);
 
-			} else {
+			//} else {
 
-				icp.setTextValue(icp.WPrice1_String, Globals.Inventory.WPrice1);
-			}
+				//icp.setTextValue(icp.WPrice1_String, Globals.Inventory.WPrice1);
+			//}
 
 		}
 		
 		// WPrice2
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice2)) {
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice2.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice2.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice2.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice2.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice2.form-control-res.text_right")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.WPrice2_String, Globals.Inventory.WPrice2);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice2.form-control-res.text_right")).sendKeys(Keys.RETURN);
 
-			if (Globals.Inventory.WPrice2.contains(".")) {
-				icp.setTextValue_Decimal(icp.WPrice2_String, Globals.Inventory.WPrice2);
+			//if (Globals.Inventory.WPrice2.contains(".")) {
+				//icp.setTextValue_Decimal(icp.WPrice2_String, Globals.Inventory.WPrice2);
 
-			} else {
+			//} else {
 
-				icp.setTextValue(icp.WPrice2_String, Globals.Inventory.WPrice2);
-			}
+				//icp.setTextValue(icp.WPrice2_String, Globals.Inventory.WPrice2);
+			//}
 
 		}
 		// WPrice3
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice3)) {
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice3.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice3.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice3.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice3.form-control-res.text_right")).sendKeys(Keys.SHIFT,Keys.LEFT);
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice3.form-control-res.text_right")).sendKeys(Keys.DELETE);
+			terPage.terminal_waitClearEnterText_css(icp.WPrice3_String, Globals.Inventory.WPrice3);
+			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMarginWPrice3.form-control-res.text_right")).sendKeys(Keys.RETURN);
+			//if (Globals.Inventory.WPrice3.contains(".")) {
+				//icp.setTextValue_Decimal(icp.WPrice3_String, Globals.Inventory.WPrice3);
 
-			if (Globals.Inventory.WPrice3.contains(".")) {
-				icp.setTextValue_Decimal(icp.WPrice3_String, Globals.Inventory.WPrice3);
+			//} else {
 
-			} else {
-
-				icp.setTextValue(icp.WPrice3_String, Globals.Inventory.WPrice3);
-			}
+				//icp.setTextValue(icp.WPrice3_String, Globals.Inventory.WPrice3);
+			//}
 			
 			//driver.findElement(By.id("lst-ib")).sendKeys(Keys.RETURN);
 
@@ -1025,28 +1178,15 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Barcode)) {
 			terPage.terminal_waitClearEnterText_css(icp.Barcode_String, Globals.Inventory.Barcode);
 		}
-		File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
-		FileInputStream fis = new FileInputStream(file);
-		XSSFWorkbook xs = new XSSFWorkbook(fis);
-		XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
-		int row= sh.getLastRowNum()+1;
-		sh.createRow(row).createCell(52).setCellValue("passed");
-		FileOutputStream fos = new FileOutputStream(file);
-		xs.write(fos);
+		pass.Excelcreate("Inventory","MRP","Fail",1,0,1,1);
 		}
 	catch (Exception e) {
 		// screen shot
 		scr.Screenshots();
 		System.out.println("Screen shot ");
 		// Xl sheet write
-		File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/sample inventory all.xlsx");
-		FileInputStream fis = new FileInputStream(file);
-		XSSFWorkbook xs = new XSSFWorkbook(fis);
-		XSSFSheet sh = xs.getSheet(Globals.Inventory.SHEETNAME);
-		int row= sh.getLastRowNum()+1;
-		sh.createRow(row).createCell(52).setCellValue("failed");
-		FileOutputStream fos = new FileOutputStream(file);
-		xs.write(fos);
+		pass.Excelcreate("Inventory","MRP","Fail",1,0,1,1);
+		
 		
 
 	}
@@ -1059,14 +1199,19 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 	}
 
 	@Then("I fill the GST values in the inventory page")
-	public void i_fill_the_GST_values_in_the_inventory_page() {
-
+	public void i_fill_the_GST_values_in_the_inventory_page() throws IOException {
+		try {
+			
+		
+		
 		try {
 			terPage.return_dd_invoke_element("-- Select --", 0).click();
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			terPage.return_dd_invoke_element("-- Select --", 0).click();
+			
 			
 		}
 
@@ -1076,7 +1221,7 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 		GenericWrappers.sleepInSeconds(4);
 
 		icp.search_dd_value(Globals.Inventory.GSTPer);
-
+		pass.Excelcreate("Inventory","GST","Pass",4,0,4,1);
 		// dd_element.sendKeys(Keys.SPACE);
 		// dd_element.sendKeys(Keys.SPACE);
 		// dd_element.sendKeys(Keys.ARROW_DOWN);
@@ -1088,7 +1233,10 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 		// }
 		//
 		// dd_element.sendKeys(Keys.ENTER);
-
+		}
+		catch (Exception e) {
+		pass.Excelcreate("Inventory","GST","Fail",4,0,4,1);
+		}
 	}
 	@Then("I close connection to DB")
 	public void I_close_connection_to_DB() throws SQLException {
@@ -1111,12 +1259,12 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 
 	}
 	@Given("I read the values from table {string} in DB")
-	public void i_want_to_launch_the(String tablename ) throws SQLException {
+	public void i_want_to_launch_the(String tablename ) throws SQLException, IOException {
 		
 		System.out.println(tablename);
 		//ResultSet rs =st.executeQuery("select * from "+tablename+" where DeptCode='Gopi'");
 				
-		ResultSet rs = st.executeQuery("select * from "+tablename+" where inventorycode='859593'");
+		ResultSet rs = st.executeQuery("select * from "+tablename+" where inventorycode='859601'");
 		
 		
 		//ResultSet rs = st.executeQuery("");
@@ -1126,19 +1274,43 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 			switch (tablename) {
 			
 			case "tbldepartment":
-				String DepartmentCode = rs.getString("DeptCode");
+				String DepartmentCode="";
+				try {
+				 DepartmentCode = rs.getString("DeptCode");
 				    System.out.println(DepartmentCode);
 				    Assert.assertEquals(Globals.Inventory.Department.trim(), DepartmentCode.trim());
+				pass.ExcelFourData("Inventory","Actual,Expected",Globals.Inventory.Department,DepartmentCode,"Pass",6,0,6,1,6,2,6,3);
+				
+		    }
+			catch (AssertionError e){
+				pass.ExcelFourData("Inventory","Actual,Expected",Globals.Inventory.Department,DepartmentCode,"Fail",6,0,6,1,6,2,6,3);
+				
+			}
 				    
 				break;
 			
 			case "tblinventory":
-				String CategoryCode = rs.getString("CategoryCode");
+				String CategoryCode="";
+				try {
+				    CategoryCode = rs.getString("CategoryCode");
 				    System.out.println(CategoryCode);
 				    Assert.assertEquals(Globals.Inventory.Category.trim(), CategoryCode.trim());
-				    String Departmentcode = rs.getString("Departmentcode");
+				    pass.ExcelFourData("Inventory","Actual,Expected",Globals.Inventory.Category,CategoryCode,"Pass",6,0,6,1,6,2,6,3);
+				}
+				    catch (AssertionError e){
+						pass.ExcelFourData("Inventory","Actual,Expected",Globals.Inventory.Category,CategoryCode,"Fail",6,0,6,1,6,2,6,3);
+						
+					}
+				String Departmentcode="";
+				try {
+				    Departmentcode = rs.getString("Departmentcode");
 				    System.out.println(Departmentcode);
 				    Assert.assertEquals(Globals.Inventory.Department.trim(), Departmentcode.trim());
+				}
+				catch (AssertionError e)
+				{
+					
+				}
 				    String Brandcode = rs.getString("BrandCode");
 				    System.out.println(Brandcode);
 				    Assert.assertEquals(Globals.Inventory.Brand.trim(), Brandcode.trim());
@@ -1193,6 +1365,27 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 				    String MRP = rs.getString("MRP");
 				    System.out.println(MRP);
 				    Assert.assertEquals(Globals.Inventory.MRP.trim(), MRP.trim());
+				    String MinQty = rs.getString("MinimumQtyLevel");
+				    System.out.println(MinQty);
+				    Assert.assertEquals(Globals.Inventory.MinQty.trim(), MinQty.trim());
+				    String MaxQty = rs.getString("MaximumQtyLevel");
+				    System.out.println(MaxQty);
+				    Assert.assertEquals(Globals.Inventory.MaxQty.trim(), MaxQty.trim());
+				    String ReorderQty = rs.getString("ReOrderLevel");
+				    System.out.println(ReorderQty);
+				    Assert.assertEquals(Globals.Inventory.ReorderQty.trim(), ReorderQty.trim());
+				    String Cycledays = rs.getString("ReOrderDays");
+				    System.out.println(Cycledays);
+				    Assert.assertEquals(Globals.Inventory.Cycledays.trim(), Cycledays.trim());
+				    String Orderby = rs.getString("AutoPOReqBy");
+				    System.out.println(Orderby);
+				    Assert.assertEquals(Globals.Inventory.Orderby.trim(), Orderby.trim());
+				    String CheckBox1 = rs.getString("MinQtycalBy");
+				    System.out.println(CheckBox1);
+				    Assert.assertEquals(Globals.Inventory.CheckBox1.trim(), CheckBox1.trim());
+				    String CheckBox2 = rs.getString("ReOrderBy");
+				    System.out.println(CheckBox2);
+				    Assert.assertEquals(Globals.Inventory.CheckBox2.trim(), CheckBox2.trim());
 				break;
 
 			case "tblinventorypricing":
@@ -1226,6 +1419,24 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 			    String W3 = rs.getString("MPWPrice3");
 			    System.out.println(W3);
 			    Assert.assertEquals(Globals.Inventory.WPrice3.trim(), W3.trim());
+			    String GST = rs.getString("ITaxPer3");
+			    System.out.println(GST);
+			    Assert.assertEquals(Globals.Inventory.GSTPer.trim(), GST.trim());
+			    String GST1 = rs.getString("OTaxPer3");
+			    System.out.println(GST1);
+			    Assert.assertEquals(Globals.Inventory.GSTPer.trim(), GST1.trim());
+			    String Cess = rs.getString("ITaxPer4");
+			    System.out.println(Cess);
+			    Assert.assertEquals(Globals.Inventory.Cess.trim(), Cess.trim());
+			    String Cess1 = rs.getString("OTaxPer4");
+			    System.out.println(Cess1);
+			    Assert.assertEquals(Globals.Inventory.Cess.trim(), Cess1.trim());
+			    String AdlCsAmt = rs.getString("ITaxamt5");
+			    System.out.println(AdlCsAmt);
+			    Assert.assertEquals(Globals.Inventory.AdlCsAmt.trim(), AdlCsAmt.trim());
+			    String AdlCsAmt1 = rs.getString("OTaxamt5");
+			    System.out.println(AdlCsAmt1);
+			    Assert.assertEquals(Globals.Inventory.AdlCsAmt.trim(), AdlCsAmt1.trim());
 				break;
 				
 			case "TBLBATCHINVENTORYCONTROL":
@@ -1296,7 +1507,7 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 		System.out.println(tablename);
 		//ResultSet rs =st.executeQuery("select * from "+tablename+" where DeptCode='Gopi'");
 				
-		ResultSet rs = st.executeQuery("select * from "+tablename+" where inventorycode='859597'");
+		ResultSet rs = st.executeQuery("select * from "+tablename+" where inventorycode='859601'");
 		
 		
 		//ResultSet rs = st.executeQuery("");
@@ -1462,8 +1673,6 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 				break;
 			}
 			
-		
-	   
 	     
 		}
 
@@ -1473,11 +1682,25 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 
 	
 	@Then("I verify the actual ui values with expected Excel values")
-	public void i_verify_the_actual_ui_values_with_expected_Excel_values()  {
-		
+	public void i_verify_the_actual_ui_values_with_expected_Excel_values() throws IOException  {
+		try
+		{
 		icp.NetSellingPrice = icp.getTextValue(icp.NetSellingPrice_text);
-	
-		Assert.assertEquals(icp.NetSellingPrice, Double.parseDouble(Globals.Inventory.NetSellingPrice));
+	 Assert.assertEquals(icp.NetSellingPrice, Double.parseDouble(Globals.Inventory.NetSellingPrice));
+	// if (icp.NetSellingPrice==Double.parseDouble(Globals.Inventory.NetSellingPrice)) {
+		    
+		//    pass.ExcelFourData("Inventory","Actual,Expected",Globals.Inventory.NetSellingPrice,icp.NetSellingPrice,"Pass",5,0,5,1,5,2,5,3);
+		//}
+	// else {
+		// throw new Exception();
+	// }
+	pass.ExcelDouble("Inventory","Actual,Expected",Globals.Inventory.NetSellingPrice,icp.NetSellingPrice,"Pass",5,0,5,1,5,2,5,3);
+		
+	    }
+		catch (AssertionError e){
+			pass.ExcelDouble("Inventory","Actual,Expected",Globals.Inventory.NetSellingPrice,icp.NetSellingPrice,"Fail",5,0,5,1,5,2,5,3);
+			
+		}
 	
 	}
 	

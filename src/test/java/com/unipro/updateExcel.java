@@ -1,6 +1,7 @@
 package com.unipro;
 
 import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -25,7 +26,7 @@ public class updateExcel {
 			FileInputStream fis=new FileInputStream(file);
 			xs=new XSSFWorkbook(fis);
 			sh=xs.getSheetAt(0);
-			sh.getRow(0).createCell(2).setCellValue(100);
+			sh.getRow(0).createCell(3).setCellValue(100);
 			FileOutputStream fos=new FileOutputStream(file);
 			xs.write(fos);
 		}

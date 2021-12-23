@@ -23,6 +23,10 @@ Feature: PoS Inventory > Add Inventory
     When Im waiting for 2 sec
     Then I verify the actual ui values with expected Excel values
     Then I click on button tag with value "Back"
+    Then I need to click on sub menu with text matching "Order & BreakPrice"
+    Then I fill Order and break price
+    Then I need to click on sub menu with text matching "Activation Settings"
+    Then I fill Activationsettings
     Then I need to click on sub menu with text matching "Image"
     #When Im waiting for 5 sec
     #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "12"
@@ -39,7 +43,7 @@ Feature: PoS Inventory > Add Inventory
 
     Examples: 
       | TestcaseRowName |
-      | cost3           |
+      | cost1           |
 
   Scenario Outline: Verifying Add Inventory Functionality Purchased by MRP1
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
@@ -51,9 +55,13 @@ Feature: PoS Inventory > Add Inventory
     Then I check the purchased by radio button for "<TestcaseRowName>"
     Then I need to click on the  element "input#ContentPlaceHolder1_imgPriceChange"
     Then I fill the GST values in the inventory page
-    Then I fill inventory calculations page for MRP using excel data
+    Then I fill inventory calculations MRP page using excel data
     Then I verify the actual ui values with expected Excel values
     Then I click on button tag with value "Back"
+    Then I need to click on sub menu with text matching "Order & BreakPrice"
+    Then I fill Order and break price
+    Then I need to click on sub menu with text matching "Activation Settings"
+    Then I fill Activationsettings
     #Then I need to click on sub menu with text matching "Image"
     When Im waiting for 5 sec
     #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""

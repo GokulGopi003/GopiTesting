@@ -112,6 +112,15 @@ public class TerminalPage extends PageObject {
 		return null;
 
 	}
+	public WebElement terminal_waitClearEnterText_id(String webele, String textToEnter) {
+
+		By terminal_System_name = By.id(webele);
+		//waitForExpectedElement(By.cssSelector(webele));
+		 waitClearEnterText(terminal_System_name, textToEnter);
+		//setTypeAheadValueOnElement(waitForExpectedElement(By.cssSelector(webele)), textToEnter);
+		return null;
+
+	}
 	public WebElement terminal_waitClearEnterKey(String webele, String textToEnter) {
 
 		By terminal_System_name = By.cssSelector(webele);

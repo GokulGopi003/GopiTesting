@@ -29,6 +29,7 @@ public class InventoryCalculationsPage extends PageObject {
 	
 	
 	public String Category_String = "input#ContentPlaceHolder1_txtInvcategory.form-control-res";
+	public String inventorysearch_String ="input#ContentPlaceHolder1_txtSearch";
 	public String Department_String = "input#ContentPlaceHolder1_txtDepartment.form-control-res";
 	public String Brand_String = "input#ContentPlaceHolder1_txtBrand.form-control-res";
 	public String ItemName_String = "input#ContentPlaceHolder1_txtItemName.form-control-res.ui-autocomplete-input";
@@ -102,6 +103,7 @@ public class InventoryCalculationsPage extends PageObject {
 
 	public String MRP_String = "input#ContentPlaceHolder1_txtMRP";
 	public By MRP_By = By.cssSelector(MRP_String);
+	//public String MRP_String = "input#ContentPlaceHolder1_txtMRP";
 	
 	public String Cess_String = "input#ContentPlaceHolder1_txtCESSPrc.form-control-res.text-right";
 	public By Cess_By = By.cssSelector(Cess_String);
@@ -201,30 +203,30 @@ public class InventoryCalculationsPage extends PageObject {
 					.click();
 
 			break;
-		case "3":
+		case "5":
 			waitForExpectedElement(By.cssSelector("li#ContentPlaceHolder1_ddlInputIGST_chzn_o_2.active-result"))
 					.click();
 
 			break;
-		case "5":
+		case "12":
 			waitForExpectedElement(By.cssSelector("li#ContentPlaceHolder1_ddlInputIGST_chzn_o_3.active-result"))
 					.click();
 
 			break;
 			
-		case "12":
+		case "18":
 			waitForExpectedElement(By.cssSelector("li#ContentPlaceHolder1_ddlInputIGST_chzn_o_4.active-result"))
 					.click();
 
 			break;
 			
-		case "18":
+		case "28":
 			waitForExpectedElement(By.cssSelector("li#ContentPlaceHolder1_ddlInputIGST_chzn_o_5.active-result"))
 					.click();
 
 			break;
 			
-		case "28":
+		case "38":
 			waitForExpectedElement(By.cssSelector("li#ContentPlaceHolder1_ddlInputIGST_chzn_o_6.active-result"))
 					.click();
 
