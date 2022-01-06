@@ -54,6 +54,7 @@ public class Globals {
 		final public static String SHEETNAME41 = "Transport";
 		final public static String SHEETNAME42 = "Barcode";
 		final public static String SHEETNAME43 = "InventoryHistory";
+		final public static String SHEETNAME44 = "ReorderSettings";
 		
 		
 		public static Table<String, String, String> inventorySheetData;
@@ -100,6 +101,7 @@ public class Globals {
 		public static Table<String, String, String> TransportSheetData;
 		public static Table<String, String, String> BarcodeSheetData;
 		public static Table<String, String, String> InventoryHistorySheetData;
+		public static Table<String, String, String> ReorderSettingsSheetData;
 		
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
@@ -145,6 +147,7 @@ public class Globals {
 		public static Map<String, String> TransportrowwiseData;
 		public static Map<String, String> BarcoderowwiseData;
 		public static Map<String, String> InventoryHistoryrowwiseData;
+		public static Map<String, String> ReorderSettingsrowwiseData;
 	
 		
 		
@@ -174,6 +177,7 @@ public class Globals {
 		public static String Department;
 		public static String Brand;
 		public static String ItemName;
+		public static String AverageCost;
 		public static String ItemCode;
 		public static String ItemType;
 		public static String Vendor;

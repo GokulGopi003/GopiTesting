@@ -22,17 +22,14 @@ Feature: InventoryChange
     Then I fill new InventoryCostReset data page using excel data
     When Im waiting for 2 sec
     Then I need to click on the  element "a#ContentPlaceHolder1_searchFilterUserControl_lnkFilter"
-    Then I need to click on the  element "a#ContentPlaceHolder1_searchFilterUserControl_txtVendor"
+    Then I need to click on the  element "input#ContentPlaceHolder1_grdItemDetails_checkAll"
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkUpdate"
-    When Im waiting for 1 sec
-    Then I need to click on the  element "a#ContentPlaceHolder1_lnkReport"
-    
-    
-    
-    
-    
+    Then I establish connection  DB for InventoryCostReset
+    Then I read the values from InventoryCostReset table "tblinventory" in DB
+    Then I read the values from InventoryCostReset table "tblinventorystock" in DB
+    Then I close connection  DB for InventoryCostReset
      Examples: 
       | TestcaseRowName |
-      |InventoryCostReset|
+      |InventoryCostReset1|
       
    

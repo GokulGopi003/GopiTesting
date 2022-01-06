@@ -2,7 +2,7 @@ package com.unipro.test.page_objects.unixpro;
 
 public class InventorymovementField {
 	public String Vendor_String = "input#ContentPlaceHolder1_txtVendor";
-	public String Department_String = "inpu#ContentPlaceHolder1_txtDepartment";
+	public String Department_String = "input#ContentPlaceHolder1_txtDepartment";
 	public String Category_String = "input#ContentPlaceHolder1_txtCategory";
 	public String Brand_String = "input#ContentPlaceHolder1_txtBrand";
 	public String SubCategory_String = "input#ContentPlaceHolder1_txtSubCategory";

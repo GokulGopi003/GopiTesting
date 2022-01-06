@@ -8,13 +8,6 @@ Feature: InventoryChange
     Then I clik on the login button
     Then I verify the page Title
     Given I want to launch the "Managements/frmInventoryMovement.aspx"
-    #Then I need to click on the  element "a#ContentPlaceHolder1_lnkAdd"
-    #Then I need to search vendor
-    When Im waiting for 2 sec
-    #Then I need to click on the  element "input#ContentPlaceHolder1_gvPR_imgbtnPrint_0"
-    #Then I need to click on the  element "input#ContentPlaceHolder1_gvPR_imgbtnDelete_0"
-    #Then I need to click on the blue "Yes" 
-    #Then I need to click on the  Xpath "/html/body/div[6]/div[3]/div/button[1]"
     Then I load the testdatas form excel to table
     Then I load the Inventorymovement sheet data to map
     Then I load the rowise Inventorymovement data for "<TestcaseRowName>" rowname

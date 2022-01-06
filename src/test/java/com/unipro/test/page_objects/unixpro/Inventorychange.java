@@ -1,5 +1,7 @@
 package com.unipro.test.page_objects.unixpro;
 
+import java.io.IOException;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,8 +14,10 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import com.gk.test.MssqlConnect;
+import com.unipro.ExcelWrite;
 import com.unipro.test.framework.Globals;
 import com.unipro.test.framework.PageObject;
+import com.unipro.test.framework.helpers.screenshot_helper.Screenshot;
 import com.unipro.test.framework.helpers.utils.GenericWrappers;
 import com.unipro.test.framework.helpers.utils.ReadTestData;
 
@@ -26,6 +30,8 @@ public class Inventorychange extends PageObject {
 	InventorychangeField icp;
 	CommonPages cp;
 	TerminalPage terpage;
+	ExcelWrite pass;
+	Screenshot scr;
 
 	public Inventorychange(InventorychangeField icp, CommonPages cp) {
 
@@ -34,6 +40,8 @@ public class Inventorychange extends PageObject {
 
 		terpage = new TerminalPage();
 		Inventorychange = new AddInventoryFormPage();
+		pass = new ExcelWrite();
+		scr = new Screenshot();
 
 	}
 
@@ -90,13 +98,16 @@ public class Inventorychange extends PageObject {
 		Globals.Inventory.NewFromDate = Globals.Inventory.InventorychangerowwiseData.get("NewFromDate");
 		Globals.Inventory.NewToDate = Globals.Inventory.InventorychangerowwiseData.get("NewToDate");
 		Globals.Inventory.Selectall = Globals.Inventory.InventorychangerowwiseData.get("Selectall");
+		Globals.Inventory.AverageCost = Globals.Inventory.InventorychangerowwiseData.get("AverageCost");
 		
 		
 		
 	}
 
 	@Then("I fill new Inventorychange data page using excel data")
-	public void i_fill_new_Inventorychange_data_page_using_excel_data() {
+	public void i_fill_new_Inventorychange_data_page_using_excel_data() throws Exception {
+		try {
+	
 		
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {
 			terpage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
@@ -268,17 +279,31 @@ public class Inventorychange extends PageObject {
 
 
 		}
-
+		pass.ExcelFourData("InventoryChange","Modules", "Actual", "Expected", "Status",
+				0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
+		pass.Excelcreate("InventoryChange", "Filters", "Pass", 1, 0, 1, 3);
+		}
+		catch(Exception e) {
+			// screen shot
+			scr.Screenshots();
+			System.out.println("Screen shot taken");
+			// Xl sheet write
+			pass.ExcelFourData("InventoryChange","Filters", "Actual", "Expected", "Status",
+					0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
+			pass.Excelcreate("InventoryChange", "Filters", "FAIL", 1, 0, 1, 3);
+			
+		}
 	}
 
 	@Then("I click filter")
 	public void i_click_filter() {
 		
 		webDriver.findElement(By.cssSelector("a#ContentPlaceHolder1_searchFilterUserControl_lnkFilter.button-red")).click();
+		webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_checkAll")).click();
 		
 		
 	}
-	@Then("I close connection  DB for inventorychange")
+	@Then("I close connection  DB for InventoryChange")
 	public void I_close_connection_to_DB() throws SQLException {
 
 		mysqlConnect.disconnect();
@@ -287,10 +312,10 @@ public class Inventorychange extends PageObject {
 		// mysqlConnect.disconnect();
 
 	}
+
 	MssqlConnect mysqlConnect;
 	Statement st;
-	 
-	@Then("I establish connection  DB for inventorychange")
+	@Then("I establish connection  DB for InventoryChange")
 	public void I_establish_connection_to_DB() throws SQLException {
 
 		mysqlConnect = new MssqlConnect();
@@ -298,8 +323,8 @@ public class Inventorychange extends PageObject {
 		System.out.println(" Connected succesfully");
 
 	}
-	@Given("I read the values from inventorychange table {string} in DB")
-	public void i_want_to_launch_the(String tablename ) throws SQLException {
+	@Given("I read the values from InventoryChange table {string} in DB")
+	public void i_want_to_launch_the(String tablename ) throws SQLException, IOException {
 		
 		
 		ResultSet rs = st.executeQuery("select * from "+tablename+" where InventoryCode='000001'");
@@ -312,21 +337,256 @@ public class Inventorychange extends PageObject {
 			switch (tablename) {
 			
 			case "tblinventory":
-				    String classCode = rs.getString("InventoryCode");
-				    System.out.println(classCode);
-				    Assert.assertEquals(Globals.Inventory.ItemCode.trim(), classCode.trim());
+				String CategoryCode = "";
+				try {
+					CategoryCode = rs.getString("CategoryCode");
+					System.out.println(CategoryCode);
+					Assert.assertEquals(Globals.Inventory.Changefield.trim(), CategoryCode.trim());
+					pass.Excelcreate("InventoryChange", "tblinventory", "", 2, 0, 2, 1);
+					pass.ExcelFourData("InventoryChange", "CategoryCode", Globals.Inventory.Changefield, CategoryCode, "Pass",
+							3, 0, 3, 1, 3, 2, 3, 3);
+				} catch (AssertionError e) {
+					pass.Excelcreate("InventoryChange", "tblinventory", "", 2, 0, 2, 1);
+					pass.ExcelFourData("InventoryChange", "CategoryCode", Globals.Inventory.Changefield, CategoryCode, "Fail",
+							3, 0, 3, 1, 3, 2, 3, 3);
+
+				}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column CategoryCode");
+					}
+				String Departmentcode = "";
+				try {
+					Departmentcode = rs.getString("Departmentcode");
+					System.out.println(Departmentcode);
+					Assert.assertEquals(Globals.Inventory.Changefield.trim(), Departmentcode.trim());
+					pass.ExcelFourData("Inventory", "Departmentcode", Globals.Inventory.Changefield, Departmentcode, "Pass",
+							4, 0, 4, 1, 4, 2, 4, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("Inventory", "Departmentcode", Globals.Inventory.Changefield, Departmentcode, "Fail",
+							4, 0, 4, 1, 4, 2, 4, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column Departmentcode");
+					}
+				String Brandcode = "";
+				try {
+					Brandcode = rs.getString("BrandCode");
+					System.out.println(Brandcode);
+					Assert.assertEquals(Globals.Inventory.Changefield.trim(), Brandcode.trim());
+					pass.ExcelFourData("Inventory", "BrandCode", Globals.Inventory.Changefield, Brandcode, "Fail",
+							5, 0, 5, 1, 5, 2, 5, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("Inventory", "BrandCode", Globals.Inventory.Changefield, Brandcode, "Fail",
+							5, 0, 5, 1, 5, 2, 5, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column BrandCode");
+					}
+				
+				String Subcategory = "";
+				try {
+					Subcategory = rs.getString("Subcategorycode");
+					System.out.println(Subcategory);
+					Assert.assertEquals(Globals.Inventory.Changefield.trim(), Subcategory.trim());
+					pass.ExcelFourData("Inventory", "Subcategory", Globals.Inventory.Changefield, Subcategory, "Pass",
+							6, 0, 6, 1, 6, 2, 6, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("Inventory", "Subcategory", Globals.Inventory.Changefield, Subcategory, "Fail",
+							6, 0, 6, 1, 6, 2, 6, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column Subcategorycode");
+					}
+				String Class = "";
+				try {
+
+					Class = rs.getString("Class");
+					System.out.println(Class);
+					Assert.assertEquals(Globals.Inventory.Changefield.trim(), Class.trim());
+					pass.ExcelFourData("Inventory", "Class", Globals.Inventory.Changefield, Class, "Pass",
+							7, 0, 7, 1, 7, 2,7, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("Inventory", "Class", Globals.Inventory.Changefield, Class, "Fail",
+							7, 0, 7, 1, 7, 2,7, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column Class");
+					}
+				
+				String SubClass = "";
+				try {
+					SubClass = rs.getString("SubClass");
+					System.out.println(SubClass);
+					Assert.assertEquals(Globals.Inventory.Changefield.trim(), SubClass.trim());
+					pass.ExcelFourData("Inventory", "SubClass", Globals.Inventory.Changefield, SubClass, "Pass",
+							8, 0, 8, 1, 8, 2, 8, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("Inventory", "Actual,Expected", Globals.Inventory.Changefield, SubClass, "Fail",
+							8, 0, 8, 1, 8, 2, 8, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column SubClass");
+					}
+				String Origion="";
+				try
+				{
+			    Origion = rs.getString("Origin");
+				System.out.println(Origion);
+				Assert.assertEquals(Globals.Inventory.Changefield.trim(), Origion.trim());
+				pass.ExcelFourData("Inventory", "Origin", Globals.Inventory.Changefield, Origion, "Pass",
+						9, 0, 9, 1, 9, 2, 9, 3);
+			} catch (AssertionError e) {
+				pass.ExcelFourData("Inventory", "Origin", Globals.Inventory.Changefield, Origion, "Fail",
+						9, 0, 9, 1, 9, 2, 9, 3);
+			}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column Origin");
+					}
+				String Warehouse="";
+				try
+				{
+			    Warehouse = rs.getString("Warehouse");
+				System.out.println(Warehouse);
+				Assert.assertEquals(Globals.Inventory.Changefield.trim(), Warehouse.trim());
+				pass.ExcelFourData("Inventory", "Warehouse", Globals.Inventory.Changefield, Warehouse, "Pass",
+						10, 0, 10, 1, 10, 2, 10, 3);
+			} catch (AssertionError e) {
+				pass.ExcelFourData("Inventory", "Warehouse", Globals.Inventory.Changefield, Warehouse, "Fail",
+						10, 0, 10, 1, 10, 2, 10, 3);
+			}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column Warehouse");
+					}
+				String UOM="";
+				try {
+			    UOM = rs.getString("UOM");
+				System.out.println(UOM);
+				Assert.assertEquals(Globals.Inventory.Changefield.trim(), UOM.trim());
+				pass.ExcelFourData("Inventory", "UOM", Globals.Inventory.Changefield, UOM, "Pass",
+						11, 0, 11, 1, 11, 2, 11, 3);
+			} catch (AssertionError e) {
+				pass.ExcelFourData("Inventory", "UOM", Globals.Inventory.Changefield, UOM, "Fail",
+						11, 0, 11, 1, 11, 2, 11, 3);
+			}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column UOM");
+					}
+				String Manufacture="";
+			try {
+					
+				Manufacture = rs.getString("Manufacturer");
+				System.out.println(Manufacture);
+				Assert.assertEquals(Globals.Inventory.Changefield.trim(), Manufacture.trim());
+				pass.ExcelFourData("Inventory", "Manufacturer", Globals.Inventory.Changefield, Manufacture, "Pass",
+						12, 0, 12, 1, 12, 2, 12, 3);
+			} catch (AssertionError e) {
+				pass.ExcelFourData("Inventory", "Manufacturer", Globals.Inventory.Changefield, Manufacture, "Fail",
+						12, 0, 12, 1, 12, 2, 12, 3);
+			}
+			catch(Exception e) {
+				System.out.println("null error tblinventory column Manufacturer");
+				}
+			String ItemType="";
+			try {
+				
+			    ItemType = rs.getString("ItemType");
+				System.out.println(ItemType);
+				Assert.assertEquals(Globals.Inventory.Changefield.trim(), ItemType.trim());
+				pass.ExcelFourData("Inventory", "ItemType", Globals.Inventory.Changefield, ItemType, "Pass",
+						13, 0, 13, 1, 13, 2, 13, 3);
+			} catch (AssertionError e) {
+				pass.ExcelFourData("Inventory", "ItemType", Globals.Inventory.Changefield, ItemType, "Fail",
+						13, 0, 13, 1, 13, 2, 13, 3);
+			}
+			catch(Exception e) {
+				System.out.println("null error tblinventory column ItemType");
+				}
+			
+			String Vendorcode="";
+			try {
+				Vendorcode = rs.getString("VendorCode");
+				System.out.println(Vendorcode);
+				Assert.assertEquals(Globals.Inventory.Changefield.trim(), Vendorcode.trim());
+				pass.ExcelFourData("Inventory", "VendorCode", Globals.Inventory.Changefield, Vendorcode, "Pass",
+						14, 0, 14, 1, 14, 2, 14, 3);
+			} catch (AssertionError e) {
+				pass.ExcelFourData("Inventory", "VendorCode", Globals.Inventory.Changefield, Vendorcode, "Fail",
+						14, 0, 14, 1, 14, 2, 14, 3);
+			}
+			catch(Exception e) {
+				System.out.println("null error tblinventory column Vendor");
+				}
+
 				break;
-			case "tblinventorypricing":
-				String BasicSelling = rs.getString("BasicSelling");
-				  System.out.println(BasicSelling);
-				   Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), BasicSelling.trim());
-				 
-				break;
+			
 			default:
 				break;
-			}}
+			
+		case "tblinventorypricing":
+			String GST="";
+			try {
+			GST = rs.getString("ITaxPer3");
+			System.out.println(GST);
+			Assert.assertEquals(Globals.Inventory.Changefield.trim(), GST.trim());
+			pass.Excelcreate("InventoryChange", "tblinventorypricing", "", 16, 0, 16, 1);
+			pass.ExcelFourData("InventoryChange", "ITaxPer3", Globals.Inventory.Changefield, GST, "Pass",
+					17, 0, 17, 1, 17, 2, 17, 3);
+		} catch (AssertionError e) {
+			pass.Excelcreate("InventoryChange", "tblinventorypricing", "", 16, 0, 16, 1);
+			pass.ExcelFourData("InventoryChange", "ITaxPer3", Globals.Inventory.Changefield, GST, "Fail",
+					17, 0, 17, 1, 17, 2, 17, 3);
 		}
-	
+			catch(Exception e) {
+				System.out.println("null error tblinventory column Vendor");
+				}
+			String GST1 ="";
+			try {
+			GST1 = rs.getString("OTaxPer3");
+			System.out.println(GST1);
+			Assert.assertEquals(Globals.Inventory.Changefield.trim(), GST1.trim());
+			pass.ExcelFourData("InventoryChange", "OTaxPer3", Globals.Inventory.Changefield, GST1, "Pass",
+					18, 0, 18, 1, 18, 2, 18, 3);
+		} catch (AssertionError e) {
+			pass.ExcelFourData("InventoryChange", "OTaxPer3", Globals.Inventory.Changefield, GST1, "Fail",
+					18, 0, 18, 1, 18, 2, 18, 3);
+		}
+			catch(Exception e) {
+				System.out.println("null error tblinventory column Vendor");
+				}
+		case "tblinventorymaster":
+			String Vendorcode1="";
+			try {
+				Vendorcode = rs.getString("VendorCode");
+				System.out.println(Vendorcode1);
+				Assert.assertEquals(Globals.Inventory.Changefield.trim(), Vendorcode.trim());
+				pass.Excelcreate("InventoryChange", "tblinventorymaster", "", 20, 0, 20, 1);
+				pass.ExcelFourData("InventoryChange", "VendorCode", Globals.Inventory.Changefield, Vendorcode1, "Pass",
+						21, 0, 21, 1, 21, 2, 21, 3);
+			} catch (AssertionError e) {
+				pass.Excelcreate("InventoryChange", "tblinventorymaster", "", 20, 0, 20, 1);
+				pass.ExcelFourData("InventoryChange", "VendorCode", Globals.Inventory.Changefield, Vendorcode1, "Fail",
+						21, 0, 21, 1, 21, 2, 21, 3);
+			}
+			catch(Exception e) {
+				System.out.println("null error tblinventory column Vendor");
+				}
+			String Inventorycode11="";
+			try {
+			Inventorycode11 = rs.getString("InventoryCode");
+			System.out.println(Inventorycode11);
+			Assert.assertEquals(Globals.Inventory.Changefield.trim(), Inventorycode11.trim());
+			pass.ExcelFourData("InventoryChange", "InventoryCode", Globals.Inventory.Changefield, Inventorycode11, "Pass",
+					22, 0, 22, 1, 22, 2, 22, 3);
+		} catch (AssertionError e) {
+			pass.ExcelFourData("InventoryChange", "InventoryCode", Globals.Inventory.Changefield, Inventorycode11, "Fail",
+					22, 0, 22, 1, 22, 2, 22, 3);
+		}
+			catch(Exception e) {
+				System.out.println("null error tblinventory column Vendor");
+				}
+		}
+		}
+	}
 	}
 		
 

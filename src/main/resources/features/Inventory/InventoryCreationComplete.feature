@@ -36,7 +36,6 @@ Feature: PoS Inventory > Add Inventory
     Then I read the values from table "tblinventory" in DB
     Then I read the values from table "tblinventorypricing" in DB
     Then I read the values from table "tblinventorystock" in DB
-    Then I read the values from table "tbloutletpricingcontrol" in DB
     Then I read the values from table "TBLBATCHINVENTORYCONTROL" in DB
     Then I read the values from table "tblInventoryShelfQty" in DB
     Then I close connection to DB
@@ -67,6 +66,13 @@ Feature: PoS Inventory > Add Inventory
     #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
     Then I need to click on the "Save" button
     Then I click dynamically on "NewItemNo" button
+     Then I establish connection to DB
+    Then I read the values from table MRP "tblinventory" in DB
+    Then I read the values from table MRP "tblinventorypricing" in DB
+    Then I read the values from table MRP "tblinventorystock" in DB
+    Then I read the values from table MRP "TBLBATCHINVENTORYCONTROL" in DB
+    Then I read the values from table MRP "tblInventoryShelfQty" in DB
+    Then I close connection to DB
 
     Examples: 
       | TestcaseRowName |

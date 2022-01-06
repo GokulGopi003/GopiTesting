@@ -1,15 +1,25 @@
 package com.unipro.test.page_objects.unixpro;
 
 
-	import org.openqa.selenium.By;
-	import org.openqa.selenium.Keys;
+	import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-	import com.unipro.test.framework.Globals;
+import org.openqa.selenium.By;
+	import org.openqa.selenium.Keys;
+import org.testng.Assert;
+
+import com.gk.test.MssqlConnect;
+import com.unipro.ExcelWrite;
+import com.unipro.test.framework.Globals;
 	import com.unipro.test.framework.PageObject;
-	import com.unipro.test.framework.helpers.utils.GenericWrappers;
+import com.unipro.test.framework.helpers.screenshot_helper.Screenshot;
+import com.unipro.test.framework.helpers.utils.GenericWrappers;
 	import com.unipro.test.framework.helpers.utils.ReadTestData;
 
-	import cucumber.api.java.en.Then;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 	import net.bytebuddy.agent.builder.AgentBuilder.CircularityLock.Global;
 
 	public class InventoryCostReset extends PageObject {
@@ -17,7 +27,8 @@ package com.unipro.test.page_objects.unixpro;
 		InventoryCostResetField icp;
 		CommonPages cp;
 		TerminalPage terpage;
-
+		ExcelWrite pass;
+		Screenshot scr;
 		public InventoryCostReset(InventoryCostResetField icp, CommonPages cp) {
 
 			this.icp = icp;
@@ -25,7 +36,8 @@ package com.unipro.test.page_objects.unixpro;
 
 			terpage = new TerminalPage();
 			Inventorychange = new AddInventoryFormPage();
-
+			pass = new ExcelWrite();
+			scr = new Screenshot();
 		}
 		
 
@@ -58,12 +70,14 @@ package com.unipro.test.page_objects.unixpro;
 			Globals.Inventory.WareHouse = Globals.Inventory.InventoryCostResetrowwiseData.get("WareHouse");
 			Globals.Inventory.ItemCode = Globals.Inventory.InventoryCostResetrowwiseData.get("ItemCode");
 			Globals.Inventory.ItemName = Globals.Inventory.InventoryCostResetrowwiseData.get("ItemName");
+			Globals.Inventory.AverageCost = Globals.Inventory.InventoryCostResetrowwiseData.get("AverageCost");
 			
 			
 		}
 
 		@Then("I fill new InventoryCostReset data page using excel data")
-		public void i_fill_new_Inventorychange_data_page_using_excel_data() {
+		public void i_fill_new_Inventorychange_data_page_using_excel_data() throws Exception {
+			try {
 			
 			if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {
 				terpage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
@@ -145,10 +159,95 @@ package com.unipro.test.page_objects.unixpro;
 				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_searchFilterUserControl_txtItemName")).sendKeys(Keys.RETURN);
 
 			}
-			
+			pass.ExcelFourData("InventoryCostReset","Modules", "Actual", "Expected", "Status",
+					0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
+			pass.Excelcreate("InventoryCostReset", "Filters", "Pass", 1, 0, 1, 3);
+			}
+			catch(Exception e)
+			{
+				// screen shot
+				scr.Screenshots();
+				System.out.println("Screen shot taken");
+				// Xl sheet write
+				pass.ExcelFourData("InventoryCostReset","Filters", "Actual", "Expected", "Status",
+						0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
+				pass.Excelcreate("InventoryCostReset", "Filters", "FAIL", 1, 0, 1, 3);
+			}
+
+		}
+		@Then("I close connection  DB for InventoryCostReset")
+		public void I_close_connection_to_DB() throws SQLException {
+
+			mysqlConnect.disconnect();
+			System.out.println(" closed succesfully");
+
+			// mysqlConnect.disconnect();
 
 		}
 
+		MssqlConnect mysqlConnect;
+		Statement st;
+		@Then("I establish connection  DB for InventoryCostReset")
+		public void I_establish_connection_to_DB() throws SQLException {
+
+			mysqlConnect = new MssqlConnect();
+			st = mysqlConnect.connect().createStatement();
+			System.out.println(" Connected succesfully");
+
+		}
+		@Given("I read the values from InventoryCostReset table {string} in DB")
+		public void i_want_to_launch_the(String tablename ) throws SQLException, IOException {
+			
+			
+			ResultSet rs = st.executeQuery("select * from "+tablename+" where InventoryCode='000001'");
+			
+			System.out.println(rs);
+			//ResultSet rs = st.executeQuery("");
+
+			while (rs.next()) {
+
+				switch (tablename) {
+				
+				case "tblinventory":
+					String CategoryCode = "";
+					try {
+						CategoryCode = rs.getString("AverageCost");
+						System.out.println(CategoryCode);
+						Assert.assertEquals(Globals.Inventory.Changefield.trim(), CategoryCode.trim());
+						pass.Excelcreate("InventoryCostReset", "tblinventory", "", 2, 0, 2, 1);
+						pass.ExcelFourData("InventoryCostReset", "CategoryCode", Globals.Inventory.Changefield, CategoryCode, "Pass",
+								3, 0, 3, 1, 3, 2, 3, 3);
+					} catch (AssertionError e) {
+						pass.Excelcreate("InventoryCostReset", "tblinventory", "", 2, 0, 2, 1);
+						pass.ExcelFourData("InventoryCostReset", "CategoryCode", Globals.Inventory.Changefield, CategoryCode, "Fail",
+								3, 0, 3, 1, 3, 2, 3, 3);
+
+					}
+					catch(Exception e) {
+						System.out.println("null error tblinventory column CategoryCode");
+						}
+					
+				
+			case "tblinventorystock":
+				String GST="";
+				try {
+				GST = rs.getString("AverageCost");
+				System.out.println(GST);
+				Assert.assertEquals(Globals.Inventory.Changefield.trim(), GST.trim());
+				pass.Excelcreate("InventoryCostReset", "tblinventorypricing", "", 5, 0, 5, 1);
+				pass.ExcelFourData("InventoryCostReset", "ITaxPer3", Globals.Inventory.Changefield, GST, "Pass",
+						6, 0, 6, 1, 6, 2, 6, 3);
+			} catch (AssertionError e) {
+				pass.Excelcreate("InventoryCostReset", "tblinventorypricing", "", 5, 0, 5, 1);
+				pass.ExcelFourData("InventoryCostReset", "ITaxPer3", Globals.Inventory.Changefield, GST, "Fail",
+						6, 0, 6, 1, 6, 2, 6, 3);
+			}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column Vendor");
+					}
+				}
+				}
+		}
 	}
 
 

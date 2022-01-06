@@ -59,6 +59,21 @@ public class ExcelWrite {
 		xs.write(fos);
 		
 	}
+	public void ExcelFiveData(String sheet,String cellValue1,String cellValue,String cellValue2,String cellValue3,String cellValue4,int Row,int Cell,int Row1,int Cell1,int Row2,int Cell2,int Row3,int Cell3,int Row4,int Cell4) throws IOException {
+		File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/Result.xlsx");
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook xs = new XSSFWorkbook(fis);
+		
+		XSSFSheet sh = xs.getSheet(sheet);
+		sh.createRow(Row).createCell(Cell).setCellValue(cellValue1);
+		sh.getRow(Row1).createCell(Cell1).setCellValue(cellValue);
+		sh.getRow(Row2).createCell(Cell2).setCellValue(cellValue2);
+		sh.getRow(Row3).createCell(Cell3).setCellValue(cellValue3);
+		sh.getRow(Row4).createCell(Cell4).setCellValue(cellValue4);
+		FileOutputStream fos = new FileOutputStream(file);
+		xs.write(fos);
+		
+	}
 	public void ExcelDouble(String sheet,String cellValue1,String cellValue,double netSellingPrice,String cellValue3,int Row,int Cell,int Row1,int Cell1,int Row2,int Cell2,int Row3,int Cell3) throws IOException {
 		File file = new File("/Users/macpc/Documents/GitHub/GopiTesting/testdata/Result.xlsx");
 		FileInputStream fis = new FileInputStream(file);

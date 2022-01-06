@@ -23,37 +23,14 @@ Feature: InventoryChange
     When Im waiting for 2 sec
     Then I click filter
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkUpdate"
+    Then I establish connection  DB for InventoryChange
+    Then I read the values from InventoryChange table "tblinventory" in DB
+    Then I read the values from InventoryChange table "tblinventorypricing" in DB
+    Then I read the values from InventoryChange table "tblinventorymaster" in DB
+    Then I close connection  DB for InventoryChange
     
      Examples: 
       | TestcaseRowName |
-      |Inventorychange|
+      |Inventorychange5|
       
-      
-    #Scenario Outline: Title of your scenario outline
-    #Then I need to click on the  element "input#ContentPlaceHolder1_checkAll"
-    #Then I load the testdatas form excel to table
-    #Then I load the Inventorychange sheet data to map
-    #Then I load the rowise Inventorychange data for "<TestcaseRowName>" rowname
-    #Then I update value to the Inventorychange page global Variables
-    #Then I fill new Inventorychange data page using excel data
-    #Then I need to click on the  element "a#ContentPlaceHolder1_lnkUpdate"
-    #Then I establish connection  DB for inventorychange
-    #Then I read the values from inventorychange table "tblinventory" in DB
-    #Then I close connection  DB for inventorychange  
-    
-     #Examples: 
-      #| TestcaseRowName |
-      #|Inventorychange2| 
-     
-   # Scenario Outline: Title of your scenario outline
-   
-    #Then I load the testdatas form excel to table
-    #Then I load the Inventorychange sheet data to map
-    #Then I load the rowise Inventorychange data for "<TestcaseRowName>" rowname
-    #Then I update value to the Inventorychange page global Variables
-    #Then I fill new Inventorychange data page using excel data
-    #Then I need to click on the  element "a#ContentPlaceHolder1_lnkReport"  
-    
-    # Examples: 
-     # | TestcaseRowName |
-     # |Inventorychange3|
+  
