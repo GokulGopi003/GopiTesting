@@ -17,10 +17,7 @@ Feature: InventoryChange
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkFilter"
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkExport"
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkPrint"
-    
-    
-    
-    
+
     
     
      Examples: 

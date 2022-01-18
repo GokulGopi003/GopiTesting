@@ -61,9 +61,9 @@ Feature: PoS Inventory > Add Inventory
     Then I fill Order and break price
     Then I need to click on sub menu with text matching "Activation Settings"
     Then I fill Activationsettings
-    #Then I need to click on sub menu with text matching "Image"
+    Then I need to click on sub menu with text matching "Image"
     When Im waiting for 5 sec
-    #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
+    Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
     Then I need to click on the "Save" button
     Then I click dynamically on "NewItemNo" button
      Then I establish connection to DB

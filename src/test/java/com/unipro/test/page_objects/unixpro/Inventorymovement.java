@@ -4,9 +4,11 @@ package com.unipro.test.page_objects.unixpro;
 	import org.openqa.selenium.By;
 	import org.openqa.selenium.Keys;
 
-	import com.unipro.test.framework.Globals;
+import com.unipro.ExcelWrite;
+import com.unipro.test.framework.Globals;
 	import com.unipro.test.framework.PageObject;
-	import com.unipro.test.framework.helpers.utils.GenericWrappers;
+import com.unipro.test.framework.helpers.screenshot_helper.Screenshot;
+import com.unipro.test.framework.helpers.utils.GenericWrappers;
 	import com.unipro.test.framework.helpers.utils.ReadTestData;
 
 	import cucumber.api.java.en.Then;
@@ -17,12 +19,14 @@ package com.unipro.test.page_objects.unixpro;
 		InventorymovementField icp;
 		CommonPages cp;
 		TerminalPage terpage;
-
+		ExcelWrite pass;
+		Screenshot scr;
 		public Inventorymovement(InventorymovementField icp, CommonPages cp) {
 
 			this.icp = icp;
 			this.cp = cp;
-
+			scr = new Screenshot();
+			pass = new ExcelWrite();
 			terpage = new TerminalPage();
 			Inventorychange = new AddInventoryFormPage();
 
@@ -55,6 +59,7 @@ package com.unipro.test.page_objects.unixpro;
 			Globals.Inventory.ShelfCode = Globals.Inventory.InventorymovementrowwiseData.get("ShelfCode");
 			Globals.Inventory.WareHouse = Globals.Inventory.InventorymovementrowwiseData.get("WareHouse");
 			Globals.Inventory.ItemCode = Globals.Inventory.InventorymovementrowwiseData.get("ItemCode");
+			Globals.Inventory.ItemType = Globals.Inventory.InventorymovementrowwiseData.get("ItemType");
 			Globals.Inventory.ItemName = Globals.Inventory.InventorymovementrowwiseData.get("ItemName");
 			Globals.Inventory.Date = Globals.Inventory.InventorymovementrowwiseData.get("Date");
 			Globals.Inventory.RefDate = Globals.Inventory.InventorymovementrowwiseData.get("RefDate");
@@ -67,8 +72,8 @@ package com.unipro.test.page_objects.unixpro;
 		}
 
 		@Then("I fill new Inventorymovement data page using excel data")
-		public void i_fill_new_Inventorychange_data_page_using_excel_data() {
-			
+		public void i_fill_new_Inventorychange_data_page_using_excel_data() throws Exception {
+			try {
 			if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {
 				terpage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
 				Inventorychange.clearAndTypeSlowly(Globals.Inventory.Vendor, "input#txtSearch");
@@ -155,7 +160,19 @@ package com.unipro.test.page_objects.unixpro;
 				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtNewItem")).sendKeys(Keys.RETURN);
 
 			}
-			
+		   pass.ExcelFourData("InventoryMovement","Modules", "Actual", "Expected", "Status",
+					0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
+			pass.Excelcreate("InventoryMovement", "MASTERS", "PASS", 1, 0, 1, 3);
+		} catch (Exception e) {
+			// screen shot
+			scr.Screenshots();
+			System.out.println("Screen shot taken");
+			// Xl sheet write
+			pass.ExcelFourData("InventoryMovement","Modules", "Actual", "Expected", "Status",
+					0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
+			pass.Excelcreate("InventoryMovement", "MASTERS", "FAIL", 1, 0, 1, 3);
+
+		}
 
 		}
 

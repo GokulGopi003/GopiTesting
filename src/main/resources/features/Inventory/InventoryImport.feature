@@ -12,8 +12,8 @@ Feature: PoS Inventory > Add Inventory
     
     Scenario: Verifying Inventory Import Functionality
      Given I want to launch the "Masters/frmInventoryUpload.aspx"
-    Then I Browse the Excelsheetdata
-    Then I need to click on the  element "a#ContentPlaceHolder1_btnUpload" 
+    Then I enter the value forElement "input#ContentPlaceHolder1_btnBrowse" as "/Users/macpc/Documents/GitHub/GopiTesting/testdata/Unipro_Master_Excel_web.xlsx"
+    Then I need to click on the  element "input#ContentPlaceHolder1_btnUpload" 
  
     
      

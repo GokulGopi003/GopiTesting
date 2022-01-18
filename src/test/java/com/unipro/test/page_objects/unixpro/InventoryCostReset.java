@@ -226,7 +226,7 @@ import cucumber.api.java.en.Then;
 					catch(Exception e) {
 						System.out.println("null error tblinventory column CategoryCode");
 						}
-					
+					break;
 				
 			case "tblinventorystock":
 				String GST="";
@@ -246,6 +246,7 @@ import cucumber.api.java.en.Then;
 					System.out.println("null error tblinventory column Vendor");
 					}
 				}
+				break;
 				}
 		}
 	}

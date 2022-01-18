@@ -55,7 +55,11 @@ public class Globals {
 		final public static String SHEETNAME42 = "Barcode";
 		final public static String SHEETNAME43 = "InventoryHistory";
 		final public static String SHEETNAME44 = "ReorderSettings";
-		
+		final public static String SHEETNAME45 = "InventoryParentChildSetting";
+		final public static String SHEETNAME46 = "Distribution";
+		final public static String SHEETNAME47 = "InventoryParameter";
+		final public static String SHEETNAME48 = "PackageInventory";
+		final public static String SHEETNAME49 = "RefillingScheduling";
 		
 		public static Table<String, String, String> inventorySheetData;
 		public static Table<String, String, String> DepartmentSheetData;
@@ -102,6 +106,11 @@ public class Globals {
 		public static Table<String, String, String> BarcodeSheetData;
 		public static Table<String, String, String> InventoryHistorySheetData;
 		public static Table<String, String, String> ReorderSettingsSheetData;
+		public static Table<String, String, String> InventoryParentChildSettingSheetData;
+		public static Table<String, String, String> DistributionSheetData;
+		public static Table<String, String, String> InventoryParameterSheetData;
+		public static Table<String, String, String> PackageinventorySheetData;
+		public static Table<String, String, String> RefillingSchedulingSheetData;
 		
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
@@ -148,6 +157,11 @@ public class Globals {
 		public static Map<String, String> BarcoderowwiseData;
 		public static Map<String, String> InventoryHistoryrowwiseData;
 		public static Map<String, String> ReorderSettingsrowwiseData;
+		public static Map<String, String> InventoryParentChildSettingrowwiseData;
+		public static Map<String, String> DistributionrowwiseData;
+		public static Map<String, String> InventoryParameterrowwiseData;
+		public static Map<String, String> PackageinventoryrowwiseData;
+		public static Map<String, String> RefillingSchedulingrowwiseData;
 	
 		
 		
@@ -181,6 +195,8 @@ public class Globals {
 		public static String ItemCode;
 		public static String ItemType;
 		public static String Vendor;
+		public static String Bulk;
+		public static String Child;
 		public static String UOMPurchase;
 		public static String SalesUOM;
 		public static String StockType;
@@ -263,6 +279,9 @@ public class Globals {
 		public static String Uomcode;
 		public static String Units;
 		public static String Qty;
+		public static String PackageInventory;
+		public static String WQty;
+		public static String Parentcode;
 		public static String Bincode;
 		public static String LocationCode;
 		public static String ShelfCode;

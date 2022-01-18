@@ -1,18 +1,16 @@
 
 Feature: PoS Inventory > Add Inventory
 Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
-    Then I load the testdata form excel to table
-    Then I load the inventory sheet data to map
-    Then I load the rowise inventory data for "<TestcaseRowName>" rowname
-    Then I update value to the inventory page global Variables
-    Then I establish connection to DB
-    Then I read the values from table "tblinventory" in DB
-    Then I read the values from table "tblinventorypricing" in DB
-    Then I read the values from table "tblinventorystock" in DB
-    Then I read the values from table "tblbarcode" in DB
-    Then I read the values from table "TBLBATCHINVENTORYCONTROL" in DB
-    Then I read the values from table "tblInventoryShelfQty" in DB
-    Then I close connection to DB
-       Examples: 
+  Then I load the testdatas form excel to table
+    Then I load the Packageinventory sheet data to map
+    Then I load the rowise Packageinventory data for "<TestcaseRowName>" rowname
+    Then I update value to the Packageinventory page global Variables
+    Then I establish connection  DB for Packageinventory
+    Then I read the values from Packageinventory table "tblPackageHeader" in DB
+    Then I read the values from Packageinventory table "tblPackageDetail" in DB
+    Then I close connection  DB for Packageinventory
+    #When Im waiting for 2 sec
+    
+     Examples: 
       | TestcaseRowName |
-      | cost1          |
+      |PackageInventory|
