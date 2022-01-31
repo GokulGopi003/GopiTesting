@@ -60,6 +60,12 @@ public class Globals {
 		final public static String SHEETNAME47 = "InventoryParameter";
 		final public static String SHEETNAME48 = "PackageInventory";
 		final public static String SHEETNAME49 = "RefillingScheduling";
+		final public static String SHEETNAME50 = "LocationWisePriceChange";
+		final public static String SHEETNAME51 = "PriceChangeBatchItem";
+		final public static String SHEETNAME52 = "PriceChangeNonBatchItem";
+		final public static String SHEETNAME53 = "PriceImportExport";
+		final public static String SHEETNAME54 = "FreeItem";
+		final public static String SHEETNAME55 = "NormalPromotion";
 		
 		public static Table<String, String, String> inventorySheetData;
 		public static Table<String, String, String> DepartmentSheetData;
@@ -111,6 +117,12 @@ public class Globals {
 		public static Table<String, String, String> InventoryParameterSheetData;
 		public static Table<String, String, String> PackageinventorySheetData;
 		public static Table<String, String, String> RefillingSchedulingSheetData;
+		public static Table<String, String, String> LocationWisePriceChangeSheetData;
+		public static Table<String, String, String> PriceChangeBatchItemSheetData;
+		public static Table<String, String, String> PriceChangeNonBatchItemItemSheetData;
+		public static Table<String, String, String> PriceImportExportSheetData;
+		public static Table<String, String, String> FreeItemSheetData;
+		public static Table<String, String, String> NormalPromotionSheetData;
 		
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
@@ -162,6 +174,12 @@ public class Globals {
 		public static Map<String, String> InventoryParameterrowwiseData;
 		public static Map<String, String> PackageinventoryrowwiseData;
 		public static Map<String, String> RefillingSchedulingrowwiseData;
+		public static Map<String, String> LocationWisePriceChangerowwiseData;
+		public static Map<String, String> PriceChangeBatchItemrowwiseData;
+		public static Map<String, String> PriceChangeNonBatchItemItemrowwiseData;
+		public static Map<String, String> PriceImportExportrowwiseData;
+		public static Map<String, String> FreeItemrowwiseData;
+		public static Map<String, String> NormalPromotionrowwiseData;
 	
 		
 		
@@ -175,6 +193,8 @@ public class Globals {
 		public static String DiscountPer3;
 		public static String GSTPer;
 		public static String DiscountPer;
+		public static String FromTime;
+		public static String ToTime;
 		public static String AddDiscountPer;
 		public static String NetSellingPrice;
 		public static String spfixing;
@@ -186,13 +206,16 @@ public class Globals {
 		public static String WAPrice2;
 		public static String WAPrice3;
 		public static String Batchno;
+		public static String Batchno1;
 		
 		public static String Category;
 		public static String Department;
+		public static String GrpCode;
 		public static String Brand;
 		public static String ItemName;
 		public static String AverageCost;
 		public static String ItemCode;
+		public static String ItemCode1;
 		public static String ItemType;
 		public static String Vendor;
 		public static String Bulk;
@@ -237,6 +260,7 @@ public class Globals {
 		public static String EarnedMargin;
 		public static String FromDate;
 		public static String ToDate;
+		public static String Mode;
 		public static String Earnedmarginclick;
 		public static String MRPclick;
 		public static String Netcostclick;
@@ -279,6 +303,7 @@ public class Globals {
 		public static String Uomcode;
 		public static String Units;
 		public static String Qty;
+		public static String Qty1;
 		public static String PackageInventory;
 		public static String WQty;
 		public static String Parentcode;
@@ -373,6 +398,7 @@ public class Globals {
 		public static String PointOfSale;
 		public static String AllowNegative;
 		public static String TransferDC;
+		public static String EligibilityQty;
 		public static String SalesReturn;
 		public static String OrderBooking;
 		public static String Estimation;

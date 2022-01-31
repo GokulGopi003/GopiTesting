@@ -75,26 +75,6 @@ package com.unipro.test.page_objects.unixpro;
 			Globals.Inventory.ItemCode = Globals.Inventory.RefillingSchedulingrowwiseData.get("ItemCode");
 			Globals.Inventory.ItemName = Globals.Inventory.RefillingSchedulingrowwiseData.get("ItemName");
 			Globals.Inventory.WareHouse = Globals.Inventory.RefillingSchedulingrowwiseData.get("WareHouse");
-			Globals.Inventory.Batch = Globals.Inventory.RefillingSchedulingrowwiseData.get("Batch");
-			Globals.Inventory.Batch1 = Globals.Inventory.RefillingSchedulingrowwiseData.get("Batch1");
-			Globals.Inventory.Batch2 = Globals.Inventory.RefillingSchedulingrowwiseData.get("Batch2");
-			Globals.Inventory.Batch3 = Globals.Inventory.RefillingSchedulingrowwiseData.get("Batch3");
-			Globals.Inventory.Selectfield = Globals.Inventory.RefillingSchedulingrowwiseData.get("Selectfield");
-			Globals.Inventory.Changefield = Globals.Inventory.RefillingSchedulingrowwiseData.get("Changefield");
-			Globals.Inventory.Billdate = Globals.Inventory.RefillingSchedulingrowwiseData.get("Billdate");
-			Globals.Inventory.Date = Globals.Inventory.RefillingSchedulingrowwiseData.get("Date");
-			Globals.Inventory.EarnedMargin = Globals.Inventory.RefillingSchedulingrowwiseData.get("EarnedMargin");
-			Globals.Inventory.MRP = Globals.Inventory.RefillingSchedulingrowwiseData.get("MRP");
-			Globals.Inventory.Netcost = Globals.Inventory.RefillingSchedulingrowwiseData.get("Netcost");
-			Globals.Inventory.FromDate = Globals.Inventory.RefillingSchedulingrowwiseData.get("FromDate");
-			Globals.Inventory.ToDate = Globals.Inventory.RefillingSchedulingrowwiseData.get("ToDate");
-			Globals.Inventory.Earnedmarginclick = Globals.Inventory.RefillingSchedulingrowwiseData.get("Earnedmarginclick");
-			Globals.Inventory.MRPclick = Globals.Inventory.RefillingSchedulingrowwiseData.get("MRPclick");
-			Globals.Inventory.Netcostclick = Globals.Inventory.RefillingSchedulingrowwiseData.get("Netcostclick");
-			Globals.Inventory.NewFromDate = Globals.Inventory.RefillingSchedulingrowwiseData.get("NewFromDate");
-			Globals.Inventory.NewToDate = Globals.Inventory.RefillingSchedulingrowwiseData.get("NewToDate");
-			Globals.Inventory.Selectall = Globals.Inventory.RefillingSchedulingrowwiseData.get("Selectall");
-			Globals.Inventory.AverageCost = Globals.Inventory.RefillingSchedulingrowwiseData.get("AverageCost");
 			Globals.Inventory.Qty = Globals.Inventory.RefillingSchedulingrowwiseData.get("Qty");
 			
 			
@@ -183,9 +163,9 @@ package com.unipro.test.page_objects.unixpro;
 
 			}
 			
-			pass.ExcelFourData("InventoryChange","Modules", "Actual", "Expected", "Status",
+			pass.ExcelFourData("RefillingScheduling","Modules", "Actual", "Expected", "Status",
 					0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
-			pass.Excelcreate("InventoryChange", "Filters", "Pass", 1, 0, 1, 3);
+			pass.Excelcreate("RefillingScheduling", "Filters", "Pass", 1, 0, 1, 3);
 			}
 			catch(Exception e) {
 				// screen shot
