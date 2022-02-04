@@ -237,6 +237,7 @@ public class InventoryCalculationsPage extends PageObject {
 		}
 
 	}
+
 	
 	//check and click cost, MRP1, MRP2, MRP3, MRP4
 	public void clickPurchasedByRadioButton(String purchaseText) {

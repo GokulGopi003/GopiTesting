@@ -2,16 +2,16 @@
 Feature: PoS Inventory > Add Inventory
 Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
 
-    Then I load the testdatas form excel to table
-    Then I load the FreeItem sheet data to map
-    Then I load the rowise FreeItem data for "<TestcaseRowName>" rowname
-    Then I update value to the FreeItem page global Variables
-    Then I establish connection  DB for FreeItem
-    Then I read the values from FreeItem table "tblFreeItemGroup" in DB
-    Then I read the values from FreeItem table "tblQualifyingItemsForFree" in DB
-    Then I read the values from FreeItem table "tblfreeitemslist" in DB
-    Then I close connection  DB for FreeItem
+   Then I load the testdatas form excel to table
+    Then I load the OtherPromotion sheet data to map
+    Then I load the rowise OtherPromotion data for "<TestcaseRowName>" rowname
+        Then I update value to the OtherPromotion page global Variables
+    Then I establish connection  DB for OtherPromotion
+    Then I read the values from OtherPromotion table "tblPromotionHeader" in DB
+    Then I read the values from OtherPromotion table "tblPromotionDetail" in DB
+    Then I read the values from OtherPromotion table "tblFreeItemDetail" in DB
+    Then I close connection  DB for OtherPromotion
     
      Examples: 
       | TestcaseRowName |
-      |FreeItem|
+      |OtherPromotion2|

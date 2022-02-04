@@ -66,6 +66,9 @@ public class Globals {
 		final public static String SHEETNAME53 = "PriceImportExport";
 		final public static String SHEETNAME54 = "FreeItem";
 		final public static String SHEETNAME55 = "NormalPromotion";
+		final public static String SHEETNAME56 = "OtherPromotion";
+		final public static String SHEETNAME57 = "DayBasedPromotion";
+		final public static String SHEETNAME58 = "RevokePromotion";
 		
 		public static Table<String, String, String> inventorySheetData;
 		public static Table<String, String, String> DepartmentSheetData;
@@ -123,6 +126,9 @@ public class Globals {
 		public static Table<String, String, String> PriceImportExportSheetData;
 		public static Table<String, String, String> FreeItemSheetData;
 		public static Table<String, String, String> NormalPromotionSheetData;
+		public static Table<String, String, String> OtherPromotionSheetData;
+		public static Table<String, String, String> DayBasedPromotionSheetData;
+		public static Table<String, String, String> RevokePromotionSheetData;
 		
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
@@ -180,6 +186,10 @@ public class Globals {
 		public static Map<String, String> PriceImportExportrowwiseData;
 		public static Map<String, String> FreeItemrowwiseData;
 		public static Map<String, String> NormalPromotionrowwiseData;
+		public static Map<String, String> OtherPromotionrowwiseData;
+		public static Map<String, String> DayBasedPromotionrowwiseData;
+		public static Map<String, String> RevokePromotionrowwiseData;
+		
 	
 		
 		
@@ -195,6 +205,7 @@ public class Globals {
 		public static String DiscountPer;
 		public static String FromTime;
 		public static String ToTime;
+		public static String Days;
 		public static String AddDiscountPer;
 		public static String NetSellingPrice;
 		public static String spfixing;
@@ -239,6 +250,7 @@ public class Globals {
 		public static String CCode;
 		public static String Class;
 		public static String SubClass;
+		public static String Basis;
 		public static String Bin;
 		public static String Section;
 		public static String Shelf;
@@ -251,6 +263,8 @@ public class Globals {
 		public static String Departmentname;
 		public static String Personincharge;
 		public static String Discount;
+		public static String RangeFrom;
+		public static String RangeTo;
 		public static String Remark;
 		public static String Categorycode;
 		public static String Categoryname;

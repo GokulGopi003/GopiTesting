@@ -24,5 +24,7 @@ public class NormalPromotionField {
 	public String DiscountPer1_String = "input#ContentPlaceHolder1_txtpromotiondisc";
 	public String Qty_String = "input#ContentPlaceHolder1_txtBProQty";
 	public String Qty1_String = "input#ContentPlaceHolder1_txteligibleqtyfilteration";
+	public String Batch3_String = "input#ContentPlaceHolder1_cbSelectAll";
+	public String Batch4_String = "input#ContentPlaceHolder1_cbProfilterheader";
 
 }

@@ -71,13 +71,16 @@ import org.openqa.selenium.By;
 			Globals.Inventory.Brand = Globals.Inventory.NormalPromotionrowwiseData.get("Brand");
 			Globals.Inventory.Vendor = Globals.Inventory.NormalPromotionrowwiseData.get("Vendor");
 			Globals.Inventory.Date = Globals.Inventory.NormalPromotionrowwiseData.get("Date");
-			Globals.Inventory.Date = Globals.Inventory.NormalPromotionrowwiseData.get("Date");
 			Globals.Inventory.ToDate = Globals.Inventory.NormalPromotionrowwiseData.get("ToDate");
 			Globals.Inventory.ItemCode = Globals.Inventory.NormalPromotionrowwiseData.get("ItemCode");
+			Globals.Inventory.ItemCode1 = Globals.Inventory.NormalPromotionrowwiseData.get("ItemCode1");
 			Globals.Inventory.Batchno = Globals.Inventory.NormalPromotionrowwiseData.get("Batchno");
+			Globals.Inventory.Batchno1 = Globals.Inventory.NormalPromotionrowwiseData.get("Batchno1");
 			Globals.Inventory.Batch = Globals.Inventory.NormalPromotionrowwiseData.get("Batch");
 			Globals.Inventory.Batch1 = Globals.Inventory.NormalPromotionrowwiseData.get("Batch1");
 			Globals.Inventory.Batch2 = Globals.Inventory.NormalPromotionrowwiseData.get("Batch2");
+			Globals.Inventory.Batch3 = Globals.Inventory.NormalPromotionrowwiseData.get("Batch3");
+			Globals.Inventory.Batch4 = Globals.Inventory.NormalPromotionrowwiseData.get("Batch4");
 			Globals.Inventory.EligibilityQty = Globals.Inventory.NormalPromotionrowwiseData.get("EligibilityQty");
 			Globals.Inventory.DiscountPer = Globals.Inventory.NormalPromotionrowwiseData.get("DiscountPer");
 			Globals.Inventory.Discount = Globals.Inventory.NormalPromotionrowwiseData.get("Discount");
@@ -133,9 +136,9 @@ import org.openqa.selenium.By;
 					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSubcategory")).sendKeys(Keys.RETURN);
 				}
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemCode1)) {
-					terpage.terminal_waitClearEnterText_css(icp.ItemCode1_String, Globals.Inventory.ItemCode);
-					Inventorychange.clearAndTypeSlowly(Globals.Inventory.ItemCode, "input#txtSearch");
-					Inventorychange.return_td_invoke_element(Globals.Inventory.ItemCode).click();
+					terpage.terminal_waitClearEnterText_css(icp.ItemCode1_String, Globals.Inventory.ItemCode1);
+					Inventorychange.clearAndTypeSlowly(Globals.Inventory.ItemCode1, "input#txtSearch");
+					Inventorychange.return_td_invoke_element(Globals.Inventory.ItemCode1).click();
 					webDriver.findElement(By.cssSelector("a#ContentPlaceHolder1_lnkFetch")).click();
 				}
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.Price)) {
@@ -155,9 +158,23 @@ import org.openqa.selenium.By;
 				}
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.Qty1)) {
 					terpage.terminal_waitClearEnterText_css(icp.Qty1_String, Globals.Inventory.Qty);
-					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtItemCode")).sendKeys(Keys.RETURN);
-					webDriver.findElement(By.cssSelector("a#ContentPlaceHolder1_lnkapply")).click();
+					//webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtItemCode")).sendKeys(Keys.RETURN);
 					
+					
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch3)) {
+					terpage.get_checkBox_element(icp.Batch3_String).click();
+
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch4)) {
+					terpage.get_checkBox_element(icp.Batch4_String).click();
+					List<WebElement> weList = getWebDriver().findElements(By.tagName("button"));
+					for (Iterator iterator = weList.iterator(); iterator.hasNext();) {
+						WebElement button = (WebElement) iterator.next();
+						if (button.getText().equalsIgnoreCase("Yes")) {
+							button.click();
+						}}
+					webDriver.findElement(By.cssSelector("a#ContentPlaceHolder1_lnkapply")).click();
 				}
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemCode)) {
 					terpage.terminal_waitClearEnterText_css(icp.ItemCode_String, Globals.Inventory.ItemCode);
@@ -260,7 +277,7 @@ import org.openqa.selenium.By;
 		public void i_want_to_launch_the(String tablename ) throws SQLException, IOException {
 			
 			
-			ResultSet rs = st.executeQuery("select * from "+tablename+" where GroupCode='12'");
+			ResultSet rs = st.executeQuery("select * from "+tablename+" where inventorycode='000001'");
 			
 			System.out.println(rs);
 			//ResultSet rs = st.executeQuery("");
@@ -269,246 +286,320 @@ import org.openqa.selenium.By;
 
 				switch (tablename) {
 				
-				case "tblFreeItemGroup":
+				case "tblPromotionPriceChange":
 						
 					String Sellingprice="";
 					try {
-						Sellingprice = rs.getString("GroupCode");
+						Sellingprice = rs.getString("BatchNo");
 						System.out.println(Sellingprice);
-						Assert.assertEquals(Globals.Inventory.GrpCode.trim(), Sellingprice.trim());
-						pass.Excelcreate("FreeItem", "tblGroup", "", 3, 0, 3, 1);
-						pass.ExcelFourData("FreeItem", "GroupCode", Globals.Inventory.GrpCode, Sellingprice, "Pass",
+						Assert.assertEquals(Globals.Inventory.Batchno1.trim(), Sellingprice.trim());
+						pass.Excelcreate("NormalPromotion", "tblPromotionPriceChange", "", 3, 0, 3, 1);
+						pass.ExcelFourData("NormalPromotion", "BatchNo", Globals.Inventory.Batchno1, Sellingprice, "Pass",
 								5, 0, 5, 1, 5, 2, 5, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("FreeItem", "tblGroup", "", 3, 0, 3, 1);
-						pass.ExcelFourData("FreeItem", "GroupCode", Globals.Inventory.GrpCode, Sellingprice, "Fail",
+						pass.Excelcreate("NormalPromotion", "tblPromotionPriceChange", "", 3, 0, 3, 1);
+						pass.ExcelFourData("NormalPromotion", "BatchNo", Globals.Inventory.Batchno1, Sellingprice, "Fail",
 								5, 0, 5, 1, 5, 2, 5, 3);
 					}
 					catch(Exception e) {
-						System.out.println("null error tblinventory column GrpCode");
+						System.out.println("null error tblPromotionPriceChange column BatchNo");
 					}
 					String MRP="";
 					try
 					{
-						MRP = rs.getString("Description");
+						MRP = rs.getString("EligibleQty");
 						System.out.println(MRP);
-						Assert.assertEquals(Globals.Inventory.Description.trim(), MRP.trim());
-						pass.ExcelFourData("FreeItem", "Description", Globals.Inventory.Description, MRP, "Pass",
+						Assert.assertEquals(Globals.Inventory.EligibilityQty.trim(), MRP.trim());
+						pass.ExcelFourData("NormalPromotion", "EligibilityQty", Globals.Inventory.EligibilityQty, MRP, "Pass",
 								6, 0, 6, 1, 6, 2, 6, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("FreeItem", "Description", Globals.Inventory.Description, MRP, "Fail",
+						pass.ExcelFourData("NormalPromotion", "EligibilityQty", Globals.Inventory.EligibilityQty, MRP, "Fail",
 								6, 0, 6, 1, 6, 2, 6, 3);
 					}
 					catch(Exception e) {
-						System.out.println("null error tblinventory column MRP");
+						System.out.println("null error tblPromotionPriceChange column EligibilityQty");
 					}
 					String Mode="";
 					try
 					{
-						Mode = rs.getString("Fmode");
+						Mode = rs.getString("DiscountPerc");
 						System.out.println(Mode);
-						Assert.assertEquals(Globals.Inventory.Mode.trim(), Mode.trim());
-						pass.ExcelFourData("FreeItem", "Mode", Globals.Inventory.Mode, Mode, "Pass",
+						Assert.assertEquals(Globals.Inventory.DiscountPer.trim(), Mode.trim());
+						pass.ExcelFourData("NormalPromotion", "DiscountPerc", Globals.Inventory.DiscountPer, Mode, "Pass",
 								7, 0, 7, 1, 7, 2, 7, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("FreeItem", "Mode", Globals.Inventory.Mode, Mode, "Fail",
+						pass.ExcelFourData("NormalPromotion", "DiscountPerc", Globals.Inventory.DiscountPer, Mode, "Fail",
 								7, 0, 7, 1, 7, 2, 7, 3);
 					}
 					catch(Exception e) {
-						System.out.println("null error tblinventory column Mode");
+						System.out.println("null error tblPromotionPriceChange column DiscountPerc");
 					}
 					String Qty="";
 					try
 					{
-						Qty = rs.getString("BuyQty");
+						Qty = rs.getString("Promotionfromdate");
 						System.out.println(Qty);
-						Assert.assertEquals(Globals.Inventory.Qty.trim(), Qty.trim());
-						pass.ExcelFourData("FreeItem", "Qty", Globals.Inventory.Qty, Qty, "Pass",
+						Assert.assertEquals(Globals.Inventory.Date.trim(), Qty.trim());
+						pass.ExcelFourData("NormalPromotion", "Promotionfromdate", Globals.Inventory.Date, Qty, "Pass",
 								8, 0, 8, 1, 8, 2, 8, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("FreeItem", "Qty", Globals.Inventory.Qty, Qty, "Fail",
+						pass.ExcelFourData("NormalPromotion", "Promotionfromdate", Globals.Inventory.Date, Qty, "Fail",
 								8, 0, 8, 1, 8, 2, 8, 3);
 					}
 					catch(Exception e) {
-						System.out.println("null error tblinventory column Qty");
+						System.out.println("null error tblPromotionPriceChange column NormalPromotion");
 					}
 					String Qty1="";
 					try
 					{
-						Qty1 = rs.getString("OfferedQty");
+						Qty1 = rs.getString("Promotiontodate");
 						System.out.println(Qty1);
-						Assert.assertEquals(Globals.Inventory.Qty1.trim(), Qty1.trim());
-						pass.ExcelFourData("FreeItem", "Qty1", Globals.Inventory.Qty1, Qty1, "Pass",
+						Assert.assertEquals(Globals.Inventory.ToDate.trim(), Qty1.trim());
+						pass.ExcelFourData("NormalPromotion", "Promotiontodate", Globals.Inventory.ToDate, Qty1, "Pass",
 								9, 0, 9, 1, 9, 2, 9, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("FreeItem", "Qty1", Globals.Inventory.Qty1, Qty1, "Fail",
+						pass.ExcelFourData("NormalPromotion", "Promotiontodate", Globals.Inventory.ToDate, Qty1, "Fail",
 								9, 0, 9, 1, 9, 2, 9, 3);
 					}
 					catch(Exception e) {
-						System.out.println("null error tblinventory column Qty1");
+						System.out.println("null error tblPromotionPriceChange column Promotiontodate");
 					}
 					String FromDate="";
 					try
 					{
-						FromDate = rs.getString("ValidFrom");
-						System.out.println(Qty1);
-						Assert.assertEquals(Globals.Inventory.Date.trim(), FromDate.trim());
-						pass.ExcelFourData("FreeItem", "Date", Globals.Inventory.Date, FromDate, "Pass",
+						FromDate = rs.getString("Promotionfromtime");
+						System.out.println(FromDate);
+						Assert.assertEquals(Globals.Inventory.FromTime.trim(), FromDate.trim());
+						pass.ExcelFourData("NormalPromotion", "FromTime", Globals.Inventory.FromTime, FromDate, "Pass",
 								10, 0, 10, 1, 10, 2, 10, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("FreeItem", "Date", Globals.Inventory.Date, FromDate, "Fail",
+						pass.ExcelFourData("NormalPromotion", "FromTime", Globals.Inventory.FromTime, FromDate, "Fail",
 								10, 0, 10, 1, 10, 2, 10, 3);
 					}
 					catch(Exception e) {
-						System.out.println("null error tblinventory column Date");
+						System.out.println("null error tblPromotionPriceChange column Promotionfromtime");
 					}
 					String ToDate="";
 					try
 					{
-						ToDate = rs.getString("ValidTo");
+						ToDate = rs.getString("Promotiontotime");
 						System.out.println(ToDate);
-						Assert.assertEquals(Globals.Inventory.ToDate.trim(), ToDate.trim());
-						pass.ExcelFourData("FreeItem", "Date", Globals.Inventory.ToDate, ToDate, "Pass",
-								6, 0, 6, 1, 6, 2, 6, 3);
+						Assert.assertEquals(Globals.Inventory.ToTime.trim(), ToDate.trim());
+						pass.ExcelFourData("NormalPromotion", "ToTime", Globals.Inventory.ToTime, ToDate, "Pass",
+								11, 0, 11, 1, 11, 2, 11, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("FreeItem", "Date", Globals.Inventory.ToDate, ToDate, "Fail",
-								6, 0, 6, 1, 6, 2, 6, 3);
+						pass.ExcelFourData("NormalPromotion", "ToTime", Globals.Inventory.ToTime, ToDate, "Fail",
+								11, 0, 11, 1, 11, 2, 11, 3);
 					}
 					catch(Exception e) {
-						System.out.println("null error tblinventory column ToDate");
+						System.out.println("null error tblPromotionPriceChange column Promotiontotime");
 					}
 					
 					break;
 					
-				case "tblQualifyingItemsForFree":
-					String BasicSelling ="";
-					try {
-					BasicSelling = rs.getString("GroupCode");
-					System.out.println(BasicSelling);
-					Assert.assertEquals(Globals.Inventory.GrpCode.trim(), BasicSelling.trim());
-					pass.Excelcreate("FreeItem", "tblQualifingitemforfree", "", 12, 0, 12, 1);
-					pass.ExcelFourData("FreeItem", "GrpCode", Globals.Inventory.GrpCode, BasicSelling, "Pass",
-							13, 0, 13, 1, 13, 2, 13, 3);
-				} catch (AssertionError e) {
-					pass.Excelcreate("FreeItem", "tblQualifingitemforfree", "", 12, 0, 12, 1);
-					pass.ExcelFourData("FreeItem", "GrpCode", Globals.Inventory.GrpCode, BasicSelling, "Fail",
-							13, 0, 13, 1, 13, 2, 13, 3);
-				}
+				case "tblPromotionHistory":
+					String Promotionfromdate="";
+					try
+					{
+						Promotionfromdate = rs.getString("Promotionfromdate");
+						System.out.println(Promotionfromdate);
+						Assert.assertEquals(Globals.Inventory.Date.trim(), Promotionfromdate.trim());
+						pass.Excelcreate("NormalPromotion", "tblQualifingitemforfree", "", 12, 0, 12, 1);
+						pass.ExcelFourData("NormalPromotion", "Promotionfromdate", Globals.Inventory.Date, Promotionfromdate, "Pass",
+								13, 0, 13, 1, 13, 2, 13, 3);
+					} catch (AssertionError e) {
+						pass.Excelcreate("NormalPromotion", "tblQualifingitemforfree", "", 12, 0, 12, 1);
+						pass.ExcelFourData("NormalPromotion", "Promotionfromdate", Globals.Inventory.Date, Promotionfromdate, "Fail",
+								13, 0, 13, 1, 13, 2, 13, 3);
+					}
 					catch(Exception e) {
-						System.out.println("null error tblQualifingitemforfree column GrpCode");
+						System.out.println("null error tblPromotionHistory column Promotionfromdate");
+					}
+					String Promotiontodate="";
+					try
+					{
+						Promotiontodate = rs.getString("Promotiontodate");
+						System.out.println(Promotiontodate);
+						Assert.assertEquals(Globals.Inventory.ToDate.trim(), Promotiontodate.trim());
+						pass.ExcelFourData("NormalPromotion", "Promotiontodate", Globals.Inventory.ToDate, Promotiontodate, "Pass",
+								14, 0, 14, 1, 14, 2, 14, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("NormalPromotion", "Promotiontodate", Globals.Inventory.ToDate, Promotiontodate, "Fail",
+								14, 0, 14, 1, 14, 2, 14, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblPromotionHistory column Promotiontodate");
+					}
+					String Promotionfromtime="";
+					try
+					{
+						Promotionfromtime = rs.getString("Promotionfromtime");
+						System.out.println(Promotionfromtime);
+						Assert.assertEquals(Globals.Inventory.FromTime.trim(), Promotionfromtime.trim());
+						pass.ExcelFourData("NormalPromotion", "Promotionfromtime", Globals.Inventory.FromTime, Promotionfromtime, "Pass",
+								15, 0, 15, 1, 15, 2,15, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("NormalPromotion", "Promotionfromtime", Globals.Inventory.FromTime, Promotionfromtime, "Fail",
+								15, 0, 15, 1, 15, 2,15, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblPromotionPriceChange column Promotionfromtime");
+					}
+					String Promotiontotime="";
+					try
+					{
+						Promotiontotime = rs.getString("Promotiontotime");
+						System.out.println(Promotiontotime);
+						Assert.assertEquals(Globals.Inventory.ToTime.trim(), Promotiontotime.trim());
+						pass.ExcelFourData("NormalPromotion", "ToTime", Globals.Inventory.ToTime, Promotiontotime, "Pass",
+								16, 0, 16, 1, 16, 2, 16, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("NormalPromotion", "ToTime", Globals.Inventory.ToTime, Promotiontotime, "Fail",
+								16, 0, 16, 1, 16, 2, 16, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblPromotionPriceChange column Promotiontotime");
+					}
+					String EligibilityQty="";
+					try
+					{
+						EligibilityQty = rs.getString("EligibleQty");
+						System.out.println(EligibilityQty);
+						Assert.assertEquals(Globals.Inventory.EligibilityQty.trim(), EligibilityQty.trim());
+						pass.ExcelFourData("NormalPromotion", "EligibilityQty", Globals.Inventory.EligibilityQty, EligibilityQty, "Pass",
+								17, 0, 17, 1, 17, 2, 17, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("NormalPromotion", "EligibilityQty", Globals.Inventory.EligibilityQty, EligibilityQty, "Fail",
+								17, 0, 17, 1, 17, 2, 17, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblPromotionHistory column EligibilityQty");
 					}
 					String MRP1="";
 					try {
-					MRP1= rs.getString("itemcode");
+					MRP1= rs.getString("Promotionqty");
 					System.out.println(MRP1);
-					Assert.assertEquals(Globals.Inventory.ItemCode.trim(), MRP1.trim());
-					pass.ExcelFourData("FreeItem", "ItemCode", Globals.Inventory.ItemCode, MRP1, "Pass",
-							14, 0, 14, 1, 14, 2, 14, 3);
+					Assert.assertEquals(Globals.Inventory.Qty1.trim(), MRP1.trim());
+					pass.ExcelFourData("NormalPromotion", "Promotionqty", Globals.Inventory.Qty1, MRP1, "Pass",
+							18, 0, 18, 1, 18, 2, 18, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("FreeItem", "ItemCode", Globals.Inventory.ItemCode, MRP1, "Fail",
-							14, 0, 14, 1, 14, 2, 14, 3);
+					pass.ExcelFourData("NormalPromotion", "Promotionqty", Globals.Inventory.Qty1, MRP1, "Fail",
+							18, 0, 18, 1, 18, 2, 18, 3);
 				}
 					catch(Exception e) {
-						System.out.println("null error tblQualifingitemforfree column ItemCode");
+						System.out.println("null error tblPromotionHistory column Promotionqty");
 					}
 			
-					String W1="";
-					try {
-				    W1 = rs.getString("BuyQty");
-					System.out.println(W1);
-					Assert.assertEquals(Globals.Inventory.Qty.trim(), W1.trim());
-					pass.ExcelFourData("FreeItem", "Qty", Globals.Inventory.Qty, W1, "Pass",
-							15, 0, 15, 1, 15, 2,15, 3);
-				} catch (AssertionError e) {
-					pass.ExcelFourData("FreeItem", "Qty", Globals.Inventory.Qty, W1, "Fail",
-							15, 0, 15, 1, 15, 2,15, 3);
-				}
-					catch(Exception e) {
-						System.out.println("null error tblQualifingitemforfree column Qty");
-					}
+				
 				
 					break;
-				case "tblfreeitemslist":
-						String BasicSelling1 ="";
-						try {
-						BasicSelling1 = rs.getString("GroupCode");
-						System.out.println(BasicSelling1);
-						Assert.assertEquals(Globals.Inventory.GrpCode.trim(), BasicSelling1.trim());
-						pass.Excelcreate("FreeItem", "tblslist", "", 16, 0, 16, 1);
-						pass.ExcelFourData("FreeItem", "GrpCode", Globals.Inventory.GrpCode, BasicSelling1, "Pass",
-								17, 0, 17, 1, 17, 2, 17, 3);
-					} catch (AssertionError e) {
-						pass.Excelcreate("FreeItem", "tblslist", "", 16, 0, 16, 1);
-						pass.ExcelFourData("FreeItem", "GrpCode", Globals.Inventory.GrpCode, BasicSelling1, "Fail",
-								17, 0, 17, 1, 17, 2, 17, 3);
-					}
-						catch(Exception e) {
-							System.out.println("null error tblslist column NetSellingPrice");
-						}
-						String Itemcode ="";
-						try {
-							Itemcode = rs.getString("Itemcode");
-						System.out.println(Itemcode);
-						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Itemcode.trim());
-					
-						pass.ExcelFourData("FreeItem", "ItemCode", Globals.Inventory.ItemCode, Itemcode, "Pass",
-								18, 0, 18, 1, 18, 2, 18, 3);
-					} catch (AssertionError e) {
-						
-						pass.ExcelFourData("FreeItem", "ItemCode", Globals.Inventory.ItemCode, Itemcode, "Fail",
-								18, 0, 18, 1, 18, 2, 18, 3);
-					}
-						catch(Exception e) {
-							System.out.println("null error tblslist column NetSellingPrice");
-						}
-						String Itemcode1 ="";
-						try {
-							Itemcode1 = rs.getString("Itemcode");
-						System.out.println(Itemcode1);
-						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Itemcode1.trim());
-					
-						pass.ExcelFourData("FreeItem", "ItemCode", Globals.Inventory.ItemCode, Itemcode1, "Pass",
-								19, 0, 19, 1, 19, 2, 19, 3);
-					} catch (AssertionError e) {
-						
-						pass.ExcelFourData("FreeItem", "ItemCode", Globals.Inventory.ItemCode, Itemcode1, "Fail",
-								19, 0, 19, 1, 19, 2, 19, 3);
-					}
-						catch(Exception e) {
-							System.out.println("null error tblslist column NetSellingPrice");
-						}
-						String Qty11 ="";
-						try {
-							Qty11 = rs.getString("FreeQty");
-						System.out.println(Qty11);
-						Assert.assertEquals(Globals.Inventory.Qty.trim(), Qty11.trim());
-					
-						pass.ExcelFourData("FreeItem", "Qty", Globals.Inventory.Qty, Qty11, "Pass",
+				case "tblRevokePromotionPrice":
+					String BatchNo="";
+					try {
+						BatchNo = rs.getString("BatchNo");
+						System.out.println(BatchNo);
+						Assert.assertEquals(Globals.Inventory.Batchno1.trim(), BatchNo.trim());
+						pass.Excelcreate("NormalPromotion", "tblRevokePromotionPrice", "", 19, 0, 19, 1);
+						pass.ExcelFourData("NormalPromotion", "BatchNo", Globals.Inventory.Batchno1, BatchNo, "Pass",
 								20, 0, 20, 1, 20, 2, 20, 3);
 					} catch (AssertionError e) {
-						
-						pass.ExcelFourData("FreeItem", "Qty", Globals.Inventory.Qty, Qty11, "Fail",
+						pass.Excelcreate("NormalPromotion", "tblRevokePromotionPrice", "", 19, 0, 19, 1);
+						pass.ExcelFourData("NormalPromotion", "BatchNo", Globals.Inventory.Batchno1, BatchNo, "Fail",
 								20, 0, 20, 1, 20, 2, 20, 3);
 					}
-						catch(Exception e) {
-							System.out.println("null error tblslist column NetSellingPrice");
-						}
-						String EligibilityQty ="";
-						try {
-							EligibilityQty = rs.getString("InputQty");
-						System.out.println(EligibilityQty);
-						Assert.assertEquals(Globals.Inventory.EligibilityQty.trim(), EligibilityQty.trim());
-					
-						pass.ExcelFourData("FreeItem", "EligibilityQty", Globals.Inventory.EligibilityQty, EligibilityQty, "Pass",
+					catch(Exception e) {
+						System.out.println("null error tblPromotionPriceChange column BatchNo");
+					}
+					String EligibilityQty1="";
+					try
+					{
+						EligibilityQty1 = rs.getString("EligibleQty");
+						System.out.println(EligibilityQty1);
+						Assert.assertEquals(Globals.Inventory.EligibilityQty.trim(), EligibilityQty1.trim());
+						pass.ExcelFourData("NormalPromotion", "EligibilityQty", Globals.Inventory.EligibilityQty, EligibilityQty1, "Pass",
 								21, 0, 21, 1, 21, 2, 21, 3);
 					} catch (AssertionError e) {
-						
-						pass.ExcelFourData("FreeItem", "EligibilityQty", Globals.Inventory.EligibilityQty, EligibilityQty, "Fail",
+						pass.ExcelFourData("NormalPromotion", "EligibilityQty", Globals.Inventory.EligibilityQty, EligibilityQty1, "Fail",
 								21, 0, 21, 1, 21, 2, 21, 3);
 					}
-						catch(Exception e) {
-							System.out.println("null error tblslist column EligibilityQty");
-						}
+					catch(Exception e) {
+						System.out.println("null error tblPromotionPriceChange column EligibilityQty");
+					}
+					String DiscountPerc="";
+					try
+					{
+						DiscountPerc = rs.getString("DiscountPerc");
+						System.out.println(DiscountPerc);
+						Assert.assertEquals(Globals.Inventory.DiscountPer.trim(), DiscountPerc.trim());
+						pass.ExcelFourData("NormalPromotion", "DiscountPerc", Globals.Inventory.DiscountPer, DiscountPerc, "Pass",
+								22, 0, 22, 1, 22, 2, 22, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("NormalPromotion", "DiscountPerc", Globals.Inventory.DiscountPer, DiscountPerc, "Fail",
+								22, 0, 22, 1, 22, 2, 22, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblPromotionPriceChange column DiscountPerc");
+					}
+					String Promotionfromdate1="";
+					try
+					{
+						Promotionfromdate1 = rs.getString("Promotionfromdate");
+						System.out.println(Promotionfromdate1);
+						Assert.assertEquals(Globals.Inventory.Date.trim(), Promotionfromdate1.trim());
+						pass.ExcelFourData("NormalPromotion", "Promotionfromdate", Globals.Inventory.Date,Promotionfromdate1, "Pass",
+								23, 0, 23, 1, 23, 2, 23, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("NormalPromotion", "Promotionfromdate", Globals.Inventory.Date, Promotionfromdate1, "Fail",
+								23, 0, 23, 1, 23, 2, 23, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblPromotionPriceChange column NormalPromotion");
+					}
+					String Promotiontodate1="";
+					try
+					{
+						Promotiontodate1 = rs.getString("Promotiontodate");
+						System.out.println(Promotiontodate1);
+						Assert.assertEquals(Globals.Inventory.ToDate.trim(), Promotiontodate1.trim());
+						pass.ExcelFourData("NormalPromotion", "Promotiontodate", Globals.Inventory.ToDate, Promotiontodate1, "Pass",
+								24, 0, 24, 1, 24, 2, 24, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("NormalPromotion", "Promotiontodate", Globals.Inventory.ToDate, Promotiontodate1, "Fail",
+								24, 0, 24, 1, 24, 2, 24, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblPromotionPriceChange column Promotiontodate");
+					}
+					String Promotionfromtime1="";
+					try
+					{
+						Promotionfromtime1 = rs.getString("Promotionfromtime");
+						System.out.println(Promotionfromtime1);
+						Assert.assertEquals(Globals.Inventory.FromTime.trim(), Promotionfromtime1.trim());
+						pass.ExcelFourData("NormalPromotion", "FromTime", Globals.Inventory.FromTime, Promotionfromtime1, "Pass",
+								25, 0, 25, 1, 25, 2, 25, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("NormalPromotion", "FromTime", Globals.Inventory.FromTime, Promotionfromtime1, "Fail",
+								25, 0, 25, 1, 25, 2, 25, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblPromotionPriceChange column Promotionfromtime");
+					}
+					String Promotiontotime1="";
+					try
+					{
+						Promotiontotime1 = rs.getString("Promotiontotime");
+						System.out.println(Promotiontotime1);
+						Assert.assertEquals(Globals.Inventory.ToTime.trim(), Promotiontotime1.trim());
+						pass.ExcelFourData("NormalPromotion", "ToTime", Globals.Inventory.ToTime, Promotiontotime1, "Pass",
+								26, 0, 26, 1, 26, 2, 26, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("NormalPromotion", "ToTime", Globals.Inventory.ToTime, Promotiontotime1, "Fail",
+								26, 0, 26, 1, 26, 2, 26, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblPromotionPriceChange column Promotiontotime");
+					}
 				default:
 					break;
 				}

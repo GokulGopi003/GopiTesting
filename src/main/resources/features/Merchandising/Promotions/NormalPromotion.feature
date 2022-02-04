@@ -16,12 +16,12 @@ Feature: InventoryChange
     Then I fill new NormalPromotion data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkSave"
     Then I establish connection  DB for NormalPromotion
-    #Then I read the values from NormalPromotion table "tblFreeItemGroup" in DB
-    Then I read the values from NormalPromotion table "tblQualifyingItemsForFree" in DB
-    Then I read the values from NormalPromotion table "tblfreeitemslist" in DB
+    Then I read the values from NormalPromotion table "tblPromotionPriceChange" in DB
+    Then I read the values from NormalPromotion table "tblPromotionHistory" in DB
+    Then I read the values from NormalPromotion table "tblRevokePromotionPrice" in DB
     Then I close connection  DB for NormalPromotion
     
      Examples: 
       | TestcaseRowName |
-      |NormalPromotion1|
+      |NormalPromotion2|
 
