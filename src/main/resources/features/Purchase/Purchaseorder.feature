@@ -38,7 +38,11 @@ Feature: PoS Inventory > Add Inventory
     #Then I enter the send Keys "input#ContentPlaceHolder1_txtItemCodeAdd" as "F3"
     #When Im waiting for 2 sec
     Then I need to click on the blue "AddInv" button
-    #Then I need to click on the blue "Save" button
+    Then I need to click on the blue "Save" button
+     Then I establish connection  DB for PO
+    Then I read the values from PO table "tblpoheader" in DB
+    Then I read the values from PO table "tblpoDetail" in DB
+    Then I close connection  DB for PO
     #Then I need to click on the  Xpath "/html/body/div[5]/div[3]/div/button"
     
     

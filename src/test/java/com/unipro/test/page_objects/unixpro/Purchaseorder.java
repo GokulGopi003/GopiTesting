@@ -1,27 +1,38 @@
 package com.unipro.test.page_objects.unixpro;
 
-	import org.openqa.selenium.By;
+	import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.openqa.selenium.By;
 	import org.openqa.selenium.Keys;
 	import org.openqa.selenium.WebDriver;
 	import org.openqa.selenium.WebElement;
 	import org.openqa.selenium.chrome.ChromeDriver;
 	import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 
-	import com.unipro.test.framework.Globals;
+import com.gk.test.MssqlConnect;
+import com.unipro.ExcelWrite;
+import com.unipro.test.framework.Globals;
 	import com.unipro.test.framework.PageObject;
-	import com.unipro.test.framework.helpers.utils.GenericWrappers;
+import com.unipro.test.framework.helpers.screenshot_helper.Screenshot;
+import com.unipro.test.framework.helpers.utils.GenericWrappers;
 	import com.unipro.test.framework.helpers.utils.ReadTestData;
 	import com.unipro.test.framework.helpers.utils.ReadXLSXFile;
 	import com.unipro.test.step_definitions.unixpo.Unipro_Common_StepDefinitions;
 
-	import cucumber.api.java.en.Then;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 
 	public class Purchaseorder  extends PageObject {
 
 		AddInventoryFormPage add_inventory;
 		Purchaseorder1 icp;
 		CommonPages cp;
-		
+		ExcelWrite pass;
+		Screenshot scr;
 		
 
 		TerminalPage terPage;
@@ -34,6 +45,8 @@ package com.unipro.test.page_objects.unixpro;
 			
 			this.cp = cp;
 			add_inventory = new AddInventoryFormPage();
+			pass = new ExcelWrite();
+			scr = new Screenshot();
 
 		}
 		
@@ -72,8 +85,9 @@ package com.unipro.test.page_objects.unixpro;
 		}
 
 		@Then("I fill new PO data page using excel data")
-		public void i_fill_new_GA_data_page_using_excel_data() {
-			
+		public void i_fill_new_GA_data_page_using_excel_data() throws Exception {
+			try {
+				
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {
 						terPage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
 						add_inventory.clearAndTypeSlowly(Globals.Inventory.Vendor, "input#txtSearch");
@@ -90,7 +104,10 @@ package com.unipro.test.page_objects.unixpro;
 						
 					}
 				    if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch)) {
+				    	GenericWrappers.sleepInSeconds(1);
 				        terPage.get_checkBox_element(icp.Batch_String).click();
+				        GenericWrappers.sleepInSeconds(1);
+				        //webDriver.findElement(By.cssSelector("//*[@id=\"ContentPlaceHolder1_chkVendorItems\"]")).click();
 
 			        }
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemName)) {
@@ -105,52 +122,101 @@ package com.unipro.test.page_objects.unixpro;
 
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.InvQty)) {
-						if (Globals.Inventory.InvQty.contains(".")) {
-							icp.setTextValue_Decimal(icp.InvQty_String, Globals.Inventory.InvQty);
-						} else {
-							icp.setTextValue(icp.InvQty_String, Globals.Inventory.InvQty);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.InvQty_String, Globals.Inventory.InvQty);
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWQty")).sendKeys(Keys.RETURN    );
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.RecvQty)) {
-						if (Globals.Inventory.RecvQty.contains(".")) {
-							icp.setTextValue_Decimal(icp.RecvQty_String, Globals.Inventory.RecvQty);
-						} else {
-							icp.setTextValue(icp.RecvQty_String, Globals.Inventory.RecvQty);
-						}
+						terPage.terminal_waitClearEnterText_css(icp.RecvQty_String, Globals.Inventory.RecvQty);
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtLQty")).sendKeys(Keys.RETURN);
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtItemCodeAdd")).sendKeys(Keys.RETURN);
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.foc)) {
-						if (Globals.Inventory.foc.contains(".")) {
-							icp.setTextValue_Decimal(icp.foc_String, Globals.Inventory.foc);
-						} else {
-							icp.setTextValue(icp.foc_String, Globals.Inventory.foc);
-						}
+						webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFoc"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFoc"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFoc"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFoc"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+				.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFoc"))
+				.sendKeys(Keys.SHIFT, Keys.LEFT);
+				GenericWrappers.sleepInSeconds(1);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFoc"))
+						.sendKeys(Keys.DELETE);
+						terPage.terminal_waitClearEnterText_css(icp.foc_String, Globals.Inventory.foc);
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFoc")).sendKeys(Keys.RETURN);
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.MRP)) {
-						if (Globals.Inventory.MRP.contains(".")) {
-							icp.setTextValue_Decimal(icp.MRP_String, Globals.Inventory.MRP);
-						} else {
-							icp.setTextValue(icp.MRP_String, Globals.Inventory.MRP);
-						}
+						webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMrp"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMrp"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMrp"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMrp"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				GenericWrappers.sleepInSeconds(1);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMrp"))
+						.sendKeys(Keys.DELETE);
+						terPage.terminal_waitClearEnterText_css(icp.MRP_String, Globals.Inventory.MRP);
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMrp")).sendKeys(Keys.RETURN);
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.BasicCost)) {
-						if (Globals.Inventory.BasicCost.contains(".")) {
-							icp.setTextValue_Decimal(icp.BasicCost_String, Globals.Inventory.BasicCost);
-						} else {
-							icp.setTextValue(icp.BasicCost_String, Globals.Inventory.BasicCost);
-						}
+						webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+				.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost"))
+				.sendKeys(Keys.SHIFT, Keys.LEFT);
+		        webDriver
+				.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost"))
+				.sendKeys(Keys.SHIFT, Keys.LEFT);
+				GenericWrappers.sleepInSeconds(1);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost"))
+						.sendKeys(Keys.DELETE);
+						terPage.terminal_waitClearEnterText_css(icp.BasicCost_String, Globals.Inventory.BasicCost);
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtBasicCost")).sendKeys(Keys.RETURN);
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.SDP)) {
-						if (Globals.Inventory.SDP.contains(".")) {
-							icp.setTextValue_Decimal(icp.SDP_String, Globals.Inventory.SDP);
-						} else {
-							icp.setTextValue(icp.SDP_String, Globals.Inventory.SDP);
-						}
+						webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSDPrc"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSDPrc"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSDPrc"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSDPrc"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				GenericWrappers.sleepInSeconds(1);
+				webDriver
+						.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSDPrc"))
+						.sendKeys(Keys.DELETE);
+						terPage.terminal_waitClearEnterText_css(icp.SDP_String, Globals.Inventory.SDP);
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSDPrc")).sendKeys(Keys.RETURN);
 					}
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.AddDed)) {
@@ -160,8 +226,21 @@ package com.unipro.test.page_objects.unixpro;
 						}
 						 webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtAddCess")).sendKeys(Keys.RETURN);
 					}
+					pass.ExcelFourData("PO","Modules", "Actual", "Expected", "Status",
+							0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
+					pass.Excelcreate("PO", "Filters", "Pass", 1, 0, 1, 3);
+		}
+		catch(Exception e) {
+			// screen shot
+			scr.Screenshots();
+			System.out.println("Screen shot taken");
+			// Xl sheet write
+			pass.ExcelFourData("PO","Filters", "Actual", "Expected", "Status",
+					0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
+			pass.Excelcreate("PO", "Filters", "FAIL", 1, 0, 1, 3);
 			 
 		   }
+		}
 		   
 		@Then("I need to search vendor")
 		public void i_fill_new_PO_data_page_using_excel_data() {
@@ -171,6 +250,178 @@ package com.unipro.test.page_objects.unixpro;
 						add_inventory.clearAndTypeSlowly(Globals.Inventory.Vendor, "input#txtSearch");
 						add_inventory.return_td_invoke_element(Globals.Inventory.Vendor).click();
 					}
+		}
+
+		@Then("I close connection  DB for PO")
+		public void I_close_connection_to_DB() throws SQLException {
+
+			mysqlConnect.disconnect();
+			System.out.println(" closed succesfully");
+
+			// mysqlConnect.disconnect();
+
+		}
+
+		MssqlConnect mysqlConnect;
+		Statement st;
+		@Then("I establish connection  DB for PO")
+		public void I_establish_connection_to_DB() throws SQLException {
+
+			mysqlConnect = new MssqlConnect();
+			st = mysqlConnect.connect().createStatement();
+			System.out.println(" Connected succesfully");
+
+		}
+		@Given("I read the values from PO table {string} in DB")
+		public void i_want_to_launch_the(String tablename ) throws SQLException, IOException {
+			
+			
+			ResultSet rs = st.executeQuery("select * from "+tablename+" where Vendorcode='V00246'");
+			
+			System.out.println(rs);
+			//ResultSet rs = st.executeQuery("");
+
+			while (rs.next()) {
+
+				switch (tablename) {
+				
+				case "tblpoheader":
+						
+					String Sellingprice="";
+					try {
+						Sellingprice = rs.getString("VendorCode");
+						System.out.println(Sellingprice);
+						Assert.assertEquals(Globals.Inventory.Vendor.trim(), Sellingprice.trim());
+						pass.Excelcreate("PO", "tblpoheader", "", 3, 0, 3, 1);
+						pass.ExcelFourData("PO", "VendorCode", Globals.Inventory.Vendor, Sellingprice, "Pass",
+								5, 0, 5, 1, 5, 2, 5, 3);
+					} catch (AssertionError e) {
+						pass.Excelcreate("PO", "tblpoheader", "", 3, 0, 3, 1);
+						pass.ExcelFourData("PO", "VendorCode", Globals.Inventory.Vendor, Sellingprice, "Fail",
+								5, 0, 5, 1, 5, 2, 5, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblpoheader column VendorCode");
+					}
+					
+					
+					break;
+					
+				case "tblpoDetail":
+					String Promotionfromdate="";
+					try
+					{
+						Promotionfromdate = rs.getString("ItemCode");
+						System.out.println(Promotionfromdate);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Promotionfromdate.trim());
+						pass.Excelcreate("PO", "tblpoDetail", "", 7, 0, 7, 1);
+						pass.ExcelFourData("PO", "RangeFrom", Globals.Inventory.ItemCode, Promotionfromdate, "Pass",
+								8, 0, 8, 1, 8, 2, 8, 3);
+					} catch (AssertionError e) {
+						pass.Excelcreate("PO", "tblpoDetail", "", 7, 0, 7, 1);
+						pass.ExcelFourData("PO", "RangeFrom", Globals.Inventory.ItemCode, Promotionfromdate, "Fail",
+								8, 0, 8, 1, 8, 2, 8, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblpoDetail column ItemCode");
+					}
+					String Promotiontodate="";
+					try
+					{
+						Promotiontodate = rs.getString("VendorCode");
+						System.out.println(Promotiontodate);
+						Assert.assertEquals(Globals.Inventory.Vendor.trim(), Promotiontodate.trim());
+						pass.ExcelFourData("PO", "VendorCode", Globals.Inventory.Vendor, Promotiontodate, "Pass",
+								9, 0, 9, 1, 9, 2, 9, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("PO", "VendorCode", Globals.Inventory.Vendor, Promotiontodate, "Fail",
+								9, 0, 9, 1, 9, 2, 9, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblpoDetail column VendorCode");
+					}
+					String Promotionfromtime="";
+					try
+					{
+						Promotionfromtime = rs.getString("LQty");
+						System.out.println(Promotionfromtime);
+						Assert.assertEquals(Globals.Inventory.InvQty.trim(), Promotionfromtime.trim());
+						pass.ExcelFourData("PO", "InvQty", Globals.Inventory.InvQty, Promotionfromtime, "Pass",
+								10, 0, 10, 1, 10, 2,10, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("PO", "InvQty", Globals.Inventory.InvQty, Promotionfromtime, "Fail",
+								10, 0, 10, 1, 10, 2,10, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblpoDetail column InvQty");
+					}
+					String WQty="";
+					try
+					{
+						WQty = rs.getString("WQty");
+						System.out.println(WQty);
+						Assert.assertEquals(Globals.Inventory.InvQty.trim(), WQty.trim());
+						pass.ExcelFourData("PO", "InvQty", Globals.Inventory.InvQty, WQty, "Pass",
+								11, 0, 11, 1, 11, 2,11, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("PO", "InvQty", Globals.Inventory.InvQty, WQty, "Fail",
+								11, 0, 11, 1, 11, 2,11, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblpoDetail column WQty");
+					}
+					String Foc="";
+					try
+					{
+						Foc = rs.getString("FocQty");
+						System.out.println(Foc);
+						Assert.assertEquals(Globals.Inventory.foc.trim(), Foc.trim());
+						pass.ExcelFourData("PO", "foc", Globals.Inventory.foc, Foc, "Pass",
+								11, 0, 11, 1, 11, 2,11, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("PO", "foc", Globals.Inventory.foc, Foc, "Fail",
+								11, 0, 11, 1, 11, 2,11, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblpoDetail column foc");
+					}
+					String UnitCost="";
+					try
+					{
+						UnitCost = rs.getString("UnitCost");
+						System.out.println(UnitCost);
+						Assert.assertEquals(Globals.Inventory.foc.trim(), UnitCost.trim());
+						pass.ExcelFourData("PO", "foc", Globals.Inventory.foc, UnitCost, "Pass",
+								11, 0, 11, 1, 11, 2,11, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("PO", "foc", Globals.Inventory.foc, UnitCost, "Fail",
+								11, 0, 11, 1, 11, 2,11, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblpoDetail column foc");
+					}
+					String SellingPrice="";
+					try
+					{
+						SellingPrice = rs.getString("Disc1Per");
+						System.out.println(SellingPrice);
+						Assert.assertEquals(Globals.Inventory.SDP.trim(), SellingPrice.trim());
+						pass.ExcelFourData("PO", "foc", Globals.Inventory.SDP, SellingPrice, "Pass",
+								12, 0, 12, 1, 12, 2,12, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("PO", "foc", Globals.Inventory.SDP, SellingPrice, "Fail",
+								12, 0, 12, 1, 12, 2,12, 3);
+					}
+					catch(Exception e) {
+						System.out.println("null error tblpoDetail column SDP");
+					}
+					
+				default:
+					break;
+				}
+			
+				}
+			
 		}
 		}
 

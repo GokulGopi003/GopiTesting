@@ -199,9 +199,6 @@ import org.openqa.selenium.By;
 				}
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.RangeFrom))  {
 					webDriver
-					.findElement(By.cssSelector("input#ContentPlaceHolder1_txtRangeFrom"))
-					.sendKeys(Keys.RIGHT);
-					webDriver
 							.findElement(By.cssSelector("input#ContentPlaceHolder1_txtRangeFrom"))
 							.sendKeys(Keys.SHIFT, Keys.LEFT);
 					webDriver
