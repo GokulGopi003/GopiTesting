@@ -20,13 +20,16 @@ Feature: PoS Inventory > Add Inventory
     Then I update value to the AutoPO page global Variables
     Then I fill new AutoPO data page using excel data
     When Im waiting for 2 sec
-  
-    
-    
+  Then I need to click on the  element "a#ContentPlaceHolder1_lnkFilter"
+   Then I need to click on the  element "a#ContentPlaceHolder1_lnkUpdate" 
+    Then I establish connection  DB for AutoPO
+    Then I read the values from AutoPO table "tblpoheader" in DB
+    Then I read the values from AutoPO table "tblpoDetail" in DB
+    Then I close connection  DB for AutoPO
     
      Examples: 
       | TestcaseRowName |
-      |AutoPO2           |
+      |AutoPO1           |
       
       
  Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost  
@@ -44,6 +47,10 @@ Feature: PoS Inventory > Add Inventory
     #Then I need to click on the  element "a#ContentPlaceHolder1_lnkExport"
     #Then I need to click on the  element "a#ContentPlaceHolder1_lnkPrint"
     #Then I need to click on the  element "a#ContentPlaceHolder1_lnkStock"
+    Then I establish connection  DB for AutoPO
+    Then I read the values from AutoPO table "tblpoheader" in DB
+    Then I read the values from AutoPO table "tblpoDetail" in DB
+    Then I close connection  DB for AutoPO
     
    
     Examples: 

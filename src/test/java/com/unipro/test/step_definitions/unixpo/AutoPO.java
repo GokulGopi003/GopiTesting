@@ -2,6 +2,9 @@ package com.unipro.test.step_definitions.unixpo;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
@@ -13,10 +16,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.server.handler.SendKeys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import com.gk.test.MssqlConnect;
+import com.unipro.ExcelWrite;
 import com.unipro.test.framework.Globals;
 import com.unipro.test.framework.PageObject;
+import com.unipro.test.framework.helpers.screenshot_helper.Screenshot;
 import com.unipro.test.framework.helpers.utils.GenericWrappers;
 import com.unipro.test.framework.helpers.utils.ReadTestData;
 import com.unipro.test.framework.helpers.utils.ReadXLSXFile;
@@ -27,6 +34,7 @@ import com.unipro.test.page_objects.unixpro.TerminalPage;
 import com.unipro.test.step_definitions.unixpo.Unipro_Common_StepDefinitions;
 
 import bsh.Console;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
 public class AutoPO extends PageObject {
@@ -34,7 +42,8 @@ public class AutoPO extends PageObject {
 	AddInventoryFormPage add_inventory;
 	AutoPOField icp;
 	CommonPages cp;
-
+	ExcelWrite pass;
+	Screenshot scr;
 	TerminalPage terPage;
 
 	public AutoPO(AutoPOField icp, CommonPages cp) {
@@ -43,7 +52,8 @@ public class AutoPO extends PageObject {
 
 		this.cp = cp;
 		add_inventory = new AddInventoryFormPage();
-
+		pass = new ExcelWrite();
+		scr = new Screenshot();
 	}
 
 	@Then("I load the AutoPO sheet data to map")
@@ -99,7 +109,8 @@ public class AutoPO extends PageObject {
 	}
 
 	@Then("I fill new AutoPO data page using excel data")
-	public void i_fill_new_GA_data_page_using_excel_data() {
+	public void i_fill_new_GA_data_page_using_excel_data() throws Exception {
+		try {
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.LocationCode)) {
 			terPage.terminal_waitClearEnterText_css(icp.LocationCode_String, Globals.Inventory.LocationCode);
 			add_inventory.clearAndTypeSlowly(Globals.Inventory.LocationCode, "input#txtSearch");
@@ -183,6 +194,8 @@ public class AutoPO extends PageObject {
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Billdate)) {
 			terPage.terminal_waitClearEnterText_css(icp.Billdate_String, Globals.Inventory.Billdate);
 			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtToDate")).sendKeys(Keys.RETURN);
+			webDriver.findElement(By.cssSelector("h1#ui-id-8")).click();
+			
 		}
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Qty)) {
 			terPage.terminal_waitClearEnterText_css(icp.Qty_String, Globals.Inventory.Qty);
@@ -224,7 +237,192 @@ public class AutoPO extends PageObject {
 			terPage.get_checkBox_element(icp.Reqtycycledays_String).click();
 
 		}
+	
+	pass.ExcelFourData("AutoPO","Modules", "Actual", "Expected", "Status",
+			0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
+	pass.Excelcreate("AutoPO", "Filters", "Pass", 1, 0, 1, 3);
+}
+catch(Exception e) {
+// screen shot
+scr.Screenshots();
+System.out.println("Screen shot taken");
+// Xl sheet write
+pass.ExcelFourData("AutoPO","Filters", "Actual", "Expected", "Status",
+	0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
+pass.Excelcreate("AutoPO", "Filters", "FAIL", 1, 0, 1, 3);
+
+}
+	}
+
+	@Then("I close connection  DB for AutoPO")
+	public void I_close_connection_to_DB() throws SQLException {
+
+		mysqlConnect.disconnect();
+		System.out.println(" closed succesfully");
+
+		// mysqlConnect.disconnect();
 
 	}
 
+	MssqlConnect mysqlConnect;
+	Statement st;
+	@Then("I establish connection  DB for AutoPO")
+	public void I_establish_connection_to_DB() throws SQLException {
+
+		mysqlConnect = new MssqlConnect();
+		st = mysqlConnect.connect().createStatement();
+		System.out.println(" Connected succesfully");
+
+	}
+	@Given("I read the values from AutoPO table {string} in DB")
+	public void i_want_to_launch_the(String tablename ) throws SQLException, IOException {
+		
+		
+		ResultSet rs = st.executeQuery("select * from "+tablename+" where Vendorcode='V00246'");
+		
+		System.out.println(rs);
+		//ResultSet rs = st.executeQuery("");
+
+		while (rs.next()) {
+
+			switch (tablename) {
+			
+			case "tblpoheader":
+					
+				String Sellingprice="";
+				try {
+					Sellingprice = rs.getString("VendorCode");
+					System.out.println(Sellingprice);
+					Assert.assertEquals(Globals.Inventory.Vendor.trim(), Sellingprice.trim());
+					pass.Excelcreate("AutoPO", "tblpoheader", "", 3, 0, 3, 1);
+					pass.ExcelFourData("AutoPO", "VendorCode", Globals.Inventory.Vendor, Sellingprice, "Pass",
+							5, 0, 5, 1, 5, 2, 5, 3);
+				} catch (AssertionError e) {
+					pass.Excelcreate("AutoPO", "tblpoheader", "", 3, 0, 3, 1);
+					pass.ExcelFourData("AutoPO", "VendorCode", Globals.Inventory.Vendor, Sellingprice, "Fail",
+							5, 0, 5, 1, 5, 2, 5, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblpoheader column VendorCode");
+				}
+				
+				
+				break;
+				
+			case "tblpoDetail":
+				String Promotionfromdate="";
+				try
+				{
+					Promotionfromdate = rs.getString("ItemCode");
+					System.out.println(Promotionfromdate);
+					Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Promotionfromdate.trim());
+					pass.Excelcreate("AutoPO", "tblpoDetail", "", 7, 0, 7, 1);
+					pass.ExcelFourData("AutoPO", "RangeFrom", Globals.Inventory.ItemCode, Promotionfromdate, "Pass",
+							8, 0, 8, 1, 8, 2, 8, 3);
+				} catch (AssertionError e) {
+					pass.Excelcreate("AutoPO", "tblpoDetail", "", 7, 0, 7, 1);
+					pass.ExcelFourData("AutoPO", "RangeFrom", Globals.Inventory.ItemCode, Promotionfromdate, "Fail",
+							8, 0, 8, 1, 8, 2, 8, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblpoDetail column ItemCode");
+				}
+				String Promotiontodate="";
+				try
+				{
+					Promotiontodate = rs.getString("VendorCode");
+					System.out.println(Promotiontodate);
+					Assert.assertEquals(Globals.Inventory.Vendor.trim(), Promotiontodate.trim());
+					pass.ExcelFourData("AutoPO", "VendorCode", Globals.Inventory.Vendor, Promotiontodate, "Pass",
+							9, 0, 9, 1, 9, 2, 9, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("AutoPO", "VendorCode", Globals.Inventory.Vendor, Promotiontodate, "Fail",
+							9, 0, 9, 1, 9, 2, 9, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblpoDetail column VendorCode");
+				}
+				String Promotionfromtime="";
+				try
+				{
+					Promotionfromtime = rs.getString("LQty");
+					System.out.println(Promotionfromtime);
+					Assert.assertEquals(Globals.Inventory.InvQty.trim(), Promotionfromtime.trim());
+					pass.ExcelFourData("AutoPO", "InvQty", Globals.Inventory.InvQty, Promotionfromtime, "Pass",
+							10, 0, 10, 1, 10, 2,10, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("AutoPO", "InvQty", Globals.Inventory.InvQty, Promotionfromtime, "Fail",
+							10, 0, 10, 1, 10, 2,10, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblpoDetail column InvQty");
+				}
+				String WQty="";
+				try
+				{
+					WQty = rs.getString("WQty");
+					System.out.println(WQty);
+					Assert.assertEquals(Globals.Inventory.InvQty.trim(), WQty.trim());
+					pass.ExcelFourData("AutoPO", "InvQty", Globals.Inventory.InvQty, WQty, "Pass",
+							11, 0, 11, 1, 11, 2,11, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("AutoPO", "InvQty", Globals.Inventory.InvQty, WQty, "Fail",
+							11, 0, 11, 1, 11, 2,11, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblpoDetail column WQty");
+				}
+				String Foc="";
+				try
+				{
+					Foc = rs.getString("FocQty");
+					System.out.println(Foc);
+					Assert.assertEquals(Globals.Inventory.foc.trim(), Foc.trim());
+					pass.ExcelFourData("AutoPO", "foc", Globals.Inventory.foc, Foc, "Pass",
+							11, 0, 11, 1, 11, 2,11, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("AutoPO", "foc", Globals.Inventory.foc, Foc, "Fail",
+							11, 0, 11, 1, 11, 2,11, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblpoDetail column foc");
+				}
+				String UnitCost="";
+				try
+				{
+					UnitCost = rs.getString("UnitCost");
+					System.out.println(UnitCost);
+					Assert.assertEquals(Globals.Inventory.foc.trim(), UnitCost.trim());
+					pass.ExcelFourData("AutoPO", "foc", Globals.Inventory.foc, UnitCost, "Pass",
+							11, 0, 11, 1, 11, 2,11, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("AutoPO", "foc", Globals.Inventory.foc, UnitCost, "Fail",
+							11, 0, 11, 1, 11, 2,11, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblpoDetail column foc");
+				}
+				String SellingPrice="";
+				try
+				{
+					SellingPrice = rs.getString("Disc1Per");
+					System.out.println(SellingPrice);
+					Assert.assertEquals(Globals.Inventory.SDP.trim(), SellingPrice.trim());
+					pass.ExcelFourData("AutoPO", "foc", Globals.Inventory.SDP, SellingPrice, "Pass",
+							12, 0, 12, 1, 12, 2,12, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("AutoPO", "foc", Globals.Inventory.SDP, SellingPrice, "Fail",
+							12, 0, 12, 1, 12, 2,12, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblpoDetail column SDP");
+				}
+				
+			default:
+				break;
+			}
+		
+			}
+		
+	}
 }
