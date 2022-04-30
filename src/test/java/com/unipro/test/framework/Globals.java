@@ -69,6 +69,14 @@ public class Globals {
 		final public static String SHEETNAME56 = "OtherPromotion";
 		final public static String SHEETNAME57 = "DayBasedPromotion";
 		final public static String SHEETNAME58 = "RevokePromotion";
+		final public static String SHEETNAME59 = "Payments";
+		final public static String SHEETNAME60 = "Creditinvoice";
+		final public static String SHEETNAME61 = "CustomerReceipts";
+		final public static String SHEETNAME62 = "Billcancel";
+		final public static String SHEETNAME63 = "SalesTransaction";
+		final public static String SHEETNAME64 = "StockAdjustment";
+		final public static String SHEETNAME65 = "SalesOrder";
+		final public static String SHEETNAME66 = "StockUpdate";
 		
 		public static Table<String, String, String> inventorySheetData;
 		public static Table<String, String, String> DepartmentSheetData;
@@ -129,6 +137,15 @@ public class Globals {
 		public static Table<String, String, String> OtherPromotionSheetData;
 		public static Table<String, String, String> DayBasedPromotionSheetData;
 		public static Table<String, String, String> RevokePromotionSheetData;
+		public static Table<String, String, String> PaymentsSheetData;
+		public static Table<String, String, String> CreditinvoiceSheetData;
+		public static Table<String, String, String> CustomerReceiptsSheetData;
+		public static Table<String, String, String> BillcancelSheetData;
+		public static Table<String, String, String> SalesTransactionSheetData;
+		public static Table<String, String, String> StockAdjustmentSheetData;
+		public static Table<String, String, String> SalesOrderSheetData;
+		public static Table<String, String, String> StockUpdateSheetData;
+		
 		
 		public static Map<String, String> inventoryrowwiseData;
 		public static Map<String, String> DepartmentrowwiseData;
@@ -189,9 +206,14 @@ public class Globals {
 		public static Map<String, String> OtherPromotionrowwiseData;
 		public static Map<String, String> DayBasedPromotionrowwiseData;
 		public static Map<String, String> RevokePromotionrowwiseData;
-		
-	
-		
+		public static Map<String, String> PaymentsrowwiseData;
+		public static Map<String, String> CreditinvoicerowwiseData;
+		public static Map<String, String> CustomerReceiptsrowwiseData;
+		public static Map<String, String> BillcancelrowwiseData;
+		public static Map<String, String> SalesTransactionrowwiseData;
+		public static Map<String, String> StockAdjustmentrowwiseData;
+		public static Map<String, String> SalesOrderrowwiseData;
+		public static Map<String, String> StockUpdaterowwiseData;
 		
 		
 		public static String Cess;
@@ -384,6 +406,7 @@ public class Globals {
 		public static String Person;
 		public static String URL;
 		public static String Batch4;
+		public static String Batch5;
 		public static String Dateformat;
 		public static String Template;
 		public static String Printername;
@@ -420,6 +443,37 @@ public class Globals {
 		public static String OnlineOrder;
 		public static String Purchasereturn;
 		public static String inventorysearch;
+		public static String Chequeno;
+		public static String City;
+		public static String NoOfRecords;
+		public static String Paymode;
+		public static String Issued;
+		public static String UnIssued;
+		public static String All;
+		public static String CreditLimit;
+		public static String CreditDays;
+		public static String HoldInv;
+		public static String AllInv;
+		public static String BankCode;
+		public static String Paymode1;
+		public static String BankCode1;
+		public static String ChequeNo;
+		public static String Invoiceno;
+		public static String Customername;
+		public static String ChequeDate;
+		public static String Cashier;
+		public static String Terminal;
+		public static String CustomerCode;
+		public static String MinAmt;
+		public static String MaxAmt;
+		public static String CashSales;
+		public static String CreditSales;
+		public static String CancelBill;
+		public static String ExchangeBill;
+		public static String DiscountBill;
+		public static String SalesReturnBill;
+		public static String Path;
+		public static String Filter;
 		
 
 		

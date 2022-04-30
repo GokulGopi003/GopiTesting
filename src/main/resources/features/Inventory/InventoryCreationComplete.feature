@@ -8,7 +8,7 @@ Feature: PoS Inventory > Add Inventory
     When I enter the password
     Then I clik on the login button
     Then I verify the page Title
-  @07122021
+  @27042022
   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Then I load the testdata form excel to table
@@ -29,7 +29,7 @@ Feature: PoS Inventory > Add Inventory
     Then I fill Activationsettings
     Then I need to click on sub menu with text matching "Image"
     #When Im waiting for 5 sec
-    #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "12"
+    Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "12"
     Then I need to click on the "Save" button
     Then I click dynamically on "NewItemNo" button
     Then I establish connection to DB

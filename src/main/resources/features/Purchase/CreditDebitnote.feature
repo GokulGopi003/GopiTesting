@@ -12,7 +12,7 @@ Feature: PoS Inventory > Add Inventory
   @gopi1234
   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Purchase/frmSupplierNoteSummary.aspx"
-    #Then I need to click on the  element "a#ContentPlaceHolder1_lnkNewButton"
+    Then I need to click on the  element "a#ContentPlaceHolder1_lnkNewButton"
     #Then I need to click on the  element "a#ContentPlaceHolder1_lnkrefresh"
     #Then I need to click on the  print
     #Then I need to click on the  Delete
@@ -22,9 +22,13 @@ Feature: PoS Inventory > Add Inventory
     Then I load the rowise CreditDebitnote data for "<TestcaseRowName>" rowname
     Then I update value to the CreditDebitnote page global Variables
     Then I fill new CreditDebitnote data page using excel data
-    #Then I need to click on the blue "Save" button
+    Then I need to click on the blue "Save" button
+    Then I establish connection  DB for CreditDebitnote
+    Then I read the values from CreditDebitnote table "tbldebitnote" in DB
+    Then I read the values from CreditDebitnote table "tblAPtransaction" in DB
+    Then I close connection  DB for CreditDebitnote
     
     
      Examples: 
       | TestcaseRowName |
-      |CreditDebitnote2 |
+      |CreditDebitnote|

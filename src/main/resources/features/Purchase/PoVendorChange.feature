@@ -19,6 +19,10 @@ Feature: PoS Master > Location
     Then I need to click on the "Update" button
     Then I need to click on the  Xpath "/html/body/div[6]/div[3]/div/button[1]"
     #Then I need to click on the "Clear" button
+    Then I establish connection  DB for PoVendorChange
+    Then I read the values from PoVendorChange table "tblpoheader" in DB
+    Then I read the values from PoVendorChange table "tblpoDetail" in DB
+    Then I close connection  DB for PoVendorChange
     
       Examples: 
       | TestcaseRowName |
