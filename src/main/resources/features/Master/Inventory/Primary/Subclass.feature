@@ -25,6 +25,9 @@ Feature: PoS Master > Location
     Then I update value to the Subclass page global Variables
     Then I fill new Subclass data page using excel data
     Then I need to click on the "Save" button
+    Then I establish connection to Subclass
+    Then I read the values from table "tblSubClass" in Subclass
+    Then I close connection to Subclass
     
       Examples: 
       | TestcaseRowName |

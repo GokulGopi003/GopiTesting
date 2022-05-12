@@ -22,6 +22,9 @@ Feature: PoS Master > Location
     Then I update value to the Uom page global Variables
     Then I fill new Uom data page using excel data
     Then I need to click on the "Save" button
+    Then I establish connection to Uom
+    Then I read the values from table "tblUOM" in Uom
+    Then I close connection to Uom
     
       Examples: 
       | TestcaseRowName |

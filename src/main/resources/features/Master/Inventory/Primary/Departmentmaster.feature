@@ -36,6 +36,7 @@ Feature: PoS Master > Location
     Then I establish connection  DB
     Then I read the values from department table "tbldepartment" in DB
     Then I close connection  DB
+    
  
   Examples: 
       | TestcaseRowName |

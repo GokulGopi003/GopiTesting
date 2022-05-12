@@ -24,8 +24,11 @@ Feature: PoS Master > Location
     Then I load the rowise Size data for "<TestcaseRowName>" rowname
     Then I update value to the Size page global Variables
     Then I fill new Size data page using excel data
-    #Then I need to click on the "Save" button
+    Then I need to click on the "Save" button
+    Then I establish connection to Size
+    Then I read the values from table "tblSize" in Size
+    Then I close connection to Size 
     
       Examples: 
       | TestcaseRowName |
-      |Size      |
+      |Size1      |

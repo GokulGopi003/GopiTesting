@@ -23,6 +23,9 @@ Feature: PoS Master > Location
     Then I update value to the AddDed page global Variables
     Then I fill new AddDed data page using excel data
     Then I need to click on the "Save" button
+    Then I establish connection to AddDed
+    Then I read the values from table "tblDiscount" in AddDed
+    Then I close connection to AddDed
     
       Examples: 
       | TestcaseRowName |

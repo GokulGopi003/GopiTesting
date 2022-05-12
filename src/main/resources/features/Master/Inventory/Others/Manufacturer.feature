@@ -24,7 +24,10 @@ Feature: PoS Master > Location
     Then I load the rowise Manufacturer data for "<TestcaseRowName>" rowname
     Then I update value to the Manufacturer page global Variables
     Then I fill new Manufacturer data page using excel data
-    #Then I need to click on the "Save" button
+    Then I need to click on the "Save" button
+    Then I establish connection to Manufacturer
+    Then I read the values from table "tblManufacturer" in Manufacturer
+    Then I close connection to Manufacturer
     
       Examples: 
       | TestcaseRowName |

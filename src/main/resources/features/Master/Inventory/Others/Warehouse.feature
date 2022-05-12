@@ -24,11 +24,14 @@ Feature: PoS Master > Location
     Then I load the rowise Warehouse data for "<TestcaseRowName>" rowname
     Then I update value to the Warehouse page global Variables
     Then I fill new Warehouse data page using excel data
-    Then I need to click on the  element "div#ContentPlaceHolder1_ddlNetCost_chzn"
-    Then I need to select the dropdown "NETCOST" value forLabel "NetCost" using Javascript
-    Then I need to click on the  element "div#ContentPlaceHolder1_ddlType_chzn"
-    Then I need to select the dropdown "A" value forLabel "Type" using Javascript
+    #Then I need to click on the  element "div#ContentPlaceHolder1_ddlNetCost_chzn"
+    #Then I need to select the dropdown "NETCOST" value forLabel "NetCost" using Javascript
+    #Then I need to click on the  element "div#ContentPlaceHolder1_ddlType_chzn"
+    #Then I need to select the dropdown "A" value forLabel "Type" using Javascript
     Then I need to click on the "Save" button
+    Then I establish connection to Warehouse
+    Then I read the values from table "tblWareHouse" in Warehouse
+    Then I close connection to Warehouse
     
       Examples: 
       | TestcaseRowName |

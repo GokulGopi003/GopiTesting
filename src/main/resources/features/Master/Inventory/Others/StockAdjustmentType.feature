@@ -23,6 +23,9 @@ Feature: PoS Master > Location
     Then I update value to the StockAdjustmentType page global Variables
     Then I fill new StockAdjustmentType data page using excel data
     Then I need to click on the "Save" button
+    Then I establish connection to StockAdjustmentType
+    Then I read the values from table "tblStockAdjType" in StockAdjustmentType
+    Then I close connection to StockAdjustmentType
     
       Examples: 
       | TestcaseRowName |

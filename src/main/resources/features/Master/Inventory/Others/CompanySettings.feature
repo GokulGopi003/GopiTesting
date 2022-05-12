@@ -18,14 +18,17 @@ Feature: PoS Master > Location
     #Then I need to click on the  element "input#ContentPlaceHolder1_gvFloor_imgbtnDelete_0"
     #Then I click on button tag with value "YES"
     #Given I need to click on the "Clear" button
-    When Im waiting for 2 sec
+    #When Im waiting for 2 sec
     Then I load the testdatas form excel to table
     Then I load the CompanySettings sheet data to map
     Then I load the rowise CompanySettings data for "<TestcaseRowName>" rowname
     Then I update value to the CompanySettings page global Variables
-    #Then I fill new CompanySettings data page using excel data
-    #Then I need to click on the "Save" button
+    Then I fill new CompanySettings data page using excel data
+    Then I need to click on the "Save" button
+    Then I establish connection to CompanySettings
+    Then I read the values from table "tblcompanyname" in CompanySettings
+    Then I close connection to CompanySettings
     
       Examples: 
       | TestcaseRowName |
-      |Companysettings  |
+      |CompanySettings  |

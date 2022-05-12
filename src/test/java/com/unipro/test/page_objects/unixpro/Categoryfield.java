@@ -8,5 +8,6 @@ public class Categoryfield {
 	public String Subcategorycode_string = "input#ContentPlaceHolder1_txtSubCategoryCode";
 	public String Subcategoryname_String = "input#ContentPlaceHolder1_txtSubCategoryName";
 	public String Discounts_String = "input#ContentPlaceHolder1_txtDiscountPercent";
+	public String Department_String="";
 	
 }

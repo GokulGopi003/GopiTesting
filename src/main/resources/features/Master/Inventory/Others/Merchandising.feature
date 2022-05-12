@@ -23,6 +23,9 @@ Feature: PoS Master > Location
     Then I update value to the Merchandise page global Variables
     Then I fill new Merchandise data page using excel data
     Then I need to click on the "Save" button
+    Then I establish connection to Merchandise
+    Then I read the values from table "tblMerchandise" in Merchandise
+    Then I close connection to Merchandise
     
       Examples: 
       | TestcaseRowName |

@@ -27,7 +27,9 @@ Feature: PoS Master > Location
     Then I update value to the Section page global Variables
     Then I fill new Section data page using excel data
     Then I need to click on the "Save" button
-    
+    Then I establish connection to Section
+    Then I read the values from table "tblSection" in Section
+    Then I close connection to Section
       Examples: 
       | TestcaseRowName |
       |Section      |

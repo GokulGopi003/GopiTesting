@@ -28,15 +28,18 @@ Feature: PoS Master > Location
     Then I load the rowise Brand data for "<TestcaseRowName>" rowname
     Then I update value to the Brand page global Variables
     Then I fill new Brand data page using excel data
-    Then I check the purchased by radio button for "<TestcaseRowName>"
+    #Then I check the purchased by radio button for "<TestcaseRowName>"
     #Then I fill the Category values in the inventory page
     #Then I need to invoke the DropDown by Index 0 if text matching "-- Select --"
     #Then I need to select the dropdown "Gopi1" value forLabel "Category" using Javascript
-    #Then I need to click on the "Save" button
+    Then I need to click on the "Save" button
     #Then I establish connection to DB
     #Then I read the values from table "tblinventory" in DB
     #Then I close connection to DB
+    Then I establish connection to Brand
+    Then I read the values from table "tblBrand" in Brand
+    Then I close connection to Brand
     
       Examples: 
       | TestcaseRowName |
-      | Brand1      |
+      | Brand      |

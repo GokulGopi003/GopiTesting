@@ -5,13 +5,21 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import org.testng.Assert;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 
+import com.gk.test.MssqlConnect;
+import com.unipro.ExcelWrite;
 import com.unipro.test.framework.Globals;
 import com.unipro.test.framework.PageObject;
 import com.unipro.test.framework.helpers.screenshot_helper.Screenshot;
@@ -23,14 +31,14 @@ import cucumber.api.java.en.Then;
 public class Brand extends PageObject{
 	AddInventoryFormPage Category;
 	Brandfield icp;
-
+    ExcelWrite pass;
 	TerminalPage terPage;
 	 Screenshot scr;
 
 	public  Brand(Brandfield icp) {
 		this.icp = icp;
 		terPage = new TerminalPage();
-
+        pass =new ExcelWrite();
 		Category = new AddInventoryFormPage();
 		scr =new Screenshot();
 	}
@@ -78,16 +86,35 @@ public class Brand extends PageObject{
 		}
 		
 
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Discount)) {
+		/*if (GenericWrappers.isNotEmpty(Globals.Inventory.Discount)) {
 			terPage.terminal_waitClearEnterText_css(icp.Discount_String, Globals.Inventory.Discount);
 			
 			
-}
+}*/
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Remark)) {
 			terPage.terminal_waitClearEnterText_css(icp.Remark_String, Globals.Inventory.Remark);
 			
 			
 }
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Category)) {
+			//GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_ddlCategory_chzn\"]")).click();
+			GenericWrappers.sleepInSeconds(1);
+			
+			WebElement CategoryValue = webDriver
+					.findElement(By.cssSelector("#ContentPlaceHolder1_ddlCategory_chzn > div > div > input[type=text]"));
+			String css_location_dropDownValue = "#ContentPlaceHolder1_ddlCategory_chzn > div > div > input[type=text]";
+			By ddlocator = By.cssSelector(css_location_dropDownValue);
+			waitForExpectedElement(ddlocator);
+			js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.Category);
+			GenericWrappers.sleepInSeconds(1);
+			CategoryValue.sendKeys(Keys.SPACE);
+			CategoryValue.sendKeys(Keys.SPACE);
+			CategoryValue.sendKeys(Keys.ARROW_DOWN);
+			GenericWrappers.sleepInSeconds(1);
+			CategoryValue.sendKeys(Keys.ENTER);
+		}
+
 		}
 		catch (Exception e) {
 			// screen shot
@@ -96,7 +123,102 @@ public class Brand extends PageObject{
 			System.out.println("Screen shot ");
 
 		}
-			
+	}
+		@Then("I close connection to Brand")
+		public void i_close_connection_to_Brand() {	
+		mysqlConnect.disconnect();
+		System.out.println(" closed succesfully");
+
+	}
+
+	MssqlConnect mysqlConnect;
+	Statement st;
+
+		
+
+		@Then("I establish connection to Brand")
+		public void i_establish_connection_to_Brand() throws SQLException {
+			mysqlConnect = new MssqlConnect();
+			st = mysqlConnect.connect().createStatement();
+			System.out.println(" Connected succesfully");
+		}
+
+		@Then("I read the values from table {string} in Brand")
+		public void i_read_the_values_from_table_in_Brand(String tablename) throws IOException, SQLException {
+
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where BrandCode='Gopi'");
+
+			System.out.println(rs);
+
+			while (rs.next()) {
+
+				switch (tablename) {
+				case "tblBrand":
+					String Brandcode = "";
+					try {
+						Brandcode = rs.getString("BrandCode");
+						System.out.println(Brandcode);
+						Assert.assertEquals(Globals.Inventory.Brandcode.trim(), Brandcode.trim());
+						 pass.Excelcreate("brand","tblBrand", "", 2, 0, 2, 1);
+						pass.ExcelFourData("brand", "Brandcode", Globals.Inventory.Brandcode, Brandcode, "Pass", 3, 0,
+								3, 1, 3, 2, 3, 3);
+					} catch (AssertionError e) {
+						 pass.Excelcreate("brand", "tblBrand", "", 2, 0, 2, 1);
+						pass.ExcelFourData("brand", "Brandcode", Globals.Inventory.Brandcode, Brandcode, "Fail", 3, 0,
+								3, 1, 3, 2, 3, 3);
+
+					}
+					String Brandname = "";
+					try {
+						Brandname = rs.getString("BrandName");
+						System.out.println(Brandname);
+						Assert.assertEquals(Globals.Inventory.Brandname.trim(), Brandname.trim());
+
+						pass.ExcelFourData("brand", "Brandname", Globals.Inventory.Brandname, Brandname, "Pass", 4, 0, 4, 1, 4, 2,
+								4, 3);
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("brand", "Brandname", Globals.Inventory.Brandname, Brandname, "Fail", 4, 0, 4, 1, 4, 2,
+								4, 3);
+
+					}
+
+					String Remark = "";
+					try {
+						Remark = rs.getString("Remarks");
+						System.out.println(Remark);
+						Assert.assertEquals(Globals.Inventory.Remark.trim(), Remark.trim());
+
+						pass.ExcelFourData("brand", "Remark", Globals.Inventory.Remark, Remark, "Pass", 5, 0, 5,
+								1, 5, 2, 5, 3);
+
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("brand", "Remark", Globals.Inventory.Remark, Remark, "Fail", 5, 0, 5,
+								1, 5, 2, 5, 3);
+
+					}
+
+					String Category = "";
+					try {
+						Category = rs.getString("RefCateCode");
+						System.out.println(Category);
+						Assert.assertEquals(Globals.Inventory.Category.trim(), Category.trim());
+
+						pass.ExcelFourData("brand", "Category", Globals.Inventory.Category, Category, "Pass", 6, 0,
+								6, 1, 6, 2, 6, 3);
+
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("brand", "Category", Globals.Inventory.Category, Category, "Fail", 6, 0,
+								6, 1, 6, 2, 6, 3);
+
+					}
+		
+
+				}
+			}
+
 		}
 		
 		

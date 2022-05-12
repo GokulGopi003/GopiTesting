@@ -1,6 +1,10 @@
 package com.unipro.test.page_objects.unixpro;
 
-	import com.unipro.test.framework.Globals;
+	import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.gk.test.MssqlConnect;
+import com.unipro.test.framework.Globals;
 	import com.unipro.test.framework.helpers.utils.GenericWrappers;
 	import com.unipro.test.framework.helpers.utils.ReadTestData;
 
@@ -57,4 +61,36 @@ package com.unipro.test.page_objects.unixpro;
 			}
 			
 	}
+		@Then("I close connection to Subclass")
+		public void i_close_connection_to_Subclass() {
+			mysqlConnect.disconnect();
+			System.out.println(" closed succesfully");
+
+			// mysqlConnect.disconnect();
+
+		}
+
+		MssqlConnect mysqlConnect;
+		Statement st;
+
+		
+
+		@Then("I establish connection to Subclass")
+	public void i_establish_connection_to_Subclass() throws SQLException {
+			mysqlConnect = new MssqlConnect();
+			st = mysqlConnect.connect().createStatement();
+			System.out.println(" Connected succesfully");
+
+
+		}	
+
+			
+
+	@Then("I read the values from table {string} in Subclass")
+	public void i_read_the_values_from_table_in_Subclass(String string) {
+	    
+		
 	}
+
+	}
+	

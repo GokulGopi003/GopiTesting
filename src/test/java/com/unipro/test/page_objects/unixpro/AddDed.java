@@ -3,22 +3,37 @@ package com.unipro.test.page_objects.unixpro;
     import org.openqa.selenium.By;
     import org.openqa.selenium.Keys;
     import org.openqa.selenium.WebElement;
+    import java.io.IOException;
+    import java.sql.ResultSet;
+    import java.sql.SQLException;
+    import java.sql.Statement;
+
+    import org.openqa.selenium.By;
+        import org.openqa.selenium.Keys;
+        import org.openqa.selenium.WebElement;
+    import org.testng.Assert;
+
+    import com.gk.test.MssqlConnect;
+    import com.unipro.ExcelWrite;
+
     import com.unipro.test.framework.Globals;
     import com.unipro.test.framework.PageObject;
     import com.unipro.test.framework.helpers.utils.GenericWrappers;
 	import com.unipro.test.framework.helpers.utils.ReadTestData;
-	import cucumber.api.java.en.Then;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 
 	public class AddDed extends PageObject {
 		AddInventoryFormPage Category;
 		AddDedField icp;
-
+        ExcelWrite pass;
 		TerminalPage terPage;
-
+         
 		public  AddDed(AddDedField  icp) {
 			this.icp = icp;
 			terPage = new TerminalPage();
-
+			pass=new ExcelWrite();
 			Category = new AddInventoryFormPage();
 		}
 		
@@ -92,8 +107,106 @@ package com.unipro.test.page_objects.unixpro;
 			
 			}
 }
-			
+		@Then("I close connection to AddDed")
+		public void I_close_connection_to_AddDed() throws SQLException {
+
+			mysqlConnect.disconnect();
+			System.out.println(" closed succesfully");
+
+		}
+
+		MssqlConnect mysqlConnect;
+		Statement st;
+
+		@Then("I establish connection to AddDed")
+		public void I_establish_connection_to_AddDed() throws SQLException {
+
+			mysqlConnect = new MssqlConnect();
+			st = mysqlConnect.connect().createStatement();
+			System.out.println(" Connected succesfully");
+
+		}
+
+		@Given("I read the values from table {string} in AddDed")
+		public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
+
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where DiscountCode='1'");
+
+			System.out.println(rs);
+
+			while (rs.next()) {
+
+				switch (tablename) {
+				case "tblDiscount":
+					String Dicountcode = "";
+					try {
+						Dicountcode = rs.getString("DiscountCode");
+						System.out.println(Dicountcode);
+						Assert.assertEquals(Globals.Inventory.Dicountcode.trim(), Dicountcode.trim());
+						pass.Excelcreate("addded", "tblDiscount", "", 0, 0, 0, 0);
+						pass.ExcelFourData("addded", "Dicountcode", Globals.Inventory.Dicountcode, Dicountcode, "Pass", 1, 0, 1, 1,
+								1, 2, 1, 3);
+					} catch (AssertionError e) {
+						pass.Excelcreate("addded", "tblDiscount", "", 0, 0, 0, 0);
+						pass.ExcelFourData("addded", "Dicountcode", Globals.Inventory.Dicountcode, Dicountcode, "Fail", 1, 0, 1, 1,
+								1, 2, 1, 3);
+
+					}
+					
+					String Description = "";
+					try {
+						Description = rs.getString("Description");
+						System.out.println(Description);
+						Assert.assertEquals(Globals.Inventory.Description.trim(), Description.trim());
+
+						pass.ExcelFourData("addded", "Description", Globals.Inventory.Description, Description, "Pass", 2, 0, 2, 1,
+								2, 2, 2, 3);
+
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("addded", "Description", Globals.Inventory.Description, Description, "Fail", 2, 0, 2, 1,
+								2, 2, 2, 3);
+
+					}
+					String Type = "";
+					try {
+						Type = rs.getString("Type");
+						System.out.println(Type);
+						Assert.assertEquals(Globals.Inventory.Type.trim(), Type.trim());
+						
+						pass.ExcelFourData("addded", "Type", Globals.Inventory.Type, Type, "Pass",3, 0,
+								3, 1, 3, 2, 3, 3);
+					} catch (AssertionError e) {
+						
+						pass.ExcelFourData("addded", "Type", Globals.Inventory.Type, Type, "Fail", 3, 0,
+								3, 1, 3, 2, 3, 3);
+
+					}
+					String GST = "";
+					try {
+						GST = rs.getString("Gst");
+						System.out.println(GST);
+						Assert.assertEquals(Globals.Inventory.GST.trim(), GST.trim());
+						
+						pass.ExcelFourData("addded", "GST", Globals.Inventory.GST, GST, "Pass",4, 0,
+								4, 1, 4, 2, 4, 3);
+					} catch (AssertionError e) {
+						
+						pass.ExcelFourData("addded", "GST", Globals.Inventory.GST, GST, "Fail", 4, 0,
+								4, 1, 4, 2, 4, 3);
+
+					}
+				
+
+		
 }
+	
+
+			}
+		}}
+
+			
+
 	
 
 

@@ -1,5 +1,12 @@
 package com.unipro.test.page_objects.unixpro;
 
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import org.testng.Assert;
+import com.gk.test.MssqlConnect;
+import com.unipro.ExcelWrite;
 import com.unipro.test.framework.Globals;
 import com.unipro.test.framework.helpers.utils.GenericWrappers;
 import com.unipro.test.framework.helpers.utils.ReadTestData;
@@ -9,13 +16,13 @@ import cucumber.api.java.en.Then;
 public class Floor {
 	AddInventoryFormPage Category;
 	Floorfield icp;
-
+    ExcelWrite pass;
 	TerminalPage terPage;
 
 	public  Floor(Floorfield icp) {
 		this.icp = icp;
 		terPage = new TerminalPage();
-
+        pass=new ExcelWrite();
 		Category = new AddInventoryFormPage();
 	}
 	
@@ -56,5 +63,83 @@ public class Floor {
 		
 		}
 		
+}
+	@Then("I close connection to Floor")
+	public void i_close_connection_to_Floor() {
+		mysqlConnect.disconnect();
+		System.out.println(" closed succesfully");
+
+	}
+
+	MssqlConnect mysqlConnect;
+	Statement st;
+	
+	@Then("I establish connection to Floor")
+	public void i_establish_connection_to_Floor() throws SQLException {
+		mysqlConnect = new MssqlConnect();
+		st = mysqlConnect.connect().createStatement();
+		System.out.println(" Connected succesfully");
+	}
+	@Then("I read the values from table {string} in Floor")
+	public void i_read_the_values_from_table_in_Floor(String tablename) throws SQLException, IOException {
+		ResultSet rs = st.executeQuery("select * from " + tablename + " where LocationCode='HQ'");
+
+		System.out.println(rs);
+
+		while (rs.next()) {
+
+			switch (tablename) {
+			case "tblFloor":
+				String Floorcode = "";
+				try {
+					Floorcode = rs.getString("FloorCode");
+					System.out.println(Floorcode);
+					Assert.assertEquals(Globals.Inventory.Floorcode.trim(), Floorcode.trim());
+					 pass.Excelcreate("floor", "tblFloor", "", 2, 0, 2, 1);
+					pass.ExcelFourData("floor", "Floorcode", Globals.Inventory.Floorcode, Floorcode, "Pass", 3, 0,
+							3, 1, 3, 2, 3, 3);
+				} catch (AssertionError e) {
+					 pass.Excelcreate("floor", "tblFloor", "", 2, 0, 2, 1);
+					pass.ExcelFourData("floor", "Floorcode", Globals.Inventory.Floorcode, Floorcode, "Fail", 3, 0,
+							3, 1, 3, 2, 3, 3);
+
+				}
+				
+
+				String Description = "";
+				try {
+					Description = rs.getString("Description");
+					System.out.println(Description);
+					Assert.assertEquals(Globals.Inventory.Description.trim(), Description.trim());
+
+					pass.ExcelFourData("floor", "Description", Globals.Inventory.Description, Description, "Pass", 4, 0, 4,
+							1, 4, 2, 4, 3);
+
+				} catch (AssertionError e) {
+
+					pass.ExcelFourData("floor", "Description", Globals.Inventory.Description, Description, "Fail", 4, 0, 4,
+							1, 4, 2, 4, 3);
+
+				}
+
+				String LocationCode = "";
+				try {
+					Description = rs.getString("LocationCode");
+					System.out.println(LocationCode);
+					Assert.assertEquals(Globals.Inventory.LocationCode.trim(), LocationCode.trim());
+
+					pass.ExcelFourData("floor", "LocationCode", Globals.Inventory.LocationCode, LocationCode, "Pass", 5, 0, 5,
+							1, 5, 2, 5, 3);
+
+				} catch (AssertionError e) {
+
+					pass.ExcelFourData("floor", "LocationCode", Globals.Inventory.LocationCode, LocationCode, "Fail", 5, 0, 5,
+							1, 5, 2, 5, 3);
+
+				}
+
+			}
+
+		}
 }
 }

@@ -1,20 +1,31 @@
 package com.unipro.test.page_objects.unixpro;
 
-	import com.unipro.test.framework.Globals;
+	import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.openqa.selenium.Keys;
+import org.testng.Assert;
+import com.gk.test.MssqlConnect;
+import com.unipro.ExcelWrite;
+import com.unipro.test.framework.Globals;
 	import com.unipro.test.framework.helpers.utils.GenericWrappers;
 	import com.unipro.test.framework.helpers.utils.ReadTestData;
-	import cucumber.api.java.en.Then;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 
 	public class Size {
 		AddInventoryFormPage Category;
 		SizeField icp;
-
+        ExcelWrite pass;
 		TerminalPage terPage;
 
 		public  Size(SizeField  icp) {
 			this.icp = icp;
 			terPage = new TerminalPage();
-
+            pass=new ExcelWrite();
 			Category = new AddInventoryFormPage();
 		}
 		
@@ -58,10 +69,82 @@ package com.unipro.test.page_objects.unixpro;
 			
 		
 	}
+		@Then("I close connection to Size")
+		public void I_close_connection_to_Size() throws SQLException {
+
+			mysqlConnect.disconnect();
+			System.out.println(" closed succesfully");
+
+		}
+
+		MssqlConnect mysqlConnect;
+		Statement st;
+
+		@Then("I establish connection to Size")
+		public void I_establish_connection_to_Size() throws SQLException {
+
+			mysqlConnect = new MssqlConnect();
+			st = mysqlConnect.connect().createStatement();
+			System.out.println(" Connected succesfully");
+
+		}
+
+		@Given("I read the values from table {string} in Size")
+		public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
+
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where Description ='1'");
+
+			System.out.println(rs);
+
+			while (rs.next()) {
+
+				switch (tablename) {
+				case "tblSize":
+					System.out.println("1");
+					String Description = "";
+					try {
+						System.out.println("2");
+						Description = rs.getString("Description");
+						System.out.println("3");
+						System.out.println(Description);
+						Assert.assertEquals(Globals.Inventory.Description.trim(), Description.trim());
+						pass.Excelcreate("size", "tblSize", "", 1, 0, 1, 1);
+						pass.ExcelFourData("size", "Description", Globals.Inventory.Description, Description, "Pass", 2, 0, 2, 1,
+								2, 2, 2, 3);
+					} catch (AssertionError e) {
+						pass.Excelcreate("size", "tblSize", "", 1, 0, 1, 1);
+						pass.ExcelFourData("size", "Description", Globals.Inventory.Description, Description, "Fail", 2, 0, 2, 1,
+								2, 2, 2, 3);
+
+					}
+
+					String SizeCode = "";
+					try {
+						SizeCode = rs.getString("SizeCode");
+						System.out.println(SizeCode);
+						Assert.assertEquals(Globals.Inventory.SizeCode.trim(), SizeCode.trim());
+
+						pass.ExcelFourData("size", "SizeCode", Globals.Inventory.SizeCode, SizeCode, "Pass", 3,
+								0, 3, 1, 3, 2, 3, 3);
+
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("size", "SizeCode", Globals.Inventory.SizeCode, SizeCode,"Fail",3,0,3, 1, 3, 2, 3, 3);
+
+					}
 	
+}
+
 
 
 
 }
+
+		}}
+
+
+
+
+
 
 

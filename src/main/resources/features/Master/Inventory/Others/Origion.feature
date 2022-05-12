@@ -24,7 +24,10 @@ Feature: PoS Master > Location
     Then I load the rowise Origion data for "<TestcaseRowName>" rowname
     Then I update value to the Origion page global Variables
     Then I fill new Origion data page using excel data
-    #Then I need to click on the "Save" button
+    Then I need to click on the "Save" button
+    Then I establish connection to Origion
+    Then I read the values from table "tblOrigin" in Origion
+    Then I close connection to Origion
     
       Examples: 
       | TestcaseRowName |

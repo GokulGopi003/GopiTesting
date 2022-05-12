@@ -1,6 +1,13 @@
 package com.unipro.test.page_objects.unixpro;
 
-	import com.unipro.test.framework.Globals;
+	import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import org.testng.Assert;
+import com.gk.test.MssqlConnect;
+import com.unipro.ExcelWrite;
+import com.unipro.test.framework.Globals;
 	import com.unipro.test.framework.helpers.utils.GenericWrappers;
 	import com.unipro.test.framework.helpers.utils.ReadTestData;
 	import cucumber.api.java.en.Then;
@@ -8,13 +15,13 @@ package com.unipro.test.page_objects.unixpro;
 	public class Tax { 
 		AddInventoryFormPage Category;
 		Taxfield icp;
-
+        ExcelWrite pass;
 		TerminalPage terPage;
 
 		public  Tax(Taxfield icp) {
 			this.icp = icp;
 			terPage = new TerminalPage();
-
+            pass=new ExcelWrite();
 			Category = new AddInventoryFormPage();
 		}
 		
@@ -101,5 +108,176 @@ package com.unipro.test.page_objects.unixpro;
 			}
 			
 	}
+		@Then("I close connection to Tax")
+		public void i_close_connection_to_Tax() {
+			mysqlConnect.disconnect();
+			System.out.println(" closed succesfully");
+
+		}
+
+		MssqlConnect mysqlConnect;
+		Statement st;
+
+		
+		@Then("I establish connection to Tax")
+		public void i_establish_connection_to_Tax() throws SQLException {
+			mysqlConnect = new MssqlConnect();
+			st = mysqlConnect.connect().createStatement();
+			System.out.println(" Connected succesfully");
+		}
+
+		@Then("I read the values from table {string} in Tax")
+		public void i_read_the_values_from_table_in_Tax(String tablename) throws SQLException, IOException {
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where TaxCode='1'");
+
+			System.out.println(rs);
+
+			while (rs.next()) {
+
+				switch (tablename) {
+				case "tblTaxMaster":
+					String Taxcode = "";
+					try {
+						Taxcode = rs.getString("TaxCode");
+						System.out.println(Taxcode);
+						Assert.assertEquals(Globals.Inventory.Taxcode.trim(), Taxcode.trim());
+						 pass.Excelcreate("taxnew", "tblTaxMaster", "", 2, 0, 2, 1);
+						pass.ExcelFourData("taxnew", "Taxcode", Globals.Inventory.Taxcode, Taxcode, "Pass", 3, 0,
+								3, 1, 3, 2, 3, 3);
+					} catch (AssertionError e) {
+						 pass.Excelcreate("taxnew", "tblTaxMaster", "", 2, 0, 2, 1);
+						pass.ExcelFourData("taxnew", "Taxcode", Globals.Inventory.Taxcode, Taxcode, "Fail", 3, 0,
+								3, 1, 3, 2, 3, 3);
+
+					}
+					String SGST = "";
+					try {
+						SGST = rs.getString("Description");
+						System.out.println(SGST);
+						Assert.assertEquals(Globals.Inventory.SGST.trim(), SGST.trim());
+
+						pass.ExcelFourData("taxnew", "SGST", Globals.Inventory.SGST, SGST, "Pass", 4, 0, 4, 1, 4, 2,
+								4, 3);
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("taxnew", "SGST", Globals.Inventory.SGST, SGST, "Fail", 4, 0, 4, 1, 4, 2,
+								4, 3);
+
+					}
+
+					String CGST = "";
+					try {
+						CGST = rs.getString("CGST");
+						System.out.println(CGST);
+						Assert.assertEquals(Globals.Inventory.CGST.trim(), CGST.trim());
+
+						pass.ExcelFourData("taxnew", "CGST", Globals.Inventory.CGST, CGST, "Pass", 5, 0, 5,
+								1, 5, 2, 5, 3);
+
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("taxnew", "CGST", Globals.Inventory.CGST, CGST, "Fail", 5, 0, 5,
+								1, 5, 2, 5, 3);
+
+					}
+
+					String IGST = "";
+					try {
+						IGST = rs.getString("IGST");
+						System.out.println(IGST);
+						Assert.assertEquals(Globals.Inventory.IGST.trim(), IGST.trim());
+
+						pass.ExcelFourData("taxnew", "IGST", Globals.Inventory.IGST, IGST, "Pass", 6, 0,
+								6, 1, 6, 2, 6, 3);
+
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("taxnew", "IGST", Globals.Inventory.IGST, IGST, "Fail", 6, 0,
+								6, 1, 6, 2, 6, 3);
+
+					}
+					String Batch = "";
+					try {
+						Batch = rs.getString("Batch");
+						System.out.println(Batch);
+						Assert.assertEquals(Globals.Inventory.Batch.trim(), Batch.trim());
+
+						pass.ExcelFourData("taxnew", "Batch", Globals.Inventory.Batch, Batch, "Pass", 7, 0, 7, 1, 7,
+								2, 7, 3);
+
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("taxnew", "Batch", Globals.Inventory.Batch, Batch, "Fail", 7, 0, 7, 1, 7,
+								2, 7, 3);
+
+					}
+					String Batch1 = "";
+					try {
+						Batch1 = rs.getString("Batch1");
+						System.out.println(Batch1);
+						Assert.assertEquals(Globals.Inventory.Batch1.trim(), Batch1.trim());
+
+						pass.ExcelFourData("taxnew", "Batch1", Globals.Inventory.Batch1, Batch1, "Pass", 8, 0,
+								8, 1, 8, 2, 8, 3);
+
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("taxnew", "Batch1", Globals.Inventory.Batch1, Batch1, "Fail", 8, 0,
+								8, 1, 8, 2, 8, 3);
+
+					}
+					String Batch2 = "";
+					try {
+						Batch2 = rs.getString("Batch2");
+						System.out.println(Batch2);
+						Assert.assertEquals(Globals.Inventory.Batch2.trim(), Batch2.trim());
+
+						pass.ExcelFourData("taxnew", "Batch2", Globals.Inventory.Batch2, Batch2, "Pass", 9, 0, 9,
+								1, 9, 2, 9, 3);
+
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("taxnew", "Batch2", Globals.Inventory.Batch2, Batch2, "Fail", 9, 0, 9,
+								1, 9, 2, 9, 3);
+
+					}
+					String Billdate = "";
+					try {
+						Batch2 = rs.getString("Billdate");
+						System.out.println(Billdate);
+						Assert.assertEquals(Globals.Inventory.Billdate.trim(), Billdate.trim());
+
+						pass.ExcelFourData("taxnew", "Billdate", Globals.Inventory.Billdate, Billdate, "Pass", 10, 0, 10,
+								1, 10, 2, 10, 3);
+
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("taxnew", "Billdate", Globals.Inventory.Billdate, Billdate, "Fail", 10, 0, 10,
+								1, 10, 2, 10, 3);
+
+					}
+					String Date = "";
+					try {
+						Batch2 = rs.getString("Date");
+						System.out.println(Date);
+						Assert.assertEquals(Globals.Inventory.Date.trim(), Date.trim());
+
+						pass.ExcelFourData("taxnew", "Date", Globals.Inventory.Date, Date, "Pass", 11, 0, 11,
+								1, 11, 2, 11, 3);
+
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("taxnew", "Date", Globals.Inventory.Date, Date, "Fail", 11, 0, 11,
+								1, 11, 2, 11, 3);
+
+					}
+					
+		
+			
+		}
 	
-}
+			}
+		}
+	}
+	
+

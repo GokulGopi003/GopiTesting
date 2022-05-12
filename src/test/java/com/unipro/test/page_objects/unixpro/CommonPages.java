@@ -62,6 +62,60 @@ public class CommonPages extends PageObject {
 		button.click();
 
 	}
+	public void clickonButton2(String buttonName) {
+
+		WebElement button = waitForExpectedElement(
+				By.cssSelector("a#ContentPlaceHolder1_lnk" + buttonName + ".button-blue"));
+		                                       
+
+		button.click();
+
+	}
+	public void clickonButton3(String buttonName) {
+
+		WebElement button = waitForExpectedElement(
+				By.cssSelector("a#ContentPlaceHolder1_Link" + buttonName + ".button-blue"));
+		                                       
+
+		button.click();
+
+	}
+	public void clickonButton4(String buttonName) {
+
+		WebElement button = waitForExpectedElement(
+				By.cssSelector("#ContentPlaceHolder1_lnk" + buttonName + ".button-blue"));
+		                                       
+
+		button.click();
+
+	}
+	public void clickonButton7(String buttonName) {
+
+		WebElement button = waitForExpectedElement(
+				By.cssSelector("a#ContentPlaceHolder1_Link" + buttonName + ".button-blue"));
+		                                       
+
+		button.click();
+
+	}
+	public void clickonButton5(String buttonName) {
+		WebElement button = waitForExpectedElement(
+				By.cssSelector("a#ContentPlaceHolder1_lnk" + buttonName + ".button-blue"));
+		//#ContentPlaceHolder1_lnkSave  
+
+		button.click();
+		}
+
+	public void clickonButton6(String buttonName) {
+
+		WebElement button = waitForExpectedElement(
+				By.cssSelector("a#ContentPlaceHolder1_Link" + buttonName + ".button-blue"));
+		                                       
+
+		button.click();
+
+	}
+
 	
 	public void clickonFilterButton(String buttonName) {
 

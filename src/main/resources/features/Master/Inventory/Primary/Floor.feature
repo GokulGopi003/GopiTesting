@@ -23,10 +23,13 @@ Feature: PoS Master > Location
     #Then I need to select the dropdown "HQ" value forLabel "Location" using Javascript
     Then I load the testdatas form excel to table
     Then I load the Floor sheet data to map
-    #Then I load the rowise Floor data for "<TestcaseRowName>" rowname
-    #Then I update value to the Floor page global Variables
-    #Then I fill new Floor data page using excel data
-    #Then I need to click on the "Save" button
+    Then I load the rowise Floor data for "<TestcaseRowName>" rowname
+    Then I update value to the Floor page global Variables
+    Then I fill new Floor data page using excel data
+    Then I need to click on the "Save" button
+    Then I establish connection to Floor
+    Then I read the values from table "tblFloor" in Floor
+    Then I close connection to Floor 
     
       Examples: 
       | TestcaseRowName |

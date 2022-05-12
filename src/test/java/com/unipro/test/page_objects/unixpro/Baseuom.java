@@ -1,25 +1,35 @@
 package com.unipro.test.page_objects.unixpro;
 
 
-    import org.openqa.selenium.By;
+    import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import org.testng.Assert;
+import org.openqa.selenium.By;
     import org.openqa.selenium.Keys;
     import org.openqa.selenium.WebElement;
-    import com.unipro.test.framework.Globals;
+
+import com.gk.test.MssqlConnect;
+import com.unipro.ExcelWrite;
+import com.unipro.test.framework.Globals;
     import com.unipro.test.framework.PageObject;
     import com.unipro.test.framework.helpers.utils.GenericWrappers;
 	import com.unipro.test.framework.helpers.utils.ReadTestData;
-	import cucumber.api.java.en.Then;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 
 	public class Baseuom extends PageObject {
 		AddInventoryFormPage Category;
 		BaseuomField icp;
-
+        ExcelWrite pass;
 		TerminalPage terPage;
 
 		public  Baseuom(BaseuomField  icp) {
 			this.icp = icp;
 			terPage = new TerminalPage();
-
+            pass=new ExcelWrite();
 			Category = new AddInventoryFormPage();
 		}
 		
@@ -103,9 +113,95 @@ package com.unipro.test.page_objects.unixpro;
 			
 		
 	}
-	
+	@Then("I close connection to Baseuom")
+	public void I_close_connection_to_Baseuom() throws SQLException {
+
+		mysqlConnect.disconnect();
+		System.out.println(" closed succesfully");
+
+	}
+
+	MssqlConnect mysqlConnect;
+	Statement st;
+
+	@Then("I establish connection to Baseuom")
+	public void I_establish_connection_to_Baseuom() throws SQLException {
+
+		mysqlConnect = new MssqlConnect();
+		st = mysqlConnect.connect().createStatement();
+		System.out.println(" Connected succesfully");
+
+	}
+
+	@Given("I read the values from table {string} in Baseuom")
+	public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
+
+		ResultSet rs = st.executeQuery("select * from " + tablename + " where UOMCode='PCS'");
+
+		System.out.println(rs);
+
+		while (rs.next()) {
+
+			switch (tablename) {
+			case "TBLUOMCONVMASTER":
+				String Uomcode = "";
+				try {
+					Uomcode = rs.getString("UomCode");
+					System.out.println(Uomcode);
+					Assert.assertEquals(Globals.Inventory.Uomcode.trim(), Uomcode.trim());
+					pass.Excelcreate("baseuom", "tblUOM", "", 0, 0, 0, 0);
+					pass.ExcelFourData("baseuom", "Uomcode", Globals.Inventory.Uomcode, Uomcode, "Pass", 1, 0, 1, 1,
+							1, 2, 1, 3);
+				} catch (AssertionError e) {
+					pass.Excelcreate("baseuom", "tblUOM", "", 0, 0, 0, 0);
+					pass.ExcelFourData("baseuom", "Uomcode", Globals.Inventory.Uomcode, Uomcode, "Fail", 1, 0, 1, 1,
+							1, 2, 1, 3);
+
+				}
+				
+				String Baseuomcode = "";
+				try {
+					Baseuomcode = rs.getString("BaseUomCode");
+					System.out.println(Baseuomcode);
+					Assert.assertEquals(Globals.Inventory.Baseuomcode.trim(), Baseuomcode.trim());
+
+					pass.ExcelFourData("baseuom", "Baseuomcode", Globals.Inventory.Baseuomcode, Baseuomcode, "Pass", 2, 0, 2, 1,
+							2, 2, 2, 3);
+
+				} catch (AssertionError e) {
+
+					pass.ExcelFourData("baseuom", "Baseuomcode", Globals.Inventory.Baseuomcode, Baseuomcode, "Fail", 2, 0, 2, 1,
+							2, 2, 2, 3);
+
+				}
+				String Qty = "";
+				try {
+					Qty = rs.getString("UomConv");
+					System.out.println(Qty);
+					Assert.assertEquals(Globals.Inventory.Qty.trim(), Qty.trim());
+
+					pass.ExcelFourData("baseuom", "Qty", Globals.Inventory.Qty, Qty, "Pass", 3, 0, 3, 1,
+							3, 2, 3, 3);
+
+				} catch (AssertionError e) {
+
+					pass.ExcelFourData("baseuom", "Qty", Globals.Inventory.Qty, Qty, "Fail", 3, 0, 3, 1,
+							3, 2, 3, 3);
+
+				}
+				
 
 }
+		}
+		}
+	}
+
+
+
+
+
+
+
 
 
 

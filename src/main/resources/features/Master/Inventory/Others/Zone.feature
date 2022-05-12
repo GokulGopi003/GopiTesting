@@ -24,7 +24,10 @@ Feature: PoS Master > Location
     Then I load the rowise Zone data for "<TestcaseRowName>" rowname
     Then I update value to the Zone page global Variables
     Then I fill new Zone data page using excel data
-    #Then I need to click on the "Save" button
+    Then I need to click on the "Save" button
+    Then I establish connection to Zone
+    Then I read the values from table "tblZone" in Zone
+    Then I close connection to Zone
     
       Examples: 
       | TestcaseRowName |

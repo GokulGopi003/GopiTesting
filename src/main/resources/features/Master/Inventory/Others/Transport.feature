@@ -25,6 +25,9 @@ Feature: PoS Master > Location
     Then I update value to the Transport page global Variables
     Then I fill new Transport data page using excel data
     Then I need to click on the "Save" button
+    Then I establish connection to Transport
+    Then I read the values from table "tblTransport" in Transport
+    Then I close connection to Transport 
     
       Examples: 
       | TestcaseRowName |

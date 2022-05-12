@@ -36,6 +36,46 @@ public class Unipro_Common_StepDefinitions {
 		cp.clickonButton(buttonName);
 
 	}
+	@Then("I need to click on the {string} button2")
+	public void i_need_to_click_on_the_button2(String New) {
+
+		cp.clickonButton2(New);
+
+	}
+	@Given("I need to click on the {string} button3")
+	public void i_need_to_click_on_the_button3(String buttonName) {
+
+		cp.clickonButton3(buttonName);
+
+	}
+	@Given("I need to click on the {string} button5")
+	public void i_need_to_click_on_the_button5(String buttonName) {
+
+		cp.clickonButton5(buttonName);
+
+	}
+	@Given("I need to click on the {string} button4")
+	public void i_need_to_click_on_the_button4(String buttonName) {
+
+		cp.clickonButton4(buttonName);
+
+	}
+
+	@Given("I need to click on the {string} button6")
+	public void i_need_to_click_on_the_button6(String buttonName) {
+
+		cp.clickonButton6(buttonName);
+
+	}
+	@Given("I need to click on the {string} button7")
+	public void i_need_to_click_on_the_button7(String buttonName) {
+
+		cp.clickonButton7(buttonName);
+
+	}
+
+
+
 
 	@Then("I need to click on the blue {string} button")
 	public void i_need_to_click_on_the_blue_button(String buttonName) {

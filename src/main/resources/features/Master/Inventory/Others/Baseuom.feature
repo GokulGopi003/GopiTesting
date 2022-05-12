@@ -23,6 +23,9 @@ Feature: PoS Master > Location
     Then I update value to the Baseuom page global Variables
     Then I fill new Baseuom data page using excel data
     Then I need to click on the "Save" button
+    Then I establish connection to Baseuom
+    Then I read the values from table "TBLUOMCONVMASTER" in Baseuom 
+    Then I close connection to Baseuom
     
       Examples: 
       | TestcaseRowName |
