@@ -62,14 +62,15 @@ import cucumber.api.java.en.Then;
 		@Then("I fill new StockAdjustmentType data page using excel data")
 		public void i_fill_new_Subcategory_data_page_using_excel_data() {
 			
-			if (GenericWrappers.isNotEmpty(Globals.Inventory.AdjtypeCode)) {
-				   terPage.terminal_waitClearEnterText_css(icp.AdjtypeCode_String, Globals.Inventory.AdjtypeCode);
-			
-             }
 			if (GenericWrappers.isNotEmpty(Globals.Inventory.AdjtypeName)) {
 				   terPage.terminal_waitClearEnterText_css(icp.AdjtypeName_String, Globals.Inventory.AdjtypeName);
 			
           }
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.AdjtypeCode)) {
+				   terPage.terminal_waitClearEnterText_css(icp.AdjtypeCode_String, Globals.Inventory.AdjtypeCode);
+			
+          }
+			
 			if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch)) {
 		        terPage.get_checkBox_element(icp.Batch_String).click();
 
