@@ -30,6 +30,6 @@ Feature: InventoryChange
     Then I close connection  DB for InventoryCostReset
      Examples: 
       | TestcaseRowName |
-      |InventoryCostReset1|
+      |InventoryCostReset2|
       
    

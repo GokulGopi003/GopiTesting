@@ -21,6 +21,6 @@ Feature: InventoryChange
     
      Examples: 
       | TestcaseRowName |
-      |RefillingScheduling1|
+      |RefillingScheduling4|
       
   

@@ -12,8 +12,8 @@ Feature: PoS Master > Location
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmFloor.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
-    Then i send to enter key
-    When Im waiting for 2 sec
+    #Then i send to enter key
+    #When Im waiting for 2 sec
     #Then I need to click on the  element "input#ContentPlaceHolder1_gvFloor_imgbtnEdit_0"
     #Then I need to click on the  element "input#ContentPlaceHolder1_gvFloor_imgbtnDelete_0"
     #Then I click on button tag with value "YES"

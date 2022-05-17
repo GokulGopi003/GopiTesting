@@ -22,7 +22,7 @@ Feature:
     
      Examples: 
       | TestcaseRowName |
-      |PackageInventory|
+      |PackageInventory2|
       
       
       

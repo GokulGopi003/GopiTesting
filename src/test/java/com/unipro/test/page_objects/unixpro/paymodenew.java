@@ -138,7 +138,7 @@ public class paymodenew extends PageObject {
 
 	@Then("I read the values from table {string} in PaymodeNew")
 	public void i_read_the_values_from_table_in_PaymodeNew(String tablename) throws SQLException, IOException {
-		ResultSet rs = st.executeQuery("select * from " + tablename + " where Position='29'");
+		ResultSet rs = st.executeQuery("select * from " + tablename + " where Paymode='GooglePay'");
 
 		System.out.println(rs);
 

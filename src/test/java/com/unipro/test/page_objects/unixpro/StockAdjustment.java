@@ -109,7 +109,7 @@ import org.testng.Assert;
 					webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtItemCode\"]")).sendKeys(Keys.RETURN);
 				}
 
-				if (GenericWrappers.isNotEmpty(Globals.Inventory.Batchno)) {
+				/*if (GenericWrappers.isNotEmpty(Globals.Inventory.Batchno)) {
 					try {
 						Actions actions = new Actions(webDriver);
 						GenericWrappers.sleepInSeconds(1);
@@ -123,22 +123,25 @@ import org.testng.Assert;
 								"//*[@id=\"ContentPlaceHolder1_lnkNewBatch" + Globals.Inventory.Batchno + "\"]"))
 								.click();
 					}
-				}
+				}*/
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.Qty)) {
-					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtQty"))
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtQty")).sendKeys(Keys.CONTROL, "a");
+					/*webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtQty"))
 					.sendKeys(Keys.SHIFT, Keys.LEFT);
 			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtQty"))
 					.sendKeys(Keys.SHIFT, Keys.LEFT);
 			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtQty"))
 					.sendKeys(Keys.SHIFT, Keys.LEFT);
 			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtQty"))
-			.sendKeys(Keys.SHIFT, Keys.LEFT);
+			.sendKeys(Keys.SHIFT, Keys.LEFT);*/
+					GenericWrappers.sleepInSeconds(1);
 			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtQty"))
 					.sendKeys(Keys.DELETE);
-					terPage.terminal_waitClearEnterText_css(icp.Qty_String, Globals.Inventory.Qty);
-					webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtQty\"]")).sendKeys(Keys.RETURN);
+			GenericWrappers.sleepInSeconds(1);
+					terPage.terminal_waitClearEnterText_Xpath(icp.Qty_String, Globals.Inventory.Qty);
+					webDriver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_txtQty']")).sendKeys(Keys.RETURN);
 				}
-				if (GenericWrappers.isNotEmpty(Globals.Inventory.BasicCost)) {
+				/*if (GenericWrappers.isNotEmpty(Globals.Inventory.BasicCost)) {
 					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCost"))
 					.sendKeys(Keys.SHIFT, Keys.LEFT);
 			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtCost"))
@@ -166,7 +169,7 @@ import org.testng.Assert;
 					terPage.terminal_waitClearEnterText_css(icp.MRP_String, Globals.Inventory.MRP);
 					webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtMRP\"]")).sendKeys(Keys.RETURN);
 				}
-				
+				*/
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.Price)) {
 					webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_ddlPrcCode_chzn\"]")).click();
 					GenericWrappers.sleepInSeconds(1);
@@ -186,7 +189,7 @@ import org.testng.Assert;
 					itemCodeValue.sendKeys(Keys.ENTER);
 
 				}
-				if (GenericWrappers.isNotEmpty(Globals.Inventory.NetSellingPrice)) {
+				/*if (GenericWrappers.isNotEmpty(Globals.Inventory.NetSellingPrice)) {
 					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSPrice"))
 					.sendKeys(Keys.SHIFT, Keys.LEFT);
 			webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtSPrice"))
@@ -199,17 +202,17 @@ import org.testng.Assert;
 					.sendKeys(Keys.DELETE);
 					terPage.terminal_waitClearEnterText_css(icp.NetSellingPrice_String, Globals.Inventory.NetSellingPrice);
 					webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtSPrice\"]")).sendKeys(Keys.RETURN);
-				}
-				pass.ExcelFourData("Creditinvoice", "Modules", "Actual", "Expected", "Status", 0, 0, 0, 1, 0, 2, 0, 3);
-				pass.Excelcreate("Creditinvoice", "Filters", "Pass", 1, 0, 1, 3);
+				}*/
+				pass.ExcelFourData("StockAdjustment", "Modules", "Actual", "Expected", "Status", 0, 0, 0, 1, 0, 2, 0, 3);
+				pass.Excelcreate("StockAdjustment", "StockAdjustment", "Pass", 1, 0, 1, 3);
 			   } 
 			  catch (Exception e) {
 	// screen shot
 				scr.Screenshots();
 				System.out.println("Screen shot taken");
 	// Xl sheet write
-				pass.ExcelFourData("Creditinvoice", "Filters", "Actual", "Expected", "Status", 0, 0, 0, 1, 0, 2, 0, 3);
-				pass.Excelcreate("Creditinvoice", "Filters", "FAIL", 1, 0, 1, 3);
+				pass.ExcelFourData("StockAdjustment", "StockAdjustment", "Actual", "Expected", "Status", 0, 0, 0, 1, 0, 2, 0, 3);
+				pass.Excelcreate("StockAdjustment", "StockAdjustment", "FAIL", 1, 0, 1, 3);
 
 			}
 		}
@@ -239,7 +242,7 @@ import org.testng.Assert;
 		@Given("I read the values from StockAdjustment table {string} in DB")
 		public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
 
-			ResultSet rs = st.executeQuery("select * from " + tablename + " where Vendorcode='V00750'");
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where Qty='2'");
 
 			System.out.println(rs);
 			// ResultSet rs = st.executeQuery("");
@@ -248,24 +251,24 @@ import org.testng.Assert;
 
 				switch (tablename) {
 
-				case "tblPaymentHeader":
+				case "tblStockAdjHeader":
 
-					String Sellingprice = "";
+					String Reason = "";
 					try {
-						Sellingprice = rs.getString("PaymentDate");
-						System.out.println(Sellingprice);
-						Assert.assertEquals(Globals.Inventory.Date.trim(), Sellingprice.trim());
-						pass.Excelcreate("Payments", "tblPaymentHeader", "", 3, 0, 3, 1);
-						pass.ExcelFourData("Payments", "VendorCode", Globals.Inventory.Date, Sellingprice, "Pass", 5, 0, 5, 1,
+						Reason = rs.getString("StockAdjTypeCode");
+						System.out.println(Reason);
+						Assert.assertEquals(Globals.Inventory.Reason.trim(), Reason.trim());
+						pass.Excelcreate("StockAdjustment", "tblStockAdjHeader", "", 3, 0, 3, 1);
+						pass.ExcelFourData("StockAdjustment", "StockAdjTypeCode", Globals.Inventory.Reason, Reason, "Pass", 5, 0, 5, 1,
 								5, 2, 5, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Payments", "tblPaymentHeader", "", 3, 0, 3, 1);
-						pass.ExcelFourData("Payments", "VendorCode", Globals.Inventory.Date, Sellingprice, "Fail", 5, 0, 5, 1,
+						pass.Excelcreate("StockAdjustment", "tblStockAdjHeader", "", 3, 0, 3, 1);
+						pass.ExcelFourData("StockAdjustment", "StockAdjTypeCode", Globals.Inventory.Reason, Reason, "Fail", 5, 0, 5, 1,
 								5, 2, 5, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblPaymentHeader column PaymentDate");
 					}
-					String ReturnDate = "";
+					/*String ReturnDate = "";
 					try {
 						ReturnDate = rs.getString("VoucherRef");
 						System.out.println(ReturnDate);
@@ -329,78 +332,78 @@ import org.testng.Assert;
 								2, 9, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblPaymentHeader column Paymode");
-					}
+					}*/
 
 					break;
 
-				case "tblPaymentDetail":
-					String Vendor = "";
+				case "tblStockAdjDetail":
+					String Qty = "";
 					try {
-						Vendor = rs.getString("Createdate");
-						System.out.println(Vendor);
-						Assert.assertEquals(Globals.Inventory.RefDate.trim(), Vendor.trim());
-						pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
-						pass.ExcelFourData("Payments", "Createdate", Globals.Inventory.RefDate, Vendor, "Pass", 11, 0, 11, 1, 11, 2,
+						Qty = rs.getString("Qty");
+						System.out.println(Qty);
+						Assert.assertEquals(Globals.Inventory.Qty.trim(), Qty.trim());
+						pass.Excelcreate("StockAdjustment", "tblPaymentDetail", "", 10, 0, 10, 1);
+						pass.ExcelFourData("StockAdjustment", "Qty", Globals.Inventory.Qty, Qty, "Pass", 11, 0, 11, 1, 11, 2,
 								11, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
-						pass.ExcelFourData("Payments", "Createdate", Globals.Inventory.RefDate, Vendor, "Fail", 11, 0, 11, 1, 11, 2,
+						pass.Excelcreate("StockAdjustment", "tblPaymentDetail", "", 10, 0, 10, 1);
+						pass.ExcelFourData("StockAdjustment", "Qty", Globals.Inventory.Qty, Qty, "Fail", 11, 0, 11, 1, 11, 2,
 								11, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentDetail column Createdate");
+						System.out.println("null error tblPaymentDetail column Qty");
 					}
 					String Promotiontodate = "";
 					try {
 						Promotiontodate = rs.getString("Referanceno");
 						System.out.println(Promotiontodate);
 						Assert.assertEquals(Globals.Inventory.Refno.trim(), Promotiontodate.trim());
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, Promotiontodate, "Pass", 12, 0, 12, 1,
+						pass.ExcelFourData("StockAdjustment", "Refno", Globals.Inventory.Refno, Promotiontodate, "Pass", 12, 0, 12, 1,
 								12, 2, 12, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, Promotiontodate, "Fail", 12, 0, 12, 1,
+						pass.ExcelFourData("StockAdjustment", "Refno", Globals.Inventory.Refno, Promotiontodate, "Fail", 12, 0, 12, 1,
 								12, 2, 12, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblPaymentDetail column Referanceno");
 					}
 					break;
-				case "tblRTGS":
-					String Promotionfromtime = "";
+				case "tblBatchInventoryControl":
+					/*String Qty = "";
 					try {
-						Promotionfromtime = rs.getString("Vendorname");
-						System.out.println(Promotionfromtime);
-						Assert.assertEquals(Globals.Inventory.Vendor.trim(), Promotionfromtime.trim());
-						pass.Excelcreate("Payments", "tblRTGS", "", 14, 0, 14, 1);
-						pass.ExcelFourData("Payments", "Vendor", Globals.Inventory.Vendor, Promotionfromtime, "Pass", 15, 0, 15, 1,
+						Qty = rs.getString("BalanceQty");
+						System.out.println(Qty);
+						Assert.assertEquals(Globals.Inventory.Qty.trim(), Qty.trim());
+						pass.Excelcreate("StockAdjustment", "tblBatchInventoryControl", "", 14, 0, 14, 1);
+						pass.ExcelFourData("StockAdjustment", "Qty", Globals.Inventory.Qty, Qty, "Pass", 15, 0, 15, 1,
 								15, 2, 15, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Payments", "tblRTGS", "", 14, 0, 14, 1);
-						pass.ExcelFourData("Payments", "Vendor", Globals.Inventory.Vendor, Promotionfromtime, "Fail", 15, 0, 15, 1,
+						pass.Excelcreate("StockAdjustment", "tblBatchInventoryControl", "", 14, 0, 14, 1);
+						pass.ExcelFourData("StockAdjustment", "Qty", Globals.Inventory.Qty, Qty, "Fail", 15, 0, 15, 1,
 								15, 2, 15, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblRTGS column Vendorname");
+						System.out.println("null error tblBatchInventoryControl column Qty");
 					}
-					String WQty = "";
+					String Batchno = "";
 					try {
-						WQty = rs.getString("Description");
-						System.out.println(WQty);
-						Assert.assertEquals(Globals.Inventory.Refno.trim(), WQty.trim());
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, WQty, "Pass", 16, 0, 16, 1, 16, 2, 16,
+						Batchno = rs.getString("BatchNo");
+						System.out.println(Batchno);
+						Assert.assertEquals(Globals.Inventory.Batchno.trim(), Batchno.trim());
+						pass.ExcelFourData("StockAdjustment", "Batchno", Globals.Inventory.Batchno, Batchno, "Pass", 16, 0, 16, 1, 16, 2, 16,
 								3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, WQty, "Fail", 16, 0, 16, 1, 16, 2, 16,
+						pass.ExcelFourData("StockAdjustment", "Batchno", Globals.Inventory.Batchno, Batchno, "Fail", 16, 0, 16, 1, 16, 2, 16,
 								3);
 					} catch (Exception e) {
-						System.out.println("null error tblRTGS column Refno");
+						System.out.println("null error tblBatchInventoryControl column Batchno");
 					}
-					String Amount = "";
+					String ItemCode = "";
 					try {
-						Amount = rs.getString("Amount");
-						System.out.println(Amount);
-						Assert.assertEquals(Globals.Inventory.Paymode1.trim(), Amount.trim());
-						pass.ExcelFourData("Payments", "Paymode", Globals.Inventory.Paymode1, Amount, "Pass", 16, 0, 16, 1, 16, 2, 16,
+						ItemCode = rs.getString("InventoryCode");
+						System.out.println(ItemCode);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode.trim());
+						pass.ExcelFourData("StockAdjustment", "InventoryCode", Globals.Inventory.ItemCode, ItemCode, "Pass", 16, 0, 16, 1, 16, 2, 16,
 								3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Paymode", Globals.Inventory.Paymode1, Amount, "Fail", 16, 0, 16, 1, 16, 2, 16,
+						pass.ExcelFourData("StockAdjustment", "InventoryCode", Globals.Inventory.ItemCode, ItemCode, "Fail", 16, 0, 16, 1, 16, 2, 16,
 								3);
 					} catch (Exception e) {
 						System.out.println("null error tblRTGS column Amount");
@@ -432,7 +435,7 @@ import org.testng.Assert;
 						System.out.println("null error tblRTGS column BankCode1");
 					}
 					break;
-				case "tblAPtransaction":
+				/*case "tblAPtransaction":
 					String Vendor1 = "";
 					try {
 						Vendor1 = rs.getString("VendorCode");
@@ -527,7 +530,7 @@ import org.testng.Assert;
 						System.out.println("null error tblAPtransaction column BalanceAmt");
 					}					
 					break;
-				case "tblDebitNote":
+				/*case "tblDebitNote":
 					String VendorCode = "";
 					try {
 						VendorCode = rs.getString("VendorCode");
@@ -634,7 +637,7 @@ import org.testng.Assert;
 					} catch (Exception e) {
 						System.out.println("null error tbldebitnote column Tax");
 					}
-					String Reason = "";
+					/*String Reason = "";
 					try {
 						Reason = rs.getString("Reason");
 						System.out.println(Reason);
@@ -651,13 +654,13 @@ import org.testng.Assert;
 
 				default:
 					break;
-				}
+				}*/
 
 			}
 		}
 
 
 }
-
+	}
 
 

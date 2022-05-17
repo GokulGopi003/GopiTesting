@@ -15,7 +15,7 @@ public class CommonPages extends PageObject {
 
 		WebElement button = waitForExpectedElement(
 				By.cssSelector("a#ContentPlaceHolder1_lnk" + buttonName + ".button-red"));
-
+		
 		button.click();
 
 	}

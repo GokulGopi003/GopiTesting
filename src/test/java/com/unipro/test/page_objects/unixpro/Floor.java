@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import com.gk.test.MssqlConnect;
 import com.unipro.ExcelWrite;
@@ -18,7 +23,7 @@ public class Floor {
 	Floorfield icp;
     ExcelWrite pass;
 	TerminalPage terPage;
-
+    
 	public  Floor(Floorfield icp) {
 		this.icp = icp;
 		terPage = new TerminalPage();
@@ -44,6 +49,7 @@ public class Floor {
 	public void i_update_value_to_the_Subcategory_page_global_Variables() {
 		Globals.Inventory.Floorcode = Globals.Inventory.FloorrowwiseData.get("Floorcode");
 		Globals.Inventory.Description = Globals.Inventory.FloorrowwiseData.get("Description");
+		Globals.Inventory.LocationCode = Globals.Inventory.FloorrowwiseData.get("LocationCode");
 		
 	
 		
@@ -52,16 +58,19 @@ public class Floor {
 	@Then("I fill new Floor data page using excel data")
 	public void i_fill_new_Subcategory_data_page_using_excel_data() {
 		
+		
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Description)) {
+			terPage.terminal_waitClearEnterText_css(icp.Description_String, Globals.Inventory.Description);
+		
+		}
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Floorcode)) {
 			terPage.terminal_waitClearEnterText_css(icp.Floorcode_string, Globals.Inventory.Floorcode);
 			
 
 		}
 		
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Description)) {
-			terPage.terminal_waitClearEnterText_css(icp.Description_String, Globals.Inventory.Description);
 		
-		}
+		
 		
 }
 	@Then("I close connection to Floor")

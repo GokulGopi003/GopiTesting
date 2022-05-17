@@ -90,19 +90,21 @@ public class Packageinventory extends PageObject {
 			if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemCode)) {
 				terpage.terminal_waitClearEnterText_css(icp.ItemCode_String, Globals.Inventory.ItemCode);
 				Inventorychange.clearAndTypeSlowly(Globals.Inventory.ItemCode, "input#txtSearch");
-				Inventorychange.return_td_invoke_element(Globals.Inventory.ItemCode).click();
-			}
-			if (GenericWrappers.isNotEmpty(Globals.Inventory.Batchrowno)) {
-				//terpage.terminal_waitClearEnterText_css(icp.Batchrowno_String);
-				Inventorychange.return_td_invoke_element(Globals.Inventory.Batchrowno).click();
-				
-
+				//Inventorychange.return_td_invoke_element(Globals.Inventory.ItemCode).click();
+				webDriver.findElement(By.xpath("//*[@id=\"table-Search\"]/tbody/tr/td[1]")).click();
 			}
 			if (GenericWrappers.isNotEmpty(Globals.Inventory.Qty)) {
 				terpage.terminal_waitClearEnterText_css(icp.Qty_String, Globals.Inventory.Qty);
 				
 
 			}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.Batchrowno)) {
+				//terpage.terminal_waitClearEnterText_css(icp.Batchrowno_String);
+				//Inventorychange.return_td_invoke_element(Globals.Inventory.Batchrowno).click();
+				webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_gvBatchDetails\"]")).click();
+
+			}
+
 
 			pass.ExcelFourData("InventoryParameter", "Modules", "Actual", "Expected", "Status", 0, 0, 0, 1, 0, 2, 0, 3);
 			pass.Excelcreate("InventoryParameter", "MASTERS", "PASS", 1, 0, 1, 3);

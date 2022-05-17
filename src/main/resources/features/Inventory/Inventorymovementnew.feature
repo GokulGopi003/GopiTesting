@@ -22,7 +22,7 @@ Feature: InventoryChange
     
      Examples: 
       | TestcaseRowName |
-      |Inventorymovement|
+      |Inventorymovement1|
       
       
    

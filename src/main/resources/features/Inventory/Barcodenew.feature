@@ -23,7 +23,7 @@ Feature: PoS Master > Location
     Then I load the rowise Barcode data for "<TestcaseRowName>" rowname
     Then I update value to the Barcode page global Variables
     Then I fill new Barcode data page using excel data
-    #Then I need to click on the blue "btnPrint" button
+    Then I need to click on the blue "btnPrint" button
     #Then I need to click on the blue "btnClear" button
     
       Examples: 

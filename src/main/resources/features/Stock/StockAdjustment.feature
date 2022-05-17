@@ -18,12 +18,13 @@ Feature: PoS Inventory > Add Inventory
     Then I fill new StockAdjustment data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkAdd"
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkSave"
-    #Then I establish connection  DB for StockAdjustment
-    #Then I read the values from StockAdjustment table "tblPaymentHeader" in DB
-    #Then I read the values from StockAdjustment table "tblPaymentDetail" in DB
-    #Then I close connection  DB for StockAdjustment
+    Then I establish connection  DB for StockAdjustment
+    Then I read the values from StockAdjustment table "tblStockAdjHeader" in DB
+    Then I read the values from StockAdjustment table "tblStockAdjDetail" in DB
+    Then I read the values from StockAdjustment table "tblBatchInventoryControl" in DB
+    Then I close connection  DB for StockAdjustment
     
     
      Examples: 
       | TestcaseRowName |
-      |StockAdjustment|
+      |StockAdjustment1|
