@@ -17,10 +17,11 @@ Feature: PoS Inventory > Add Inventory
     Then I update value to the TransferOut page global Variables
     Then I fill new TransferOut data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkTransfer"
-    #Then I establish connection  DB for TransferOut
-    #Then I read the values from TransferOut table "tblPaymentHeader" in DB
-    #Then I read the values from TransferOut table "tblPaymentDetail" in DB
-    #Then I close connection  DB for TransferOut
+    Then I establish connection  DB for TransferOut
+    Then I read the values from TransferOut table "tblBatchInventoryControl" in DB
+    Then I read the values from TransferOut table "tblTransferInventoryDetail" in DB
+    Then I read the values from TransferOut table "tblinventorystock" in DB
+    Then I close connection  DB for TransferOut
     
     
      Examples: 

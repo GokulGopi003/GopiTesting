@@ -19,6 +19,16 @@ public class CommonPages extends PageObject {
 		button.click();
 
 	}
+	public void clickonButton1(String Back) {
+
+		WebElement button = waitForExpectedElement(
+				By.cssSelector("a#ContentPlaceHolder1_lnk" + Back + ".button-blue"));
+		                                       
+
+		button.click();
+
+	}
+
 	public void sendkey(String buttonName) {
 
 		WebElement button = waitForExpectedElement(

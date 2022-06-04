@@ -56,7 +56,7 @@ import cucumber.api.java.en.Then;
 			Globals.Inventory.Dicountcode = Globals.Inventory.AddDedrowwiseData.get("Dicountcode");
 			Globals.Inventory.Description = Globals.Inventory.AddDedrowwiseData.get("Description");
 			Globals.Inventory.Type = Globals.Inventory.AddDedrowwiseData.get("Type");
-			Globals.Inventory.Batch = Globals.Inventory.AddDedrowwiseData.get("Batch");
+			Globals.Inventory.Batch = Globals.Inventory.AddDedrowwiseData.get("Active");
 			Globals.Inventory.Batch1 = Globals.Inventory.AddDedrowwiseData.get("Batch1");
 			Globals.Inventory.GST = Globals.Inventory.AddDedrowwiseData.get("GST");
 			
@@ -194,6 +194,20 @@ import cucumber.api.java.en.Then;
 						
 						pass.ExcelFourData("addded", "GST", Globals.Inventory.GST, GST, "Fail", 4, 0,
 								4, 1, 4, 2, 4, 3);
+
+					}
+					String Batch = "";
+					try {
+						Batch = rs.getString("Active");
+						System.out.println(Batch);
+						Assert.assertEquals(Globals.Inventory.Batch.trim(), Batch.trim());
+						
+						pass.ExcelFourData("addded", "Active", Globals.Inventory.Batch, Batch, "Pass",5, 0,
+								5, 1, 5, 2, 5, 3);
+					} catch (AssertionError e) {
+						
+						pass.ExcelFourData("addded", "Active", Globals.Inventory.Batch, Batch, "Fail", 5, 0,
+								5, 1, 5, 2, 5, 3);
 
 					}
 				

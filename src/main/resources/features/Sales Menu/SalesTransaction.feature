@@ -17,12 +17,14 @@ Feature: PoS Inventory > Add Inventory
     Then I update value to the SalesTransaction page global Variables
     Then I fill new SalesTransaction data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkLoadData"
-    #Then I establish connection  DB for CustomerReceipts
-    #Then I read the values from CustomerReceipts table "tblPaymentHeader" in DB
-    #Then I read the values from CustomerReceipts table "tblPaymentDetail" in DB
-    #Then I close connection  DB for CustomerReceipts
+    Then I establish connection  DB for SalesTransaction
+    Then I read the values from SalesTransaction table "vwPaymodeDetail" in DB
+    Then I read the values from SalesTransaction table "vwSalesheader" in DB
+    #Then I read the values from SalesTransaction table "tbl_pos_sales_order_header" in DB
+    #Then I read the values from SalesTransaction table "tblSODetailERP" in DB
+    Then I close connection  DB for SalesTransaction
     
     
      Examples: 
       | TestcaseRowName |
-      |SalesTransaction|
+      |SalesTransaction1|

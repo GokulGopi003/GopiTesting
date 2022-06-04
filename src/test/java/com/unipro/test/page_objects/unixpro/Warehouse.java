@@ -4,17 +4,22 @@ package com.unipro.test.page_objects.unixpro;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import com.gk.test.MssqlConnect;
 import com.unipro.ExcelWrite;
 import com.unipro.test.framework.Globals;
-	import com.unipro.test.framework.helpers.utils.GenericWrappers;
+import com.unipro.test.framework.PageObject;
+import com.unipro.test.framework.helpers.utils.GenericWrappers;
 	import com.unipro.test.framework.helpers.utils.ReadTestData;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
-	public class Warehouse {
+	public class Warehouse extends PageObject{
 		AddInventoryFormPage Category;
 		Warehousefield icp;
         ExcelWrite pass;
@@ -52,6 +57,8 @@ import cucumber.api.java.en.Then;
 			Globals.Inventory.Phone = Globals.Inventory.WarehouserowwiseData.get("Phone");
 			Globals.Inventory.Fax = Globals.Inventory.WarehouserowwiseData.get("Fax");
 			Globals.Inventory.Netcost = Globals.Inventory.WarehouserowwiseData.get("Netcost");
+			Globals.Inventory.Type = Globals.Inventory.WarehouserowwiseData.get("Type");
+			Globals.Inventory.NetcostPer = Globals.Inventory.WarehouserowwiseData.get("NetcostPer");
 
 			
 		}
@@ -93,9 +100,47 @@ import cucumber.api.java.en.Then;
 				terPage.terminal_waitClearEnterText_css(icp.Fax_String, Globals.Inventory.Fax);
 			
 			}
-			if (GenericWrappers.isNotEmpty(Globals.Inventory.Netcost)) {
-				terPage.terminal_waitClearEnterText_css(icp.Netcost_String, Globals.Inventory.Netcost);
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.NetcostPer)) {
+				terPage.terminal_waitClearEnterText_css(icp.Netcost_String, Globals.Inventory.NetcostPer);
 			
+			}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.Netcost)) {
+				GenericWrappers.sleepInSeconds(1);
+				webDriver.findElement(By.cssSelector("div#ContentPlaceHolder1_ddlNetCost_chzn")).click();
+				GenericWrappers.sleepInSeconds(1);
+
+				WebElement LocationValue = webDriver
+						.findElement(By.cssSelector("#ContentPlaceHolder1_ddlNetCost_chzn div > div > input[type=text]"));
+				String css_location_dropDownValue = "#ContentPlaceHolder1_ddlNetCost_chzn div > div > input[type=text]";
+				By ddlocator = By.cssSelector(css_location_dropDownValue);
+				waitForExpectedElement(ddlocator);
+				js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.Netcost);
+				GenericWrappers.sleepInSeconds(1);
+				LocationValue.sendKeys(Keys.SPACE);
+				LocationValue.sendKeys(Keys.SPACE);
+				LocationValue.sendKeys(Keys.ARROW_DOWN);
+				GenericWrappers.sleepInSeconds(1);
+				LocationValue.sendKeys(Keys.ENTER);
+
+			}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.Type)) {
+				GenericWrappers.sleepInSeconds(1);
+				webDriver.findElement(By.cssSelector("div#ContentPlaceHolder1_ddlType_chzn")).click();
+				GenericWrappers.sleepInSeconds(1);
+
+				WebElement LocationValue = webDriver
+						.findElement(By.cssSelector("#ContentPlaceHolder1_ddlType_chzn div > div > input[type=text]"));
+				String css_location_dropDownValue = "#ContentPlaceHolder1_ddlType_chzn div > div > input[type=text]";
+				By ddlocator = By.cssSelector(css_location_dropDownValue);
+				waitForExpectedElement(ddlocator);
+				js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.Type);
+				GenericWrappers.sleepInSeconds(1);
+				LocationValue.sendKeys(Keys.SPACE);
+				LocationValue.sendKeys(Keys.SPACE);
+				LocationValue.sendKeys(Keys.ARROW_DOWN);
+				GenericWrappers.sleepInSeconds(1);
+				LocationValue.sendKeys(Keys.ENTER);
+
 			}
 			
 	}
@@ -234,18 +279,46 @@ import cucumber.api.java.en.Then;
 
 					}
 					
+					String NetcostPer = "";
+					try {
+						NetcostPer = rs.getString("TransferPerc");
+						System.out.println(NetcostPer);
+						Assert.assertEquals(Globals.Inventory.NetcostPer.trim(), NetcostPer.trim());
+
+						pass.ExcelFourData("warehouse", "NetcostPer", Globals.Inventory.NetcostPer, NetcostPer, "Pass", 9,
+								0, 9, 1, 9, 2, 9, 3);
+
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("warehouse", "NetcostPer", Globals.Inventory.NetcostPer, NetcostPer,"Fail",9,0,9, 1, 9, 2, 9, 3);
+
+					}
 					String Netcost = "";
 					try {
 						Netcost = rs.getString("CostMode");
 						System.out.println(Netcost);
 						Assert.assertEquals(Globals.Inventory.Netcost.trim(), Netcost.trim());
 
-						pass.ExcelFourData("warehouse", "Netcost", Globals.Inventory.Netcost, Netcost, "Pass", 2,
-								0, 2, 1, 2, 2, 2, 3);
+						pass.ExcelFourData("warehouse", "Netcost", Globals.Inventory.Netcost, Netcost, "Pass", 10,
+								0, 10, 1, 10, 2, 10, 3);
 
 					} catch (AssertionError e) {
 
-						pass.ExcelFourData("warehouse", "Netcost", Globals.Inventory.Netcost, Netcost,"Fail",2,0,2, 1, 2, 2, 2, 3);
+						pass.ExcelFourData("warehouse", "Netcost", Globals.Inventory.Netcost, Netcost,"Fail",10,0,10, 1, 10, 2, 10, 3);
+
+					}
+					String Type = "";
+					try {
+						Type = rs.getString("Type");
+						System.out.println(Type);
+						Assert.assertEquals(Globals.Inventory.Type.trim(), Type.trim());
+
+						pass.ExcelFourData("warehouse", "Type", Globals.Inventory.Type, Type, "Pass", 11,
+								0, 11, 1, 11, 2, 11, 3);
+
+					} catch (AssertionError e) {
+
+						pass.ExcelFourData("warehouse", "Type", Globals.Inventory.Type, Type,"Fail",11,0,11, 1, 11, 2, 11, 3);
 
 					}
 }break;

@@ -26,5 +26,5 @@ Feature: master > Purchase >  terms
 
     Examples: 
       |TestcaseRowName |
-      |TermsNew|
+      |TermsNew1|
       

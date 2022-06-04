@@ -16,10 +16,12 @@ Feature: PoS Inventory > Add Inventory
     Then I update value to the SalesOrder page global Variables
     Then I fill new SalesOrder data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkSave"
-    #Then I establish connection  DB for SalesOrder
-    #Then I read the values from SalesOrder table "tblPaymentHeader" in DB
-    #Then I read the values from SalesOrder table "tblPaymentDetail" in DB
-    #Then I close connection  DB for SalesOrder
+    Then I establish connection  DB for SalesOrder
+    Then I read the values from SalesOrder table "tblSODetail" in DB
+    Then I read the values from SalesOrder table "tblSOHeaderERP" in DB
+    Then I read the values from SalesOrder table "tbl_pos_sales_order_header" in DB
+    Then I read the values from SalesOrder table "tblSODetailERP" in DB
+    Then I close connection  DB for SalesOrder
     
     
      Examples: 

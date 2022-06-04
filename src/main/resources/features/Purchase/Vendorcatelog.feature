@@ -22,13 +22,16 @@ Feature: PoS Inventory > Add Inventory
     Then I need to click on the  element "a#ContentPlaceHolder1_searchFilterUserControl_lnkFilter"
     Then I enter the value forElement "input#ContentPlaceHolder1_gvVendorCat_txtMrp_0" as "200"
     Then I enter the value forElement "input#ContentPlaceHolder1_gvVendorCat_txtBasicCostNew_0" as "150"
-    Then I enter the value forElement "input#ContentPlaceHolder1_gvVendorCat_txtDiscountBasicPerNew_0" as "0"
-    Then I enter the value forElement "input#ContentPlaceHolder1_gvVendorCat_txtDiscountBasicPer2_0" as "0"
-    Then I enter the value forElement "input#ContentPlaceHolder1_gvVendorCat_txtDiscountBasicPer3_0" as "0"
+    Then I enter the value forElement "input#ContentPlaceHolder1_gvVendorCat_txtDiscountBasicPerNew_0" as "1"
+    Then I enter the value forElement "input#ContentPlaceHolder1_gvVendorCat_txtDiscountBasicPer2_0" as "1"
+    Then I enter the value forElement "input#ContentPlaceHolder1_gvVendorCat_txtDiscountBasicPer3_0" as "1"
     #Then I need to click on the  element "input#ContentPlaceHolder1_gvVendorCat_chkSingle_0"
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkUpdate"
     Then I need to click on the  element "a#ContentPlaceHolder1_LinkButton3"
-    
+    Then I establish connection  DB for Vendorcatelog
+    Then I read the values from Vendorcatelog table "tblvendorcatlog" in DB
+    Then I read the values from Vendorcatelog table "tblInventoryPricing" in DB
+    Then I close connection  DB for Vendorcatelog
   
     
     

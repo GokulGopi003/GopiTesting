@@ -11,7 +11,7 @@ Feature: Transfers > Stock_Request_From_Outlet
 
   @managementSt
   Scenario: checking for Stock Request From Outlet
-    Given I want to launch the "http://uniproonlineorder.ddns.net/Ent_SalesTeam_Demo/Transfer/frmRequestedStockView.aspx"
+    Given I want to launch the "Transfer/frmRequestedStockView.aspx"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtLocation" as "Alll"
     When Im waiting for 3 sec
     Then I need to press the BackSpace key forElement "input#txtSearch"

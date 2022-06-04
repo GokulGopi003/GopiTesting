@@ -130,7 +130,7 @@ package com.unipro.test.page_objects.unixpro;
 			@Given("I read the values from Billcancel table {string} in DB")
 			public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
 
-				ResultSet rs = st.executeQuery("select * from " + tablename + " where Vendorcode='V00750'");
+				ResultSet rs = st.executeQuery("select * from " + tablename + " where InvoiceNo='2001B3R0000595'");
 
 				System.out.println(rs);
 				// ResultSet rs = st.executeQuery("");
@@ -139,37 +139,37 @@ package com.unipro.test.page_objects.unixpro;
 
 					switch (tablename) {
 
-					case "tblPaymentHeader":
+					/*case "tblSalesReturnDetail":
 
-						String Sellingprice = "";
+						String Billno = "";
 						try {
-							Sellingprice = rs.getString("PaymentDate");
-							System.out.println(Sellingprice);
-							Assert.assertEquals(Globals.Inventory.Date.trim(), Sellingprice.trim());
-							pass.Excelcreate("Payments", "tblPaymentHeader", "", 3, 0, 3, 1);
-							pass.ExcelFourData("Payments", "VendorCode", Globals.Inventory.Date, Sellingprice, "Pass", 5, 0, 5, 1,
+							Billno = rs.getString("ReturnNo");
+							System.out.println(Billno);
+							Assert.assertEquals(Globals.Inventory.Billno.trim(), Billno.trim());
+							pass.Excelcreate("Billcancel", "tblSalesReturnDetail", "", 3, 0, 3, 1);
+							pass.ExcelFourData("Billcancel", "Billno", Globals.Inventory.Billno, Billno, "Pass", 5, 0, 5, 1,
 									5, 2, 5, 3);
 						} catch (AssertionError e) {
-							pass.Excelcreate("Payments", "tblPaymentHeader", "", 3, 0, 3, 1);
-							pass.ExcelFourData("Payments", "VendorCode", Globals.Inventory.Date, Sellingprice, "Fail", 5, 0, 5, 1,
+							pass.Excelcreate("Billcancel", "tblSalesReturnDetail", "", 3, 0, 3, 1);
+							pass.ExcelFourData("Billcancel", "Billno", Globals.Inventory.Billno, Billno, "Fail", 5, 0, 5, 1,
 									5, 2, 5, 3);
 						} catch (Exception e) {
 							System.out.println("null error tblPaymentHeader column PaymentDate");
 						}
-						String ReturnDate = "";
+						String LocationCode = "";
 						try {
-							ReturnDate = rs.getString("VoucherRef");
-							System.out.println(ReturnDate);
-							Assert.assertEquals(Globals.Inventory.Refno.trim(), ReturnDate.trim());
-							pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, ReturnDate, "Pass", 6, 0, 6, 1, 6, 2, 6,
+							LocationCode = rs.getString("InventoryCode");
+							System.out.println(LocationCode);
+							Assert.assertEquals(Globals.Inventory.LocationCode.trim(), LocationCode.trim());
+							pass.ExcelFourData("Billcancel", "LocationCode", Globals.Inventory.LocationCode, LocationCode, "Pass", 6, 0, 6, 1, 6, 2, 6,
 									3);
 						} catch (AssertionError e) {
-							pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, ReturnDate, "Fail", 6, 0, 6, 1, 6, 2, 6,
+							pass.ExcelFourData("Billcancel", "LocationCode", Globals.Inventory.LocationCode, LocationCode, "Fail", 6, 0, 6, 1, 6, 2, 6,
 									3);
 						} catch (Exception e) {
 							System.out.println("null error tblPaymentHeader column VoucherRef");
 						}
-						String ReturnDate1 = "";
+						/*String ReturnDate1 = "";
 						try {
 							ReturnDate1 = rs.getString("ReferanceDate");
 							System.out.println(ReturnDate1);
@@ -222,39 +222,39 @@ package com.unipro.test.page_objects.unixpro;
 							System.out.println("null error tblPaymentHeader column Paymode");
 						}
 
-						break;
+						break;*/
 
-					case "tblPaymentDetail":
-						String Vendor = "";
+					case "tblSalesReturnheader":
+						String Billno1 = "";
 						try {
-							Vendor = rs.getString("Createdate");
-							System.out.println(Vendor);
-							Assert.assertEquals(Globals.Inventory.RefDate.trim(), Vendor.trim());
-							pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
-							pass.ExcelFourData("Payments", "Createdate", Globals.Inventory.RefDate, Vendor, "Pass", 11, 0, 11, 1, 11, 2,
+							Billno1 = rs.getString("InvoiceNo");
+							System.out.println(Billno1);
+							Assert.assertEquals(Globals.Inventory.Billno.trim(), Billno1.trim());
+							pass.Excelcreate("Billcancel", "tblSalesReturnheader", "", 10, 0, 10, 1);
+							pass.ExcelFourData("Billcancel", "InvoiceNo", Globals.Inventory.Billno, Billno1, "Pass", 11, 0, 11, 1, 11, 2,
 									11, 3);
 						} catch (AssertionError e) {
-							pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
-							pass.ExcelFourData("Payments", "Createdate", Globals.Inventory.RefDate, Vendor, "Fail", 11, 0, 11, 1, 11, 2,
+							pass.Excelcreate("Billcancel", "tblSalesReturnheader", "", 10, 0, 10, 1);
+							pass.ExcelFourData("Billcancel", "InvoiceNo", Globals.Inventory.Billno, Billno1, "Fail", 11, 0, 11, 1, 11, 2,
 									11, 3);
 						} catch (Exception e) {
 							System.out.println("null error tblPaymentDetail column Createdate");
 						}
-						String Promotiontodate = "";
+						String LocationCode1 = "";
 						try {
-							Promotiontodate = rs.getString("Referanceno");
-							System.out.println(Promotiontodate);
-							Assert.assertEquals(Globals.Inventory.Refno.trim(), Promotiontodate.trim());
-							pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, Promotiontodate, "Pass", 12, 0, 12, 1,
+							LocationCode1 = rs.getString("LocationCode");
+							System.out.println(LocationCode1);
+							Assert.assertEquals(Globals.Inventory.LocationCode.trim(), LocationCode1.trim());
+							pass.ExcelFourData("Billcancel", "LocationCode", Globals.Inventory.LocationCode, LocationCode1, "Pass", 12, 0, 12, 1,
 									12, 2, 12, 3);
 						} catch (AssertionError e) {
-							pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, Promotiontodate, "Fail", 12, 0, 12, 1,
+							pass.ExcelFourData("Billcancel", "LocationCode", Globals.Inventory.LocationCode, LocationCode1, "Fail", 12, 0, 12, 1,
 									12, 2, 12, 3);
 						} catch (Exception e) {
 							System.out.println("null error tblPaymentDetail column Referanceno");
 						}
 						break;
-					case "tblRTGS":
+					/*case "tblRTGS":
 						String Promotionfromtime = "";
 						try {
 							Promotionfromtime = rs.getString("Vendorname");
@@ -537,8 +537,8 @@ package com.unipro.test.page_objects.unixpro;
 									2, 13, 3);
 						} catch (Exception e) {
 							System.out.println("null error tbldebitnote column Reason");
-						}
-						break;
+						}*/
+						
 
 					default:
 						break;

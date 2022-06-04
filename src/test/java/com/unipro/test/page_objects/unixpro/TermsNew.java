@@ -103,7 +103,7 @@ public class TermsNew extends PageObject {
 	@Given("I read the values from table {string} in TermsNew")
 	public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
 
-		ResultSet rs = st.executeQuery("select * from " + tablename + " where Description='10'");
+		ResultSet rs = st.executeQuery("select * from " + tablename + " where Description='ABC'");
 
 		System.out.println(rs);
 

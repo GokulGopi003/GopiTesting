@@ -8,8 +8,8 @@ Background:
 	When I enter the password 
 	Then I clik on the login button 
 	Then I verify the page Title 
-	
-@master 
+	@master
+ 
 Scenario Outline: checking for Company master 
 	Given I want to launch the "Masters/frmCompanyMaster.aspx" 
 	Then I load the testdata form excel to table
@@ -25,5 +25,5 @@ Scenario Outline: checking for Company master
 
     Examples: 
       |TestcaseRowName|
-      |CompanyMaster|
+      |CompanyMaster1|
      

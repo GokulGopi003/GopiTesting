@@ -31,8 +31,8 @@ Feature: PoS Master > Location
     Then I update value to the Category page global Variables
     Then I fill new Category data page using excel data
     #Then I check the purchased by radio button for "<TestcaseRowName>"
-    #Then I need to invoke the DropDown by Index 0 if text matching "-- Select --"
-    #Then I need to select the dropdown "Gopi" value forLabel "Dept" using Javascript
+    Then I need to invoke the DropDown by Index 0 if text matching "-- Select --"
+    Then I need to select the dropdown "Gopi" value forLabel "Dept" using Javascript
     Then I need to click on the "Save" button
     Then I establish connection to Category
     Then I read the values from table "tblCategory" in Category
@@ -40,4 +40,4 @@ Feature: PoS Master > Location
  
   Examples: 
       | TestcaseRowName |
-      | Category      |
+      | Category1      |

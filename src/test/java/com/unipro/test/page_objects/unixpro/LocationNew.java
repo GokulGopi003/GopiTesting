@@ -172,7 +172,7 @@
 
 		@Then("I read the values from table {string} in LocationNew")
 		public void i_read_the_values_from_table_in_LocationNew(String tablename) throws SQLException, IOException {
-			ResultSet rs = st.executeQuery("select * from " + tablename + " where LocationCode='15'");
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where LocationCode='20'");
 
 			System.out.println(rs);
 

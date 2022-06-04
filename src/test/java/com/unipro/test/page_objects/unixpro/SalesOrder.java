@@ -115,7 +115,7 @@ import org.openqa.selenium.Keys;
 				}
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.Discount)) {
 					terPage.terminal_waitClearEnterText_css(icp.Discount_String, Globals.Inventory.Discount);
-					webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtDiscount\"]")).sendKeys(Keys.RETURN);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscount23")).sendKeys(Keys.RETURN);
 				}
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscountPer)) {
 					terPage.terminal_waitClearEnterText_css(icp.DiscountPer_String, Globals.Inventory.DiscountPer);
@@ -127,7 +127,8 @@ import org.openqa.selenium.Keys;
 				}
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.Price)) {
 					terPage.terminal_waitClearEnterText_css(icp.Price_String, Globals.Inventory.Price);
-					webDriver.findElement(By.xpath("//*[@id=\"Price_000001\"]")).sendKeys(Keys.RETURN);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_grdItemDetail_txtSellingPrice_0")).sendKeys(Keys.RETURN);
+					//webDriver.findElement(By.xpath("//*[@id=\"Price_000001\"]")).sendKeys(Keys.RETURN);
 				}
 				pass.ExcelFourData("SalesOrder", "Modules", "Actual", "Expected", "Status", 0, 0, 0, 1, 0, 2, 0, 3);
 				pass.Excelcreate("SalesOrder", "Filters", "Pass", 1, 0, 1, 3);
@@ -168,7 +169,7 @@ import org.openqa.selenium.Keys;
 		@Given("I read the values from SalesOrder table {string} in DB")
 		public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
 
-			ResultSet rs = st.executeQuery("select * from " + tablename + " where Vendorcode='V00750'");
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where InventoryCode='000001'");
 
 			System.out.println(rs);
 			// ResultSet rs = st.executeQuery("");
@@ -177,286 +178,288 @@ import org.openqa.selenium.Keys;
 
 				switch (tablename) {
 
-				case "tblPaymentHeader":
+				case "tblSODetail":
 
-					String Sellingprice = "";
+					String Invoiceno = "";
 					try {
-						Sellingprice = rs.getString("PaymentDate");
-						System.out.println(Sellingprice);
-						Assert.assertEquals(Globals.Inventory.Date.trim(), Sellingprice.trim());
-						pass.Excelcreate("Payments", "tblPaymentHeader", "", 3, 0, 3, 1);
-						pass.ExcelFourData("Payments", "VendorCode", Globals.Inventory.Date, Sellingprice, "Pass", 5, 0, 5, 1,
+						Invoiceno = rs.getString("SONo");
+						System.out.println(Invoiceno);
+						Assert.assertEquals(Globals.Inventory.Invoiceno.trim(), Invoiceno.trim());
+						pass.Excelcreate("SalesOrder", "tblSODetail", "", 3, 0, 3, 1);
+						pass.ExcelFourData("SalesOrder", "SONo", Globals.Inventory.Invoiceno, Invoiceno, "Pass", 5, 0, 5, 1,
 								5, 2, 5, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Payments", "tblPaymentHeader", "", 3, 0, 3, 1);
-						pass.ExcelFourData("Payments", "VendorCode", Globals.Inventory.Date, Sellingprice, "Fail", 5, 0, 5, 1,
+						pass.Excelcreate("SalesOrder", "tblSODetail", "", 3, 0, 3, 1);
+						pass.ExcelFourData("SalesOrder", "SONo", Globals.Inventory.Invoiceno, Invoiceno, "Fail", 5, 0, 5, 1,
 								5, 2, 5, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentHeader column PaymentDate");
+						System.out.println("null error tblSODetail column SONo");
 					}
-					String ReturnDate = "";
+					String ItemCode = "";
 					try {
-						ReturnDate = rs.getString("VoucherRef");
-						System.out.println(ReturnDate);
-						Assert.assertEquals(Globals.Inventory.Refno.trim(), ReturnDate.trim());
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, ReturnDate, "Pass", 6, 0, 6, 1, 6, 2, 6,
+						ItemCode = rs.getString("InventoryCode");
+						System.out.println(ItemCode);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode.trim());
+						pass.ExcelFourData("SalesOrder", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Pass", 6, 0, 6, 1, 6, 2, 6,
 								3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, ReturnDate, "Fail", 6, 0, 6, 1, 6, 2, 6,
+						pass.ExcelFourData("SalesOrder", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Fail", 6, 0, 6, 1, 6, 2, 6,
 								3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentHeader column VoucherRef");
+						System.out.println("null error tblSODetail column ItemCode");
 					}
-					String ReturnDate1 = "";
+					String Qty = "";
 					try {
-						ReturnDate1 = rs.getString("ReferanceDate");
-						System.out.println(ReturnDate1);
-						Assert.assertEquals(Globals.Inventory.RefDate.trim(), ReturnDate1.trim());
-						pass.ExcelFourData("Payments", "ReferanceDate", Globals.Inventory.RefDate, ReturnDate1, "Pass", 7, 0, 7, 1, 7, 2,
+						Qty = rs.getString("Qty");
+						System.out.println(Qty);
+						Assert.assertEquals(Globals.Inventory.Qty.trim(), Qty.trim());
+						pass.ExcelFourData("SalesOrder", "Qty", Globals.Inventory.Qty, Qty, "Pass", 7, 0, 7, 1, 7, 2,
 								7, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "ReferanceDate", Globals.Inventory.RefDate, ReturnDate1, "Fail", 7, 0, 7, 1, 7, 2,
+						pass.ExcelFourData("SalesOrder", "Qty", Globals.Inventory.Qty, Qty, "Fail", 7, 0, 7, 1, 7, 2,
 								7, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentHeader column RefDate");
+						System.out.println("null error tblSODetail column Qty");
 					}
-					String Basiccost = "";
+					String Price = "";
 					try {
-						Basiccost = rs.getString("Vendorname");
-						System.out.println(Basiccost);
-						Assert.assertEquals(Globals.Inventory.Vendor.trim(), Basiccost.trim());
-						pass.ExcelFourData("Payments", "Vendor", Globals.Inventory.Vendor, Basiccost, "Pass", 8, 0, 8, 1, 8,
+						Price = rs.getString("Price");
+						System.out.println(Price);
+						Assert.assertEquals(Globals.Inventory.Price.trim(), Price.trim());
+						pass.ExcelFourData("SalesOrder", "Price", Globals.Inventory.Price, Price, "Pass", 8, 0, 8, 1, 8,
 								2, 8, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Vendor", Globals.Inventory.Vendor, Basiccost, "Fail", 8, 0, 8, 1, 8,
+						pass.ExcelFourData("SalesOrder", "Price", Globals.Inventory.Price, Price, "Fail", 8, 0, 8, 1, 8,
 								2, 8, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentHeader column Vendor");
+						System.out.println("null error tblSODetail column Price");
 					}
-					String Paidamount = "";
+					String DiscountPer = "";
 					try {
-						Paidamount = rs.getString("Paidamount");
-						System.out.println(Paidamount);
-						Assert.assertEquals(Globals.Inventory.TotalAmount.trim(), Paidamount.trim());
-						pass.ExcelFourData("Payments", "TotalAmount", Globals.Inventory.TotalAmount, Paidamount, "Pass", 9, 0, 9, 1, 9,
+						DiscountPer = rs.getString("Discount");
+						System.out.println(DiscountPer);
+						Assert.assertEquals(Globals.Inventory.DiscountPer.trim(), DiscountPer.trim());
+						pass.ExcelFourData("SalesOrder", "Discount", Globals.Inventory.DiscountPer, DiscountPer, "Pass", 9, 0, 9, 1, 9,
 								2, 9, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "TotalAmount", Globals.Inventory.TotalAmount, Paidamount, "Fail", 9, 0, 9, 1, 9,
+						pass.ExcelFourData("SalesOrder", "Discount", Globals.Inventory.DiscountPer, DiscountPer, "Fail", 9, 0, 9, 1, 9,
 								2, 9, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentHeader column TotalAmount");
+						System.out.println("null error tblSODetail column Discount");
 					}
-					String Paymenttype = "";
+					String Discount = "";
 					try {
-						Paymenttype = rs.getString("Paidamount");
-						System.out.println(Paymenttype);
-						Assert.assertEquals(Globals.Inventory.Paymode1.trim(), Paymenttype.trim());
-						pass.ExcelFourData("Payments", "Paymode", Globals.Inventory.Paymode1, Paymenttype, "Pass", 9, 0, 9, 1, 9,
+						Discount = rs.getString("NetDiscount");
+						System.out.println(Discount);
+						Assert.assertEquals(Globals.Inventory.Discount.trim(), Discount.trim());
+						pass.ExcelFourData("SalesOrder", "NetDiscount", Globals.Inventory.Discount, Discount, "Pass", 9, 0, 9, 1, 9,
 								2, 9, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Paymode", Globals.Inventory.Paymode1, Paymenttype, "Fail", 9, 0, 9, 1, 9,
+						pass.ExcelFourData("SalesOrder", "NetDiscount", Globals.Inventory.Discount, Discount, "Fail", 9, 0, 9, 1, 9,
 								2, 9, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentHeader column Paymode");
+						System.out.println("null error tblSODetail column NetDiscount");
 					}
 
 					break;
 
-				case "tblPaymentDetail":
-					String Vendor = "";
+				case "tblSOHeaderERP":
+					String Invoiceno1 = "";
 					try {
-						Vendor = rs.getString("Createdate");
-						System.out.println(Vendor);
-						Assert.assertEquals(Globals.Inventory.RefDate.trim(), Vendor.trim());
-						pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
-						pass.ExcelFourData("Payments", "Createdate", Globals.Inventory.RefDate, Vendor, "Pass", 11, 0, 11, 1, 11, 2,
+						Invoiceno1 = rs.getString("SOH_SO_NO");
+						System.out.println(Invoiceno1);
+						Assert.assertEquals(Globals.Inventory.Invoiceno.trim(), Invoiceno1.trim());
+						pass.Excelcreate("SalesOrder", "tblSOHeaderERP", "", 10, 0, 10, 1);
+						pass.ExcelFourData("SalesOrder", "Invoiceno1", Globals.Inventory.Invoiceno, Invoiceno1, "Pass", 11, 0, 11, 1, 11, 2,
 								11, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
-						pass.ExcelFourData("Payments", "Createdate", Globals.Inventory.RefDate, Vendor, "Fail", 11, 0, 11, 1, 11, 2,
+						pass.Excelcreate("SalesOrder", "tblSOHeaderERP", "", 10, 0, 10, 1);
+						pass.ExcelFourData("SalesOrder", "Invoiceno1", Globals.Inventory.Invoiceno, Invoiceno1, "Fail", 11, 0, 11, 1, 11, 2,
 								11, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentDetail column Createdate");
+						System.out.println("null error tblSOHeaderERP column SOH_SO_NO");
 					}
-					String Promotiontodate = "";
+					String TenderAmount = "";
 					try {
-						Promotiontodate = rs.getString("Referanceno");
-						System.out.println(Promotiontodate);
-						Assert.assertEquals(Globals.Inventory.Refno.trim(), Promotiontodate.trim());
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, Promotiontodate, "Pass", 12, 0, 12, 1,
+						TenderAmount = rs.getString("SOH_TENDER_AMOUNT");
+						System.out.println(TenderAmount);
+						Assert.assertEquals(Globals.Inventory.Price.trim(), TenderAmount.trim());
+						pass.ExcelFourData("SalesOrder", "TenderAmount", Globals.Inventory.Price, TenderAmount, "Pass", 12, 0, 12, 1,
 								12, 2, 12, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, Promotiontodate, "Fail", 12, 0, 12, 1,
+						pass.ExcelFourData("SalesOrder", "TenderAmount", Globals.Inventory.Price, TenderAmount, "Fail", 12, 0, 12, 1,
 								12, 2, 12, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentDetail column Referanceno");
+						System.out.println("null error tblSOHeaderERP column Referanceno");
 					}
 					break;
-				case "tblRTGS":
-					String Promotionfromtime = "";
+				case "tbl_pos_sales_order_header":
+					String SONO = "";
 					try {
-						Promotionfromtime = rs.getString("Vendorname");
-						System.out.println(Promotionfromtime);
-						Assert.assertEquals(Globals.Inventory.Vendor.trim(), Promotionfromtime.trim());
-						pass.Excelcreate("Payments", "tblRTGS", "", 14, 0, 14, 1);
-						pass.ExcelFourData("Payments", "Vendor", Globals.Inventory.Vendor, Promotionfromtime, "Pass", 15, 0, 15, 1,
+						SONO = rs.getString("SOH_SO_NO");
+						System.out.println(SONO);
+						Assert.assertEquals(Globals.Inventory.Invoiceno.trim(), SONO.trim());
+						pass.Excelcreate("SalesOrder", "tbl_pos_sales_order_header", "", 14, 0, 14, 1);
+						pass.ExcelFourData("SalesOrder", "SOH_SO_NO1", Globals.Inventory.Invoiceno, SONO, "Pass", 15, 0, 15, 1,
 								15, 2, 15, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Payments", "tblRTGS", "", 14, 0, 14, 1);
-						pass.ExcelFourData("Payments", "Vendor", Globals.Inventory.Vendor, Promotionfromtime, "Fail", 15, 0, 15, 1,
+						pass.Excelcreate("SalesOrder", "tbl_pos_sales_order_header", "", 14, 0, 14, 1);
+						pass.ExcelFourData("SalesOrder", "SOH_SO_NO1", Globals.Inventory.Invoiceno, SONO, "Fail", 15, 0, 15, 1,
 								15, 2, 15, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblRTGS column Vendorname");
+						System.out.println("null error tbl_pos_sales_order_header column SOH_SO_NO1");
 					}
-					String WQty = "";
+					String Customername = "";
 					try {
-						WQty = rs.getString("Description");
-						System.out.println(WQty);
-						Assert.assertEquals(Globals.Inventory.Refno.trim(), WQty.trim());
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, WQty, "Pass", 16, 0, 16, 1, 16, 2, 16,
+						Customername = rs.getString("SOH_CUSTOMER_NAME");
+						System.out.println(Customername);
+						Assert.assertEquals(Globals.Inventory.Customername.trim(), Customername.trim());
+						pass.ExcelFourData("SalesOrder", "Customername", Globals.Inventory.Customername, Customername, "Pass", 16, 0, 16, 1, 16, 2, 16,
 								3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, WQty, "Fail", 16, 0, 16, 1, 16, 2, 16,
+						pass.ExcelFourData("SalesOrder", "Customername", Globals.Inventory.Customername, Customername, "Fail", 16, 0, 16, 1, 16, 2, 16,
 								3);
 					} catch (Exception e) {
 						System.out.println("null error tblRTGS column Refno");
 					}
 					String Amount = "";
 					try {
-						Amount = rs.getString("Amount");
+						Amount = rs.getString("SOH_TENDER_AMOUNT");
 						System.out.println(Amount);
-						Assert.assertEquals(Globals.Inventory.Paymode1.trim(), Amount.trim());
-						pass.ExcelFourData("Payments", "Paymode", Globals.Inventory.Paymode1, Amount, "Pass", 16, 0, 16, 1, 16, 2, 16,
+						Assert.assertEquals(Globals.Inventory.Price.trim(), Amount.trim());
+						pass.ExcelFourData("SalesOrder", "SOH_TENDER_AMOUNT", Globals.Inventory.Price, Amount, "Pass", 17, 0, 17, 1, 17, 2, 17,
 								3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Paymode", Globals.Inventory.Paymode1, Amount, "Fail", 16, 0, 16, 1, 16, 2, 16,
+						pass.ExcelFourData("SalesOrder", "SOH_TENDER_AMOUNT", Globals.Inventory.Price, Amount, "Fail", 17, 0, 17, 1, 17, 2, 17,
 								3);
 					} catch (Exception e) {
 						System.out.println("null error tblRTGS column Amount");
 					}
-					String Createddate = "";
+					String TotalValue = "";
 					try {
-						Createddate = rs.getString("Createdate");
-						System.out.println(Createddate);
-						Assert.assertEquals(Globals.Inventory.RefDate.trim(), Createddate.trim());
-						pass.ExcelFourData("Payments", "RefDate", Globals.Inventory.RefDate, Createddate, "Pass", 16, 0, 16, 1, 16, 2, 16,
+						TotalValue = rs.getString("SOH_TOTAL_VALUE");
+						System.out.println(TotalValue);
+						Assert.assertEquals(Globals.Inventory.Price.trim(), TotalValue.trim());
+						pass.ExcelFourData("SalesOrder", "SOH_TOTAL_VALUE", Globals.Inventory.Price, TotalValue, "Pass", 18, 0, 18, 1, 18, 2, 18,
 								3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "RefDate", Globals.Inventory.RefDate, Createddate, "Fail", 16, 0, 16, 1, 16, 2, 16,
+						pass.ExcelFourData("SalesOrder", "SOH_TOTAL_VALUE", Globals.Inventory.Price, TotalValue, "Fail", 18, 0, 18, 1, 18, 2, 18,
 								3);
 					} catch (Exception e) {
 						System.out.println("null error tblRTGS column RefDate");
 					}
-					String Bank = "";
+					String DiscountPer1 = "";
 					try {
-						Bank = rs.getString("Bank");
-						System.out.println(Bank);
-						Assert.assertEquals(Globals.Inventory.BankCode1.trim(), Bank.trim());
-						pass.ExcelFourData("Payments", "BankCode1", Globals.Inventory.BankCode1, Bank, "Pass", 16, 0, 16, 1, 16, 2, 16,
+						DiscountPer1 = rs.getString("SOH_NET_DISCOUNT");
+						System.out.println(DiscountPer1);
+						Assert.assertEquals(Globals.Inventory.DiscountPer.trim(), DiscountPer1.trim());
+						pass.ExcelFourData("SalesOrder", "SOH_NET_DISCOUNT", Globals.Inventory.DiscountPer, DiscountPer1, "Pass", 19, 0, 19, 1, 19, 2, 19,
 								3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "BankCode1", Globals.Inventory.BankCode1, Bank, "Fail", 16, 0, 16, 1, 16, 2, 16,
+						pass.ExcelFourData("SalesOrder", "SOH_NET_DISCOUNT", Globals.Inventory.DiscountPer, DiscountPer1, "Fail", 19, 0, 19, 1, 19, 2, 19,
 								3);
 					} catch (Exception e) {
 						System.out.println("null error tblRTGS column BankCode1");
 					}
-					break;
-				case "tblAPtransaction":
-					String Vendor1 = "";
+					String Discount1 = "";
 					try {
-						Vendor1 = rs.getString("VendorCode");
-						System.out.println(Vendor1);
-						Assert.assertEquals(Globals.Inventory.Vendor.trim(), Vendor1.trim());
-						pass.Excelcreate("Payments ", "tblAPtransaction", "", 14, 0, 14, 1);
-						pass.ExcelFourData("Payments ", "Vendor", Globals.Inventory.Vendor, Vendor1, "Pass", 15, 0, 15, 1, 15, 2,
-								15, 3);
+						Discount1 = rs.getString("SOH_BILL_DISCOUNT");
+						System.out.println(Discount1);
+						Assert.assertEquals(Globals.Inventory.Discount.trim(), Discount1.trim());
+						pass.ExcelFourData("SalesOrder", "SOH_NET_DISCOUNT", Globals.Inventory.Discount, Discount1, "Pass", 20, 0, 20, 1, 20, 2, 20,
+								3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Payments ", "tblAPtransaction", "", 14, 0, 14, 1);
-						pass.ExcelFourData("Payments ", "Vendor", Globals.Inventory.Vendor, Vendor1, "Fail", 15, 0, 15, 1, 15, 2,
-								15, 3);
+						pass.ExcelFourData("SalesOrder", "SOH_NET_DISCOUNT", Globals.Inventory.Discount, Discount1, "Fail", 20, 0, 20, 1, 20, 2, 20,
+								3);
+					} catch (Exception e) {
+						System.out.println("null error tblRTGS column BankCode1");
+					}
+					
+				
+					String ItemCode4 = "";
+					try {
+						ItemCode4 = rs.getString("SOD_ITEM_CODE");
+						System.out.println(ItemCode4);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode4.trim());
+						pass.Excelcreate("SalesOrder ", "tblSODetailERP", "", 21, 0, 21, 1);
+						pass.ExcelFourData("SalesOrder ", "SOD_ITEM_CODE", Globals.Inventory.ItemCode, ItemCode4, "Pass", 22, 0, 22, 1, 22, 2,
+								22, 3);
+					} catch (AssertionError e) {
+						pass.Excelcreate("SalesOrder ", "tblSODetailERP", "", 21, 0, 21, 1);
+						pass.ExcelFourData("SalesOrder ", "SOD_ITEM_CODE", Globals.Inventory.ItemCode, ItemCode4, "Fail", 22, 0, 22, 1, 22, 2,
+								22, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblAPtransaction column VendorCode");
 					}
-					String Promotiontodate1 = "";
+					
+					String SODNO = "";
 					try {
-						Promotiontodate1 = rs.getString("Remarks");
-						System.out.println(Promotiontodate1);
-						Assert.assertEquals(Globals.Inventory.Refno.trim(), Promotiontodate1.trim());
-						pass.ExcelFourData("Payments ", "Refno", Globals.Inventory.Refno, Promotiontodate1, "Pass", 16, 0, 16, 1,
-								16, 2, 16, 3);
+						SODNO = rs.getString("SOD_SO_NO");
+						System.out.println(SODNO);
+						Assert.assertEquals(Globals.Inventory.Invoiceno.trim(), SODNO.trim());
+						pass.ExcelFourData("SalesOrder ", "SOD_SO_NO", Globals.Inventory.Invoiceno, SODNO, "Pass", 23, 0, 23, 1,
+								23, 2, 23, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments ", "Refno", Globals.Inventory.Refno, Promotiontodate1, "Fail", 16, 0, 16, 1,
-								16, 2, 16, 3);
+						pass.ExcelFourData("SalesOrder ", "SOD_SO_NO", Globals.Inventory.Invoiceno, SODNO, "Fail", 23, 0, 23, 1,
+								23, 2, 23, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblAPtransaction column Refno");
 					}
-					String Basiccost1 = "";
+					String SODQTY = "";
 					try {
-						Basiccost1 = rs.getString("Refinvoiceno");
-						System.out.println(Basiccost1);
-						Assert.assertEquals(Globals.Inventory.Billno.trim(), Basiccost1.trim());
-						pass.ExcelFourData("Payments ", "Billno", Globals.Inventory.Billno, Basiccost1, "Pass", 17, 0, 17, 1, 17,
-								2, 17, 3);
+						SODQTY = rs.getString("SOD_SO_NO");
+						System.out.println(SODQTY);
+						Assert.assertEquals(Globals.Inventory.Qty.trim(), SODQTY.trim());
+						pass.ExcelFourData("SalesOrder ", "SOD_SO_NO", Globals.Inventory.Qty, SODQTY, "Pass", 24, 0, 24, 1, 24,
+								2, 24, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments ", "Billno", Globals.Inventory.Billno, Basiccost1, "Fail",17, 0, 17, 1, 17,
-								2, 17, 3);
+						pass.ExcelFourData("SalesOrder ", "SOD_SO_NO", Globals.Inventory.Qty, SODQTY, "Fail",24, 0, 24, 1, 24,
+								2, 24, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblAPtransaction column Billno");
 					}
-					String Refinvoicedate1 = "";
+					String Batchrowno = "";
 					try {
-						Refinvoicedate1 = rs.getString("Refinvoicedate");
-						System.out.println(Refinvoicedate1);
-						Assert.assertEquals(Globals.Inventory.Date.trim(), Refinvoicedate1.trim());
-						pass.ExcelFourData("Payments ", "Date", Globals.Inventory.Date, Refinvoicedate1, "Pass", 18, 0, 18, 1, 18,
-								2, 18, 3);
+						Batchrowno = rs.getString("SOD_BATCH_NO");
+						System.out.println(Batchrowno);
+						Assert.assertEquals(Globals.Inventory.Batchrowno.trim(), Batchrowno.trim());
+						pass.ExcelFourData("SalesOrder ", "Batchrowno", Globals.Inventory.Batchrowno, Batchrowno, "Pass", 25, 0, 25, 1, 25,
+								2, 25, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments ", "Date", Globals.Inventory.Date, Refinvoicedate1, "Fail", 18, 0, 18, 1, 18,
-								2, 18, 3);
+						pass.ExcelFourData("SalesOrder ", "Batchrowno", Globals.Inventory.Batchrowno, Batchrowno, "Fail", 25, 0, 25, 1, 25,
+								2, 25, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblAPtransaction column Billdate");
 					}
-					String TranAmt = "";
+					String SODSELLINGPRICE = "";
 					try {
-						TranAmt = rs.getString("TranAmt");
-						System.out.println(TranAmt);
-						Assert.assertEquals(Globals.Inventory.TotalAmount.trim(), TranAmt.trim());
-						pass.ExcelFourData("Payments ", "TotalAmount", Globals.Inventory.TotalAmount, TranAmt, "Pass", 19, 0, 19, 1, 19,
-								2, 19, 3);
+						SODSELLINGPRICE = rs.getString("SOD_SELLING_PRICE");
+						System.out.println(SODSELLINGPRICE);
+						Assert.assertEquals(Globals.Inventory.Price.trim(), SODSELLINGPRICE.trim());
+						pass.ExcelFourData("SalesOrder ", "SODSELLINGPRICE", Globals.Inventory.Price, SODSELLINGPRICE, "Pass", 26, 0, 26, 1, 26,
+								2, 26, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments ", "TotalAmount", Globals.Inventory.TotalAmount, TranAmt, "Fail", 19, 0, 19, 1, 19,
-								2, 19, 3);
+						pass.ExcelFourData("SalesOrder ", "SODSELLINGPRICE", Globals.Inventory.Price, SODSELLINGPRICE, "Fail", 26, 0, 26, 1, 26,
+								2, 26, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblAPtransaction column TranAmt");
 					}
-					String CreditAmt = "";
+					
+					String CreateDate = "";
 					try {
-						CreditAmt = rs.getString("CreditAmt");
-						System.out.println(CreditAmt);
-						Assert.assertEquals(Globals.Inventory.TotalAmount.trim(), CreditAmt.trim());
-						pass.ExcelFourData("Payments ", "CreditAmt", Globals.Inventory.TotalAmount, CreditAmt, "Pass", 20, 0, 20, 1, 20,
-								2, 20, 3);
-					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments ", "CreditAmt", Globals.Inventory.TotalAmount, CreditAmt, "Fail", 20, 0, 20, 1, 20,
-								2, 20, 3);
-					} catch (Exception e) {
-						System.out.println("null error tblAPtransaction column CreditAmt");
-					}
-					String BalanceAmt = "";
-					try {
-						BalanceAmt = rs.getString("BalanceAmt");
-						System.out.println(BalanceAmt);
-						Assert.assertEquals(Globals.Inventory.TotalAmount.trim(), BalanceAmt.trim());
-						pass.ExcelFourData("Payments ", "TotalAmount", Globals.Inventory.TotalAmount, BalanceAmt, "Pass", 21, 0, 21, 1, 21,
+						CreateDate = rs.getString("BalanceAmt");
+						System.out.println(CreateDate);
+						Assert.assertEquals(Globals.Inventory.TotalAmount.trim(), CreateDate.trim());
+						pass.ExcelFourData("SalesOrder ", "CreateDate", Globals.Inventory.TotalAmount, CreateDate, "Pass", 21, 0, 21, 1, 21,
 								2, 21, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments ", "TotalAmount", Globals.Inventory.TotalAmount, BalanceAmt, "Fail", 21, 0, 21, 1, 21,
+						pass.ExcelFourData("SalesOrder ", "CreateDate", Globals.Inventory.TotalAmount, CreateDate, "Fail", 21, 0, 21, 1, 21,
 								2, 21, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblAPtransaction column BalanceAmt");
 					}					
 					break;
-				case "tblDebitNote":
+				/*case "tblDebitNote":
 					String VendorCode = "";
 					try {
 						VendorCode = rs.getString("VendorCode");
@@ -575,8 +578,8 @@ import org.openqa.selenium.Keys;
 								2, 13, 3);
 					} catch (Exception e) {
 						System.out.println("null error tbldebitnote column Reason");
-					}
-					break;
+					}*/
+					//break;
 
 				default:
 					break;

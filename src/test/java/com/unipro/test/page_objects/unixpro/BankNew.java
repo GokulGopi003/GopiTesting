@@ -115,7 +115,7 @@ public class BankNew extends PageObject {
 	@Then("I read the values from table {string} in BankNew")
 	public void i_read_the_values_from_table_in_BankNew(String tablename) throws SQLException, IOException {
 
-		ResultSet rs = st.executeQuery("select * from " + tablename + " where BankName='SBI'");
+		ResultSet rs = st.executeQuery("select * from " + tablename + " where BankName='AANDRA BANK'");
 
 		System.out.println(rs);
 

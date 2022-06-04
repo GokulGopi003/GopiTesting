@@ -23,5 +23,5 @@ Scenario Outline: checking for Picker master
   
     Examples: 
       |TestcaseRowName|
-      |PickerMasterNew|
+      |PickerMasterNew1|
     

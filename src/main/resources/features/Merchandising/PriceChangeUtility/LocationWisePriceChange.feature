@@ -21,6 +21,6 @@ Feature: InventoryChange
     
      Examples: 
       | TestcaseRowName |
-      |LocationWisePriceChange|
+      |LocationWisePriceChange2|
       
   

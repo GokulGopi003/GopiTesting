@@ -305,7 +305,7 @@
 		@Then("I read the values from table {string} in CompanyMaster")
 		public void i_read_the_values_from_table_in_CompanyMaster(String tablename) throws IOException, SQLException {
 
-			ResultSet rs = st.executeQuery("select * from " + tablename + " where Address1='Madurai'");
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where Address1='Chennai'");
 
 			System.out.println(rs);
 

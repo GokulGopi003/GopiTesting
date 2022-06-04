@@ -17,10 +17,10 @@ Feature: PoS Inventory > Add Inventory
     Then I fill new ExpiredDateChange data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkAdd"
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkSave"
-    #Then I establish connection  DB for ExpiredDateChange
-    #Then I read the values from ExpiredDateChange table "tblPaymentHeader" in DB
-    #Then I read the values from ExpiredDateChange table "tblPaymentDetail" in DB
-    #Then I close connection  DB for ExpiredDateChange
+    Then I establish connection  DB for ExpiredDateChange
+    Then I read the values from ExpiredDateChange table "tblBatchInventoryControl" in DB
+    Then I read the values from ExpiredDateChange table "tblExpireDate_Modification" in DB
+    Then I close connection  DB for ExpiredDateChange
     
     
      Examples: 

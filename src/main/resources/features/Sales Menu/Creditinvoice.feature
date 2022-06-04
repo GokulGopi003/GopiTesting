@@ -16,10 +16,14 @@ Feature: PoS Inventory > Add Inventory
     Then I update value to the Creditinvoice page global Variables
     Then I fill new Creditinvoice data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkSave"
-    #Then I establish connection  DB for Creditinvoice
-    #Then I read the values from Creditinvoice table "tblPaymentHeader" in DB
-    #Then I read the values from Creditinvoice table "tblPaymentDetail" in DB
-    #Then I close connection  DB for Creditinvoice
+    Then I establish connection  DB for Creditinvoice
+    Then I read the values from Creditinvoice table "tblSalesDetailCur" in DB
+    #Then I read the values from Creditinvoice table "tblSalesDetail" in DB
+    Then I read the values from Creditinvoice table "tblSalesHeaderCur" in DB
+    Then I read the values from Creditinvoice table "tblPaymodeDetailCur" in DB
+    Then I read the values from Creditinvoice table "tblsalesheaderERP" in DB
+    Then I read the values from Creditinvoice table "tbl_pos_Sales_header" in DB
+    Then I close connection  DB for Creditinvoice
     
     
      Examples: 

@@ -8,14 +8,16 @@ import java.sql.Statement;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 import com.gk.test.MssqlConnect;
 import com.unipro.ExcelWrite;
 import com.unipro.test.framework.Globals;
 import com.unipro.test.framework.PageObject;
+import com.unipro.test.framework.helpers.screenshot_helper.Screenshot;
 import com.unipro.test.framework.helpers.utils.GenericWrappers;
 import com.unipro.test.framework.helpers.utils.ReadTestData;
 
@@ -27,14 +29,15 @@ public class MasterReasonMaster extends PageObject {
 	TerminalPage terPage;
 	AddInventoryFormPage Category;
 	ExcelWrite pass;
-	
+	Screenshot scr;
+	WebDriver driver = new ChromeDriver();
 
 	public MasterReasonMaster(ReasonMasterTypeField icp) {
 		this.icp = icp;
 		terPage = new TerminalPage();
 		Category = new AddInventoryFormPage();
 		pass=new ExcelWrite();
-		
+		scr = new Screenshot();
 	}
 	@Then("I load the ReasonMasterNew sheet data to map")
 	public void i_load_the_ReasonMasterNew_sheet_data_to_map() 
@@ -67,10 +70,15 @@ public class MasterReasonMaster extends PageObject {
 	}
 
 	@Then("I fill new ReasonMasterNew data page using excel data")
-	public void i_fill_new_ReasonMasterNew_data_page_using_excel_data() 
+	public void i_fill_new_ReasonMasterNew_data_page_using_excel_data() throws Exception 
+	
+	
 	{
+		try
+		{
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.ReasonCode)) {
 			terPage.terminal_waitClearEnterText_Xpath(icp.ReasonCode_String, Globals.Inventory.ReasonCode);
+			//driver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtInvcategory\"]")).sendKeys("aa");
 
 		}
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.ReasonDescription)) {
@@ -114,6 +122,21 @@ public class MasterReasonMaster extends PageObject {
 			GenericWrappers.sleepInSeconds(1);
 			AddDedValue.sendKeys(Keys.ENTER);
 		}
+		pass.ExcelFourData("Reasonmasternew","Modules", "Actual", "Expected", "Status",
+				0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
+		pass.Excelcreate("Reasonmasternew", "Location", "Pass", 1, 0, 1, 3);
+		}
+		catch(Exception e) {
+			
+			scr.Screenshots();
+			System.out.println("Screen shot taken");
+			
+			pass.ExcelFourData("Reasonmasternew","Location", "Actual", "Expected", "Status",
+					0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
+			pass.Excelcreate("Reasonmasternew", "Location", "FAIL", 1, 0, 1, 3);
+			
+		}
+	
 	}
 
 	@Then("I close connection to ReasonMasterNew")
@@ -139,7 +162,7 @@ public class MasterReasonMaster extends PageObject {
 	@Given("I read the values from table {string} in ReasonMasterNew")
 	public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
 
-		ResultSet rs = st.executeQuery("select * from " + tablename + " where ReasonDescription='8'");
+		ResultSet rs = st.executeQuery("select * from " + tablename + " where ReasonDescription='Accident'");
 
 		System.out.println(rs);
 

@@ -999,11 +999,12 @@ public class InventoryCalculations_StepDefinitions extends PageObject {
 	@Then("I fill Order and break price")
 	public void i_fill_order_and_break_price() throws Exception {
 		try {
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.MaxQty)) {
+				terPage.terminal_waitClearEnterText_css(icp.MaxQty_String, Globals.Inventory.MaxQty);
+			}
 			if (GenericWrappers.isNotEmpty(Globals.Inventory.MinQty)) {
 				terPage.terminal_waitClearEnterText_css(icp.MinQty_String, Globals.Inventory.MinQty);
-				if (GenericWrappers.isNotEmpty(Globals.Inventory.MaxQty)) {
-					terPage.terminal_waitClearEnterText_css(icp.MaxQty_String, Globals.Inventory.MaxQty);
-				}
+				
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.ReorderQty)) {
 					terPage.terminal_waitClearEnterText_css(icp.ReorderQty_String, Globals.Inventory.ReorderQty);
 				}

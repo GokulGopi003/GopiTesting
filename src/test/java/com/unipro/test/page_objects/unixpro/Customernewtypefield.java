@@ -4,7 +4,7 @@ package com.unipro.test.page_objects.unixpro;
 
 public class Customernewtypefield {
 	public String CustomerName_String = "//*[@id=\"ContentPlaceHolder1_txtCustName\"]";
-	public String Dob_String = "//*[@id=\"ContentPlaceHolder1_txtDOB\"]";
+	public String Dob_String = "input#ContentPlaceHolder1_txtDOB";
 	public String Occupation_String ="//*[@id=\"ContentPlaceHolder1_txtOccupation\"]";
 	public String Designation_String ="//*[@id=\"ContentPlaceHolder1_txtDesignation\"]";
 	public String Employer_String = "//*[@id=\"ContentPlaceHolder1_txtEmployer\"]";

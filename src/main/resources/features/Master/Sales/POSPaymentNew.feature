@@ -23,5 +23,5 @@ Background:
 
     Examples: 
       |TestcaseRowName|
-      |POSPaymentNew|
+      |POSPaymentNew1|
      

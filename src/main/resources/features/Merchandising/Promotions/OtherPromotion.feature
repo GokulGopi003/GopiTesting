@@ -8,7 +8,7 @@ Feature: InventoryChange
     Then I clik on the login button
     Then I verify the page Title
     Given I want to launch the "Merchandising/frmPromotion.aspx"
-    #Then I need to click on the  element "a#ContentPlaceHolder1_lnkNew"
+    Then I need to click on the  element "a#ContentPlaceHolder1_lnkNew"
     Then I load the testdatas form excel to table
     Then I load the OtherPromotion sheet data to map
     Then I load the rowise OtherPromotion data for "<TestcaseRowName>" rowname

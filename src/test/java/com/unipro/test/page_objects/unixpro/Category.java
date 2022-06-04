@@ -106,7 +106,7 @@ public void i_load_the_Category_sheet_data_to_map() {
 		@Given("I read the values from table {string} in Category")
 		public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
 
-			ResultSet rs = st.executeQuery("select * from " + tablename + " where CategoryCode='Gokul'");
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where CategoryCode='CATEGORY'");
 
 			System.out.println(rs);
 

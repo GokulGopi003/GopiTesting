@@ -24,5 +24,5 @@ Background:
 
     Examples: 
       |TestcaseRowName |
-      |BarCodePrinterNew |
+      |BarCodePrinterNew1 |
       

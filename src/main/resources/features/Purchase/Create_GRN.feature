@@ -1,15 +1,10 @@
 Feature: PoS Inventory > Add Inventory
-
-   
-    As a unipro user i want to launch the valid URL
-Background: 
-    Given Launching the valid URL
+Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
+Given Launching the valid URL
     Given I enter the username
     When I enter the password
     Then I clik on the login button
     Then I verify the page Title
-
-Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Purchase/frmGoodsAcknowledgement.aspx"
     Then I need to click on the  element "input#ContentPlaceHolder1_rptrGA_btnGrn_0"
     Then I load the testdata form excel to table
@@ -18,11 +13,6 @@ Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Then I update value to the GRN page global Variables
     Then I fill new GRN data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkAdd"
-    Then I load the testdata form excel to table
-    Then I load the GRN sheet data to map
-    Then I load the rowise GRN data for "<TestcaseRowName1>" rowname
-    Then I update value to the GRN page global Variables
-    Then I fill new GRN data page using excel data
     Then I need to click on the  element "input#ContentPlaceHolder1_chFillGA"
     Then I enter the value forElement "input#ContentPlaceHolder1_txtAD" as "0.00"
     #Then I need to click on the blue "Yes" button
@@ -33,12 +23,16 @@ Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     #Then I want to minimize the browser
     #Then I need to click on the "Save" button
     Then I need to click on the blue "Save" button
-    
+    Then I establish connection GRN to DB
+    Then I read the values GRN from table "tblinventory" in DB
+    Then I read the values GRN from table "tblinventorypricing" in DB
+    Then I read the values GRN from table "tblinventorystock" in DB
+    Then I read the values GRN from table "TBLBATCHINVENTORYCONTROL" in DB
+    Then I read the values GRN from table "tblInventoryShelfQty" in DB
+    Then I close connection GRN to DB
     
     Examples: 
       | TestcaseRowName |
       |GRN           |
-      | TestcaseRowName1 |
-      |GRN1           |
 
       

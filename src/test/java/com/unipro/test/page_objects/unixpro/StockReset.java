@@ -218,7 +218,7 @@ package com.unipro.test.page_objects.unixpro;
 		public void i_want_to_launch_the(String tablename ) throws SQLException, IOException {
 			
 			
-			ResultSet rs = st.executeQuery("select * from "+tablename+" where InventoryCode='000001'");
+			ResultSet rs = st.executeQuery("select * from "+tablename+" where InventoryCode='000005'");
 			
 			System.out.println(rs);
 			//ResultSet rs = st.executeQuery("");
@@ -227,63 +227,63 @@ package com.unipro.test.page_objects.unixpro;
 
 				switch (tablename) {
 				
-				case "tblinventory":
+				case "tblBatchInventoryControl":
 					
 					
-					String Sellingprice="";
+					String InventoryCode="";
 					try {
-						Sellingprice = rs.getString("SellingPrice");
-						System.out.println(Sellingprice);
-						Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), Sellingprice.trim());
-						pass.Excelcreate("PriceChangeBatchItem", "tblinventory", "", 3, 0, 3, 1);
-						pass.ExcelFourData("PriceChangeBatchItem", "SellingPrice", Globals.Inventory.NetSellingPrice, Sellingprice, "Pass",
+						InventoryCode = rs.getString("InventoryCode");
+						System.out.println(InventoryCode);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), InventoryCode.trim());
+						pass.Excelcreate("StockReset", "tblBatchInventoryControl", "", 3, 0, 3, 1);
+						pass.ExcelFourData("StockReset", "InventoryCode", Globals.Inventory.ItemCode, InventoryCode, "Pass",
 								5, 0, 5, 1, 5, 2, 5, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("PriceChangeBatchItem", "tblinventory", "", 3, 0, 3, 1);
-						pass.ExcelFourData("PriceChangeBatchItem", "SellingPrice", Globals.Inventory.NetSellingPrice, Sellingprice, "Fail",
+						pass.Excelcreate("StockReset", "tblBatchInventoryControl", "", 3, 0, 3, 1);
+						pass.ExcelFourData("StockReset", "InventoryCode", Globals.Inventory.ItemCode, InventoryCode, "Fail",
 								5, 0, 5, 1, 5, 2, 5, 3);
 					}
 					catch(Exception e) {
-						System.out.println("null error tblinventory column SellingPrice");
+						System.out.println("null error tblBatchInventoryControl column InventoryCode");
 					}
 					
 					
-					break;
+					//break;
 					
-				case "tblinventorypricing":
+				//case "tblinventorypricing":
 					
 			
-					String W1="";
+					String Qty="";
 					try {
-				    W1 = rs.getString("MPWPrice1");
-					System.out.println(W1);
-					Assert.assertEquals(Globals.Inventory.WPrice1.trim(), W1.trim());
-					pass.Excelcreate("PriceChangeBatchItem", "tblinventorypricing", "", 7, 0, 7, 1);
-					pass.ExcelFourData("PriceChangeBatchItem", "WPrice1", Globals.Inventory.WPrice1, W1, "Pass",
+						Qty = rs.getString("InwardQty");
+					System.out.println(Qty);
+					Assert.assertEquals(Globals.Inventory.Vendor.trim(), Qty.trim());
+					//pass.Excelcreate("StockReset", "tblinventorypricing", "", 7, 0, 7, 1);
+					pass.ExcelFourData("StockReset", "Qty", Globals.Inventory.Vendor, Qty, "Pass",
 							8, 0, 8, 1, 8, 2, 8, 3);
 				} catch (AssertionError e) {
-					pass.Excelcreate("PriceChangeBatchItem", "tblinventorypricing", "",  7, 0, 7, 1);
-					pass.ExcelFourData("PriceChangeBatchItem", "WPrice1", Globals.Inventory.WPrice1, W1, "Fail",
+					//pass.Excelcreate("StockReset", "tblinventorypricing", "",  7, 0, 7, 1);
+					pass.ExcelFourData("StockReset", "Qty", Globals.Inventory.Vendor, Qty, "Fail",
 							8, 0, 8, 1, 8, 2, 8, 3);
 				}
 					catch(Exception e) {
-						System.out.println("null error tblinventorypricing column MPWPrice1");
+						System.out.println("null error tblBatchInventoryControl column Brand");
 					}
-					String W2="";
+					String Qty1="";
 					try {
-				 W2 = rs.getString("MPWPrice2");
-					System.out.println(W2);
-					Assert.assertEquals(Globals.Inventory.WPrice2.trim(), W2.trim());
-					pass.ExcelFourData("PriceChangeBatchItem", "WPrice2", Globals.Inventory.WPrice2, W2, "Pass",
+						Qty1 = rs.getString("BalanceQty");
+					System.out.println(Qty1);
+					Assert.assertEquals(Globals.Inventory.Brand.trim(), Qty1.trim());
+					pass.ExcelFourData("StockReset", "Qty1", Globals.Inventory.Brand, Qty1, "Pass",
 							9, 0, 9, 1, 9, 2, 9, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("PriceChangeBatchItem", "WPrice2", Globals.Inventory.WPrice2, W2, "Fail",
+					pass.ExcelFourData("StockReset", "Qty1", Globals.Inventory.Brand, Qty1, "Fail",
 							9, 0, 9, 1, 9, 2, 9, 3);
 				}
 					catch(Exception e) {
-						System.out.println("null error tblinventorypricing column MPWPrice2");
+						System.out.println("null error tblBatchInventoryControl column Brand");
 					}
-					String W3 ="";
+					/*String W3 ="";
 					try {
 					W3 = rs.getString("MPWPrice3");
 					System.out.println(W3);
@@ -296,73 +296,76 @@ package com.unipro.test.page_objects.unixpro;
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column MPWPrice3");
-					}
+					}*/
 					break;
 				case "tblinventorystock":
-						String BasicSelling1 ="";
+						String ItemCode ="";
 						try {
-						BasicSelling1 = rs.getString("Price");
-						System.out.println(BasicSelling1);
-						Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), BasicSelling1.trim());
-						pass.Excelcreate("PriceChangeBatchItem", "tblinventorypricing", "", 12, 0, 12, 1);
-						pass.ExcelFourData("PriceChangeBatchItem", "NetSellingPrice", Globals.Inventory.NetSellingPrice, BasicSelling1, "Pass",
+							ItemCode = rs.getString("InventoryCode");
+						System.out.println(ItemCode);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode.trim());
+						pass.Excelcreate("StockReset", "tblinventorystock", "", 12, 0, 12, 1);
+						pass.ExcelFourData("StockReset", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Pass",
 								13, 0, 13, 1, 13, 2, 13, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("PriceChangeBatchItem", "tblinventorypricing", "", 12, 0, 12, 1);
-						pass.ExcelFourData("PriceChangeBatchItem", "NetSellingPrice", Globals.Inventory.NetSellingPrice, BasicSelling1, "Fail",
+						pass.Excelcreate("StockReset", "tblinventorystock", "", 12, 0, 12, 1);
+						pass.ExcelFourData("StockReset", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Fail",
 								13, 0, 13, 1, 13, 2, 13, 3);
 					}
 						catch(Exception e) {
-							System.out.println("null error tblinventorystock column NetSellingPrice");
+							System.out.println("null error tblinventorystock column ItemCode");
 						}
-						break;
-				case "TBLBATCHINVENTORYCONTROL":
-					String SellingPrice="";
+						
+					String Qty3="";
 					try {
-					SellingPrice = rs.getString("SellingPrice");
-					System.out.println(SellingPrice);
-					Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), SellingPrice.trim());
-					pass.Excelcreate("PriceChangeBatchItem", "TBLBATCHINVENTORYCONTROL", "", 15, 0, 15, 1);
-					pass.ExcelFourData("PriceChangeBatchItem", "NetSellingPrice", Globals.Inventory.NetSellingPrice, SellingPrice, "Pass",
-							16, 0, 16, 1, 16, 2, 16, 3);
+						Qty3 = rs.getString("QtyOnHand");
+					System.out.println(Qty3);
+					Assert.assertEquals(Globals.Inventory.Category.trim(), Qty3.trim());
+					//pass.Excelcreate("StockReset", "TBLBATCHINVENTORYCONTROL", "", 15, 0, 15, 1);
+					pass.ExcelFourData("StockReset", "Qty3", Globals.Inventory.Category, Qty3, "Pass",
+							14, 0, 14, 1, 14, 2, 14, 3);
 				} catch (AssertionError e) {
-					pass.Excelcreate("PriceChangeBatchItem", "TBLBATCHINVENTORYCONTROL", "",15, 0, 15, 1);
-					pass.ExcelFourData("PriceChangeBatchItem", "NetSellingPrice", Globals.Inventory.NetSellingPrice, SellingPrice, "Fail",
-							16, 0, 16, 1, 16, 2, 16, 3);
+					//pass.Excelcreate("StockReset", "TBLBATCHINVENTORYCONTROL", "",15, 0, 15, 1);
+					pass.ExcelFourData("StockReset", "Qty3", Globals.Inventory.Category, Qty3, "Fail",
+							14, 0, 14, 1, 14, 2, 14, 3);
 				}
 					catch(Exception e) {
-						System.out.println("null error TBLBATCHINVENTORYCONTROL column SellingPrice");
+						System.out.println("null error tblinventorystock column QtyOnHand");
 					}
+					break;
 					
-					String W11="";
+				case "tblInventoryStockReset":
+					String ItemCode1="";
 					try {
-					W11 = rs.getString("WPrice1");
-					System.out.println(W11);
-					Assert.assertEquals(Globals.Inventory.WPrice1.trim(), W11.trim());
-					pass.ExcelFourData("PriceChangeBatchItem", "WPrice1", Globals.Inventory.WPrice1, W11, "Pass",
-							17, 0, 17, 1, 17, 2, 17, 3);
-				} catch (AssertionError e) {
-					pass.ExcelFourData("PriceChangeBatchItem", "WPrice1", Globals.Inventory.WPrice1, W11, "Fail",
-							17, 0, 17, 1, 17, 2, 17, 3);
-				}
-					catch(Exception e) {
-						System.out.println("null error TBLBATCHINVENTORYCONTROL column WPrice1");
-					}
-					String W22="";
-					try {
-				    W22 = rs.getString("WPrice2");
-					System.out.println(W22);
-					Assert.assertEquals(Globals.Inventory.WPrice2.trim(), W22.trim());
-					pass.ExcelFourData("PriceChangeBatchItem", "WAPrice2", Globals.Inventory.WPrice2, W22, "Pass",
+						ItemCode1 = rs.getString("InventoryCode");
+					System.out.println(ItemCode1);
+					Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode1.trim());
+					pass.Excelcreate("StockReset", "tblInventoryStockReset", "", 17, 0, 17, 1);
+					pass.ExcelFourData("StockReset", "ItemCode", Globals.Inventory.ItemCode, ItemCode1, "Pass",
 							18, 0, 18, 1, 18, 2, 18, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("PriceChangeBatchItem", "WAPrice2", Globals.Inventory.WPrice2, W22, "Fail",
+					pass.Excelcreate("StockReset", "tblInventoryStockReset", "", 17, 0, 17, 1);
+					pass.ExcelFourData("StockReset", "ItemCode", Globals.Inventory.ItemCode, ItemCode1, "Fail",
 							18, 0, 18, 1, 18, 2, 18, 3);
 				}
 					catch(Exception e) {
-						System.out.println("null error TBLBATCHINVENTORYCONTROL column WPrice2");
+						System.out.println("null error tblInventoryStockReset column InventoryCode");
 					}
-					String W33="";
+					String Qty4="";
+					try {
+						Qty4 = rs.getString("QtyBeforeReset");
+					System.out.println(Qty4);
+					Assert.assertEquals(Globals.Inventory.Department.trim(), Qty4.trim());
+					pass.ExcelFourData("StockReset", "Qty4", Globals.Inventory.Department, Qty4, "Pass",
+							19, 0, 19, 1, 19, 2, 19, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("StockReset", "Qty4", Globals.Inventory.Department, Qty4, "Fail",
+							19, 0, 19, 1, 19, 2, 19, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error tblInventoryStockReset column Qty4");
+					}
+					/*String W33="";
 					try {
 						
 					W33 = rs.getString("WPrice3");
@@ -376,7 +379,7 @@ package com.unipro.test.page_objects.unixpro;
 				}
 					catch(Exception e) {
 						System.out.println("null error TBLBATCHINVENTORYCONTROL column WPrice3");
-					}
+					}*/
 					
 					break;
 				default:

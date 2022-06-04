@@ -30,16 +30,16 @@ Feature: PoS Inventory > Add Inventory
     #Then I need to click on sub menu with text matching "Image"
     #When Im waiting for 5 sec
     #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
-    #Then I need to click on the "Save" button
+    Then I need to click on the "Save" button
     #Then I click dynamically on "NewItemNo" button
-    #Then I establish connection to DB
-    #Then I read the values from table MRP "tblinventory" in DB
-    #Then I read the values from table MRP "tblinventorypricing" in DB
-    #Then I read the values from table MRP "tblinventorystock" in DB
-    #Then I read the values from table MRP "tblbarcode" in DB
-    #Then I read the values from table MRP "TBLBATCHINVENTORYCONTROL" in DB
-    #Then I read the values from table MRP "tblInventoryShelfQty" in DB
-    #Then I close connection to DB
+    Then I establish connection to DB
+    Then I read the values from table MRP "tblinventory" in DB
+    Then I read the values from table MRP "tblinventorypricing" in DB
+    Then I read the values from table MRP "tblinventorystock" in DB
+    Then I read the values from table MRP "tblbarcode" in DB
+    Then I read the values from table MRP "TBLBATCHINVENTORYCONTROL" in DB
+    Then I read the values from table MRP "tblInventoryShelfQty" in DB
+    Then I close connection to DB
     Examples: 
       | TestcaseRowName |
       |Gopi|

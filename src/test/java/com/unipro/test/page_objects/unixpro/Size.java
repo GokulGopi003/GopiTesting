@@ -92,7 +92,7 @@ import cucumber.api.java.en.Then;
 		@Given("I read the values from table {string} in Size")
 		public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
 
-			ResultSet rs = st.executeQuery("select * from " + tablename + " where Description ='1'");
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where Description ='Big'");
 
 			System.out.println(rs);
 
@@ -100,10 +100,10 @@ import cucumber.api.java.en.Then;
 
 				switch (tablename) {
 				case "tblSize":
-					System.out.println("1");
+					
 					String Description = "";
 					try {
-						System.out.println("2");
+						
 						Description = rs.getString("Description");
 						System.out.println("3");
 						System.out.println(Description);

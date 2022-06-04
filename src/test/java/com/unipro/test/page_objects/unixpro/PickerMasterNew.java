@@ -107,7 +107,7 @@ public class PickerMasterNew extends PageObject {
 
 	@Then("I read the values from table {string} in PickerMasterNew")
 	public void i_read_the_values_from_table_in_PickerMasterNew(String tablename) throws SQLException, IOException {
-		ResultSet rs = st.executeQuery("select * from " + tablename + " where PickerId='ABC'");
+		ResultSet rs = st.executeQuery("select * from " + tablename + " where PickerId='SENTHIL'");
 
 		System.out.println(rs);
 

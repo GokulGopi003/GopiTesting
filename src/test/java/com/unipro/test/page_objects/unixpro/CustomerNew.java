@@ -80,7 +80,7 @@ public class CustomerNew extends PageObject {
 		Globals.Inventory.Country = Globals.Inventory.CustomerNewrowwiseData.get("Country");
 		Globals.Inventory.State = Globals.Inventory.CustomerNewrowwiseData.get("STATE");
 		Globals.Inventory.Pin = Globals.Inventory.CustomerNewrowwiseData.get("pin");
-		Globals.Inventory.Phone = Globals.Inventory.CustomerNewrowwiseData.get("Phone");
+		Globals.Inventory.Phone = Globals.Inventory.CustomerNewrowwiseData.get("Phone0");
 		Globals.Inventory.Nationality = Globals.Inventory.CustomerNewrowwiseData.get("Nationality");
 		Globals.Inventory.Area = Globals.Inventory.CustomerNewrowwiseData.get("Area");
 		Globals.Inventory.Zone = Globals.Inventory.CustomerNewrowwiseData.get("Zone");
@@ -145,39 +145,15 @@ public class CustomerNew extends PageObject {
 			IdValue.sendKeys(Keys.ENTER);
 		}
 		/*if (GenericWrappers.isNotEmpty(Globals.Inventory.DOB)) {
-			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtDOB\"]"));
-			terPage.terminal_waitClearEnterText_Xpath(icp.Dob_String, Globals.Inventory.DOB).click();
-			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtDOB\"]"))
-					.sendKeys(Keys.RETURN);
-
-		}
-		/*if (GenericWrappers.isNotEmpty(Globals.Inventory.DOB)) {
-		  webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtDOB\"]")).click();
-		  terPage.terminal_waitClearEnterText_Xpath(icp.Dob_String, Globals.Inventory.DOB);
-			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtDOB\"]"))
-					.sendKeys(Keys.RETURN);
-}*/
-			
-		
-		
-		/*if (GenericWrappers.isNotEmpty(Globals.Inventory.DOB)) {
-			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtDOB\"]")).click();
-			GenericWrappers.sleepInSeconds(1);
-			
-			WebElement DOBValue = webDriver.findElement(
-					By.cssSelector("#ContentPlaceHolder1_txtDOB_chzn > div > div > input[type=text]"));
-			String css_location_dropDownValue = "#ContentPlaceHolder1_txtDOB_chzn > div > div > input[type=text]";
-			By ddlocator = By.xpath(css_location_dropDownValue);
-			waitForExpectedElement(ddlocator);
-			js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.DOB);
-			GenericWrappers.sleepInSeconds(1);
-			DOBValue.sendKeys(Keys.SPACE);
-			DOBValue.sendKeys(Keys.SPACE);
-			DOBValue.sendKeys(Keys.ARROW_DOWN);
-			GenericWrappers.sleepInSeconds(1);
-			DOBValue.sendKeys(Keys.ENTER);
-
+			terpage.terminal_waitClearEnterText_css(icp.Dob_String, Globals.Inventory.DOB);
+			//Inventorychange.clearAndTypeSlowly(Globals.Inventory.DOB, "input#txtSearch");
+			//Inventorychange.return_td_invoke_element(Globals.Inventory.DOB).click();
+			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtDOB\"]")).sendKeys(Keys.ENTER);
 		}*/
+			
+		
+		
+		
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Occupation)) {
 			terPage.terminal_waitClearEnterText_Xpath(icp.Occupation_String, Globals.Inventory.Occupation);
 			//webDriver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_txtReasonDescription']"))
@@ -573,7 +549,7 @@ catch(Exception e) {
 		@Given("I read the values from table {string} in CustomerNew")
 		public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
 
-			ResultSet rs = st.executeQuery("select * from " + tablename + " where CUST_OCCUPATION='Employee'");
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where CUST_OCCUPATION='EMP'");
 
 			System.out.println(rs);
 
@@ -995,7 +971,7 @@ catch(Exception e) {
 					
 					String Zone = "";
 					try {
-						Pin = rs.getString("CUST_ZONE");
+						Zone = rs.getString("CUST_ZONE");
 						System.out.println(Zone);
 						Assert.assertEquals(Globals.Inventory.Zone.trim(), Zone.trim());
 
@@ -1139,7 +1115,7 @@ catch(Exception e) {
 
 					String CreditDays = "";
 					try {
-						MobileNo = rs.getString("CUST_CREDIT_DAYS");
+						CreditDays = rs.getString("CUST_CREDIT_DAYS");
 						System.out.println(CreditDays);
 						Assert.assertEquals(Globals.Inventory.CreditDays.trim(), CreditDays.trim());
 

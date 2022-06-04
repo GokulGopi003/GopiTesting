@@ -149,10 +149,10 @@ import cucumber.api.java.en.Then;
 
 				switch (tablename) {
 				case "tblTransport":
-					System.out.println("1");
+					
 					String Transportname = "";
 					try {
-						System.out.println("2");
+						
 						Transportname = rs.getString("TransportName");
 						System.out.println("3");
 						System.out.println(Transportname);
@@ -183,7 +183,7 @@ import cucumber.api.java.en.Then;
 					}
 					String Address = "";
 					try {
-						Person = rs.getString("Address1");
+						Address = rs.getString("Address1");
 						System.out.println(Address);
 						Assert.assertEquals(Globals.Inventory.Address.trim(), Address.trim());
 
@@ -211,7 +211,7 @@ import cucumber.api.java.en.Then;
 					}
 					String Phone = "";
 					try {
-						Person = rs.getString("Phone");
+						Phone = rs.getString("Phone");
 						System.out.println(Phone);
 						Assert.assertEquals(Globals.Inventory.Phone.trim(), Phone.trim());
 
@@ -225,7 +225,7 @@ import cucumber.api.java.en.Then;
 					}
 					String ModelNo = "";
 					try {
-						Person = rs.getString("Mobile");
+						ModelNo = rs.getString("Mobile");
 						System.out.println(ModelNo);
 						Assert.assertEquals(Globals.Inventory.ModelNo.trim(), ModelNo.trim());
 
@@ -239,7 +239,7 @@ import cucumber.api.java.en.Then;
 					}
 					String Fax = "";
 					try {
-						Person = rs.getString("Fax");
+						Fax = rs.getString("Fax");
 						System.out.println(Fax);
 						Assert.assertEquals(Globals.Inventory.Fax.trim(), Fax.trim());
 
@@ -252,7 +252,7 @@ import cucumber.api.java.en.Then;
 
 					}String Email = "";
 					try {
-						Person = rs.getString("EMail");
+						Email = rs.getString("EMail");
 						System.out.println(Email);
 						Assert.assertEquals(Globals.Inventory.Email.trim(), Email.trim());
 
@@ -265,7 +265,7 @@ import cucumber.api.java.en.Then;
 
 					}String URL = "";
 					try {
-						Person = rs.getString("Url");
+						URL = rs.getString("Url");
 						System.out.println(URL);
 						Assert.assertEquals(Globals.Inventory.URL.trim(), URL.trim());
 

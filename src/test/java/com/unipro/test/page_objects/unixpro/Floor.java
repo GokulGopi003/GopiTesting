@@ -13,12 +13,13 @@ import org.testng.Assert;
 import com.gk.test.MssqlConnect;
 import com.unipro.ExcelWrite;
 import com.unipro.test.framework.Globals;
+import com.unipro.test.framework.PageObject;
 import com.unipro.test.framework.helpers.utils.GenericWrappers;
 import com.unipro.test.framework.helpers.utils.ReadTestData;
 
 import cucumber.api.java.en.Then;
 
-public class Floor {
+public class Floor extends PageObject{
 	AddInventoryFormPage Category;
 	Floorfield icp;
     ExcelWrite pass;
@@ -49,7 +50,7 @@ public class Floor {
 	public void i_update_value_to_the_Subcategory_page_global_Variables() {
 		Globals.Inventory.Floorcode = Globals.Inventory.FloorrowwiseData.get("Floorcode");
 		Globals.Inventory.Description = Globals.Inventory.FloorrowwiseData.get("Description");
-		Globals.Inventory.LocationCode = Globals.Inventory.FloorrowwiseData.get("LocationCode");
+		Globals.Inventory.Location = Globals.Inventory.FloorrowwiseData.get("LocationCode");
 		
 	
 		
@@ -57,7 +58,26 @@ public class Floor {
 
 	@Then("I fill new Floor data page using excel data")
 	public void i_fill_new_Subcategory_data_page_using_excel_data() {
-		
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Location)) {
+			GenericWrappers.sleepInSeconds(1);
+			webDriver.findElement(By.cssSelector("div#ContentPlaceHolder1_ddlLocation_chzn")).click();
+			GenericWrappers.sleepInSeconds(1);
+
+			WebElement LocationValue = webDriver
+					.findElement(By.cssSelector("#ContentPlaceHolder1_ddlLocation_chzn div > div > input[type=text]"));
+			String css_location_dropDownValue = "#ContentPlaceHolder1_ddlLocation_chzn div > div > input[type=text]";
+			By ddlocator = By.cssSelector(css_location_dropDownValue);
+			waitForExpectedElement(ddlocator);
+			js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.Location);
+			GenericWrappers.sleepInSeconds(1);
+			LocationValue.sendKeys(Keys.SPACE);
+			LocationValue.sendKeys(Keys.SPACE);
+			LocationValue.sendKeys(Keys.ARROW_DOWN);
+			GenericWrappers.sleepInSeconds(1);
+			LocationValue.sendKeys(Keys.ENTER);
+
+		}
+
 		
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Description)) {
 			terPage.terminal_waitClearEnterText_css(icp.Description_String, Globals.Inventory.Description);
@@ -91,7 +111,7 @@ public class Floor {
 	}
 	@Then("I read the values from table {string} in Floor")
 	public void i_read_the_values_from_table_in_Floor(String tablename) throws SQLException, IOException {
-		ResultSet rs = st.executeQuery("select * from " + tablename + " where LocationCode='HQ'");
+		ResultSet rs = st.executeQuery("select * from " + tablename + " where FloorCode='PKS'");
 
 		System.out.println(rs);
 
@@ -133,16 +153,16 @@ public class Floor {
 
 				String LocationCode = "";
 				try {
-					Description = rs.getString("LocationCode");
+					LocationCode = rs.getString("LocationCode");
 					System.out.println(LocationCode);
-					Assert.assertEquals(Globals.Inventory.LocationCode.trim(), LocationCode.trim());
+					Assert.assertEquals(Globals.Inventory.Location.trim(), LocationCode.trim());
 
-					pass.ExcelFourData("floor", "LocationCode", Globals.Inventory.LocationCode, LocationCode, "Pass", 5, 0, 5,
+					pass.ExcelFourData("floor", "LocationCode", Globals.Inventory.Location, LocationCode, "Pass", 5, 0, 5,
 							1, 5, 2, 5, 3);
 
 				} catch (AssertionError e) {
 
-					pass.ExcelFourData("floor", "LocationCode", Globals.Inventory.LocationCode, LocationCode, "Fail", 5, 0, 5,
+					pass.ExcelFourData("floor", "LocationCode", Globals.Inventory.Location, LocationCode, "Fail", 5, 0, 5,
 							1, 5, 2, 5, 3);
 
 				}

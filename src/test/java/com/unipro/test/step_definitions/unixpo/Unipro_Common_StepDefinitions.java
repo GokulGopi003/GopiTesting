@@ -30,6 +30,13 @@ public class Unipro_Common_StepDefinitions {
 		cp.clickonButton(buttonName);
 
 	}
+	@Then("I need to click on the {string} button1")
+	public void i_need_to_click_on_the_button1(String Back) {
+
+		cp.clickonButton1(Back);
+
+	}
+
 	@Given("I need to sendkey {string}")
 	public void i_need_to_send_key(String buttonName) {
 

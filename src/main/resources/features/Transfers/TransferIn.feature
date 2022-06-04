@@ -15,12 +15,13 @@ Feature: PoS Inventory > Add Inventory
     Then I load the rowise TransferIn data for "<TestcaseRowName>" rowname
     Then I update value to the TransferIn page global Variables
     Then I fill new TransferIn data page using excel data
+    When Im waiting for 2 sec
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkAccept"
     Then I need to click on the  element "a#ContentPlaceHolder1_LinkButton3"
-    #Then I establish connection  DB for TransferIn
-    #Then I read the values from TransferIn table "tblPaymentHeader" in DB
-    #Then I read the values from TransferIn table "tblPaymentDetail" in DB
-    #Then I close connection  DB for TransferIn
+    Then I establish connection  DB for TransferIn
+    Then I read the values from TransferIn table "LocalTransferInventoryDetail" in DB
+    Then I read the values from TransferIn table "LocalTransferInventoryHEADER" in DB
+    Then I close connection  DB for TransferIn
     
     
      Examples: 

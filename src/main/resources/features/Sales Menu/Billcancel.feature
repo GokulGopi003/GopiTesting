@@ -16,12 +16,12 @@ Feature: PoS Inventory > Add Inventory
     Then I update value to the Billcancel page global Variables
     Then I fill new Billcancel data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkBillCancel"
-    #Then I establish connection  DB for Creditinvoice
-    #Then I read the values from Creditinvoice table "tblPaymentHeader" in DB
-    #Then I read the values from Creditinvoice table "tblPaymentDetail" in DB
-    #Then I close connection  DB for Creditinvoice
+    Then I establish connection  DB for Billcancel
+    Then I read the values from Billcancel table "tblSalesReturnDetail" in DB
+    Then I read the values from Billcancel table "tblSalesReturnheader" in DB
+    Then I close connection  DB for Billcancel
     
     
      Examples: 
       | TestcaseRowName |
-      |Billcancel|
+      |Billcancel1|

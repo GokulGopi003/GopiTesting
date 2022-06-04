@@ -25,5 +25,5 @@ Feature: Home>Master>Company Master
   Then I close connection to ReasonMasterNew 
     Examples: 
       |TestcaseRowName  |
-      |ReasonMasterNew|
+      |ReasonMasterNew1|
       

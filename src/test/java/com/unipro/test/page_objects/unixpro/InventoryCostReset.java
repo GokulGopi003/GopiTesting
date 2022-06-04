@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 	import org.openqa.selenium.Keys;
 import org.testng.Assert;
@@ -173,8 +174,15 @@ import cucumber.api.java.en.Then;
 						0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
 				pass.Excelcreate("InventoryCostReset", "Filters", "FAIL", 1, 0, 1, 3);
 			}
-
 		}
+			@Then("I POPUP handle accept")
+			public void I_POPUP_handle_accept(){
+
+				Alert alert=webDriver.switchTo().alert();
+				alert.accept();
+			}
+
+		
 		@Then("I close connection  DB for InventoryCostReset")
 		public void I_close_connection_to_DB() throws SQLException {
 

@@ -31,4 +31,4 @@ Feature: PoS Master > Location
     
       Examples: 
       | TestcaseRowName |
-      |Size1      |
+      |Size2      |

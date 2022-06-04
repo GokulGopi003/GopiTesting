@@ -9,7 +9,7 @@ Feature: PoS Inventory > Add Inventory
        
   @july2020
   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
-    Given I want to launch the "Transfer/frmTransferIn.aspx?id=TransferIn"
+    Given I want to launch the "Transfer/frmRequestedStockView.aspx"
     Then I load the testdatas form excel to table
     Then I load the StockRequestProcess sheet data to map
     Then I load the rowise StockRequestProcess data for "<TestcaseRowName>" rowname
@@ -18,8 +18,8 @@ Feature: PoS Inventory > Add Inventory
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkAccept"
     Then I need to click on the  element "a#ContentPlaceHolder1_LinkButton3"
     #Then I establish connection  DB for StockRequestProcess
-    #Then I read the values from StockRequestProcess table "tblPaymentHeader" in DB
-    #Then I read the values from StockRequestProcess table "tblPaymentDetail" in DB
+    #Then I read the values from StockRequestProcess table "tblOutletStockRequestHeader" in DB
+    #Then I read the values from StockRequestProcess table "tblLocation" in DB
     #Then I close connection  DB for StockRequestProcess
     
     

@@ -18,6 +18,12 @@ public class VendorcatelogField {
 		public String Batchrowno_String = "input#ContentPlaceHolder1_searchFilterUserControl_txtBatchNo";
 		public String ItemCode_String = "input#ContentPlaceHolder1_searchFilterUserControl_txtItemCode";
 		public String ItemName_String = "input#ContentPlaceHolder1_searchFilterUserControl_txtItemName";
-
+        public String MRP_String     = "input#ContentPlaceHolder1_gvVendorCat_txtMrp_0";
+        public String BasicCost_String = "input#ContentPlaceHolder1_gvVendorCat_txtBasicCostNew_0";
+        public String Discount_String ="input#ContentPlaceHolder1_gvVendorCat_txtDiscountBasicPerNew_0";
+        public String Discount1_String = "input#ContentPlaceHolder1_gvVendorCat_txtDiscountBasicPer2_0";
+        public String Discount2_String ="input#ContentPlaceHolder1_gvVendorCat_txtDiscountBasicPer3_0";
+        public String NetSellingPrice_String ="input#ContentPlaceHolder1_gvVendorCat_txtNetSellingPrice_0";
+        
 	}
 

@@ -15,6 +15,8 @@ Feature: PoS Inventory > Add Inventory
     Then I load the rowise StockUpdate data for "<TestcaseRowName>" rowname
     Then I update value to the StockUpdate page global Variables
     Then I fill new StockUpdate data page using excel data
+    Then I need to click on the  element "a#ContentPlaceHolder1_searchFilterUserControl_lnkFilter"
+    Then I fill new Qty data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkUpdate"
     Then I need to click on the  element "a#ContentPlaceHolder1_LinkButton3"
     Then I establish connection  DB for StockUpdate
@@ -25,4 +27,4 @@ Feature: PoS Inventory > Add Inventory
     
      Examples: 
       | TestcaseRowName |
-      |StockUpdate2|
+		  |StockUpdate4|

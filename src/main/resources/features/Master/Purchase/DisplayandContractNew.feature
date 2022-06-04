@@ -24,5 +24,5 @@ Feature: master > Purchase > Display and Contract
 
     Examples: 
       |TestcaseRowName|
-      |DisplayandContractNew|
+      |DisplayandContractNew1|
      

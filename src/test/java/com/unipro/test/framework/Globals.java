@@ -103,7 +103,27 @@ public class Globals {
 		final public static String SHEETNAME90 = "BarCodePrinterNew";
 		final public static String SHEETNAME91 = "PickerMasterNew";
 		final public static String SHEETNAME92 = "ParamMasterNew";
-
+		final public static String SHEETNAME93 = "VendorMaster";
+		final public static String SHEETNAME94 = "VendorAnalysis";
+		final public static String SHEETNAME95 = "PurchaseAnalysis";
+		final public static String SHEETNAME96 = "SalesPerformance";
+		final public static String SHEETNAME97 = "SalesAnalysisReport";
+		final public static String SHEETNAME98 = "SalesAnalysisPromotionEvents";
+		final public static String SHEETNAME99 = "SalesAnalysisMemberReport";
+		final public static String SHEETNAME100 = "TerminalWiseGstAnalysis";
+		final public static String SHEETNAME101 = "GstAnalysis";
+		final public static String SHEETNAME102 = "GSTR";
+		final public static String SHEETNAME103 = "LocationStockMovement";
+		final public static String SHEETNAME104 = "LocationWiseSales";
+		final public static String SHEETNAME105 = "AuditTrails";
+		final public static String SHEETNAME106 = "Registration";
+		final public static String SHEETNAME107 = "LinkAccount";
+		final public static String SHEETNAME108 = "AccountSettlement";
+		final public static String SHEETNAME109 = "MasterReports";
+		final public static String SHEETNAME110 = "InventoryList";
+		final public static String SHEETNAME111 = "InventoryMovementWiseReport";
+		final public static String SHEETNAME112 = "SalesWiseReport";
+		                                          
 		public static Table<String, String, String> inventorySheetData;
 		public static Table<String, String, String> DepartmentSheetData;
 		public static Table<String, String, String> CategorySheetData;
@@ -197,6 +217,26 @@ public class Globals {
 		public static Table<String, String, String> BarCodePrinterNewSheetData;
 		public static Table<String, String, String> PickerMasterNewSheetData;
 		public static Table<String, String, String> ParamMasterNewSheetData;
+		public static Table<String, String, String> VendorMasterSheetData;
+		public static Table<String, String, String> VendorAnalysisSheetData;
+		public static Table<String, String, String> PurchaseAnalysisSheetData;
+		public static Table<String, String, String> SalesPerformanceSheetData;
+		public static Table<String, String, String> SalesAnalysisReportSheetData;
+		public static Table<String, String, String> SalesAnalysisPromotionEventsSheetData;
+		public static Table<String, String, String> SalesAnalysisMemberReportSheetData;
+		public static Table<String, String, String> TerminalWiseGstAnalysisSheetData;
+		public static Table<String, String, String> GstAnalysisSheetData;
+		public static Table<String, String, String> GSTRSheetData;
+		public static Table<String, String, String> LocationStockMovementSheetData;
+		public static Table<String, String, String> LocationWiseSalesSheetData;
+		public static Table<String, String, String> AuditTrailsSheetData;
+		public static Table<String, String, String> RegistrationSheetData;
+		public static Table<String, String, String> LinkAccountSheetData;
+		public static Table<String, String, String> AccountSettlementSheetData;
+		public static Table<String, String, String> MasterReportsSheetData;
+		public static Table<String, String, String> InventoryListSheetData;
+		public static Table<String, String, String> InventoryMovementWiseReportSheetData;
+		public static Table<String, String, String> SalesWiseReportSheetData;
 		
 		
 		public static Map<String, String> inventoryrowwiseData;
@@ -292,6 +332,28 @@ public class Globals {
 		public static Map<String, String> BarCodePrinterNewrowwiseData;
 		public static Map<String, String> PickerMasterNewrowwiseData;
 		public static Map<String, String> ParamMasterNewrowwiseData;
+		public static Map<String, String> VendorMasterrowwiseData;
+		public static Map<String, String> VendorAnalysisrowwiseData;
+		public static Map<String, String> PurchaseAnalysisrowwiseData;
+		public static Map<String, String> SalesPerformancerowwiseData;
+		public static Map<String, String> SalesAnalysisReportrowwiseData;
+		public static Map<String, String> SalesAnalysisPromotionEventsrowwiseData;
+		public static Map<String, String> SalesAnalysisMemberReportrowwiseData;
+		public static Map<String, String> TerminalWiseGstAnalysisrowwiseData;
+		public static Map<String, String> GstAnalysisrowwiseData;
+		public static Map<String, String> GSTRrowwiseData;
+		public static Map<String, String> LocationStockMovementrowwiseData;
+		public static Map<String, String> LocationWiseSalesrowwiseData;
+		public static Map<String, String> AuditTrailsrowwiseData;
+		public static Map<String, String> RegistrationrowwiseData;
+		public static Map<String, String> LinkAccountrowwiseData;
+		public static Map<String, String> AccountSettlementrowwiseData;
+		public static Map<String, String> MasterReportsrowwiseData;
+		public static Map<String, String> InventoryListrowwiseData;
+		public static Map<String, String> InventoryMovementWiseReportrowwiseData;
+		public static Map<String, String> SalesWiseReportrowwiseData;
+
+		
 
 		
 		public static String Cess;
@@ -433,6 +495,8 @@ public class Globals {
 		public static String Phone;
 		public static String Fax;
 		public static String Netcost;
+		public static String NetcostPer;
+		
 		public static String SizeCode;
 		public static String Batchrowno;
 		public static String Vendorbillno;
@@ -739,6 +803,54 @@ public class Globals {
 		public static String ParamCode;
 		public static String CreatedBy;
 		public static String CST;
+		
+		public static String ZipCode;
+		public static String PhoneNo;
+		public static String PurchaseLimit;
+		public static String Attn;
+		public static String PurchaseProfit;
+		public static String SellingMargin;
+		public static String PORemarks;
+		public static String ChequePrintName;
+		public static String BankACNo;
+		public static String IFSCCode;
+		public static String HoldBills;
+		public static String HoldBill;
+		public static String CrLimit;
+		public static String CRLIMIT;
+		public static String CrDays;
+		public static String StopPayment;
+		public static String StopPurchase;
+		public static String StopReason;
+		public static String Sunday;
+		public static String Monday;
+		public static String Tuesday;
+		public static String Wednesday;
+		public static String Thursday;
+	    public static String Friday;
+	    public static String Saturday;
+	    public static String Customer;
+	    public static String SalesMan;
+	    public static String BatchNo;
+	    public static String Batch6;
+	    public static String Batch7;
+	    public static String Batch8;
+	    public static String Batch9;
+	    public static String Batch10;
+	    public static String Batch11;
+	    
+	    public static String Batch12;
+	    public static String Batch13;
+	    public static String Batch14;
+	    public static String Batch15;
+	    public static String Batch16;
+	    public static String Batch17;
+	    public static String Batch18;
+	    public static String Batch19;
+	    public static String Batch20;
+	    public static String Batch21;
+	    public static String Batch22;
+	    public static String Batch23;
 		
 		
 		

@@ -68,7 +68,7 @@ public class StockUpdatePosting extends PageObject {
 			Globals.Inventory.ItemCode = Globals.Inventory.StockUpdatePostingrowwiseData.get("ItemCode");
 			Globals.Inventory.ItemName = Globals.Inventory.StockUpdatePostingrowwiseData.get("ItemName");
 			Globals.Inventory.Batch = Globals.Inventory.StockUpdatePostingrowwiseData.get("Batch");
-
+		//	Globals.Inventory.Qty= Globals.Inventory.StockUpdaterowwiseData.get("Qty");
 			
 			
 			
@@ -103,11 +103,11 @@ public class StockUpdatePosting extends PageObject {
 				
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemCode)) {
 					terpage.terminal_waitClearEnterText_css(icp.ItemCode_String, Globals.Inventory.ItemCode);
-					Inventorychange.clearAndTypeSlowly(Globals.Inventory.ItemCode, "input#txtSearch");
-					Inventorychange.return_td_invoke_element(Globals.Inventory.ItemCode).click();
+					//Inventorychange.clearAndTypeSlowly(Globals.Inventory.ItemCode, "input#txtSearch");
+					//Inventorychange.return_td_invoke_element(Globals.Inventory.ItemCode).click();
 				}
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemName)) {
-					terpage.terminal_waitClearEnterText_css(icp.ItemName_String, Globals.Inventory.ItemName);
+					terpage.terminal_waitClearEnterText_css(icp.ItemName_String, Globals.Inventory.ItemName).sendKeys(Keys.TAB);
 					webDriver.findElement(By.cssSelector("a#ContentPlaceHolder1_searchFilterUserControl_lnkFilter")).click();
 					
 
@@ -117,6 +117,10 @@ public class StockUpdatePosting extends PageObject {
 					terpage.get_checkBox_element(icp.Batch_String).click();
 
 				}
+				/*if (GenericWrappers.isNotEmpty(Globals.Inventory.Qty)) {
+					//terpage.get_checkBox_element(icp.Qty_String).click();
+
+				}*/
 				
 			
 			pass.ExcelFourData("StockUpdatePosting","Modules", "Actual", "Expected", "Status",
@@ -161,7 +165,7 @@ public class StockUpdatePosting extends PageObject {
 		public void i_want_to_launch_the(String tablename ) throws SQLException, IOException {
 			
 			
-			ResultSet rs = st.executeQuery("select * from "+tablename+" where InventoryCode='000001'");
+			ResultSet rs = st.executeQuery("select * from "+tablename+" where InventoryCode='859529'");
 			
 			System.out.println(rs);
 			//ResultSet rs = st.executeQuery("");
@@ -170,49 +174,49 @@ public class StockUpdatePosting extends PageObject {
 
 				switch (tablename) {
 				
-				case "tblinventory":
+				case "tblStockTakeAdjustment":
 					
 					
-					String Sellingprice="";
+					String ItemCode="";
 					try {
-						Sellingprice = rs.getString("SellingPrice");
-						System.out.println(Sellingprice);
-						Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), Sellingprice.trim());
-						pass.Excelcreate("PriceChangeBatchItem", "tblinventory", "", 3, 0, 3, 1);
-						pass.ExcelFourData("PriceChangeBatchItem", "SellingPrice", Globals.Inventory.NetSellingPrice, Sellingprice, "Pass",
+						ItemCode = rs.getString("InventoryCode");
+						System.out.println(ItemCode);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode.trim());
+						pass.Excelcreate("StockUpdatePosting", "tblStockTakeAdjustment", "", 3, 0, 3, 1);
+						pass.ExcelFourData("StockUpdatePosting", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Pass",
 								5, 0, 5, 1, 5, 2, 5, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("PriceChangeBatchItem", "tblinventory", "", 3, 0, 3, 1);
-						pass.ExcelFourData("PriceChangeBatchItem", "SellingPrice", Globals.Inventory.NetSellingPrice, Sellingprice, "Fail",
+						pass.Excelcreate("StockUpdatePosting", "tblStockTakeAdjustment", "", 3, 0, 3, 1);
+						pass.ExcelFourData("StockUpdatePosting", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Fail",
 								5, 0, 5, 1, 5, 2, 5, 3);
 					}
 					catch(Exception e) {
-						System.out.println("null error tblinventory column SellingPrice");
+						System.out.println("null error tblStockTakeAdjustment column InventoryCode");
 					}
 					
 					
-					break;
+					//break;
 					
-				case "tblinventorypricing":
+				//case "tblinventorypricing":
 					
 			
-					String W1="";
+					String Qty="";
 					try {
-				    W1 = rs.getString("MPWPrice1");
-					System.out.println(W1);
-					Assert.assertEquals(Globals.Inventory.WPrice1.trim(), W1.trim());
-					pass.Excelcreate("PriceChangeBatchItem", "tblinventorypricing", "", 7, 0, 7, 1);
-					pass.ExcelFourData("PriceChangeBatchItem", "WPrice1", Globals.Inventory.WPrice1, W1, "Pass",
+						Qty = rs.getString("ScannedQty");
+					System.out.println(Qty);
+					Assert.assertEquals(Globals.Inventory.Department.trim(), Qty.trim());
+					//pass.Excelcreate("StockUpdatePosting", "tblinventorypricing", "", 7, 0, 7, 1);
+					pass.ExcelFourData("StockUpdatePosting", "Qty", Globals.Inventory.Department, Qty, "Pass",
 							8, 0, 8, 1, 8, 2, 8, 3);
 				} catch (AssertionError e) {
-					pass.Excelcreate("PriceChangeBatchItem", "tblinventorypricing", "",  7, 0, 7, 1);
-					pass.ExcelFourData("PriceChangeBatchItem", "WPrice1", Globals.Inventory.WPrice1, W1, "Fail",
+					//pass.Excelcreate("StockUpdatePosting", "tblinventorypricing", "",  7, 0, 7, 1);
+					pass.ExcelFourData("StockUpdatePosting", "Qty", Globals.Inventory.Department, Qty, "Fail",
 							8, 0, 8, 1, 8, 2, 8, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column MPWPrice1");
 					}
-					String W2="";
+					/*String W2="";
 					try {
 				 W2 = rs.getString("MPWPrice2");
 					System.out.println(W2);
@@ -239,45 +243,45 @@ public class StockUpdatePosting extends PageObject {
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column MPWPrice3");
-					}
+					}*/
 					break;
-				case "tblinventorystock":
-						String BasicSelling1 ="";
+				case "vwInventoryStockLoc":
+						String InventoryCode ="";
 						try {
-						BasicSelling1 = rs.getString("Price");
-						System.out.println(BasicSelling1);
-						Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), BasicSelling1.trim());
-						pass.Excelcreate("PriceChangeBatchItem", "tblinventorypricing", "", 12, 0, 12, 1);
-						pass.ExcelFourData("PriceChangeBatchItem", "NetSellingPrice", Globals.Inventory.NetSellingPrice, BasicSelling1, "Pass",
+							InventoryCode = rs.getString("INVENTORYCODE");
+						System.out.println(InventoryCode);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), InventoryCode.trim());
+						//pass.Excelcreate("StockUpdatePosting", "tblinventorypricing", "", 12, 0, 12, 1);
+						pass.ExcelFourData("StockUpdatePosting", "InventoryCode", Globals.Inventory.ItemCode, InventoryCode, "Pass",
 								13, 0, 13, 1, 13, 2, 13, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("PriceChangeBatchItem", "tblinventorypricing", "", 12, 0, 12, 1);
-						pass.ExcelFourData("PriceChangeBatchItem", "NetSellingPrice", Globals.Inventory.NetSellingPrice, BasicSelling1, "Fail",
+						//pass.Excelcreate("StockUpdatePosting", "tblinventorypricing", "", 12, 0, 12, 1);
+						pass.ExcelFourData("StockUpdatePosting", "InventoryCode", Globals.Inventory.ItemCode, InventoryCode, "Fail",
 								13, 0, 13, 1, 13, 2, 13, 3);
 					}
 						catch(Exception e) {
 							System.out.println("null error tblinventorystock column NetSellingPrice");
 						}
-						break;
-				case "TBLBATCHINVENTORYCONTROL":
-					String SellingPrice="";
+						//break;
+				//case "TBLBATCHINVENTORYCONTROL":
+					String qtyonhand="";
 					try {
-					SellingPrice = rs.getString("SellingPrice");
-					System.out.println(SellingPrice);
-					Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), SellingPrice.trim());
-					pass.Excelcreate("PriceChangeBatchItem", "TBLBATCHINVENTORYCONTROL", "", 15, 0, 15, 1);
-					pass.ExcelFourData("PriceChangeBatchItem", "NetSellingPrice", Globals.Inventory.NetSellingPrice, SellingPrice, "Pass",
+						qtyonhand = rs.getString("QTYONHAND");
+					System.out.println(qtyonhand);
+					Assert.assertEquals(Globals.Inventory.Department.trim(), qtyonhand.trim());
+					//pass.Excelcreate("StockUpdatePosting", "TBLBATCHINVENTORYCONTROL", "", 15, 0, 15, 1);
+					pass.ExcelFourData("StockUpdatePosting", "NetSellingPrice", Globals.Inventory.Department, qtyonhand, "Pass",
 							16, 0, 16, 1, 16, 2, 16, 3);
 				} catch (AssertionError e) {
-					pass.Excelcreate("PriceChangeBatchItem", "TBLBATCHINVENTORYCONTROL", "",15, 0, 15, 1);
-					pass.ExcelFourData("PriceChangeBatchItem", "NetSellingPrice", Globals.Inventory.NetSellingPrice, SellingPrice, "Fail",
+					//pass.Excelcreate("StockUpdatePosting", "TBLBATCHINVENTORYCONTROL", "",15, 0, 15, 1);
+					pass.ExcelFourData("StockUpdatePosting", "NetSellingPrice", Globals.Inventory.Department, qtyonhand, "Fail",
 							16, 0, 16, 1, 16, 2, 16, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error TBLBATCHINVENTORYCONTROL column SellingPrice");
 					}
 					
-					String W11="";
+					/*String W11="";
 					try {
 					W11 = rs.getString("WPrice1");
 					System.out.println(W11);
@@ -321,7 +325,7 @@ public class StockUpdatePosting extends PageObject {
 						System.out.println("null error TBLBATCHINVENTORYCONTROL column WPrice3");
 					}
 					
-					break;
+					break;*/
 				default:
 					break;
 				}

@@ -169,16 +169,20 @@ package com.unipro.test.page_objects.unixpro;
 				
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemCode)) {
 					terpage.terminal_waitClearEnterText_css(icp.ItemCode_String, Globals.Inventory.ItemCode);
-					Inventorychange.clearAndTypeSlowly(Globals.Inventory.ItemCode, "input#txtSearch");
-					Inventorychange.return_td_invoke_element(Globals.Inventory.ItemCode).click();
+					//Inventorychange.clearAndTypeSlowly(Globals.Inventory.ItemCode, "input#txtSearch");
+					//webDriver.findElement(By.xpath("//*[@id='ContentPlaceHolder1_searchFilterUserControl_txtItemCode']")).sendKeys(Keys.RETURN);
+					//Inventorychange.return_td_invoke_element(Globals.Inventory.ItemCode).click();
+					
 				}
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemName)) {
 					terpage.terminal_waitClearEnterText_css(icp.ItemName_String, Globals.Inventory.ItemName);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_searchFilterUserControl_txtItemName")).sendKeys(Keys.TAB);
 					webDriver.findElement(By.cssSelector("a#ContentPlaceHolder1_searchFilterUserControl_lnkFilter")).click();
-					
 
 				}
 				
+
+								
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch3)) {
 					terpage.get_checkBox_element(icp.Batch3_String).click();
 
@@ -210,7 +214,16 @@ package com.unipro.test.page_objects.unixpro;
 					itemCodeValue.sendKeys(Keys.ENTER);
 
 				}
-				if (GenericWrappers.isNotEmpty(Globals.Inventory.Path)) {
+				/*if (GenericWrappers.isNotEmpty(Globals.Inventory.Qty)) {
+					//webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_btnImport")).click();
+					terpage.terminal_waitClearEnterText_css(icp.Qty_String, Globals.Inventory.Qty);
+					//GenericWrappers.sleepInSeconds(2);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_gvStockUpdate_txtNewQty_0")).sendKeys(Keys.RETURN);
+					
+
+				}*/
+
+								/*if (GenericWrappers.isNotEmpty(Globals.Inventory.Path)) {
 				try {
 
 					terpage.terminal_waitClearEnterText_css("input#ContentPlaceHolder1_FileUpload1",Globals.Inventory.Path).sendKeys(Keys.ENTER);
@@ -220,17 +233,10 @@ package com.unipro.test.page_objects.unixpro;
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 
-					}
+					}*/
 
-				}
-				if (GenericWrappers.isNotEmpty(Globals.Inventory.Qty)) {
-					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_btnImport")).click();
-					terpage.terminal_waitClearEnterText_css(icp.Qty_String, Globals.Inventory.Qty);
-					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_gvStockUpdate_txtNewQty_0")).sendKeys(Keys.RETURN);
-					
-
-				}
-			
+			//}
+							
 			pass.ExcelFourData("StockUpdate","Modules", "Actual", "Expected", "Status",
 					0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
 			pass.Excelcreate("StockUpdate", "Filters", "Pass", 1, 0, 1, 3);
@@ -248,7 +254,18 @@ package com.unipro.test.page_objects.unixpro;
 			}
 	        
 		}
+		@Then("I fill new Qty data page using excel data")
+		public void i_fill_new_Qty_data_page_using_excel_data() {
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.Qty)) {
+				//webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_btnImport")).click();
+				terpage.terminal_waitClearEnterText_css(icp.Qty_String, Globals.Inventory.Qty);
+				GenericWrappers.sleepInSeconds(2);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_gvStockUpdate_txtNewQty_0")).sendKeys(Keys.RETURN);
+				
 
+			}
+
+		}
 		@Then("I close connection  DB for StockUpdate")
 		public void I_close_connection_to_DB() throws SQLException {
 
@@ -273,7 +290,7 @@ package com.unipro.test.page_objects.unixpro;
 		public void i_want_to_launch_the(String tablename ) throws SQLException, IOException {
 			
 			
-			ResultSet rs = st.executeQuery("select * from "+tablename+" where InventoryCode='000001'");
+			ResultSet rs = st.executeQuery("select * from "+tablename+" where InventoryCode='859529'");
 			
 			System.out.println(rs);
 			//ResultSet rs = st.executeQuery("");
@@ -282,49 +299,49 @@ package com.unipro.test.page_objects.unixpro;
 
 				switch (tablename) {
 				
-				case "tblinventory":
+				case "tblBatchStockTake":
 					
 					
-					String Sellingprice="";
+					String ItemCode="";
 					try {
-						Sellingprice = rs.getString("SellingPrice");
-						System.out.println(Sellingprice);
-						Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), Sellingprice.trim());
-						pass.Excelcreate("PriceChangeBatchItem", "tblinventory", "", 3, 0, 3, 1);
-						pass.ExcelFourData("PriceChangeBatchItem", "SellingPrice", Globals.Inventory.NetSellingPrice, Sellingprice, "Pass",
+						ItemCode = rs.getString("InventoryCode");
+						System.out.println(ItemCode);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode.trim());
+						pass.Excelcreate("StockUpdate", "tblBatchStockTake", "", 3, 0, 3, 1);
+						pass.ExcelFourData("StockUpdate", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Pass",
 								5, 0, 5, 1, 5, 2, 5, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("PriceChangeBatchItem", "tblinventory", "", 3, 0, 3, 1);
-						pass.ExcelFourData("PriceChangeBatchItem", "SellingPrice", Globals.Inventory.NetSellingPrice, Sellingprice, "Fail",
+						pass.Excelcreate("StockUpdate", "tblBatchStockTake", "", 3, 0, 3, 1);
+						pass.ExcelFourData("StockUpdate", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Fail",
 								5, 0, 5, 1, 5, 2, 5, 3);
 					}
 					catch(Exception e) {
-						System.out.println("null error tblinventory column SellingPrice");
+						System.out.println("null error tblBatchStockTake column InventoryCode");
 					}
 					
 					
-					break;
+				
 					
-				case "tblinventorypricing":
+				
 					
 			
-					String W1="";
+					String Qty="";
 					try {
-				    W1 = rs.getString("MPWPrice1");
-					System.out.println(W1);
-					Assert.assertEquals(Globals.Inventory.WPrice1.trim(), W1.trim());
-					pass.Excelcreate("PriceChangeBatchItem", "tblinventorypricing", "", 7, 0, 7, 1);
-					pass.ExcelFourData("PriceChangeBatchItem", "WPrice1", Globals.Inventory.WPrice1, W1, "Pass",
+						Qty = rs.getString("NewQty");
+					System.out.println(Qty);
+					Assert.assertEquals(Globals.Inventory.Qty.trim(), Qty.trim());
+					pass.Excelcreate("StockUpdate", "tblinventorypricing", "", 7, 0, 7, 1);
+					pass.ExcelFourData("StockUpdate", "Qty", Globals.Inventory.Qty, Qty, "Pass",
 							8, 0, 8, 1, 8, 2, 8, 3);
 				} catch (AssertionError e) {
-					pass.Excelcreate("PriceChangeBatchItem", "tblinventorypricing", "",  7, 0, 7, 1);
-					pass.ExcelFourData("PriceChangeBatchItem", "WPrice1", Globals.Inventory.WPrice1, W1, "Fail",
+					pass.Excelcreate("StockUpdate", "tblinventorypricing", "",  7, 0, 7, 1);
+					pass.ExcelFourData("StockUpdate", "Qty", Globals.Inventory.Qty, Qty, "Fail",
 							8, 0, 8, 1, 8, 2, 8, 3);
 				}
 					catch(Exception e) {
-						System.out.println("null error tblinventorypricing column MPWPrice1");
+						System.out.println("null error tblBatchStockTake column NewQty");
 					}
-					String W2="";
+					/*String W2="";
 					try {
 				 W2 = rs.getString("MPWPrice2");
 					System.out.println(W2);
@@ -432,7 +449,7 @@ package com.unipro.test.page_objects.unixpro;
 					catch(Exception e) {
 						System.out.println("null error TBLBATCHINVENTORYCONTROL column WPrice3");
 					}
-					
+					*/
 					break;
 				default:
 					break;

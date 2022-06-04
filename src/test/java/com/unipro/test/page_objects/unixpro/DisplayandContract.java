@@ -202,7 +202,7 @@ public class DisplayandContract extends PageObject {
 	@Given("I read the values from table {string} in DisplayandContractNew")
 	public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
 
-		ResultSet rs = st.executeQuery("select * from " + tablename + " where DisplayName='15'");
+		ResultSet rs = st.executeQuery("select * from " + tablename + " where DisplayName='NORMAL'");
 
 		System.out.println(rs);
 

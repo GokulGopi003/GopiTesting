@@ -109,11 +109,11 @@ try {
 	
 
 	}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.Discount)) {
+		/*if (GenericWrappers.isNotEmpty(Globals.Inventory.Discount)) {
 			terPage.terminal_waitClearEnterText_css(icp.Discount_String, Globals.Inventory.Discount);
 			
 			
-}
+}*/
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Remark)) {
 			terPage.terminal_waitClearEnterText_css(icp.Remark_String, Globals.Inventory.Remark);
 		

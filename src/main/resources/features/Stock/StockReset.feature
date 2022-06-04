@@ -16,12 +16,13 @@ Feature: PoS Inventory > Add Inventory
     Then I update value to the StockReset page global Variables
     Then I fill new StockReset data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkUpdate"
-    #Then I establish connection  DB for StockReset
-    #Then I read the values from StockReset table "tblPaymentHeader" in DB
-    #Then I read the values from StockReset table "tblPaymentDetail" in DB
-    #Then I close connection  DB for StockReset
+    Then I establish connection  DB for StockReset
+    Then I read the values from StockReset table "tblBatchInventoryControl" in DB
+    Then I read the values from StockReset table "tblinventorystock" in DB
+    Then I read the values from StockReset table "tblInventoryStockReset" in DB
+    Then I close connection  DB for StockReset
     
     
      Examples: 
       | TestcaseRowName |
-      |StockReset2|
+      |StockReset4|

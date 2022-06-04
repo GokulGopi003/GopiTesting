@@ -246,7 +246,7 @@ import org.testng.Assert;
 		@Given("I read the values from TransferOut table {string} in DB")
 		public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
 
-			ResultSet rs = st.executeQuery("select * from " + tablename + " where Vendorcode='V00750'");
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where InventoryCode='000021'");
 
 			System.out.println(rs);
 			// ResultSet rs = st.executeQuery("");
@@ -255,37 +255,37 @@ import org.testng.Assert;
 
 				switch (tablename) {
 
-				case "tblPaymentHeader":
+				case "tblBatchInventoryControl":
 
-					String Sellingprice = "";
+					String ItemCode = "";
 					try {
-						Sellingprice = rs.getString("PaymentDate");
-						System.out.println(Sellingprice);
-						Assert.assertEquals(Globals.Inventory.Date.trim(), Sellingprice.trim());
-						pass.Excelcreate("Payments", "tblPaymentHeader", "", 3, 0, 3, 1);
-						pass.ExcelFourData("Payments", "VendorCode", Globals.Inventory.Date, Sellingprice, "Pass", 5, 0, 5, 1,
+						ItemCode = rs.getString("InventoryCode");
+						System.out.println(ItemCode);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode.trim());
+						pass.Excelcreate("TransferOut", "tblBatchInventoryControl", "", 3, 0, 3, 1);
+						pass.ExcelFourData("TransferOut", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Pass", 5, 0, 5, 1,
 								5, 2, 5, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Payments", "tblPaymentHeader", "", 3, 0, 3, 1);
-						pass.ExcelFourData("Payments", "VendorCode", Globals.Inventory.Date, Sellingprice, "Fail", 5, 0, 5, 1,
+						pass.Excelcreate("TransferOut", "tblBatchInventoryControl", "", 3, 0, 3, 1);
+						pass.ExcelFourData("TransferOut", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Fail", 5, 0, 5, 1,
 								5, 2, 5, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblPaymentHeader column PaymentDate");
 					}
-					String ReturnDate = "";
+					String Batchno = "";
 					try {
-						ReturnDate = rs.getString("VoucherRef");
-						System.out.println(ReturnDate);
-						Assert.assertEquals(Globals.Inventory.Refno.trim(), ReturnDate.trim());
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, ReturnDate, "Pass", 6, 0, 6, 1, 6, 2, 6,
+						Batchno = rs.getString("BatchNo");
+						System.out.println(Batchno);
+						Assert.assertEquals(Globals.Inventory.Batchno.trim(), Batchno.trim());
+						pass.ExcelFourData("TransferOut", "Batchno", Globals.Inventory.Batchno, Batchno, "Pass", 6, 0, 6, 1, 6, 2, 6,
 								3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, ReturnDate, "Fail", 6, 0, 6, 1, 6, 2, 6,
+						pass.ExcelFourData("TransferOut", "Batchno", Globals.Inventory.Batchno, Batchno, "Fail", 6, 0, 6, 1, 6, 2, 6,
 								3);
 					} catch (Exception e) {
 						System.out.println("null error tblPaymentHeader column VoucherRef");
 					}
-					String ReturnDate1 = "";
+					/*String ReturnDate1 = "";
 					try {
 						ReturnDate1 = rs.getString("ReferanceDate");
 						System.out.println(ReturnDate1);
@@ -336,70 +336,74 @@ import org.testng.Assert;
 								2, 9, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblPaymentHeader column Paymode");
-					}
+					}*/
 
 					break;
 
-				case "tblPaymentDetail":
-					String Vendor = "";
+				case "tblTransferInventoryDetail":
+					
+					String Inventorycode = "";
 					try {
-						Vendor = rs.getString("Createdate");
-						System.out.println(Vendor);
-						Assert.assertEquals(Globals.Inventory.RefDate.trim(), Vendor.trim());
-						pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
-						pass.ExcelFourData("Payments", "Createdate", Globals.Inventory.RefDate, Vendor, "Pass", 11, 0, 11, 1, 11, 2,
-								11, 3);
-					} catch (AssertionError e) {
-						pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
-						pass.ExcelFourData("Payments", "Createdate", Globals.Inventory.RefDate, Vendor, "Fail", 11, 0, 11, 1, 11, 2,
-								11, 3);
-					} catch (Exception e) {
-						System.out.println("null error tblPaymentDetail column Createdate");
-					}
-					String Promotiontodate = "";
-					try {
-						Promotiontodate = rs.getString("Referanceno");
-						System.out.println(Promotiontodate);
-						Assert.assertEquals(Globals.Inventory.Refno.trim(), Promotiontodate.trim());
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, Promotiontodate, "Pass", 12, 0, 12, 1,
+						Inventorycode = rs.getString("InventoryCode");
+						System.out.println(Inventorycode);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Inventorycode.trim());
+						pass.Excelcreate("TransferOut", "tblTransferInventoryDetail", "", 10, 0, 10, 1);
+						pass.ExcelFourData("TransferOut", "Inventorycode", Globals.Inventory.ItemCode, Inventorycode, "Pass", 12, 0, 12, 1,
 								12, 2, 12, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, Promotiontodate, "Fail", 12, 0, 12, 1,
+						pass.Excelcreate("TransferOut", "tblTransferInventoryDetail", "", 10, 0, 10, 1);
+						pass.ExcelFourData("TransferOut", "Inventorycode", Globals.Inventory.ItemCode, Inventorycode, "Fail", 12, 0, 12, 1,
 								12, 2, 12, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblPaymentDetail column Referanceno");
 					}
-					break;
-				case "tblRTGS":
-					String Promotionfromtime = "";
+					//break;
+				//case "tblRTGS":
+					String BatchNo = "";
 					try {
-						Promotionfromtime = rs.getString("Vendorname");
-						System.out.println(Promotionfromtime);
-						Assert.assertEquals(Globals.Inventory.Vendor.trim(), Promotionfromtime.trim());
-						pass.Excelcreate("Payments", "tblRTGS", "", 14, 0, 14, 1);
-						pass.ExcelFourData("Payments", "Vendor", Globals.Inventory.Vendor, Promotionfromtime, "Pass", 15, 0, 15, 1,
+						BatchNo = rs.getString("BatchNo");
+						System.out.println(BatchNo);
+						Assert.assertEquals(Globals.Inventory.Batchno.trim(), BatchNo.trim());
+						//pass.Excelcreate("TransferOut", "tblRTGS", "", 14, 0, 14, 1);
+						pass.ExcelFourData("TransferOut", "BatchNo", Globals.Inventory.Batchno, BatchNo, "Pass", 15, 0, 15, 1,
 								15, 2, 15, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Payments", "tblRTGS", "", 14, 0, 14, 1);
-						pass.ExcelFourData("Payments", "Vendor", Globals.Inventory.Vendor, Promotionfromtime, "Fail", 15, 0, 15, 1,
+						//pass.Excelcreate("TransferOut", "tblRTGS", "", 14, 0, 14, 1);
+						pass.ExcelFourData("TransferOut", "BatchNo", Globals.Inventory.Batchno, BatchNo, "Fail", 15, 0, 15, 1,
 								15, 2, 15, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblRTGS column Vendorname");
 					}
+					
 					String WQty = "";
 					try {
-						WQty = rs.getString("Description");
+						WQty = rs.getString("TransferQty");
 						System.out.println(WQty);
-						Assert.assertEquals(Globals.Inventory.Refno.trim(), WQty.trim());
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, WQty, "Pass", 16, 0, 16, 1, 16, 2, 16,
+						Assert.assertEquals(Globals.Inventory.WQty.trim(), WQty.trim());
+						pass.ExcelFourData("TransferOut", "TransferQty", Globals.Inventory.WQty, WQty, "Pass", 16, 0, 16, 1, 16, 2, 16,
 								3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, WQty, "Fail", 16, 0, 16, 1, 16, 2, 16,
+						pass.ExcelFourData("TransferOut", "TransferQty", Globals.Inventory.WQty, WQty, "Fail", 16, 0, 16, 1, 16, 2, 16,
 								3);
 					} catch (Exception e) {
 						System.out.println("null error tblRTGS column Refno");
 					}
-					String Amount = "";
+					String GidNo = "";
+					try {
+						GidNo = rs.getString("TransferNo");
+						System.out.println(GidNo);
+						Assert.assertEquals(Globals.Inventory.GidNo.trim(), GidNo.trim());
+						
+						pass.ExcelFourData("TransferOut", "GidNo", Globals.Inventory.GidNo, GidNo, "Pass", 17, 0, 17, 1, 17, 2,
+								17, 3);
+					} catch (AssertionError e) {
+						//pass.Excelcreate("TransferOut", "tblTransferInventoryDetail", "", 10, 0, 10, 1);
+						pass.ExcelFourData("TransferOut", "GidNo", Globals.Inventory.GidNo, GidNo, "Fail", 17, 0, 17, 1, 17, 2,
+								17, 3);
+					} catch (Exception e) {
+						System.out.println("null error tblPaymentDetail column Createdate");
+					}
+					/*String Amount = "";
 					try {
 						Amount = rs.getString("Amount");
 						System.out.println(Amount);
@@ -437,51 +441,54 @@ import org.testng.Assert;
 								3);
 					} catch (Exception e) {
 						System.out.println("null error tblRTGS column BankCode1");
-					}
+					}*/
 					break;
-				case "tblAPtransaction":
-					String Vendor1 = "";
+				/*case "tblinventorystock":
+					
+					String ItemCode1 = "";
 					try {
-						Vendor1 = rs.getString("VendorCode");
-						System.out.println(Vendor1);
-						Assert.assertEquals(Globals.Inventory.Vendor.trim(), Vendor1.trim());
-						pass.Excelcreate("Payments ", "tblAPtransaction", "", 14, 0, 14, 1);
-						pass.ExcelFourData("Payments ", "Vendor", Globals.Inventory.Vendor, Vendor1, "Pass", 15, 0, 15, 1, 15, 2,
-								15, 3);
+						ItemCode1 = rs.getString("InventoryCode");
+						System.out.println(ItemCode1);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode1.trim());
+						pass.Excelcreate("TransferOut ", "tblinventorystock", "", 19, 0, 19, 1);
+						pass.ExcelFourData("TransferOut ", "ItemCode", Globals.Inventory.ItemCode, ItemCode1, "Pass", 21, 0, 21, 1,
+								21, 2, 21, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Payments ", "tblAPtransaction", "", 14, 0, 14, 1);
-						pass.ExcelFourData("Payments ", "Vendor", Globals.Inventory.Vendor, Vendor1, "Fail", 15, 0, 15, 1, 15, 2,
-								15, 3);
-					} catch (Exception e) {
-						System.out.println("null error tblAPtransaction column VendorCode");
-					}
-					String Promotiontodate1 = "";
-					try {
-						Promotiontodate1 = rs.getString("Remarks");
-						System.out.println(Promotiontodate1);
-						Assert.assertEquals(Globals.Inventory.Refno.trim(), Promotiontodate1.trim());
-						pass.ExcelFourData("Payments ", "Refno", Globals.Inventory.Refno, Promotiontodate1, "Pass", 16, 0, 16, 1,
-								16, 2, 16, 3);
-					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments ", "Refno", Globals.Inventory.Refno, Promotiontodate1, "Fail", 16, 0, 16, 1,
-								16, 2, 16, 3);
+						pass.Excelcreate("TransferOut ", "tblinventorystock", "", 19, 0, 19, 1);
+						pass.ExcelFourData("TransferOut ", "ItemCode", Globals.Inventory.ItemCode, ItemCode1, "Fail", 21, 0, 21, 1,
+								21, 2, 21, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblAPtransaction column Refno");
 					}
-					String Basiccost1 = "";
+					String LQty = "";
 					try {
-						Basiccost1 = rs.getString("Refinvoiceno");
-						System.out.println(Basiccost1);
-						Assert.assertEquals(Globals.Inventory.Billno.trim(), Basiccost1.trim());
-						pass.ExcelFourData("Payments ", "Billno", Globals.Inventory.Billno, Basiccost1, "Pass", 17, 0, 17, 1, 17,
-								2, 17, 3);
+						LQty = rs.getString("QtyOnHand");
+						System.out.println(LQty);
+						Assert.assertEquals(Globals.Inventory.LQty.trim(), LQty.trim());
+						pass.ExcelFourData("TransferOut ", "Billno", Globals.Inventory.LQty, LQty, "Pass", 22, 0, 22, 1, 22,
+								2, 22, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments ", "Billno", Globals.Inventory.Billno, Basiccost1, "Fail",17, 0, 17, 1, 17,
-								2, 17, 3);
+						pass.ExcelFourData("TransferOut ", "Billno", Globals.Inventory.LQty, LQty, "Fail",22, 0, 22, 1, 22,
+								2, 22, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblAPtransaction column Billno");
 					}
-					String Refinvoicedate1 = "";
+					String LocationCode = "";
+					try {
+						LocationCode = rs.getString("LocationCode");
+						System.out.println(LocationCode);
+						Assert.assertEquals(Globals.Inventory.LocationCode.trim(), LocationCode.trim());
+						
+						pass.ExcelFourData("TransferOut ", "LocationCode", Globals.Inventory.LocationCode, LocationCode, "Pass", 23, 0, 23, 1, 23, 2,
+								23, 3);
+					} catch (AssertionError e) {
+						//pass.Excelcreate("TransferOut ", "tblinventorystock", "", 19, 0, 19, 1);
+						pass.ExcelFourData("TransferOut ", "LocationCode", Globals.Inventory.LocationCode, LocationCode, "Fail", 23, 0, 23, 1, 23, 2,
+								23, 3);
+					} catch (Exception e) {
+						System.out.println("null error tblAPtransaction column VendorCode");
+					}
+					/*String Refinvoicedate1 = "";
 					try {
 						Refinvoicedate1 = rs.getString("Refinvoicedate");
 						System.out.println(Refinvoicedate1);
@@ -653,8 +660,8 @@ import org.testng.Assert;
 								2, 13, 3);
 					} catch (Exception e) {
 						System.out.println("null error tbldebitnote column Reason");
-					}
-					break;
+					}*/
+					//break;
 
 				default:
 					break;

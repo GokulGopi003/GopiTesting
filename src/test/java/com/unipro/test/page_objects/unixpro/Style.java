@@ -433,7 +433,7 @@ import cucumber.api.java.en.Then;
 		@Given("I read the values from table {string} in Style")
 		public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
 
-			ResultSet rs = st.executeQuery("select * from " + tablename + " where StyleCode='5'");
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where Stylecode='5'");
 
 			System.out.println(rs);
 
@@ -443,7 +443,7 @@ import cucumber.api.java.en.Then;
 				case "tblInventoryStyle":
 					String StyleCode = "";
 					try {
-						StyleCode = rs.getString("StyleCode");
+						StyleCode = rs.getString("Stylecode");
 						System.out.println(StyleCode);
 						Assert.assertEquals(Globals.Inventory.StyleCode.trim(), StyleCode.trim());
 						pass.Excelcreate("style", "tblInventoryStyle", "", 0, 0, 0, 0);
@@ -518,7 +518,7 @@ import cucumber.api.java.en.Then;
 					
 					String Origion = "";
 					try {
-						Description = rs.getString("Origin");
+						Origion = rs.getString("Origin");
 						System.out.println(Origion);
 						Assert.assertEquals(Globals.Inventory.Origion.trim(), Origion.trim());
 

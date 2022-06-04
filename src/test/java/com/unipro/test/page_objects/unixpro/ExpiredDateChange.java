@@ -148,7 +148,7 @@ public class ExpiredDateChange  extends PageObject {
 		@Given("I read the values from ExpiredDateChange table {string} in DB")
 		public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
 
-			ResultSet rs = st.executeQuery("select * from " + tablename + " where Vendorcode='V00750'");
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where InventoryCode='000001'");
 
 			System.out.println(rs);
 			// ResultSet rs = st.executeQuery("");
@@ -157,50 +157,50 @@ public class ExpiredDateChange  extends PageObject {
 
 				switch (tablename) {
 
-				case "tblPaymentHeader":
+				case "tblBatchInventoryControl":
 
-					String Sellingprice = "";
+					String ItemCode = "";
 					try {
-						Sellingprice = rs.getString("PaymentDate");
-						System.out.println(Sellingprice);
-						Assert.assertEquals(Globals.Inventory.Date.trim(), Sellingprice.trim());
-						pass.Excelcreate("Payments", "tblPaymentHeader", "", 3, 0, 3, 1);
-						pass.ExcelFourData("Payments", "VendorCode", Globals.Inventory.Date, Sellingprice, "Pass", 5, 0, 5, 1,
+						ItemCode = rs.getString("InventoryCode");
+						System.out.println(ItemCode);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode.trim());
+						pass.Excelcreate("ExpiredDateChange", "tblBatchInventoryControl", "", 3, 0, 3, 1);
+						pass.ExcelFourData("ExpiredDateChange", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Pass", 5, 0, 5, 1,
 								5, 2, 5, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Payments", "tblPaymentHeader", "", 3, 0, 3, 1);
-						pass.ExcelFourData("Payments", "VendorCode", Globals.Inventory.Date, Sellingprice, "Fail", 5, 0, 5, 1,
+						pass.Excelcreate("ExpiredDateChange", "tblBatchInventoryControl", "", 3, 0, 3, 1);
+						pass.ExcelFourData("ExpiredDateChange", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Fail", 5, 0, 5, 1,
 								5, 2, 5, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentHeader column PaymentDate");
+						System.out.println("null error ExpiredDateChange column PaymentDate");
 					}
-					String ReturnDate = "";
+					String Batchno = "";
 					try {
-						ReturnDate = rs.getString("VoucherRef");
-						System.out.println(ReturnDate);
-						Assert.assertEquals(Globals.Inventory.Refno.trim(), ReturnDate.trim());
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, ReturnDate, "Pass", 6, 0, 6, 1, 6, 2, 6,
+						Batchno = rs.getString("BatchNo");
+						System.out.println(Batchno);
+						Assert.assertEquals(Globals.Inventory.Batchno.trim(), Batchno.trim());
+						pass.ExcelFourData("ExpiredDateChange", "Batchno", Globals.Inventory.Batchno, Batchno, "Pass", 6, 0, 6, 1, 6, 2, 6,
 								3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, ReturnDate, "Fail", 6, 0, 6, 1, 6, 2, 6,
+						pass.ExcelFourData("ExpiredDateChange", "Batchno", Globals.Inventory.Batchno, Batchno, "Fail", 6, 0, 6, 1, 6, 2, 6,
 								3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentHeader column VoucherRef");
+						System.out.println("null error tblBatchInventoryControl column VoucherRef");
 					}
 					String ReturnDate1 = "";
 					try {
-						ReturnDate1 = rs.getString("ReferanceDate");
+						ReturnDate1 = rs.getString("ExpiredDate");
 						System.out.println(ReturnDate1);
-						Assert.assertEquals(Globals.Inventory.RefDate.trim(), ReturnDate1.trim());
-						pass.ExcelFourData("Payments", "ReferanceDate", Globals.Inventory.RefDate, ReturnDate1, "Pass", 7, 0, 7, 1, 7, 2,
+						Assert.assertEquals(Globals.Inventory.Date.trim(), ReturnDate1.trim());
+						pass.ExcelFourData("ExpiredDateChange", "ReferanceDate", Globals.Inventory.Date, ReturnDate1, "Pass", 7, 0, 7, 1, 7, 2,
 								7, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "ReferanceDate", Globals.Inventory.RefDate, ReturnDate1, "Fail", 7, 0, 7, 1, 7, 2,
+						pass.ExcelFourData("ExpiredDateChange", "ReferanceDate", Globals.Inventory.Date, ReturnDate1, "Fail", 7, 0, 7, 1, 7, 2,
 								7, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentHeader column RefDate");
+						System.out.println("null error tblBatchInventoryControl column ExpiredDate");
 					}
-					String Basiccost = "";
+					/*String Basiccost = "";
 					try {
 						Basiccost = rs.getString("Vendorname");
 						System.out.println(Basiccost);
@@ -238,57 +238,56 @@ public class ExpiredDateChange  extends PageObject {
 								2, 9, 3);
 					} catch (Exception e) {
 						System.out.println("null error tblPaymentHeader column Paymode");
-					}
+					}*/
 
 					break;
 
-				case "tblPaymentDetail":
-					String Vendor = "";
+				case "tblExpireDate_Modification":
+					String ItemCode1 = "";
 					try {
-						Vendor = rs.getString("Createdate");
-						System.out.println(Vendor);
-						Assert.assertEquals(Globals.Inventory.RefDate.trim(), Vendor.trim());
-						pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
-						pass.ExcelFourData("Payments", "Createdate", Globals.Inventory.RefDate, Vendor, "Pass", 11, 0, 11, 1, 11, 2,
+						ItemCode1 = rs.getString("InventoryCode");
+						System.out.println(ItemCode1);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode1.trim());
+						pass.Excelcreate("ExpiredDateChange", "tblExpireDate_Modification", "", 10, 0, 10, 1);
+						pass.ExcelFourData("ExpiredDateChange", "ItemCode", Globals.Inventory.ItemCode, ItemCode1, "Pass", 11, 0, 11, 1, 11, 2,
 								11, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
-						pass.ExcelFourData("Payments", "Createdate", Globals.Inventory.RefDate, Vendor, "Fail", 11, 0, 11, 1, 11, 2,
+						pass.Excelcreate("ExpiredDateChange", "tblExpireDate_Modification", "", 10, 0, 10, 1);
+						pass.ExcelFourData("ExpiredDateChange", "ItemCode", Globals.Inventory.ItemCode, ItemCode1, "Fail", 11, 0, 11, 1, 11, 2,
 								11, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentDetail column Createdate");
+						System.out.println("null error tblExpireDate_Modification column Createdate");
 					}
-					String Promotiontodate = "";
+					String Batchno1 = "";
 					try {
-						Promotiontodate = rs.getString("Referanceno");
-						System.out.println(Promotiontodate);
-						Assert.assertEquals(Globals.Inventory.Refno.trim(), Promotiontodate.trim());
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, Promotiontodate, "Pass", 12, 0, 12, 1,
+						Batchno1 = rs.getString("BatchNo");
+						System.out.println(Batchno1);
+						Assert.assertEquals(Globals.Inventory.Batchno.trim(), Batchno1.trim());
+						pass.ExcelFourData("ExpiredDateChange", "Batchno", Globals.Inventory.Batchno, Batchno1, "Pass", 12, 0, 12, 1,
 								12, 2, 12, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Payments", "Refno", Globals.Inventory.Refno, Promotiontodate, "Fail", 12, 0, 12, 1,
+						pass.ExcelFourData("ExpiredDateChange", "Batchno", Globals.Inventory.Batchno, Batchno1, "Fail", 12, 0, 12, 1,
 								12, 2, 12, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblPaymentDetail column Referanceno");
+						System.out.println("null error tblExpireDate_Modification column Batchno");
 					}
-					break;
-				case "tblRTGS":
+					
 					String Promotionfromtime = "";
 					try {
-						Promotionfromtime = rs.getString("Vendorname");
+						Promotionfromtime = rs.getString("ExpiredDate");
 						System.out.println(Promotionfromtime);
-						Assert.assertEquals(Globals.Inventory.Vendor.trim(), Promotionfromtime.trim());
-						pass.Excelcreate("Payments", "tblRTGS", "", 14, 0, 14, 1);
-						pass.ExcelFourData("Payments", "Vendor", Globals.Inventory.Vendor, Promotionfromtime, "Pass", 15, 0, 15, 1,
-								15, 2, 15, 3);
+						Assert.assertEquals(Globals.Inventory.Date.trim(), Promotionfromtime.trim());
+						//pass.Excelcreate("Payments", "tblRTGS", "", 14, 0, 14, 1);
+						pass.ExcelFourData("ExpiredDateChange", "ExpiredDate", Globals.Inventory.Date, Promotionfromtime, "Pass", 13, 0, 13, 1,
+								13, 2, 13, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Payments", "tblRTGS", "", 14, 0, 14, 1);
-						pass.ExcelFourData("Payments", "Vendor", Globals.Inventory.Vendor, Promotionfromtime, "Fail", 15, 0, 15, 1,
-								15, 2, 15, 3);
+						//pass.Excelcreate("Payments", "tblRTGS", "", 14, 0, 14, 1);
+						pass.ExcelFourData("ExpiredDateChange", "ExpiredDate", Globals.Inventory.Date, Promotionfromtime, "Fail", 13, 0, 13, 1,
+								13, 2, 13, 3);
 					} catch (Exception e) {
-						System.out.println("null error tblRTGS column Vendorname");
+						System.out.println("null error tblExpireDate_Modification column ExpiredDate");
 					}
-					String WQty = "";
+					/*String WQty = "";
 					try {
 						WQty = rs.getString("Description");
 						System.out.println(WQty);
@@ -555,7 +554,7 @@ public class ExpiredDateChange  extends PageObject {
 								2, 13, 3);
 					} catch (Exception e) {
 						System.out.println("null error tbldebitnote column Reason");
-					}
+					}*/
 					break;
 
 				default:

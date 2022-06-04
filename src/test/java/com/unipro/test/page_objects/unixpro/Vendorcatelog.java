@@ -3,7 +3,10 @@ package com.unipro.test.page_objects.unixpro;
 
 	import java.io.FileNotFoundException;
 	import java.io.IOException;
-	import java.util.NoSuchElementException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.NoSuchElementException;
 
 	import org.openqa.selenium.By;
 
@@ -14,11 +17,15 @@ package com.unipro.test.page_objects.unixpro;
 	import org.openqa.selenium.firefox.FirefoxDriver;
 	import org.openqa.selenium.remote.server.handler.SendKeys;
 	import org.openqa.selenium.support.ui.ExpectedConditions;
-	import org.testng.asserts.SoftAssert;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
-	import com.unipro.test.framework.Globals;
+import com.gk.test.MssqlConnect;
+import com.unipro.ExcelWrite;
+import com.unipro.test.framework.Globals;
 	import com.unipro.test.framework.PageObject;
-	import com.unipro.test.framework.helpers.utils.GenericWrappers;
+import com.unipro.test.framework.helpers.screenshot_helper.Screenshot;
+import com.unipro.test.framework.helpers.utils.GenericWrappers;
 	import com.unipro.test.framework.helpers.utils.ReadTestData;
 	import com.unipro.test.framework.helpers.utils.ReadXLSXFile;
 	import com.unipro.test.page_objects.unixpro.AddInventoryFormPage;
@@ -35,16 +42,16 @@ package com.unipro.test.page_objects.unixpro;
 		AddInventoryFormPage add_inventory;
 		VendorcatelogField icp;
 		CommonPages cp;
-
+         ExcelWrite pass;
 		TerminalPage terPage;
-
+		Screenshot scr;
 		public Vendorcatelog(VendorcatelogField icp, CommonPages cp) {
 			this.icp = icp;
 			terPage = new TerminalPage();
-
+            pass=new ExcelWrite();
 			this.cp = cp;
 			add_inventory = new AddInventoryFormPage();
-
+			scr = new Screenshot();
 		}
 
 		@Then("I load the Vendorcatelog sheet data to map")
@@ -85,12 +92,18 @@ package com.unipro.test.page_objects.unixpro;
 			Globals.Inventory.Batchrowno = Globals.Inventory.VendorcatelogrowwiseData.get("Batchrowno");
 			Globals.Inventory.ItemCode = Globals.Inventory.VendorcatelogrowwiseData.get("ItemCode");
 			Globals.Inventory.ItemName = Globals.Inventory.VendorcatelogrowwiseData.get("ItemName");
-
+			Globals.Inventory.MRP = Globals.Inventory.VendorcatelogrowwiseData.get("MRP");
+			Globals.Inventory.BasicCost = Globals.Inventory.VendorcatelogrowwiseData.get("BasicCost");
+			Globals.Inventory.Discount = Globals.Inventory.VendorcatelogrowwiseData.get("Discount");
+			Globals.Inventory.DiscountPer = Globals.Inventory.VendorcatelogrowwiseData.get("DiscountPer");
+			Globals.Inventory.DiscountPer3 = Globals.Inventory.VendorcatelogrowwiseData.get("DiscountPer3");
+            Globals.Inventory.NetSellingPrice= Globals.Inventory.VendorcatelogrowwiseData.get("NetSellingPrice");
 
 		}
 
 		@Then("I fill new Vendorcatelog data page using excel data")
-		public void i_fill_new_GA_data_page_using_excel_data() {
+		public void i_fill_new_GA_data_page_using_excel_data() throws Exception {
+			try {
 			if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {
 				terPage.terminal_waitClearEnterText_css(icp.Vendor_String, Globals.Inventory.Vendor);
 				add_inventory.clearAndTypeSlowly(Globals.Inventory.Vendor, "input#txtSearch");
@@ -168,10 +181,304 @@ package com.unipro.test.page_objects.unixpro;
 				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_searchFilterUserControl_txtItemName")).sendKeys(Keys.RETURN);
 
 			}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.MRP)) {
+				terPage.terminal_waitClearEnterText_css(icp.MRP_String, Globals.Inventory.MRP);
+			}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.BasicCost)) {
+				terPage.terminal_waitClearEnterText_css(icp.BasicCost_String, Globals.Inventory.BasicCost);
 
+			}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.Discount)) {
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_gvVendorCat_txtDiscountBasicPerNew_0")).sendKeys(Keys.CONTROL, "a");
+				GenericWrappers.sleepInSeconds(2);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_gvVendorCat_txtDiscountBasicPerNew_0")).sendKeys(Keys.DELETE);
+				terPage.terminal_waitClearEnterText_css(icp.Discount_String, Globals.Inventory.Discount);
+		
+			}
+
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscountPer)) {
+				terPage.terminal_waitClearEnterText_css(icp.Discount1_String, Globals.Inventory.DiscountPer);
+				//webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_searchFilterUserControl_txtItemName")).sendKeys(Keys.RETURN);
+
+			}
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.DiscountPer3)) {
+				terPage.terminal_waitClearEnterText_css(icp.Discount2_String, Globals.Inventory.DiscountPer3);
+		
+			}
+
+			if (GenericWrappers.isNotEmpty(Globals.Inventory.NetSellingPrice)) {
+				terPage.terminal_waitClearEnterText_css(icp.NetSellingPrice_String, Globals.Inventory.NetSellingPrice);
+				//webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_searchFilterUserControl_txtItemName")).sendKeys(Keys.RETURN);
+
+			}
+			pass.ExcelFourData("VendorCatelog", "Filters", "Actual", "Expected", "Status", 0, 0, 0, 1, 0, 2, 0, 3);
+			pass.Excelcreate("VendorCatelog", "Filters", "FAIL", 1, 0, 1, 3);
+
+			}
+			catch (Exception e) {
+				// screen shot
+							scr.Screenshots();
+							System.out.println("Screen shot taken");
+				// Xl sheet write
+							pass.ExcelFourData("VendorCatelog", "Filters", "Actual", "Expected", "Status", 0, 0, 0, 1, 0, 2, 0, 3);
+							pass.Excelcreate("VendorCatelog", "Filters", "FAIL", 1, 0, 1, 3);
+
+						}
+
+			
+
+		}
+		@Then("I close connection  DB for Vendorcatelog")
+		public void i_close_connection_DB_for_Vendorcatelog() {
+			mysqlConnect.disconnect();
+			System.out.println(" closed succesfully");
+
+			// mysqlConnect.disconnect();
 
 		}
 
-	}
+		MssqlConnect mysqlConnect;
+		Statement st;
+
+		
+
+		@Then("I establish connection  DB for Vendorcatelog")
+		public void i_establish_connection_DB_for_Vendorcatelog() throws SQLException 
+		{
+			mysqlConnect = new MssqlConnect();
+			st = mysqlConnect.connect().createStatement();
+			System.out.println(" Connected succesfully");
+
+		}
+		@Then("I read the values from Vendorcatelog table {string} in DB")
+		public void i_read_the_values_from_Vendorcatelog_table_in_DB(String tablename) throws IOException, SQLException {
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where InventoryCode='854173'");
+
+			System.out.println(rs);
+			// ResultSet rs = st.executeQuery("");
+
+			while (rs.next()) {
+
+				switch (tablename) {
+
+				case "tblvendorcatlog":
+
+					String Vendor = "";
+					try {
+						Vendor = rs.getString("VendorCode");
+						System.out.println(Vendor);
+						Assert.assertEquals(Globals.Inventory.Vendor.trim(), Vendor.trim());
+						pass.Excelcreate("VendorCatelog", "tblvendorcatlog", "", 3, 0, 3, 1);
+						pass.ExcelFourData("VendorCatelog", "VendorCode", Globals.Inventory.Vendor, Vendor, "Pass", 5, 0, 5, 1,
+								5, 2, 5, 3);
+					} catch (AssertionError e) {
+						pass.Excelcreate("VendorCatelog", "tblvendorcatlog", "", 3, 0, 3, 1);
+						pass.ExcelFourData("VendorCatelog", "VendorCode", Globals.Inventory.Vendor, Vendor, "Fail", 5, 0, 5, 1,
+								5, 2, 5, 3);
+					} catch (Exception e) {
+						System.out.println("null error tblPaymentHeader column PaymentDate");
+					}
+					String ItemCode = "";
+					try {
+						ItemCode = rs.getString("InventoryCode");
+						System.out.println(ItemCode);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode.trim());
+						pass.ExcelFourData("VendorCatelog", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Pass", 6, 0, 6, 1, 6, 2, 6,
+								3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("VendorCatelog", "ItemCode", Globals.Inventory.ItemCode, ItemCode, "Fail", 6, 0, 6, 1, 6, 2, 6,
+								3);
+					} catch (Exception e) {
+						System.out.println("null error tblPaymentHeader column VoucherRef");
+					}
+					String MRP = "";
+					try {
+						MRP = rs.getString("MRP");
+						System.out.println(MRP);
+						Assert.assertEquals(Globals.Inventory.MRP.trim(), MRP.trim());
+						pass.ExcelFourData("VendorCatelog", "MRP", Globals.Inventory.MRP, MRP, "Pass", 7, 0, 7, 1, 7, 2,
+								7, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("VendorCatelog", "MRP", Globals.Inventory.MRP, MRP, "Fail", 7, 0, 7, 1, 7, 2,
+								7, 3);
+					} catch (Exception e) {
+						System.out.println("null error tblPaymentHeader column RefDate");
+					}
+					String Basiccost = "";
+					try {
+						Basiccost = rs.getString("BasicCost");
+						System.out.println(Basiccost);
+						Assert.assertEquals(Globals.Inventory.BasicCost.trim(), Basiccost.trim());
+						pass.ExcelFourData("VendorCatelog", "Basiccost", Globals.Inventory.BasicCost, Basiccost, "Pass", 8, 0, 8, 1, 8,
+								2, 8, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("VendorCatelog", "Basiccost", Globals.Inventory.BasicCost, Basiccost, "Fail", 8, 0, 8, 1, 8,
+								2, 8, 3);
+					} catch (Exception e) {
+						System.out.println("null error tblPaymentHeader column Vendor");
+					}
+					String Discount = "";
+					try {
+						Discount = rs.getString("DiscountBasicPer");
+						System.out.println(Discount);
+						Assert.assertEquals(Globals.Inventory.Discount.trim(), Discount.trim());
+						pass.ExcelFourData("VendorCatelog", "Discount", Globals.Inventory.Discount, Discount, "Pass", 9, 0, 9, 1, 9,
+								2, 9, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("VendorCatelog", "Discount", Globals.Inventory.Discount, Discount, "Fail", 9, 0, 9, 1, 9,
+								2, 9, 3);
+					} catch (Exception e) {
+						System.out.println("null error tblPaymentHeader column TotalAmount");
+					}
+					String DiscountBasicPer = "";
+					try {
+						DiscountBasicPer = rs.getString("DiscountBasicPer2");
+						System.out.println(DiscountBasicPer);
+						Assert.assertEquals(Globals.Inventory.DiscountPer.trim(), DiscountBasicPer.trim());
+						pass.ExcelFourData("VendorCatelog", "DiscountBasicPer", Globals.Inventory.DiscountPer, DiscountBasicPer, "Pass", 10, 0, 10, 1, 10,
+								2, 10, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("VendorCatelog", "DiscountBasicPer", Globals.Inventory.DiscountPer, DiscountBasicPer, "Fail", 10, 0, 10, 1, 10,
+								2, 10, 3);
+					} catch (Exception e) {
+						System.out.println("null error tblPaymentHeader column Paymode");
+					}
+
+					//break;
+
+				//case "tblPaymentDetail":
+					String DiscountBasicPer3= "";
+					try {
+						DiscountBasicPer3 = rs.getString("DiscountBasicPer3");
+						System.out.println(DiscountBasicPer3);
+						Assert.assertEquals(Globals.Inventory.DiscountPer3.trim(), DiscountBasicPer3.trim());
+						//pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
+						pass.ExcelFourData("VendorCatelog", "DiscountBasicPer3", Globals.Inventory.DiscountPer3, DiscountBasicPer3, "Pass", 11, 0, 11, 1, 11, 2,
+								11, 3);
+					} catch (AssertionError e) {
+						//pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
+						pass.ExcelFourData("VendorCatelog", "DiscountBasicPer3", Globals.Inventory.DiscountPer3, DiscountBasicPer3, "Fail", 11, 0, 11, 1, 11, 2,
+								11, 3);
+					} catch (Exception e) {
+						System.out.println("null error tblPaymentDetail column Createdate");
+					}
+					String NetSellingPrice = "";
+					try {
+						NetSellingPrice = rs.getString("NetSellingPrice");
+						System.out.println(NetSellingPrice);
+						Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), NetSellingPrice.trim());
+						pass.ExcelFourData("VendorCatelog", "NetSellingPrice", Globals.Inventory.NetSellingPrice, NetSellingPrice, "Pass", 12, 0, 12, 1,
+								12, 2, 12, 3);
+					} catch (AssertionError e) {
+						pass.ExcelFourData("VendorCatelog", "NetSellingPrice", Globals.Inventory.NetSellingPrice, NetSellingPrice, "Fail", 12, 0, 12, 1,
+								12, 2, 12, 3);
+					} catch (Exception e) {
+						System.out.println("null error tblPaymentDetail column Referanceno");
+					}
+					break;
+				   case "tblInventoryPricing":
+					   String ItemCode1 = "";
+						try {
+							ItemCode1 = rs.getString("InventoryCode");
+							System.out.println(ItemCode1);
+							Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode1.trim());
+							pass.Excelcreate("VendorCatelog", "tblInventoryPricing", "", 15, 0, 15, 1);
+							pass.ExcelFourData("VendorCatelog", "ItemCode", Globals.Inventory.ItemCode, ItemCode1, "Pass", 16, 0, 16, 1, 16, 2, 16,
+									3);
+						} catch (AssertionError e) {
+							pass.Excelcreate("VendorCatelog", "tblInventoryPricing", "", 15, 0, 15, 1);
+							pass.ExcelFourData("VendorCatelog", "ItemCode", Globals.Inventory.ItemCode, ItemCode1, "Fail", 16, 0, 16, 1, 16, 2, 16,
+									3);
+						} catch (Exception e) {
+							System.out.println("null error tblPaymentHeader column VoucherRef");
+						}
+						String MRP1 = "";
+						try {
+							MRP1 = rs.getString("MRP");
+							System.out.println(MRP1);
+							Assert.assertEquals(Globals.Inventory.MRP.trim(), MRP1.trim());
+							pass.ExcelFourData("VendorCatelog", "MRP", Globals.Inventory.MRP, MRP1, "Pass", 17, 0, 17, 1, 17, 2,
+									17, 3);
+						} catch (AssertionError e) {
+							pass.ExcelFourData("VendorCatelog", "MRP", Globals.Inventory.MRP, MRP1, "Fail", 17, 0, 17, 1, 17, 2,
+									17, 3);
+						} catch (Exception e) {
+							System.out.println("null error tblPaymentHeader column RefDate");
+						}
+						String Basiccost1 = "";
+						try {
+							Basiccost1 = rs.getString("BasicCost");
+							System.out.println(Basiccost1);
+							Assert.assertEquals(Globals.Inventory.BasicCost.trim(), Basiccost1.trim());
+							pass.ExcelFourData("VendorCatelog", "Basiccost", Globals.Inventory.BasicCost, Basiccost1, "Pass", 18, 0, 18, 1, 18,
+									2, 18, 3);
+						} catch (AssertionError e) {
+							pass.ExcelFourData("VendorCatelog", "Basiccost", Globals.Inventory.BasicCost, Basiccost1, "Fail", 18, 0, 18, 1, 18,
+									2, 18, 3);
+						} catch (Exception e) {
+							System.out.println("null error tblPaymentHeader column Vendor");
+						}
+						String Discount1 = "";
+						try {
+							Discount1 = rs.getString("DiscountBasicPer");
+							System.out.println(Discount1);
+							Assert.assertEquals(Globals.Inventory.Discount.trim(), Discount1.trim());
+							pass.ExcelFourData("VendorCatelog", "Discount", Globals.Inventory.Discount, Discount1, "Pass", 19, 0, 19, 1, 19,
+									2, 19, 3);
+						} catch (AssertionError e) {
+							pass.ExcelFourData("VendorCatelog", "Discount", Globals.Inventory.Discount, Discount1, "Fail", 19, 0, 19, 1, 19,
+									2, 19, 3);
+						} catch (Exception e) {
+							System.out.println("null error tblPaymentHeader column TotalAmount");
+						}
+						String DiscountBasicPer2 = "";
+						try {
+							DiscountBasicPer2 = rs.getString("DiscountBasicPer2");
+							System.out.println(DiscountBasicPer2);
+							Assert.assertEquals(Globals.Inventory.DiscountPer.trim(), DiscountBasicPer2.trim());
+							pass.ExcelFourData("VendorCatelog", "DiscountBasicPer", Globals.Inventory.DiscountPer, DiscountBasicPer2, "Pass", 20, 0, 20, 1, 20,
+									2, 20, 3);
+						} catch (AssertionError e) {
+							pass.ExcelFourData("VendorCatelog", "DiscountBasicPer", Globals.Inventory.DiscountPer, DiscountBasicPer2, "Fail", 20, 0, 20, 1, 20,
+									2, 20, 3);
+						} catch (Exception e) {
+							System.out.println("null error tblPaymentHeader column Paymode");
+						}
+
+						//break;
+
+					//case "tblPaymentDetail":
+						String DiscountBasicPer3a= "";
+						try {
+							DiscountBasicPer3a = rs.getString("DiscountBasicPer3");
+							System.out.println(DiscountBasicPer3a);
+							Assert.assertEquals(Globals.Inventory.DiscountPer3.trim(), DiscountBasicPer3a.trim());
+							//pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
+							pass.ExcelFourData("VendorCatelog", "DiscountBasicPer3", Globals.Inventory.DiscountPer3, DiscountBasicPer3a, "Pass", 21, 0, 21, 1, 21, 2,
+									21, 3);
+						} catch (AssertionError e) {
+							//pass.Excelcreate("Payments", "tblPaymentDetail", "", 10, 0, 10, 1);
+							pass.ExcelFourData("VendorCatelog", "DiscountBasicPer3", Globals.Inventory.DiscountPer3, DiscountBasicPer3a, "Fail", 21, 0, 21, 1, 21, 2,
+									21, 3);
+						} catch (Exception e) {
+							System.out.println("null error tblPaymentDetail column Createdate");
+						}
+						String NetSellingPrice1 = "";
+						try {
+							NetSellingPrice1 = rs.getString("NetSellingPrice");
+							System.out.println(NetSellingPrice1);
+							Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), NetSellingPrice1.trim());
+							pass.ExcelFourData("VendorCatelog", "NetSellingPrice", Globals.Inventory.NetSellingPrice, NetSellingPrice1, "Pass", 22, 0, 22, 1,
+									22, 2, 22, 3);
+						} catch (AssertionError e) {
+							pass.ExcelFourData("VendorCatelog", "NetSellingPrice", Globals.Inventory.NetSellingPrice, NetSellingPrice1, "Fail", 22, 0, 22, 1,
+									22, 2, 22, 3);
+						} catch (Exception e) {
+							System.out.println("null error tblPaymentDetail column Referanceno");
+						}
+		}
+
+			}
+		}}
 
 

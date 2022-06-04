@@ -8,4 +8,5 @@ public class StockUpdatePostingField {
 	public String ItemCode_String = "input#ContentPlaceHolder1_searchFilterUserControl_txtItemCode";
 	public String ItemName_String = "input#ContentPlaceHolder1_searchFilterUserControl_txtItemName";
 	public String Batch_String = "input#ContentPlaceHolder1_gvStockUpdate_chkSingle_0";
+	//public String Qty_String ="#ContentPlaceHolder1_gvStockUpdate > tbody > tr.pshro_GridDgnStyle > td:nth-child(8)";
 }

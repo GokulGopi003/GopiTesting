@@ -17,10 +17,10 @@ Feature: PoS Inventory > Add Inventory
     Then I fill new StockUpdatePosting data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkUpdate"
     Then I need to click on the  element "a#ContentPlaceHolder1_LinkButton3"
-    #Then I establish connection  DB for StockUpdatePosting
-    #Then I read the values from StockUpdatePosting table "tblPaymentHeader" in DB
-    #Then I read the values from StockUpdatePosting table "tblPaymentDetail" in DB
-    #Then I close connection  DB for StockUpdatePosting
+    Then I establish connection  DB for StockUpdatePosting
+    Then I read the values from StockUpdatePosting table "tblStockTakeAdjustment" in DB
+    Then I read the values from StockUpdatePosting table "vwInventoryStockLoc" in DB
+    Then I close connection  DB for StockUpdatePosting
     
     
      Examples: 

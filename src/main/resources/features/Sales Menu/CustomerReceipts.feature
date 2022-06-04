@@ -17,10 +17,10 @@ Feature: PoS Inventory > Add Inventory
     Then I update value to the CustomerReceipts page global Variables
     Then I fill new CustomerReceipts data page using excel data
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkSave"
-    #Then I establish connection  DB for CustomerReceipts
-    #Then I read the values from CustomerReceipts table "tblPaymentHeader" in DB
-    #Then I read the values from CustomerReceipts table "tblPaymentDetail" in DB
-    #Then I close connection  DB for CustomerReceipts
+    Then I establish connection  DB for CustomerReceipts
+    Then I read the values from CustomerReceipts table "tblReceiptDetail" in DB
+    Then I read the values from CustomerReceipts table "tblReceiptHeader" in DB
+    Then I close connection  DB for CustomerReceipts
     
     
      Examples: 

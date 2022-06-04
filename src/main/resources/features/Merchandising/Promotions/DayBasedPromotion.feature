@@ -8,7 +8,7 @@ Feature: InventoryChange
     Then I clik on the login button
     Then I verify the page Title
     Given I want to launch the "Merchandising/frmDayBasedPromotionEdit.aspx"
-    #Then I need to click on the  element "a#ContentPlaceHolder1_lnkBack"
+    Then I need to click on the  element "a#ContentPlaceHolder1_lnkBack"
     Then I load the testdatas form excel to table
     Then I load the DayBasedPromotion sheet data to map
     Then I load the rowise DayBasedPromotion data for "<TestcaseRowName>" rowname
@@ -21,5 +21,5 @@ Feature: InventoryChange
     
      Examples: 
       | TestcaseRowName |
-      |DayBasedPromotion3|
+      |DayBasedPromotion2|
 

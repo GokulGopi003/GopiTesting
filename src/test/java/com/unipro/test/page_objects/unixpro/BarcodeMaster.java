@@ -100,7 +100,7 @@ public class BarcodeMaster extends PageObject {
 
 	@Then("I read the values from table {string} in BarCodePrinterNew")
 	public void i_read_the_values_from_table_in_BarCodePrinterNew(String tablename) throws SQLException, IOException {
-		ResultSet rs = st.executeQuery("select * from " + tablename + " where PrintCode='15'");
+		ResultSet rs = st.executeQuery("select * from " + tablename + " where PrintCode='7686'");
 
 		System.out.println(rs);
 

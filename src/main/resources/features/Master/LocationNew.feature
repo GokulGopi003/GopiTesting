@@ -8,7 +8,7 @@ Feature: PoS Master > Location @done
     When I enter the password
     Then I clik on the login button
     Then I verify the page Title
-
+  
   @master
   Scenario Outline: check LocationMaster
   Given I want to launch the "Masters/frmLocationMaster.aspx"
@@ -24,5 +24,5 @@ Feature: PoS Master > Location @done
 
     Examples: 
       | TestcaseRowName |
-      |LocationNew|
+      |LocationNew1|
     
