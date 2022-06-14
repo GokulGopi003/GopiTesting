@@ -15,10 +15,10 @@ Feature: PoS Inventory > Add Inventory
     Then I load the rowise InventoryList data for "<TestcaseRowName>" rowname
     Then I update value to the InventoryList page global Variables
     Then I fill new InventoryList data page using excel data
-    Then I need to click on the  element "a#ContentPlaceHolder1_lnkLoadReport"
+    Then I need to click on the  element "a#ContentPlaceHolder1_lnkInvListReport"
    
     
     
      Examples: 
       | TestcaseRowName |
-		  |InventoryList|
+		  |InventoryList1|

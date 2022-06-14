@@ -123,6 +123,30 @@ public class Globals {
 		final public static String SHEETNAME110 = "InventoryList";
 		final public static String SHEETNAME111 = "InventoryMovementWiseReport";
 		final public static String SHEETNAME112 = "SalesWiseReport";
+		final public static String SHEETNAME113 = "PaymentandReceipts";
+		final public static String SHEETNAME114 = "PuchaseGRNReports";
+		final public static String SHEETNAME115 = "PurchaseOrderReport";
+		final public static String SHEETNAME116 = "PurchaseReturnReqReports";
+		final public static String SHEETNAME117 = "VendorOutstanding";
+		final public static String SHEETNAME118 = "QuickSalesReport";
+		final public static String SHEETNAME119 = "SalesMoreReport";
+		final public static String SHEETNAME120 = "SalesAuditReport";
+		final public static String SHEETNAME121 = "CreditandDueSaleReport";
+		final public static String SHEETNAME122 = "SalesReturnReport";
+		final public static String SHEETNAME123 = "MemberWiseSales";
+		final public static String SHEETNAME124 = "LocationWiseItemWiseSales";
+		final public static String SHEETNAME125 = "PreSalesReport";
+		final public static String SHEETNAME126 = "LocationWiseSalesReport";
+		final public static String SHEETNAME127 = "PromotionReports";
+		final public static String SHEETNAME128 = "StockReports";
+		final public static String SHEETNAME129 = "SettlementReports";
+		final public static String SHEETNAME130 = "CustomerReceiptReport";
+		final public static String SHEETNAME131 = "LocationDueReceipt";
+		final public static String SHEETNAME132 = "TransferReport";
+		final public static String SHEETNAME133 = "AttributeReport";
+		final public static String SHEETNAME134 = "StockAgingReport";
+		final public static String SHEETNAME135 = "TransferStatusQuery";
+		
 		                                          
 		public static Table<String, String, String> inventorySheetData;
 		public static Table<String, String, String> DepartmentSheetData;
@@ -237,6 +261,29 @@ public class Globals {
 		public static Table<String, String, String> InventoryListSheetData;
 		public static Table<String, String, String> InventoryMovementWiseReportSheetData;
 		public static Table<String, String, String> SalesWiseReportSheetData;
+		public static Table<String, String, String> PaymentandReceiptsSheetData;
+		public static Table<String, String, String> PuchaseGRNReportsSheetData;
+		public static Table<String, String, String> PurchaseOrderReportSheetData;
+		public static Table<String, String, String> PurchaseReturnReqReportsSheetData;
+		public static Table<String, String, String> VendorOutstandingSheetData;
+		public static Table<String, String, String> QuickSalesReportSheetData;
+		public static Table<String, String, String> SalesMoreReportSheetData;
+		public static Table<String, String, String> SalesAuditReportSheetData;
+		public static Table<String, String, String> CreditandDueSaleReportSheetData;
+		public static Table<String, String, String> SalesReturnReportSheetData;
+		public static Table<String, String, String> MemberWiseSalesSheetData;
+		public static Table<String, String, String> LocationWiseItemWiseSalesSheetData;
+		public static Table<String, String, String> PreSalesReportSheetData;
+		public static Table<String, String, String> LocationWiseSalesReportSheetData;
+		public static Table<String, String, String> PromotionReportsSheetData;
+		public static Table<String, String, String> StockReportsSheetData;
+		public static Table<String, String, String> SettlementReportsSheetData;
+		public static Table<String, String, String> CustomerReceiptReportSheetData;
+		public static Table<String, String, String> LocationDueReceiptSheetData;
+		public static Table<String, String, String> TransferReportSheetData;
+		public static Table<String, String, String> AttributeReportSheetData;
+		public static Table<String, String, String> StockAgingReportSheetData;
+		public static Table<String, String, String> TransferStatusQuerySheetData;
 		
 		
 		public static Map<String, String> inventoryrowwiseData;
@@ -352,6 +399,29 @@ public class Globals {
 		public static Map<String, String> InventoryListrowwiseData;
 		public static Map<String, String> InventoryMovementWiseReportrowwiseData;
 		public static Map<String, String> SalesWiseReportrowwiseData;
+		public static Map<String, String> PaymentandReceiptsrowwiseData;
+		public static Map<String, String> PuchaseGRNReportsrowwiseData;
+		public static Map<String, String> PurchaseOrderReportrowwiseData;
+		public static Map<String, String> PurchaseReturnReqReportsrowwiseData;
+		public static Map<String, String> VendorOutstandingrowwiseData;
+		public static Map<String, String> QuickSalesReportrowwiseData;
+		public static Map<String, String> SalesMoreReportrowwiseData;
+		public static Map<String, String> SalesAuditReportrowwiseData;
+		public static Map<String, String> CreditandDueSaleReportrowwiseData;
+		public static Map<String, String> SalesReturnReportrowwiseData;
+		public static Map<String, String> MemberWiseSalesrowwiseData;
+		public static Map<String, String> LocationWiseItemWiseSalesrowwiseData;
+		public static Map<String, String> PreSalesReportrowwiseData;
+		public static Map<String, String> LocationWiseSalesReportrowwiseData;
+		public static Map<String, String> PromotionReportsrowwiseData;
+		public static Map<String, String> StockReportsrowwiseData;
+		public static Map<String, String> SettlementReportsrowwiseData;
+		public static Map<String, String> CustomerReceiptReportrowwiseData;
+		public static Map<String, String> LocationDueReceiptrowwiseData;
+		public static Map<String, String> TransferReportrowwiseData;
+		public static Map<String, String> AttributeReportrowwiseData;
+		public static Map<String, String> StockAgingReportrowwiseData;
+		public static Map<String, String> TransferStatusQueryrowwiseData;
 
 		
 
@@ -381,6 +451,44 @@ public class Globals {
 		public static String Batchno;
 		public static String Batchno1;
 		
+		
+		public static String GrnNo;
+		public static String InvNo;
+		public static String GrnDate;
+		public static String InvDate;
+		public static String GaNumber;
+		public static String GaDate;
+		public static String ItemDesc;
+		public static String GrossCost;
+		public static String Gst;
+		public static String AddCess;
+		public static String SpFixing;
+		public static String MEarned;
+		public static String Wuom;
+		public static String Luom;
+		public static String GrBasic;
+		public static String GrCost;
+		public static String GrDisc;
+		public static String GrSchm;
+		public static String GrGst;
+		public static String LastInQty;
+		public static String GrcAmt;
+		public static String GrAddCess;
+		public static String Total;
+		public static String GrAmt;
+		public static String GstA;
+		public static String TotalCessAmt;
+		public static String GstCessAmt;
+		
+		public static String Deduction;
+		public static String Addition;
+		public static String TRow;
+		public static String TQty;
+		public static String TBasicCost;
+		public static String TotDisc;
+		public static String TotSchmDisc;
+		public static String TotGrCost;
+		
 		public static String Category;
 		public static String Department;
 		public static String GrpCode;
@@ -391,6 +499,7 @@ public class Globals {
 		public static String ItemCode1;
 		public static String ItemType;
 		public static String Vendor;
+		public static String VendorName;
 		public static String Bulk;
 		public static String Child;
 		public static String UOMPurchase;
@@ -621,6 +730,8 @@ public class Globals {
 		public static String LQty;
 		public static String FromLocationStatus;
 		public static String ToLocationStatus;
+		public static String FromLocation;
+		public static String ToLocation;
 		public static String TransferNo;
 		public static String Company;
 		public static String BranchCode;
@@ -778,6 +889,12 @@ public class Globals {
 		public static String DisplayChargesPerday;
 		public static String DisplayChargesPermonth;
 		public static String PersonInCharge;
+		public static String Cloth;
+		public static String Color;
+		public static String Design;
+		public static String Fit;
+		public static String Neck;
+		public static String Sleeve;
 		public static String Active;
 		public static String BankName;
 		public static String SalesManID;
@@ -851,6 +968,15 @@ public class Globals {
 	    public static String Batch21;
 	    public static String Batch22;
 	    public static String Batch23;
+	    public static String Batch24;
+	    public static String Batch25;
+	    public static String Batch26;
+	    public static String Tax;
+	    public static String User;
+	    public static String Batch27;
+	    public static String Batch28;
+	    public static String Batch29;
+	    public static String Batch30;
 		
 		
 		

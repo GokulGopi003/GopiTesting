@@ -75,6 +75,55 @@ public class GRNcreate extends PageObject {
 			Globals.Inventory.Batch = Globals.Inventory.GRNcreaterowwiseData.get("Batch");
 			Globals.Inventory.ItemName = Globals.Inventory.GRNcreaterowwiseData.get("ItemName");
 			Globals.Inventory.Vendor = Globals.Inventory.GRNcreaterowwiseData.get("Vendor");
+			Globals.Inventory.VendorName = Globals.Inventory.GRNcreaterowwiseData.get("VendorName");
+			Globals.Inventory.GrnNo = Globals.Inventory.GRNcreaterowwiseData.get("GrnNo");
+			Globals.Inventory.InvNo = Globals.Inventory.GRNcreaterowwiseData.get("InvNo");
+			Globals.Inventory.GrnDate = Globals.Inventory.GRNcreaterowwiseData.get("GrnDate");
+			Globals.Inventory.InvDate = Globals.Inventory.GRNcreaterowwiseData.get("InvDate");
+			Globals.Inventory.GaNumber = Globals.Inventory.GRNcreaterowwiseData.get("GaNumber");
+			Globals.Inventory.GaDate = Globals.Inventory.GRNcreaterowwiseData.get("GaDate");
+			Globals.Inventory.Remarks = Globals.Inventory.GRNcreaterowwiseData.get("Remarks");
+			Globals.Inventory.TotalPayable = Globals.Inventory.GRNcreaterowwiseData.get("TotalPayable");
+			Globals.Inventory.ItemDesc = Globals.Inventory.GRNcreaterowwiseData.get("ItemDesc");
+			Globals.Inventory.WQty = Globals.Inventory.GRNcreaterowwiseData.get("WQty");
+			Globals.Inventory.GrossCost = Globals.Inventory.GRNcreaterowwiseData.get("GrossCost");
+			Globals.Inventory.Gst = Globals.Inventory.GRNcreaterowwiseData.get("Gst");
+			Globals.Inventory.Cess = Globals.Inventory.GRNcreaterowwiseData.get("Cess");
+			Globals.Inventory.AddCess = Globals.Inventory.GRNcreaterowwiseData.get("AddCess");
+			Globals.Inventory.Netcost = Globals.Inventory.GRNcreaterowwiseData.get("Netcost");
+			Globals.Inventory.SpFixing = Globals.Inventory.GRNcreaterowwiseData.get("SpFixing");
+			Globals.Inventory.MEarned = Globals.Inventory.GRNcreaterowwiseData.get("MEarned");
+			Globals.Inventory.Wuom = Globals.Inventory.GRNcreaterowwiseData.get("Wuom");
+			Globals.Inventory.Luom = Globals.Inventory.GRNcreaterowwiseData.get("Luom");
+			Globals.Inventory.Qty = Globals.Inventory.GRNcreaterowwiseData.get("TotQty");
+			Globals.Inventory.GrBasic = Globals.Inventory.GRNcreaterowwiseData.get("GrBasic");
+			Globals.Inventory.GrCost = Globals.Inventory.GRNcreaterowwiseData.get("GrCost");
+			Globals.Inventory.GrDisc = Globals.Inventory.GRNcreaterowwiseData.get("GrDisc");
+			Globals.Inventory.GrSchm = Globals.Inventory.GRNcreaterowwiseData.get("GrSchm");
+			Globals.Inventory.GrGst = Globals.Inventory.GRNcreaterowwiseData.get("GrGst");
+			Globals.Inventory.LastInQty = Globals.Inventory.GRNcreaterowwiseData.get("LastInQty");
+			
+			
+			
+			Globals.Inventory.GrcAmt = Globals.Inventory.GRNcreaterowwiseData.get("GrcAmt");
+			Globals.Inventory.GrAddCess = Globals.Inventory.GRNcreaterowwiseData.get("GrAddCess");
+			Globals.Inventory.Total = Globals.Inventory.GRNcreaterowwiseData.get("Total");
+			Globals.Inventory.GrAmt = Globals.Inventory.GRNcreaterowwiseData.get("GrAmt");
+			Globals.Inventory.GstA = Globals.Inventory.GRNcreaterowwiseData.get("GstA");
+			Globals.Inventory.TotalCessAmt = Globals.Inventory.GRNcreaterowwiseData.get("TotalCessAmt");
+			Globals.Inventory.GstCessAmt = Globals.Inventory.GRNcreaterowwiseData.get("GstCessAmt");
+			Globals.Inventory.BillAmt = Globals.Inventory.GRNcreaterowwiseData.get("BillAmt");
+			Globals.Inventory.Deduction = Globals.Inventory.GRNcreaterowwiseData.get("Deduction");
+			Globals.Inventory.Addition = Globals.Inventory.GRNcreaterowwiseData.get("Addition");
+			Globals.Inventory.TotalPayable = Globals.Inventory.GRNcreaterowwiseData.get("TotalPay");
+			Globals.Inventory.TRow = Globals.Inventory.GRNcreaterowwiseData.get("TRow");
+			Globals.Inventory.TQty = Globals.Inventory.GRNcreaterowwiseData.get("TQty");
+			Globals.Inventory.TBasicCost = Globals.Inventory.GRNcreaterowwiseData.get("TBasicCost");
+			Globals.Inventory.TotDisc = Globals.Inventory.GRNcreaterowwiseData.get("TotDisc");
+			Globals.Inventory.TotSchmDisc = Globals.Inventory.GRNcreaterowwiseData.get("TotSchmDisc");
+			Globals.Inventory.TotGrCost = Globals.Inventory.GRNcreaterowwiseData.get("TotGrCost");
+			
+			
 			Globals.Inventory.ItemCode = Globals.Inventory.GRNcreaterowwiseData.get("ItemCode");
 			Globals.Inventory.InvQty = Globals.Inventory.GRNcreaterowwiseData.get("InvQty");
 			Globals.Inventory.RecvQty = Globals.Inventory.GRNcreaterowwiseData.get("RecvQty");
@@ -98,15 +147,102 @@ public class GRNcreate extends PageObject {
 			Globals.Inventory.Batch2 = Globals.Inventory.GRNcreaterowwiseData.get("Batch2");
 		}
 
+
+
 		@Then("I fill new GRN data page using excel data")
 		public void i_fill_new_GA_data_page_using_excel_data() throws Exception {
 			try {
+				
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Vendor)) {
+				
+					WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtVendorCode"));
+					String value = firstName.getAttribute("value");
+					System.out.println(value);
+					
+				
+				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.VendorName)) {
+					
+					WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtVendorName"));
+					String value = firstName.getAttribute("value");
+					System.out.println(value);
+					
+				
+				}
+               if (GenericWrappers.isNotEmpty(Globals.Inventory.GrnNo)) {
+					
+					WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtGrnNo"));
+					String value = firstName.getAttribute("value");
+					System.out.println(value);
+					
+				
+				}
+               if (GenericWrappers.isNotEmpty(Globals.Inventory.InvNo)) {
+					
+					WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtInvNo"));
+					String value = firstName.getAttribute("value");
+					System.out.println(value);
+					
+				
+				}
+               if (GenericWrappers.isNotEmpty(Globals.Inventory.GrnDate)) {
+					
+					WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtgrndate"));
+					String value = firstName.getAttribute("value");
+					System.out.println(value);
+					
+				
+				}
+              if (GenericWrappers.isNotEmpty(Globals.Inventory.InvDate)) {
+					
+					WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtgrndate"));
+					String value = firstName.getAttribute("value");
+					System.out.println(value);
+					
+				
+				}
+               if (GenericWrappers.isNotEmpty(Globals.Inventory.GaNumber)) {
+					
+					WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtgaNo"));
+					String value = firstName.getAttribute("value");
+					System.out.println(value);
+					
+				
+				}
+               if (GenericWrappers.isNotEmpty(Globals.Inventory.GaDate)) {
+					
+					WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtgaDate"));
+					String value = firstName.getAttribute("value");
+					System.out.println(value);
+					
+				
+				}
+               if (GenericWrappers.isNotEmpty(Globals.Inventory.Remarks)) {
+					
+					WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtRemark"));
+					String value = firstName.getAttribute("value");
+					System.out.println(value);
+					
+				
+				}
+               if (GenericWrappers.isNotEmpty(Globals.Inventory.TotalPayable)) {
+					
+					WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txttotPayable"));
+					String value = firstName.getAttribute("value");
+					System.out.println(value);
+					
+				
+				}
+               
+			
+		
 
-			       if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch)) {
+                    if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch)) {
 				        terPage.get_checkBox_element(icp.Batch_String).click();
 
 			        }
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemName)) {
+						
 						terPage.terminal_waitClearEnterText_css(icp.ItemName_String, Globals.Inventory.ItemName);
 						
 
@@ -500,6 +636,292 @@ public class GRNcreate extends PageObject {
 				        terPage.get_checkBox_element(icp.Batch2_String).click();
 
 			        }
+					
+					if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemDesc)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtDescription"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+                    if (GenericWrappers.isNotEmpty(Globals.Inventory.WQty)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtWQty"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	               if (GenericWrappers.isNotEmpty(Globals.Inventory.GrossCost)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtGrossCost"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	               if (GenericWrappers.isNotEmpty(Globals.Inventory.Gst)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtGST"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	               if (GenericWrappers.isNotEmpty(Globals.Inventory.Cess)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtcess"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	               
+	               if (GenericWrappers.isNotEmpty(Globals.Inventory.AddCess)) {
+	   				
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtAddCess"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+					if (GenericWrappers.isNotEmpty(Globals.Inventory.Netcost)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtNetCost"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	              if (GenericWrappers.isNotEmpty(Globals.Inventory.SpFixing)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtMFixed"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	              if (GenericWrappers.isNotEmpty(Globals.Inventory.MEarned)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtEarned"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	              if (GenericWrappers.isNotEmpty(Globals.Inventory.Wuom)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtwuom"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	             if (GenericWrappers.isNotEmpty(Globals.Inventory.Luom)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtluom"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	              if (GenericWrappers.isNotEmpty(Globals.Inventory.Qty)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtTotQty"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	              if (GenericWrappers.isNotEmpty(Globals.Inventory.LastInQty)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtTotQty"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	              if (GenericWrappers.isNotEmpty(Globals.Inventory.GrBasic)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtTotalGBCost"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	              if (GenericWrappers.isNotEmpty(Globals.Inventory.GrCost)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtTotalGCost"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	              if (GenericWrappers.isNotEmpty(Globals.Inventory.GrDisc)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtGRDisc"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	              if (GenericWrappers.isNotEmpty(Globals.Inventory.GrSchm)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtGRShDiscAmt"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	              if (GenericWrappers.isNotEmpty(Globals.Inventory.GrGst)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtGRVat"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	              if (GenericWrappers.isNotEmpty(Globals.Inventory.GrcAmt)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtGRCessAmt"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	              if (GenericWrappers.isNotEmpty(Globals.Inventory.GrAddCess)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtGRAddCess"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	              if (GenericWrappers.isNotEmpty(Globals.Inventory.Total)) {
+	  				
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtTotal"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+					if (GenericWrappers.isNotEmpty(Globals.Inventory.GrAmt)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtNetGrossAmt"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	             if (GenericWrappers.isNotEmpty(Globals.Inventory.GstA)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtNetVat"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	             if (GenericWrappers.isNotEmpty(Globals.Inventory.TotalCessAmt)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtNetCessAmt"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	             if (GenericWrappers.isNotEmpty(Globals.Inventory.GstCessAmt)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtTotalGSTCessAmt"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	            if (GenericWrappers.isNotEmpty(Globals.Inventory.BillAmt)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtTotalBillAmt"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	             if (GenericWrappers.isNotEmpty(Globals.Inventory.Deduction)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtDeduction"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	             if (GenericWrappers.isNotEmpty(Globals.Inventory.Addition)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtAddition"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	             if (GenericWrappers.isNotEmpty(Globals.Inventory.TotalPayable)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtTotalPayable"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	             if (GenericWrappers.isNotEmpty(Globals.Inventory.TRow)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtTotalRow"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	             if (GenericWrappers.isNotEmpty(Globals.Inventory.TQty)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtTotalQty"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	             if (GenericWrappers.isNotEmpty(Globals.Inventory.TBasicCost)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtNetBasicCost"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	             if (GenericWrappers.isNotEmpty(Globals.Inventory.TotDisc)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtNetDiscount"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	             if (GenericWrappers.isNotEmpty(Globals.Inventory.TotSchmDisc)) {
+						
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtNetShDiscAmt"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+	             
+	             if (GenericWrappers.isNotEmpty(Globals.Inventory.TotGrCost)) {
+	 				
+						WebElement firstName = webDriver.findElement(By.id("ContentPlaceHolder1_txtNetGrossCost"));
+						String value = firstName.getAttribute("value");
+						System.out.println(value);
+						
+					
+					}
+				
+
+					
 					pass.ExcelFourData("GRN","Modules", "Actual", "Expected", "Status",
 							0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
 					pass.Excelcreate("GRN", "ItemAdd", "PASS", 1, 0, 1, 3);
@@ -543,7 +965,7 @@ public class GRNcreate extends PageObject {
 			// ResultSet rs =st.executeQuery("select * from "+tablename+" where
 			// DeptCode='Gopi'");
 
-			ResultSet rs = st.executeQuery("select * from " + tablename + " where inventorycode="+Globals.Inventory.ItemCode);
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where GidNo='HQ04000051443'");
 
 			// ResultSet rs = st.executeQuery("");
 
@@ -551,241 +973,241 @@ public class GRNcreate extends PageObject {
 
 				switch (tablename) {
 
-				case "TblGidheader":
-					String DepartmentCode = "";
+				case "TBLGIDDETAIL":
+					String ItemCode = "";
 					try {
-						DepartmentCode = rs.getString("DeptCode");
-						System.out.println(DepartmentCode);
-						Assert.assertEquals(Globals.Inventory.Department.trim(), DepartmentCode.trim());
-						pass.Excelcreate("Inventory", "tbldepartment", "", 7, 0, 7, 1);
-						pass.ExcelFourData("Inventory", "Department", Globals.Inventory.Department, DepartmentCode,
-								"Pass", 8, 0, 8, 1, 8, 2, 8, 3);
+						ItemCode = rs.getString("ItemCode");
+						System.out.println(ItemCode);
+						Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode.trim());
+						pass.Excelcreate("GRN", "TBLGIDDETAIL", "", 5, 0, 5, 1);
+						pass.ExcelFourData("GRN", "ItemCode", Globals.Inventory.ItemCode, ItemCode,
+								"Pass", 7, 0, 7, 1, 7, 2, 7, 3);
 
 					} catch (AssertionError e) {
-						pass.Excelcreate("Inventory", "tbldepartment", "", 7, 0, 7, 1);
-						pass.ExcelFourData("Inventory", "Department", Globals.Inventory.Department, DepartmentCode,
-								"Fail", 8, 0, 8, 1, 8, 2, 8, 3);
+						pass.Excelcreate("GRN", "TBLGIDDETAIL", "", 5, 0, 5, 1);
+						pass.ExcelFourData("GRN", "ItemCode", Globals.Inventory.ItemCode, ItemCode,
+								"Fail", 7, 0, 7, 1, 7, 2, 7, 3);
 
 					}
 
-					break;
+					
 
-				case "tblinventory":
-					String CategoryCode = "";
+				
+					String GrnNo = "";
 					try {
-						CategoryCode = rs.getString("CategoryCode");
-						System.out.println(CategoryCode);
-						Assert.assertEquals(Globals.Inventory.Category.trim(), CategoryCode.trim());
-						pass.Excelcreate("Inventory", "tblinventory", "", 9, 0, 9, 1);
-						pass.ExcelFourData("Inventory", "CategoryCode", Globals.Inventory.Category, CategoryCode, "Pass",
-								10, 0, 10, 1, 10, 2, 10, 3);
+						GrnNo = rs.getString("GidNo");
+						System.out.println(GrnNo);
+						Assert.assertEquals(Globals.Inventory.GrnNo.trim(), GrnNo.trim());
+						//pass.Excelcreate("GRN", "tblinventory", "", 9, 0, 9, 1);
+						pass.ExcelFourData("GRN", "GrnNo", Globals.Inventory.GrnNo, GrnNo, "Pass",
+								8, 0, 8, 1, 8, 2, 8, 3);
 					} catch (AssertionError e) {
-						pass.Excelcreate("Inventory", "tblinventory", "", 9, 0, 9, 1);
-						pass.ExcelFourData("Inventory", "CategoryCode", Globals.Inventory.Category, CategoryCode, "Fail",
-								10, 0, 10, 1, 10, 2, 10, 3);
+						//pass.Excelcreate("GRN", "tblinventory", "", 9, 0, 9, 1);
+						pass.ExcelFourData("GRN", "GrnNo", Globals.Inventory.GrnNo, GrnNo, "Fail",
+								8, 0, 8, 1, 8, 2, 8, 3);
 
 					}
 					catch(Exception e) {
 						System.out.println("null error tblinventory column CategoryCode");
 						}
-					String Departmentcode = "";
+					String ItemDesc = "";
 					try {
-						Departmentcode = rs.getString("Departmentcode");
-						System.out.println(Departmentcode);
-						Assert.assertEquals(Globals.Inventory.Department.trim(), Departmentcode.trim());
-						pass.ExcelFourData("Inventory", "Departmentcode", Globals.Inventory.Department, Departmentcode, "Pass",
-								11, 0, 11, 1, 11, 2, 11, 3);
+						ItemDesc = rs.getString("ItemDesc");
+						System.out.println(ItemDesc);
+						Assert.assertEquals(Globals.Inventory.ItemDesc.trim(), ItemDesc.trim());
+						pass.ExcelFourData("GRN", "ItemDesc", Globals.Inventory.ItemDesc, ItemDesc, "Pass",
+								9, 0, 9, 1, 9, 2, 9, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Inventory", "Departmentcode", Globals.Inventory.Department, Departmentcode, "Fail",
-								11, 0, 11, 1, 11, 2, 11, 3);
+						pass.ExcelFourData("GRN", "ItemDesc", Globals.Inventory.ItemDesc, ItemDesc, "Fail",
+								9, 0, 9, 1, 9, 2, 9, 3);
 					}
 					catch(Exception e) {
 						System.out.println("null error tblinventory column Departmentcode");
 						}
-					String Brandcode = "";
+					String Luom = "";
 					try {
-						Brandcode = rs.getString("BrandCode");
-						System.out.println(Brandcode);
-						Assert.assertEquals(Globals.Inventory.Brand.trim(), Brandcode.trim());
-						pass.ExcelFourData("Inventory", "BrandCode", Globals.Inventory.Brand, Brandcode, "Fail",
-								12, 0, 12, 1, 12, 2, 12, 3);
+						Luom = rs.getString("LUomCode");
+						System.out.println(Luom);
+						Assert.assertEquals(Globals.Inventory.Luom.trim(), Luom.trim());
+						pass.ExcelFourData("GRN", "Luom", Globals.Inventory.Luom, Luom, "Fail",
+								10, 0, 10, 1, 10, 2, 10, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Inventory", "BrandCode", Globals.Inventory.Brand, Brandcode, "Fail",
-								12, 0, 12, 1, 12, 2, 12, 3);
+						pass.ExcelFourData("GRN", "Luom", Globals.Inventory.Luom, Luom, "Fail",
+								10, 0, 10, 1, 10, 2, 10, 3);
 					}
 					catch(Exception e) {
 						System.out.println("null error tblinventory column BrandCode");
 						}
-					String Barcode = "";
+					String Wuom = "";
 					try {
-						Barcode = rs.getString("Barcode");
-						System.out.println(Barcode);
-						Assert.assertEquals(Globals.Inventory.Barcode.trim(), Barcode.trim());
-						pass.ExcelFourData("Inventory", "Barcode", Globals.Inventory.Barcode, Barcode, "Pass",
-								13, 0, 13, 1, 13, 2, 13, 3);
+						Wuom = rs.getString("WUomCode");
+						System.out.println(Wuom);
+						Assert.assertEquals(Globals.Inventory.Wuom.trim(), Wuom.trim());
+						pass.ExcelFourData("GRN", "Wuom", Globals.Inventory.Wuom, Wuom, "Pass",
+								11, 0, 11, 1, 11, 2, 11, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Inventory", "Barcode", Globals.Inventory.Barcode, Barcode, "Fail",
-								13, 0, 13, 1, 13, 2, 13, 3);
+						pass.ExcelFourData("GRN", "Wuom", Globals.Inventory.Wuom, Wuom, "Fail",
+								11, 0, 11, 1, 11, 2, 11, 3);
 					}
 					catch(Exception e) {
 						System.out.println("null error tblinventory column Barcode");
 						}
-					String Subcategory = "";
+					String WQty = "";
 					try {
-						Subcategory = rs.getString("Subcategorycode");
-						System.out.println(Subcategory);
-						Assert.assertEquals(Globals.Inventory.SubCategory.trim(), Subcategory.trim());
-						pass.ExcelFourData("Inventory", "Subcategory", Globals.Inventory.SubCategory, Subcategory, "Pass",
-								14, 0, 14, 1, 14, 2, 14, 3);
+						WQty = rs.getString("WQty");
+						System.out.println(WQty);
+						Assert.assertEquals(Globals.Inventory.WQty.trim(), WQty.trim());
+						pass.ExcelFourData("GRN", "WQty", Globals.Inventory.WQty, WQty, "Pass",
+								12, 0, 12, 1, 12, 2, 12, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Inventory", "Subcategory", Globals.Inventory.SubCategory, Subcategory, "Fail",
-								14, 0, 14, 1, 14, 2, 14, 3);
+						pass.ExcelFourData("GRN", "WQty", Globals.Inventory.WQty, WQty, "Fail",
+								12, 0, 12, 1, 12, 2, 12, 3);
 					}
 					catch(Exception e) {
 						System.out.println("null error tblinventory column Subcategorycode");
 						}
-					String Class = "";
+					String BasicCost = "";
 					try {
 
-						Class = rs.getString("Class");
-						System.out.println(Class);
-						Assert.assertEquals(Globals.Inventory.Class.trim(), Class.trim());
-						pass.ExcelFourData("Inventory", "Class", Globals.Inventory.Class, Class, "Pass",
-								15, 0, 15, 1, 15, 2,15, 3);
+						BasicCost = rs.getString("UnitCost");
+						System.out.println(BasicCost);
+						Assert.assertEquals(Globals.Inventory.BasicCost.trim(), BasicCost.trim());
+						pass.ExcelFourData("GRN", "BasicCost", Globals.Inventory.BasicCost, BasicCost, "Pass",
+								13, 0, 13, 1, 13, 2,13, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Inventory", "Class", Globals.Inventory.Class, Class, "Fail",
-								15, 0, 15, 1, 15, 2,15, 3);
+						pass.ExcelFourData("GRN", "BasicCost", Globals.Inventory.BasicCost, BasicCost, "Fail",
+								13, 0, 13, 1, 13, 2,13, 3);
 					}
 					catch(Exception e) {
 						System.out.println("null error tblinventory column Class");
 						}
 					
-					String SubClass = "";
+					String GrossCost = "";
 					try {
-						SubClass = rs.getString("SubClass");
-						System.out.println(SubClass);
-						Assert.assertEquals(Globals.Inventory.SubClass.trim(), SubClass.trim());
-						pass.ExcelFourData("Inventory", "SubClass", Globals.Inventory.SubClass, SubClass, "Pass",
-								16, 0, 16, 1, 16, 2, 16, 3);
+						GrossCost = rs.getString("GrossCost");
+						System.out.println(GrossCost);
+						Assert.assertEquals(Globals.Inventory.GrossCost.trim(), GrossCost.trim());
+						pass.ExcelFourData("GRN", "GrossCost", Globals.Inventory.GrossCost, GrossCost, "Pass",
+								14, 0, 14, 1, 14, 2, 14, 3);
 					} catch (AssertionError e) {
-						pass.ExcelFourData("Inventory", "Actual,Expected", Globals.Inventory.SubClass, SubClass, "Fail",
-								16, 0, 16, 1, 16, 2, 16, 3);
+						pass.ExcelFourData("GRN", "GrossCost", Globals.Inventory.GrossCost, GrossCost, "Fail",
+								14, 0, 14, 1, 14, 2, 14, 3);
 					}
 					catch(Exception e) {
 						System.out.println("null error tblinventory column SubClass");
 						}
-					String Origion="";
+					String Netcost="";
 					try
 					{
-				    Origion = rs.getString("Origin");
-					System.out.println(Origion);
-					Assert.assertEquals(Globals.Inventory.Origin.trim(), Origion.trim());
-					pass.ExcelFourData("Inventory", "Origin", Globals.Inventory.Origin, Origion, "Pass",
-							17, 0, 17, 1, 17, 2, 17, 3);
+						Netcost = rs.getString("NetCost");
+					System.out.println(Netcost);
+					Assert.assertEquals(Globals.Inventory.Netcost.trim(), Netcost.trim());
+					pass.ExcelFourData("GRN", "Netcost", Globals.Inventory.Netcost, Netcost, "Pass",
+							15, 0, 15, 1, 15, 2, 15, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "Origin", Globals.Inventory.Origin, Origion, "Fail",
-							17, 0, 17, 1, 17, 2, 17, 3);
+					pass.ExcelFourData("GRN", "Netcost", Globals.Inventory.Netcost, Netcost, "Fail",
+							15, 0, 15, 1, 15, 2, 15, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventory column Origin");
 						}
-					String Warehouse="";
+					String MRP="";
 					try
 					{
-				    Warehouse = rs.getString("Warehouse");
-					System.out.println(Warehouse);
-					Assert.assertEquals(Globals.Inventory.WareHouse.trim(), Warehouse.trim());
-					pass.ExcelFourData("Inventory", "Warehouse", Globals.Inventory.WareHouse, Warehouse, "Pass",
-							18, 0, 18, 1, 18, 2, 18, 3);
+						MRP = rs.getString("MRP");
+					System.out.println(MRP);
+					Assert.assertEquals(Globals.Inventory.MRP.trim(), MRP.trim());
+					pass.ExcelFourData("GRN", "MRP", Globals.Inventory.WareHouse, MRP, "Pass",
+							16, 0, 16, 1, 16, 2, 16, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "Warehouse", Globals.Inventory.WareHouse, Warehouse, "Fail",
-							18, 0, 18, 1, 18, 2, 18, 3);
+					pass.ExcelFourData("GRN", "MRP", Globals.Inventory.WareHouse, MRP, "Fail",
+							16, 0, 16, 1, 16, 2, 16, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventory column Warehouse");
 						}
-					String UOM="";
+					String WPrice1="";
 					try {
-				    UOM = rs.getString("UOM");
-					System.out.println(UOM);
-					Assert.assertEquals(Globals.Inventory.UOMPurchase.trim(), UOM.trim());
-					pass.ExcelFourData("Inventory", "UOM", Globals.Inventory.UOMPurchase, UOM, "Pass",
-							19, 0, 19, 1, 19, 2, 19, 3);
+						WPrice1 = rs.getString("WPrice1");
+					System.out.println(WPrice1);
+					Assert.assertEquals(Globals.Inventory.WPrice1.trim(), WPrice1.trim());
+					pass.ExcelFourData("GRN", "WPrice1", Globals.Inventory.WPrice1, WPrice1, "Pass",
+							17, 0, 17, 1, 17, 2, 17, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "UOM", Globals.Inventory.UOMPurchase, UOM, "Fail",
-							19, 0, 19, 1, 19, 2, 19, 3);
+					pass.ExcelFourData("GRN", "WPrice1", Globals.Inventory.WPrice1, WPrice1, "Fail",
+							17, 0, 17, 1, 17, 2, 17, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventory column UOM");
 						}
-					String Manufacture="";
+					String WPrice2="";
 				try {
 						
-					Manufacture = rs.getString("Manufacturer");
-					System.out.println(Manufacture);
-					Assert.assertEquals(Globals.Inventory.Manufacture.trim(), Manufacture.trim());
-					pass.ExcelFourData("Inventory", "Manufacturer", Globals.Inventory.Manufacture, Manufacture, "Pass",
-							20, 0, 20, 1, 20, 2, 20, 3);
+					WPrice2 = rs.getString("WPrice2");
+					System.out.println(WPrice2);
+					Assert.assertEquals(Globals.Inventory.WPrice2.trim(), WPrice2.trim());
+					pass.ExcelFourData("GRN", "WPrice2", Globals.Inventory.WPrice2, WPrice2, "Pass",
+							18, 0, 18, 1, 18, 2, 18, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "Manufacturer", Globals.Inventory.Manufacture, Manufacture, "Fail",
-							20, 0, 20, 1, 20, 2, 20, 3);
+					pass.ExcelFourData("GRN", "WPrice2", Globals.Inventory.WPrice2, WPrice2, "Fail",
+							18, 0, 18, 1, 18, 2, 18, 3);
 				}
 				catch(Exception e) {
 					System.out.println("null error tblinventory column Manufacturer");
 					}
-				String ItemType="";
+				String WPrice3="";
 				try {
 					
-				    ItemType = rs.getString("ItemType");
-					System.out.println(ItemType);
-					Assert.assertEquals(Globals.Inventory.ItemType.trim(), ItemType.trim());
-					pass.ExcelFourData("Inventory", "ItemType", Globals.Inventory.ItemType, ItemType, "Pass",
-							21, 0, 21, 1, 21, 2, 21, 3);
+					WPrice3 = rs.getString("WPrice3");
+					System.out.println(WPrice3);
+					Assert.assertEquals(Globals.Inventory.WPrice3.trim(), WPrice3.trim());
+					pass.ExcelFourData("GRN", "WPrice3", Globals.Inventory.WPrice3, WPrice3, "Pass",
+							19, 0, 19, 1, 19, 2, 19, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "ItemType", Globals.Inventory.ItemType, ItemType, "Fail",
-							21, 0, 21, 1, 21, 2, 21, 3);
+					pass.ExcelFourData("GRN", "WPrice3", Globals.Inventory.WPrice3, WPrice3, "Fail",
+							19, 0, 19, 1, 19, 2, 19, 3);
 				}
 				catch(Exception e) {
 					System.out.println("null error tblinventory column ItemType");
 					}
-				String Weight="";
+				String LQty="";
 				try {
-					Weight = rs.getString("Weight");
-					System.out.println(Weight);
-					Assert.assertEquals(Globals.Inventory.Weight.trim(), Weight.trim());
-					pass.ExcelFourData("Inventory", "Weight", Globals.Inventory.Weight, Weight, "Pass",
-							22, 0, 22, 1, 22, 2, 22, 3);
+					LQty = rs.getString("LQty");
+					System.out.println(LQty);
+					Assert.assertEquals(Globals.Inventory.TQty.trim(), LQty.trim());
+					pass.ExcelFourData("GRN", "LQty", Globals.Inventory.TQty, LQty, "Pass",
+							20, 0, 20, 1, 20, 2, 20, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "Weight", Globals.Inventory.Weight, Weight, "Fail",
-							22, 0, 22, 1, 22, 2, 22, 3);
+					pass.ExcelFourData("GRN", "LQty", Globals.Inventory.TQty, LQty, "Fail",
+							20, 0, 20, 1, 20, 2, 20, 3);
 				}
 				catch(Exception e) {
 					System.out.println("null error tblinventory column Weight");
 					}
-				String Width="";
+				String Tax="";
 				try {
-				    Width = rs.getString("Width");
-				    System.out.println(Width);
-				    Assert.assertEquals(Globals.Inventory.Width.trim(), Width.trim());
-				    pass.ExcelFourData("Inventory", "Width", Globals.Inventory.Width, Width, "Pass",
-							23, 0, 23, 1, 23, 2, 23, 3);
+					Tax = rs.getString("Tax");
+				    System.out.println(Tax);
+				    Assert.assertEquals(Globals.Inventory.Gst.trim(), Tax.trim());
+				    pass.ExcelFourData("GRN", "Tax", Globals.Inventory.Gst, Tax, "Pass",
+							21, 0, 21, 1, 21, 2, 21, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "Width", Globals.Inventory.Width, Width, "Fail",
-							23, 0, 23, 1, 23, 2, 23, 3);
+					pass.ExcelFourData("GRN", "Tax", Globals.Inventory.Gst, Tax, "Fail",
+							21, 0, 21, 1, 21, 2, 21, 3);
 				}
 				catch(Exception e) {
 				System.out.println("null error tblinventory column Width");
 				}
-				String Height="";
+				String GrGst="";
 				try {
-					Height = rs.getString("Height");
-					System.out.println(Height);
-					Assert.assertEquals(Globals.Inventory.Height.trim(), Height.trim());
-					pass.ExcelFourData("Inventory", "Height", Globals.Inventory.Height, Height, "Pass",
-							24, 0, 24, 1, 24, 2, 24, 3);
+					GrGst = rs.getString("GrossTaxvalue");
+					System.out.println(GrGst);
+					Assert.assertEquals(Globals.Inventory.GrGst.trim(), GrGst.trim());
+					pass.ExcelFourData("GRN", "GrGst", Globals.Inventory.Height, GrGst, "Pass",
+							22, 0, 22, 1, 22, 2, 22, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "Height", Globals.Inventory.Height, Height, "Fail",
-							24, 0, 24, 1, 24, 2, 24, 3);
+					pass.ExcelFourData("GRN", "GrGst", Globals.Inventory.Height, GrGst, "Fail",
+							22, 0, 22, 1, 22, 2, 22, 3);
 				}
 				catch(Exception e) {
 					System.out.println("null error tblinventory column Height");
@@ -804,73 +1226,78 @@ public class GRNcreate extends PageObject {
 				catch(Exception e) {
 					System.out.println("null error tblinventory column Length");
 				}
-				String Vendorcode="";
+				break;
+				case "TBLGIDHEADER":
+				
+				String GidNo="";
 				try {
-					Vendorcode = rs.getString("VendorCode");
-					System.out.println(Vendorcode);
-					Assert.assertEquals(Globals.Inventory.Vendor.trim(), Vendorcode.trim());
-					pass.ExcelFourData("Inventory", "VendorCode", Globals.Inventory.Vendor, Vendorcode, "Pass",
+					GidNo = rs.getString("GidNo");
+					System.out.println(GidNo);
+					Assert.assertEquals(Globals.Inventory.GrnNo.trim(), GidNo.trim());
+					pass.Excelcreate("GRN", "TBLGIDHEADER", "", 25, 0, 25, 1);
+					pass.ExcelFourData("GRN", "GidNo", Globals.Inventory.GrnNo, GidNo, "Pass",
 							26, 0, 26, 1, 26, 2, 26, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "VendorCode", Globals.Inventory.Vendor, Vendorcode, "Fail",
+					pass.Excelcreate("GRN", "TBLGIDHEADER", "", 25, 0, 25, 1);
+					pass.ExcelFourData("GRN", "GidNo", Globals.Inventory.GrnNo, GidNo, "Fail",
 							26, 0, 26, 1, 26, 2, 26, 3);
 				}
 				catch(Exception e) {
 					System.out.println("null error tblinventory column VendorCode");
 				}
-				String Basicost ="";
+				String InvNo ="";
 				try {
-					Basicost = rs.getString("UnitCost");
-					System.out.println(Basicost);
-					Assert.assertEquals(Globals.Inventory.BasicCost.trim(), Basicost.trim());
-					pass.ExcelFourData("Inventory", "BasicCost", Globals.Inventory.BasicCost, Basicost, "Pass",
+					InvNo = rs.getString("DONo");
+					System.out.println(InvNo);
+					Assert.assertEquals(Globals.Inventory.InvNo.trim(), InvNo.trim());
+					pass.ExcelFourData("GRN", "InvNo", Globals.Inventory.InvNo, InvNo, "Pass",
 							27, 0, 27, 1, 27, 2, 27, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "BasicCost", Globals.Inventory.BasicCost, Basicost, "Fail",
+					pass.ExcelFourData("GRN", "InvNo", Globals.Inventory.InvNo, InvNo, "Fail",
 							27, 0, 27, 1, 27, 2, 27, 3);
 				}
 				catch(Exception e) {
 					System.out.println("null error tblinventory column UnitCost");
 				}
-				String Sellingprice="";
+				String TotalPayable="";
 				try {
-					Sellingprice = rs.getString("SellingPrice");
-					System.out.println(Sellingprice);
-					Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), Sellingprice.trim());
-					pass.ExcelFourData("Inventory", "SellingPrice", Globals.Inventory.NetSellingPrice, Sellingprice, "Pass",
+					TotalPayable = rs.getString("GidTotalValue");
+					System.out.println(TotalPayable);
+					Assert.assertEquals(Globals.Inventory.TotalPayable.trim(), TotalPayable.trim());
+					pass.ExcelFourData("GRN", "TotalPayable", Globals.Inventory.TotalPayable, TotalPayable, "Pass",
 							28, 0, 28, 1, 28, 2, 28, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "SellingPrice", Globals.Inventory.NetSellingPrice, Sellingprice, "Fail",
+					pass.ExcelFourData("GRN", "TotalPayable", Globals.Inventory.TotalPayable, TotalPayable, "Fail",
 							28, 0, 28, 1, 28, 2, 28, 3);
 				}
 				catch(Exception e) {
 					System.out.println("null error tblinventory column SellingPrice");
 				}
-				String MRP="";
+				String Gst="";
 				try
 				{
-					MRP = rs.getString("MRP");
-					System.out.println(MRP);
-					Assert.assertEquals(Globals.Inventory.MRP.trim(), MRP.trim());
-					pass.ExcelFourData("Inventory", "MRP", Globals.Inventory.MRP, MRP, "Pass",
+					Gst = rs.getString("Gst");
+					System.out.println(Gst);
+					Assert.assertEquals(Globals.Inventory.Gst.trim(), Gst.trim());
+					pass.ExcelFourData("GRN", "GST", Globals.Inventory.Gst, Gst, "Pass",
 							29, 0, 29, 1, 29, 2, 29, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "MRP", Globals.Inventory.MRP, MRP, "Fail",
+					pass.ExcelFourData("GRN", "GST", Globals.Inventory.Gst, Gst, "Fail",
 							29, 0, 29, 1, 29, 2, 29, 3);
 				}
 				catch(Exception e) {
 					System.out.println("null error tblinventory column MRP");
 				}
-				String MinQty="";
+				String Vendor="";
 				try
 				{
-					MinQty = rs.getString("MinimumQtyLevel");
-					System.out.println(MinQty);
-					Assert.assertEquals(Globals.Inventory.MinQty.trim(), MinQty.trim());
-					pass.ExcelFourData("Inventory", "MinQty", Globals.Inventory.MinQty, MinQty, "Pass",
+					Vendor = rs.getString("VendorCode");
+					System.out.println(Vendor);
+					Assert.assertEquals(Globals.Inventory.Vendor.trim(), Vendor.trim());
+					pass.ExcelFourData("GRN", "Vendor", Globals.Inventory.Vendor, Vendor, "Pass",
 							30, 0, 30, 1, 30, 2, 30, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "MinQty", Globals.Inventory.MinQty, MinQty, "Fail",
+					pass.ExcelFourData("GRN", "Vendor", Globals.Inventory.Vendor, Vendor, "Fail",
 							30, 0, 30, 1, 30, 2, 30, 3);
 				}
 				catch(Exception e) {
@@ -962,152 +1389,152 @@ public class GRNcreate extends PageObject {
 				}
 					break;
 
-				case "tblinventorypricing":
-					String BasicSelling ="";
+				case "tblinventory":
+					String Inventory ="";
 					try {
-					BasicSelling = rs.getString("NetSellingPrice");
-					System.out.println(BasicSelling);
-					Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), BasicSelling.trim());
-					pass.Excelcreate("Inventory", "tblinventorypricing", "", 38, 0, 38, 1);
-					pass.ExcelFourData("Inventory", "NetSellingPrice", Globals.Inventory.NetSellingPrice, BasicSelling, "Pass",
-							39, 0, 39, 1, 39, 2, 39, 3);
+						Inventory = rs.getString("InventoryCode");
+					System.out.println(Inventory);
+					Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Inventory.trim());
+					pass.Excelcreate("GRN", "tblinventory", "", 34, 0, 34, 1);
+					pass.ExcelFourData("GRN", "Inventory", Globals.Inventory.ItemCode, Inventory, "Pass",
+							35, 0, 35, 1, 35, 2, 35, 3);
 				} catch (AssertionError e) {
-					pass.Excelcreate("Inventory", "tblinventorypricing", "", 38, 0, 38, 1);
-					pass.ExcelFourData("Inventory", "NetSellingPrice", Globals.Inventory.NetSellingPrice, BasicSelling, "Fail",
-							39, 0, 39, 1, 39, 2, 39, 3);
+					pass.Excelcreate("GRN", "tblinventory", "", 34, 0, 34, 1);
+					pass.ExcelFourData("GRN", "Inventory", Globals.Inventory.ItemCode, Inventory, "Fail",
+							35, 0, 35, 1, 35, 2, 35, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column NetSellingPrice");
 					}
-					String Purchasetype="";
+					String Description="";
 					try {
-				    Purchasetype = rs.getString("PurchasedBy");
-					System.out.println(Purchasetype);
-					Assert.assertEquals(Globals.Inventory.Purchasetype.trim(), Purchasetype.trim());
-					pass.ExcelFourData("Inventory", "Purchasetype", Globals.Inventory.Purchasetype, Purchasetype, "Pass",
-							40, 0, 40, 1, 40, 2, 40, 3);
+						Description = rs.getString("Description");
+					System.out.println(Description);
+					Assert.assertEquals(Globals.Inventory.ItemDesc.trim(), Description.trim());
+					pass.ExcelFourData("GRN", "Description", Globals.Inventory.ItemDesc, Description, "Pass",
+							36, 0, 36, 1, 36, 2, 36, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "Purchasetype", Globals.Inventory.Purchasetype, Purchasetype, "Fail",
-							40, 0, 40, 1, 40, 2, 40, 3);
+					pass.ExcelFourData("GRN", "Description", Globals.Inventory.ItemDesc, Description, "Fail",
+							36, 0, 36, 1, 36, 2, 36, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column PurchasedBy");
 					}
-					String MRP1 ="";
+					String UOM ="";
 					try {
-					MRP1 = rs.getString("MRP");
-					System.out.println(MRP1);
-					Assert.assertEquals(Globals.Inventory.MRP.trim(), MRP1.trim());
-					pass.ExcelFourData("Inventory", "MRP", Globals.Inventory.MRP, MRP1, "Pass",
-							41, 0, 41, 1, 41, 2, 41, 3);
+						UOM = rs.getString("UOM");
+					System.out.println(UOM);
+					Assert.assertEquals(Globals.Inventory.Luom.trim(), UOM.trim());
+					pass.ExcelFourData("GRN", "UOM", Globals.Inventory.Luom, UOM, "Pass",
+							37, 0, 37, 1, 37, 2, 37, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "MRP", Globals.Inventory.MRP, MRP1, "Fail",
-							41, 0, 41, 1, 41, 2, 41, 3);
+					pass.ExcelFourData("GRN", "UOM", Globals.Inventory.Luom, UOM, "Fail",
+							37, 0, 37, 1, 37, 2, 37, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column MRP");
 					}
 					String Basicost1="";
 					try {
-					Basicost1 = rs.getString("BasicCost");
+					Basicost1 = rs.getString("UnitCost");
 					System.out.println(Basicost1);
 					Assert.assertEquals(Globals.Inventory.BasicCost.trim(), Basicost1.trim());
-					pass.ExcelFourData("Inventory", "BasicCost", Globals.Inventory.BasicCost, Basicost1, "Pass",
-							42, 0, 42, 1, 42, 2, 42, 3);
+					pass.ExcelFourData("GRN", "BasicCost", Globals.Inventory.BasicCost, Basicost1, "Pass",
+							38, 0, 38, 1, 38, 2, 38, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "BasicCost", Globals.Inventory.BasicCost, Basicost1, "Fail",
-							42, 0, 42, 1, 42, 2, 42, 3);
+					pass.ExcelFourData("GRN", "BasicCost", Globals.Inventory.BasicCost, Basicost1, "Fail",
+							38, 0, 38, 1, 38, 2, 38, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column BasicCost");
 					}
-					String DiscountPer1="";
+					String Vendor1="";
 					try {
-					DiscountPer1 = rs.getString("DiscountBasicPer");
-					System.out.println(DiscountPer1);
-					Assert.assertEquals(Globals.Inventory.DiscountPer1.trim(), DiscountPer1.trim());
-					pass.ExcelFourData("Inventory", "DiscountPer1", Globals.Inventory.DiscountPer1, DiscountPer1, "Pass",
-							43, 0, 43, 1, 43, 2, 43, 3);
+						Vendor1 = rs.getString("VendorCode");
+					System.out.println(Vendor1);
+					Assert.assertEquals(Globals.Inventory.Vendor.trim(), Vendor1.trim());
+					pass.ExcelFourData("GRN", "Vendor", Globals.Inventory.Vendor, Vendor1, "Pass",
+							39, 0, 39, 1, 39, 2, 39, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "DiscountPer1", Globals.Inventory.DiscountPer1, DiscountPer1, "Fail",
-							43, 0, 43, 1, 43, 2, 43, 3);
+					pass.ExcelFourData("GRN", "Vendor", Globals.Inventory.Vendor, Vendor1, "Fail",
+							39, 0, 39, 1, 39, 2, 39, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column DiscountBasicPer");
 					}
-					String DiscountPer2 ="";
+					String AverageCost ="";
 					try {
-					DiscountPer2 = rs.getString("DiscountBasicPer2");
-					System.out.println(DiscountPer2);
-					Assert.assertEquals(Globals.Inventory.DiscountPer2.trim(), DiscountPer2.trim());
-					pass.ExcelFourData("Inventory", "DiscountPer2", Globals.Inventory.DiscountPer2, DiscountPer2, "Pass",
-							44, 0, 44, 1, 44, 2, 44, 3);
+						AverageCost = rs.getString("AverageCost");
+					System.out.println(AverageCost);
+					Assert.assertEquals(Globals.Inventory.Netcost.trim(), AverageCost.trim());
+					pass.ExcelFourData("GRN", "AverageCost", Globals.Inventory.Netcost, AverageCost, "Pass",
+							40, 0, 40, 1, 40, 2, 40, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "DiscountPer2", Globals.Inventory.DiscountPer2, DiscountPer2, "Fail",
-							44, 0, 44, 1, 44, 2, 44, 3);
+					pass.ExcelFourData("GRN", "AverageCost", Globals.Inventory.Netcost, AverageCost, "Fail",
+							40, 0, 40, 1, 40, 2, 40, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column DiscountBasicPer2");
 					}
-					String DiscountPer3="";
+					String SellingPrice1="";
 					try {
-					DiscountPer3 = rs.getString("DiscountBasicPer3");
-					System.out.println(DiscountPer3);
-					Assert.assertEquals(Globals.Inventory.DiscountPer3.trim(), DiscountPer3.trim());
-					pass.ExcelFourData("Inventory", "DiscountPer3", Globals.Inventory.DiscountPer3, DiscountPer3, "Pass",
-							45, 0, 45, 1, 45, 2, 45, 3);
+						SellingPrice1 = rs.getString("SellingPrice");
+					System.out.println(SellingPrice1);
+					Assert.assertEquals(Globals.Inventory.MRP.trim(), SellingPrice1.trim());
+					pass.ExcelFourData("GRN", "SellingPrice", Globals.Inventory.MRP, SellingPrice1, "Pass",
+							41, 0, 41, 1, 41, 2, 41, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "DiscountPer3", Globals.Inventory.DiscountPer3, DiscountPer3, "Fail",
-							45, 0, 45, 1, 45, 2, 45, 3);
+					pass.ExcelFourData("GRN", "SellingPrice", Globals.Inventory.MRP, SellingPrice1, "Fail",
+							41, 0, 41, 1, 41, 2, 41, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column DiscountBasicPer3");
 					}
 			
-					String W3 ="";
+					String Mrp ="";
 					try {
-					W3 = rs.getString("MPWPrice3");
-					System.out.println(W3);
-					Assert.assertEquals(Globals.Inventory.WPrice3.trim(), W3.trim());
-					pass.ExcelFourData("Inventory", "WPrice3", Globals.Inventory.WPrice3, W3, "Pass",
-							46, 0, 46, 1, 46, 2, 46, 3);
+						Mrp = rs.getString("MRP");
+					System.out.println(Mrp);
+					Assert.assertEquals(Globals.Inventory.MRP.trim(), Mrp.trim());
+					pass.ExcelFourData("GRN", "MRP", Globals.Inventory.MRP, Mrp, "Pass",
+							42, 0, 42, 1, 42, 2, 42, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "WPrice3", Globals.Inventory.WPrice3, W3, "Fail",
-							46, 0, 46, 1, 46, 2, 46, 3);
+					pass.ExcelFourData("GRN", "MRP", Globals.Inventory.MRP, Mrp, "Fail",
+							42, 0, 42, 1, 42, 2, 42, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column MPWPrice3");
 					}
 				
-					String GST1 ="";
+					String Qty1 ="";
 					try {
-					GST1 = rs.getString("OTaxPer3");
-					System.out.println(GST1);
-					Assert.assertEquals(Globals.Inventory.GSTPer.trim(), GST1.trim());
-					pass.ExcelFourData("Inventory", "OTaxPer3", Globals.Inventory.GSTPer, GST1, "Pass",
-							47, 0, 47, 1, 47, 2, 47, 3);
+						Qty1 = rs.getString("LastInQty");
+					System.out.println(Qty1);
+					Assert.assertEquals(Globals.Inventory.LastInQty.trim(), Qty1.trim());
+					pass.ExcelFourData("GRN", "LastInQty", Globals.Inventory.LastInQty, Qty1, "Pass",
+							43, 0, 43, 1, 43, 2, 43, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "OTaxPer3", Globals.Inventory.GSTPer, GST1, "Fail",
-							47, 0, 47, 1, 47, 2, 47, 3);
+					pass.ExcelFourData("GRN", "LastInQty", Globals.Inventory.LastInQty, Qty1, "Fail",
+							43, 0, 43, 1, 43, 2, 43, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column OTaxPer3");
 					}
 					String Cess="";
 					try {
-					Cess = rs.getString("ITaxPer4");
+					Cess = rs.getString("LastInCost");
 					System.out.println(Cess);
-					Assert.assertEquals(Globals.Inventory.Cess.trim(), Cess.trim());
-					pass.ExcelFourData("Inventory", "ITaxPer4", Globals.Inventory.Cess, Cess, "Pass",
-							48, 0, 48, 1, 48, 2, 48, 3);
+					Assert.assertEquals(Globals.Inventory.Netcost.trim(), Cess.trim());
+					pass.ExcelFourData("GRN", "ITaxPer4", Globals.Inventory.Netcost, Cess, "Pass",
+							44, 0, 44, 1, 44, 2, 44, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "ITaxPer4", Globals.Inventory.Cess, Cess, "Fail",
-							48, 0, 48, 1, 48, 2, 48, 3);
+					pass.ExcelFourData("GRN", "ITaxPer4", Globals.Inventory.Netcost, Cess, "Fail",
+							44, 0, 44, 1, 44, 2, 44, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column OTaxPer4");
 					}
-					String Cess1="";
+					/*String Cess1="";
 					try {
 					Cess1 = rs.getString("OTaxPer4");
 					System.out.println(Cess1);
@@ -1190,70 +1617,70 @@ public class GRNcreate extends PageObject {
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorypricing column MPWPrice2");
-					}
+					}*/
 
 					break;
 
-				case "TBLBATCHINVENTORYCONTROL":
-					String SellingPrice="";
+				case "tblinventorystock":
+					String ItemCode2="";
 					try {
-					SellingPrice = rs.getString("SellingPrice");
-					System.out.println(SellingPrice);
-					Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(), SellingPrice.trim());
-					pass.Excelcreate("Inventory", "TBLBATCHINVENTORYCONTROL", "", 56, 0, 56, 1);
-					pass.ExcelFourData("Inventory", "NetSellingPrice", Globals.Inventory.NetSellingPrice, SellingPrice, "Pass",
-							57, 0, 57, 1, 57, 2, 57, 3);
+						ItemCode2 = rs.getString("InventoryCode");
+					System.out.println(ItemCode2);
+					Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode2.trim());
+					pass.Excelcreate("GRN", "tblinventorystock", "", 48, 0, 48, 1);
+					pass.ExcelFourData("GRN", "InventoryCode", Globals.Inventory.ItemCode, ItemCode2, "Pass",
+							49, 0, 49, 1, 49, 2, 49, 3);
 				} catch (AssertionError e) {
-					pass.Excelcreate("Inventory", "TBLBATCHINVENTORYCONTROL", "",56, 0, 56, 1);
-					pass.ExcelFourData("Inventory", "NetSellingPrice", Globals.Inventory.NetSellingPrice, SellingPrice, "Fail",
-							57, 0, 57, 1, 57, 2, 57, 3);
+					pass.Excelcreate("GRN", "tblinventorystock", "",48, 0, 48, 1);
+					pass.ExcelFourData("GRN", "InventoryCode", Globals.Inventory.ItemCode, ItemCode2, "Fail",
+							49, 0, 49, 1, 49, 2, 49, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error TBLBATCHINVENTORYCONTROL column SellingPrice");
 					}
-					String MRP2="";
+					String Desc="";
 					try {
-					MRP2 = rs.getString("MRP");
-					System.out.println(MRP2);
-					Assert.assertEquals(Globals.Inventory.MRP.trim(), MRP2.trim());
-					pass.ExcelFourData("Inventory", "MRP", Globals.Inventory.MRP, MRP2, "Pass",
-							58, 0, 58, 1, 58, 2, 58, 3);
+						Desc = rs.getString("Description");
+					System.out.println(Desc);
+					Assert.assertEquals(Globals.Inventory.ItemDesc.trim(), Desc.trim());
+					pass.ExcelFourData("GRN", "Description", Globals.Inventory.ItemDesc, Desc, "Pass",
+							50, 0, 50, 1, 50, 2, 50, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "MRP", Globals.Inventory.MRP, MRP2, "Fail",
-							58, 0, 58, 1, 58, 2, 58, 3);
+					pass.ExcelFourData("GRN", "Description", Globals.Inventory.ItemDesc, Desc, "Fail",
+							50, 0, 50, 1, 50, 2, 50, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error TBLBATCHINVENTORYCONTROL column MRP");
 					}
 					String Basicost2="";
 					try {
-					Basicost2 = rs.getString("Unitcost");
+					Basicost2 = rs.getString("AverageCost");
 					System.out.println(Basicost2);
-					Assert.assertEquals(Globals.Inventory.BasicCost.trim(), Basicost2.trim());
-					pass.ExcelFourData("Inventory", "Unitcost", Globals.Inventory.BasicCost, Basicost2, "Pass",
-							59, 0, 59, 1, 59, 2, 59, 3);
+					Assert.assertEquals(Globals.Inventory.Netcost.trim(), Basicost2.trim());
+					pass.ExcelFourData("GRN", "AverageCost", Globals.Inventory.Netcost, Basicost2, "Pass",
+							51, 0, 51, 1, 51, 2, 51, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "Unitcost", Globals.Inventory.BasicCost, Basicost2, "Fail",
-							59, 0, 59, 1, 59, 2, 59, 3);
+					pass.ExcelFourData("GRN", "AverageCost", Globals.Inventory.Netcost, Basicost2, "Fail",
+							51, 0, 51, 1, 51, 2, 51, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error TBLBATCHINVENTORYCONTROL column Unitcost");
 					}
-					String W11="";
+					String Price="";
 					try {
-					W11 = rs.getString("WPrice1");
-					System.out.println(W11);
-					Assert.assertEquals(Globals.Inventory.WAPrice1.trim(), W11.trim());
-					pass.ExcelFourData("Inventory", "WPrice1", Globals.Inventory.WAPrice1, W11, "Pass",
-							60, 0, 60, 1, 60, 2, 60, 3);
+						Price = rs.getString("Price");
+					System.out.println(Price);
+					Assert.assertEquals(Globals.Inventory.MRP.trim(), Price.trim());
+					pass.ExcelFourData("GRN", "Price", Globals.Inventory.MRP, Price, "Pass",
+							52, 0, 52, 1, 52, 2, 52, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "WPrice1", Globals.Inventory.WAPrice1, W11, "Fail",
-							60, 0, 60, 1, 60, 2, 60, 3);
+					pass.ExcelFourData("GRN", "Price", Globals.Inventory.MRP, Price, "Fail",
+							52, 0, 52, 1, 52, 2, 52, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error TBLBATCHINVENTORYCONTROL column WPrice1");
 					}
-					String W22="";
+					/*String W22="";
 					try {
 				    W22 = rs.getString("WPrice2");
 					System.out.println(W22);
@@ -1295,86 +1722,341 @@ public class GRNcreate extends PageObject {
 				}
 					catch(Exception e) {
 						System.out.println("null error TBLBATCHINVENTORYCONTROL column BatchNo");
-					}	
+					}*/	
 					break;
 					
-				case "tblInventoryShelfQty":
+				case "tblinventorypricing":
 					String Inventorycode="";
 					try {
 					Inventorycode = rs.getString("InventoryCode");
 					System.out.println(Inventorycode);
 					Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Inventorycode.trim());
-					pass.Excelcreate("Inventory", "tblInventoryShelfQty", "", 64, 0, 64, 1);
-					pass.ExcelFourData("Inventory", "ItemCode", Globals.Inventory.ItemCode, Inventorycode, "Pass",
-							65, 0, 65, 1, 65, 2, 65, 3);
+					pass.Excelcreate("GRN", "tblinventorypricing", "", 55, 0, 55, 1);
+					pass.ExcelFourData("GRN", "ItemCode", Globals.Inventory.ItemCode, Inventorycode, "Pass",
+							56, 0, 56, 1, 56, 2, 56, 3);
 				} catch (AssertionError e) {
-					pass.Excelcreate("Inventory", "tblInventoryShelfQty", "", 64, 0, 64, 1);
-					pass.ExcelFourData("Inventory", "ItemCode", Globals.Inventory.ItemCode, Inventorycode, "Fail",
-							65, 0, 65, 1, 65, 2, 65, 3);
+					pass.Excelcreate("GRN", "tblinventorypricing", "", 55, 0, 55, 1);
+					pass.ExcelFourData("GRN", "ItemCode", Globals.Inventory.ItemCode, Inventorycode, "Fail",
+							56, 0, 56, 1, 56, 2, 56, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorystock column InventoryCode");
 					}	
-					break;
-
-				case "tblinventorystock":
-					// String SellingPrice1 = rs.getString("Price");
-					// System.out.println(SellingPrice1);
-					// Assert.assertEquals(Globals.Inventory.NetSellingPrice.trim(),
-					// SellingPrice1.trim());
-					String Inventorycode1="";
+					
+					String mrp="";
 					try {
 						
-					Inventorycode1 = rs.getString("InventoryCode");
-					System.out.println(Inventorycode1);
-					Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Inventorycode1.trim());
-					pass.Excelcreate("Inventory", "tblinventorystock", "", 67, 0, 67, 1);
-					pass.ExcelFourData("Inventory", "ItemCode", Globals.Inventory.ItemCode, Inventorycode1, "Pass",
-							68, 0, 68, 1, 68, 2, 68, 3);
+						mrp = rs.getString("MRP");
+					System.out.println(mrp);
+					Assert.assertEquals(Globals.Inventory.MRP.trim(), mrp.trim());
+					
+					pass.ExcelFourData("GRN", "MRP", Globals.Inventory.MRP, mrp, "Pass",
+							57, 0, 57, 1, 57, 2, 57, 3);
 				} catch (AssertionError e) {
-					pass.Excelcreate("Inventory", "tblinventorystock", "", 67, 0, 67, 1);
-					pass.ExcelFourData("Inventory", "ItemCode", Globals.Inventory.ItemCode, Inventorycode1, "Fail",
-							68, 0, 68, 1, 68, 2, 68, 3);
+					
+					pass.ExcelFourData("GRN", "MRP", Globals.Inventory.MRP, mrp, "Fail",
+							57, 0, 57, 1, 57, 2, 57, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblinventorystock column InventoryCode");
 					}
-					break;
-				case "tblbarcode":
+					
+				
 					String Brandcode1="";
 					try {
-					Brandcode1 = rs.getString("BarCode");
+					Brandcode1 = rs.getString("BasicCost");
 					System.out.println(Brandcode1);
-					Assert.assertEquals(Globals.Inventory.Barcode.trim(), Brandcode1.trim());
-					pass.Excelcreate("Inventory", "tblbarcode", "", 70, 0, 70, 1);
-					pass.ExcelFourData("Inventory", "BarCode", Globals.Inventory.Barcode, Brandcode1, "Pass",
-							71, 0, 71, 1, 71, 2, 71, 3);
+					Assert.assertEquals(Globals.Inventory.BasicCost.trim(), Brandcode1.trim());
+					
+					pass.ExcelFourData("GRN", "BasicCost", Globals.Inventory.BasicCost, Brandcode1, "Pass",
+							58, 0, 58, 1, 58, 2, 58, 3);
 				} catch (AssertionError e) {
-					pass.Excelcreate("Inventory", "tblbarcode", "",  70, 0, 70, 1);
-					pass.ExcelFourData("Inventory", "BarCode", Globals.Inventory.Barcode, Brandcode1, "Fail",
-							71, 0, 71, 1, 71, 2, 71, 3);
+					
+					pass.ExcelFourData("GRN", "BasicCost", Globals.Inventory.BasicCost, Brandcode1, "Fail",
+							58, 0, 58, 1, 58, 2, 58, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblbarcode column BarCode");
 					}
 					String Inventorycode11="";
 					try {
-					Inventorycode11 = rs.getString("InventoryCode");
+					Inventorycode11 = rs.getString("GrossCost");
 					System.out.println(Inventorycode11);
-					Assert.assertEquals(Globals.Inventory.ItemCode.trim(), Inventorycode11.trim());
-					pass.ExcelFourData("Inventory", "InventoryCode", Globals.Inventory.ItemCode, Inventorycode11, "Pass",
-							72, 0, 72, 1, 72, 2, 72, 3);
+					Assert.assertEquals(Globals.Inventory.GrossCost.trim(), Inventorycode11.trim());
+					pass.ExcelFourData("GRN", "GrossCost", Globals.Inventory.GrossCost, Inventorycode11, "Pass",
+							59, 0, 59, 1, 59, 2, 59, 3);
 				} catch (AssertionError e) {
-					pass.ExcelFourData("Inventory", "InventoryCode", Globals.Inventory.ItemCode, Inventorycode11, "Fail",
-							72, 0, 72, 1, 72, 2, 72, 3);
+					pass.ExcelFourData("GRN", "GrossCost", Globals.Inventory.GrossCost, Inventorycode11, "Fail",
+							59, 0, 59, 1, 59, 2, 59, 3);
 				}
 					catch(Exception e) {
 						System.out.println("null error tblbarcode column InventoryCode");
 					}
+					String NetCost="";
+					try {
+						NetCost = rs.getString("NetCost");
+					System.out.println(NetCost);
+					Assert.assertEquals(Globals.Inventory.Netcost.trim(), NetCost.trim());
+					pass.ExcelFourData("GRN", "NetCost", Globals.Inventory.Netcost, NetCost, "Pass",
+							60, 0, 60, 1, 60, 2, 60, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "NetCost", Globals.Inventory.Netcost, NetCost, "Fail",
+							60, 0, 60, 1, 60, 2, 60, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error tblbarcode column InventoryCode");
+					}
+					String MarginPer="";
+					try {
+						MarginPer = rs.getString("MFPer");
+					System.out.println(MarginPer);
+					Assert.assertEquals(Globals.Inventory.MEarned.trim(), MarginPer.trim());
+					pass.ExcelFourData("GRN", "MarginPer", Globals.Inventory.MEarned, MarginPer, "Pass",
+							61, 0, 61, 1, 61, 2, 61, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "MarginPer", Globals.Inventory.MEarned, MarginPer, "Fail",
+							61, 0, 61, 1, 61, 2, 61, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error tblbarcode column InventoryCode");
+					}
+					String NetSellingPrice="";
+					try {
+						NetSellingPrice = rs.getString("NetSellingPrice");
+					System.out.println(NetSellingPrice);
+					Assert.assertEquals(Globals.Inventory.MRP.trim(), NetSellingPrice.trim());
+					pass.ExcelFourData("GRN", "NetSellingPrice", Globals.Inventory.MRP, NetSellingPrice, "Pass",
+							62, 0, 62, 1, 62, 2, 62, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "NetSellingPrice", Globals.Inventory.MRP, NetSellingPrice, "Fail",
+							62, 0, 62, 1, 62, 2, 62, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error tblbarcode column InventoryCode");
+					}
+					String EarnedMargin="";
+					try {
+						EarnedMargin = rs.getString("EarnedMargin");
+					System.out.println(EarnedMargin);
+					Assert.assertEquals(Globals.Inventory.SpFixing.trim(), EarnedMargin.trim());
+					pass.ExcelFourData("GRN", "EarnedMargin", Globals.Inventory.SpFixing, EarnedMargin, "Pass",
+							63, 0, 63, 1, 63, 2, 63, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "EarnedMargin", Globals.Inventory.SpFixing, EarnedMargin, "Fail",
+							63, 0, 63, 1, 63, 2, 63, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error tblbarcode column InventoryCode");
+					}
+					String Wprice1="";
+					try {
+						Wprice1 = rs.getString("WPrice1");
+					System.out.println(Wprice1);
+					Assert.assertEquals(Globals.Inventory.WPrice1.trim(), Wprice1.trim());
+					pass.ExcelFourData("GRN", "WPrice1", Globals.Inventory.WPrice1, Wprice1, "Pass",
+							64, 0, 64, 1, 64, 2, 64, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "WPrice1", Globals.Inventory.WPrice1, Wprice1, "Fail",
+							64, 0, 64, 1, 64, 2, 64, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error tblinventory column UOM");
+						}
+					String Wprice2="";
+				try {
+						
+					Wprice2 = rs.getString("WPrice2");
+					System.out.println(Wprice2);
+					Assert.assertEquals(Globals.Inventory.WPrice2.trim(), Wprice2.trim());
+					pass.ExcelFourData("GRN", "WPrice2", Globals.Inventory.WPrice2, Wprice2, "Pass",
+							65, 0, 65, 1, 65, 2, 65, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "WPrice2", Globals.Inventory.WPrice2, Wprice2, "Fail",
+							65, 0, 65, 1, 65, 2, 65, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column Manufacturer");
+					}
+				String Wprice3="";
+				try {
 					
+					Wprice3 = rs.getString("WPrice3");
+					System.out.println(Wprice3);
+					Assert.assertEquals(Globals.Inventory.WPrice3.trim(), Wprice3.trim());
+					pass.ExcelFourData("GRN", "WPrice3", Globals.Inventory.WPrice3, Wprice3, "Pass",
+							66, 0, 66, 1, 66, 2, 66, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "WPrice3", Globals.Inventory.WPrice3, Wprice3, "Fail",
+							66, 0, 66, 1, 66, 2, 66, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column ItemType");
+					}
 					break;
+				case "tblBatchInventoryControl":
+					String ItemCode3="";
+					try {
+						ItemCode3 = rs.getString("InventoryCode");
+					System.out.println(ItemCode3);
+					Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode3.trim());
+					pass.Excelcreate("GRN", "tblBatchInventoryControl", "", 69, 0, 69, 1);
+					pass.ExcelFourData("GRN", "InventoryCode", Globals.Inventory.ItemCode, ItemCode3, "Pass",
+							70, 0, 70, 1, 70, 2, 70, 3);
+				} catch (AssertionError e) {
+					pass.Excelcreate("GRN", "tblBatchInventoryControl", "",69, 0, 69, 1);
+					pass.ExcelFourData("GRN", "InventoryCode", Globals.Inventory.ItemCode, ItemCode3, "Fail",
+							70, 0, 70, 1, 70, 2, 70, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error TBLBATCHINVENTORYCONTROL column SellingPrice");
+					}
+					String GrossCost5="";
+					try {
+						GrossCost5 = rs.getString("Grosscost");
+					System.out.println(GrossCost5);
+					Assert.assertEquals(Globals.Inventory.GrossCost.trim(), GrossCost5.trim());
+					pass.ExcelFourData("GRN", "GrossCost", Globals.Inventory.GrossCost, GrossCost5, "Pass",
+							71, 0, 71, 1, 71, 2, 71, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "GrossCost", Globals.Inventory.GrossCost, GrossCost5, "Fail",
+							71, 0, 71, 1, 71, 2, 71, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error TBLBATCHINVENTORYCONTROL column MRP");
+					}
+					String UnitCost2="";
+					try {
+						UnitCost2 = rs.getString("UnitCost");
+					System.out.println(UnitCost2);
+					Assert.assertEquals(Globals.Inventory.GrossCost.trim(), UnitCost2.trim());
+					pass.ExcelFourData("GRN", "UnitCost", Globals.Inventory.GrossCost, UnitCost2, "Pass",
+							72, 0, 72, 1, 72, 2, 72, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "UnitCost", Globals.Inventory.GrossCost, UnitCost2, "Fail",
+							72, 0, 72, 1, 72, 2, 72, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error TBLBATCHINVENTORYCONTROL column MRP");
+					}
+					String Basicost3="";
+					try {
+						Basicost3 = rs.getString("Basicost");
+					System.out.println(Basicost3);
+					Assert.assertEquals(Globals.Inventory.BasicCost.trim(), Basicost3.trim());
+					pass.ExcelFourData("GRN", "AverageCost", Globals.Inventory.BasicCost, Basicost3, "Pass",
+							73, 0, 73, 1, 73, 2, 73, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "AverageCost", Globals.Inventory.BasicCost, Basicost3, "Fail",
+							73, 0, 73, 1, 73, 2, 73, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error TBLBATCHINVENTORYCONTROL column Unitcost");
+					}
+					String Price1="";
+					try {
+						Price1 = rs.getString("MRP");
+					System.out.println(Price1);
+					Assert.assertEquals(Globals.Inventory.MRP.trim(), Price1.trim());
+					pass.ExcelFourData("GRN", "MRP", Globals.Inventory.MRP, Price1, "Pass",
+							74, 0, 74, 1, 74, 2, 74, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "MRP", Globals.Inventory.MRP, Price1, "Fail",
+							74, 0, 74, 1, 74, 2, 74, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error TBLBATCHINVENTORYCONTROL column WPrice1");
+					}
+					String sellingprice="";
+					try {
+						sellingprice = rs.getString("SellingPrice");
+					System.out.println(sellingprice);
+					Assert.assertEquals(Globals.Inventory.Netcost.trim(), sellingprice.trim());
+					pass.ExcelFourData("GRN", "SellingPrice", Globals.Inventory.Netcost, sellingprice, "Pass",
+							75, 0, 75, 1, 75, 2, 75, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "SellingPrice", Globals.Inventory.Netcost, sellingprice, "Fail",
+							75, 0, 75, 1, 75, 2, 75, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error TBLBATCHINVENTORYCONTROL column WPrice1");
+					}
+					String wprice1="";
+					try {
+						wprice1 = rs.getString("WPrice1");
+					System.out.println(wprice1);
+					Assert.assertEquals(Globals.Inventory.WPrice1.trim(), wprice1.trim());
+					pass.ExcelFourData("GRN", "WPrice1", Globals.Inventory.WPrice1, wprice1, "Pass",
+							76, 0, 76, 1, 76, 2, 76, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "WPrice1", Globals.Inventory.WPrice1, wprice1, "Fail",
+							76, 0, 76, 1, 76, 2, 76, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error tblinventory column UOM");
+						}
+					String wprice2="";
+				try {
+						
+					wprice2 = rs.getString("WPrice2");
+					System.out.println(wprice2);
+					Assert.assertEquals(Globals.Inventory.WPrice2.trim(), wprice2.trim());
+					pass.ExcelFourData("GRN", "WPrice2", Globals.Inventory.WPrice2, wprice2, "Pass",
+							77, 0, 77, 1, 77, 2, 77, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "WPrice2", Globals.Inventory.WPrice2, wprice2, "Fail",
+							77, 0, 77, 1, 77, 2, 77, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column Manufacturer");
+					}
+				String wprice3="";
+				try {
 					
-
+					wprice3 = rs.getString("WPrice3");
+					System.out.println(wprice3);
+					Assert.assertEquals(Globals.Inventory.WPrice3.trim(), wprice3.trim());
+					pass.ExcelFourData("GRN", "WPrice3", Globals.Inventory.WPrice3, wprice3, "Pass",
+							78, 0, 78, 1, 78, 2, 78, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "WPrice3", Globals.Inventory.WPrice3, wprice3, "Fail",
+							78, 0, 78, 1, 78, 2, 78, 3);
+				}
+				catch(Exception e) {
+					System.out.println("null error tblinventory column ItemType");
+					}
+					break;
+				case "tblInventoryShelfQty":
+					String ItemCode4="";
+					try {
+						ItemCode4 = rs.getString("InventoryCode");
+					System.out.println(ItemCode4);
+					Assert.assertEquals(Globals.Inventory.ItemCode.trim(), ItemCode4.trim());
+					pass.Excelcreate("GRN", "tblInventoryShelfQty", "", 79, 0, 79, 1);
+					pass.ExcelFourData("GRN", "InventoryCode", Globals.Inventory.ItemCode, ItemCode4, "Pass",
+							80, 0, 80, 1, 80, 2, 80, 3);
+				} catch (AssertionError e) {
+					pass.Excelcreate("GRN", "tblInventoryShelfQty", "",79, 0, 79, 1);
+					pass.ExcelFourData("GRN", "InventoryCode", Globals.Inventory.ItemCode, ItemCode4, "Fail",
+							80, 0, 80, 1, 80, 2, 80, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error TBLBATCHINVENTORYCONTROL column SellingPrice");
+					}
+					String QTY="";
+					try {
+						QTY = rs.getString("ShelfQty");
+					System.out.println(QTY);
+					Assert.assertEquals(Globals.Inventory.Qty.trim(), QTY.trim());
+					pass.ExcelFourData("GRN", "ShelfQty", Globals.Inventory.Qty, QTY, "Pass",
+							81, 0, 81, 1, 81, 2, 81, 3);
+				} catch (AssertionError e) {
+					pass.ExcelFourData("GRN", "ShelfQty", Globals.Inventory.Qty, QTY, "Fail",
+							81, 0, 81, 1, 81, 2, 81, 3);
+				}
+					catch(Exception e) {
+						System.out.println("null error TBLBATCHINVENTORYCONTROL column MRP");
+					}
+									
 				default:
 					break;
 				}

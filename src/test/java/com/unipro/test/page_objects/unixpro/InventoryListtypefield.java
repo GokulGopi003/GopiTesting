@@ -11,7 +11,7 @@ public class InventoryListtypefield {
 	public String BrandWise_String ="input#ContentPlaceHolder1_chkBrandWise";
 	public String VendorWise_String ="input#ContentPlaceHolder1_rdoVendorWise";
 	public String BarcodeWise_String ="input#ContentPlaceHolder1_Chkbarcodelist";
-	public String BreakQty_String ="inputinput#ContentPlaceHolder1_rdoBreakqty";
+	public String BreakQty_String ="input#ContentPlaceHolder1_rdoBreakqty";
 	public String DeactivateItem_String = "input#ContentPlaceHolder1_rdoDeactiveitem";
 	public String DeActivateBatch_String ="input#ContentPlaceHolder1_rdoDeactiveBatch";
 	public String MinQty_String ="input#ContentPlaceHolder1_rdoMinqty";
@@ -21,6 +21,7 @@ public class InventoryListtypefield {
 	
 	public String PriceChange_String ="input#ContentPlaceHolder1_RdoPriceChange";
 	public String BatchWiseInventory_String = "input#ContentPlaceHolder1_rdoBatchWiseInvlist";
+	public String BatchCount_String="input#ContentPlaceHolder1_txtBatchCount";
 	public String ActivePromotion_String ="input#ContentPlaceHolder1_rdoPromotion";
 	public String ActivePromotionPrice_String ="input#ContentPlaceHolder1_rdoPromotionPrice";
 	public String ActivePrmotionFree_String ="input#ContentPlaceHolder1_rdoPromotionFree";
@@ -29,6 +30,8 @@ public class InventoryListtypefield {
 	public String ParentChild_String ="input#ContentPlaceHolder1_rdoParantChild";
 	
 	public String InventoryCode_String ="input#ContentPlaceHolder1_ReportFilterUserControl_txtInventory";
+	public String Location_String ="input#ContentPlaceHolder1_ReportFilterUserControl_txtLocation";
+	
 	public String Department_String ="input#ContentPlaceHolder1_ReportFilterUserControl_txtDepartment";
 	public String Category_String ="input#ContentPlaceHolder1_ReportFilterUserControl_txtCategory";
 	public String SubCategory_String = "input#ContentPlaceHolder1_ReportFilterUserControl_txtSubCategory";
@@ -36,16 +39,19 @@ public class InventoryListtypefield {
 	public String Vendor_String ="input#ContentPlaceHolder1_ReportFilterUserControl_txtVendor";
 	public String Class_String ="input#ContentPlaceHolder1_ReportFilterUserControl_txtClass";
 	public String SubClass_string ="input#ContentPlaceHolder1_ReportFilterUserControl_txtSubClass";
+	
 	public String Floor_String ="input#ContentPlaceHolder1_ReportFilterUserControl_txtFloor";
 	public String Section_String="input#ContentPlaceHolder1_ReportFilterUserControl_txtSection";
 	
+	
 	public String FromDate_String="input#ContentPlaceHolder1_txtFromDate";
-	public String SubClass_String="input#ContentPlaceHolder1_txtFromDate";
-	public String Merchandise_String="input#ContentPlaceHolder1_txtFromDate";
-	public String Manufacture_String="input#ContentPlaceHolder1_txtFromDate";
-	public String Floorcode_String="input#ContentPlaceHolder1_txtFromDate";
-	public String Bin_String="input#ContentPlaceHolder1_txtFromDate";
+	public String ToDate_String="input#ContentPlaceHolder1_txtToDate";
+	public String IsActive_String="input#ContentPlaceHolder1_chkActive";
+	public String Vendorwise_String="input#ContentPlaceHolder1_chkVendor";
+	public String ByDate_String="input#ContentPlaceHolder1_chkBydate";
+	
+	
 	public String ShelfCode_String="input#ContentPlaceHolder1_txtFromDate";
 	public String WareHouse_String="input#ContentPlaceHolder1_txtFromDate";
-	public String ToDate_String="input#ContentPlaceHolder1_txtFromDate";
+	public String ToDate1_String="input#ContentPlaceHolder1_txtFromDate";
 }

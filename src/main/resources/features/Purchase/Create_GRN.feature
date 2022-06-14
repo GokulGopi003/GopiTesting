@@ -23,12 +23,14 @@ Given Launching the valid URL
     #Then I want to minimize the browser
     #Then I need to click on the "Save" button
     Then I need to click on the blue "Save" button
-    Then I establish connection GRN to DB
-    Then I read the values GRN from table "tblinventory" in DB
-    Then I read the values GRN from table "tblinventorypricing" in DB
-    Then I read the values GRN from table "tblinventorystock" in DB
-    Then I read the values GRN from table "TBLBATCHINVENTORYCONTROL" in DB
-    Then I read the values GRN from table "tblInventoryShelfQty" in DB
+    Then I establish connection GRN to DB 
+    Then I read the values GRN from table "TBLGIDDETAIL" in DB
+    Then I read the values GRN from table "TBLGIDHEADER" in DB
+    #Then I read the values GRN from table "tblinventory" in DB
+    #Then I read the values GRN from table "tblinventorypricing" in DB
+    #Then I read the values GRN from table "tblinventorystock" in DB
+    #Then I read the values GRN from table "tblBatchInventoryControl" in DB
+    #Then I read the values GRN from table "tblInventoryShelfQty" in DB
     Then I close connection GRN to DB
     
     Examples: 

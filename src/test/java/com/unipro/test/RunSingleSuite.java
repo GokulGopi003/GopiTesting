@@ -8,7 +8,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 
 
-@CucumberOptions(features = "target/test-classes", monochrome = true, tags = "@23052022", plugin = {
+@CucumberOptions(features = "target/test-classes", monochrome = true, tags = "@14062022", plugin = {
         "pretty", "html:target/cucumber-report/single",
         "json:target/cucumber-report/single/cucumber.json",
         "rerun:target/cucumber-report/single/rerun.txt"},
