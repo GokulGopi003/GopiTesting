@@ -965,7 +965,7 @@ public class GRNcreate extends PageObject {
 			// ResultSet rs =st.executeQuery("select * from "+tablename+" where
 			// DeptCode='Gopi'");
 
-			ResultSet rs = st.executeQuery("select * from " + tablename + " where GidNo='HQ04000051443'");
+			ResultSet rs = st.executeQuery("select * from " + tablename + " where InventoryCode='000202'");
 
 			// ResultSet rs = st.executeQuery("");
 

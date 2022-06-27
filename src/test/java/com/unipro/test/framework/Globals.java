@@ -146,6 +146,9 @@ public class Globals {
 		final public static String SHEETNAME133 = "AttributeReport";
 		final public static String SHEETNAME134 = "StockAgingReport";
 		final public static String SHEETNAME135 = "TransferStatusQuery";
+		final public static String SHEETNAME136 = "StockAllocation";
+		final public static String SHEETNAME137 = "TansferPaymentReport";
+		final public static String SHEETNAME138 = "UserMaster";
 		
 		                                          
 		public static Table<String, String, String> inventorySheetData;
@@ -284,6 +287,9 @@ public class Globals {
 		public static Table<String, String, String> AttributeReportSheetData;
 		public static Table<String, String, String> StockAgingReportSheetData;
 		public static Table<String, String, String> TransferStatusQuerySheetData;
+		public static Table<String, String, String> StockAllocationSheetData;
+		public static Table<String, String, String> TansferPaymentReportSheetData;
+		public static Table<String, String, String> UserMasterSheetData;
 		
 		
 		public static Map<String, String> inventoryrowwiseData;
@@ -422,6 +428,9 @@ public class Globals {
 		public static Map<String, String> AttributeReportrowwiseData;
 		public static Map<String, String> StockAgingReportrowwiseData;
 		public static Map<String, String> TransferStatusQueryrowwiseData;
+		public static Map<String, String> StockAllocationrowwiseData;
+		public static Map<String, String> TansferPaymentReportrowwiseData;
+		public static Map<String, String> UserMasterrowwiseData;
 
 		
 

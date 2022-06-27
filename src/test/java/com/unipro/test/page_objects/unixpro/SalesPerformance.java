@@ -216,20 +216,6 @@ public class SalesPerformance extends PageObject {
 
 	}
 }
-	/*@Then("I fill new Filteration data page using excel data")
-	public void i_fill_new_Filteration_data_page_using_excel_data() {
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.FromDate)) {
-			terpage.terminal_waitClearEnterText_css(icp.FromDate_String, Globals.Inventory.FromDate);
-			//Inventorychange.clearAndTypeSlowly(Globals.Inventory.FromDate, "input#txtSearch");
-			//Inventorychange.return_td_invoke_element(Globals.Inventory.FromDate).click();
-			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtFromDate\"]")).sendKeys(Keys.ENTER);
-		}
-		if (GenericWrappers.isNotEmpty(Globals.Inventory.ToDate)) {
-			terpage.terminal_waitClearEnterText_css(icp.ToDate_String, Globals.Inventory.ToDate);
-			//Inventorychange.clearAndTypeSlowly(Globals.Inventory.ToDate, "input#txtSearch");
-			//Inventorychange.return_td_invoke_element(Globals.Inventory.ToDate).click();
-			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtToDate\"]")).sendKeys(Keys.ENTER);
-	}
-	}*/
+	
 	
 	

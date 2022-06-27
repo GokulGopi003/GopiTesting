@@ -34,6 +34,7 @@ public class PickerMasterNew extends PageObject {
 	@Then("I load the PickerMasterNew sheet data to map")
 	public void i_load_the_PickerMasterNew_sheet_data_to_map() {
 		Globals.Inventory.PickerMasterNewSheetData = Globals.excelSheetData.get(Globals.Inventory.SHEETNAME91);
+		
 	}
 
 	@Then("I load the PickerMasterNew rowise  data for {string} rowname")

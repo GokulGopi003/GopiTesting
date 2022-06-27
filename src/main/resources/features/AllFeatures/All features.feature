@@ -8,8 +8,9 @@ Background:
 	When I enter the password 
 	Then I clik on the login button 
 	Then I verify the page Title 
-	@master
- 
+	
+	
+ @14062022
 Scenario Outline: checking for Company master 
 	Given I want to launch the "Masters/frmCompanyMaster.aspx" 
 	Then I load the testdata form excel to table
@@ -32,7 +33,7 @@ Scenario Outline: checking for Company master
      
 
     
-  
+  @14062022
   Scenario Outline: check LocationMaster
   Given I want to launch the "Masters/frmLocationMaster.aspx"
   Then I load the testdata form excel to table
@@ -52,7 +53,7 @@ Scenario Outline: checking for Company master
       
       
 
-  @tag2
+  @14062022
   Scenario Outline: Home > Master > ReasonMaster
    Given I want to launch the "Masters/frmReasonMaster.aspx" 
   
@@ -71,7 +72,7 @@ Scenario Outline: checking for Company master
       
    
 	
-@master 
+@14062022
 Scenario Outline: checking for Customer master 
 	Given I want to launch the "Masters/frmTerminalView.aspx" 
 	Then I need to click on the "New" button2
@@ -97,7 +98,7 @@ Scenario Outline: checking for Customer master
       |TerminalNew|
      
       
-  @0512
+  @14062022
   Scenario Outline: Home > Master > Inventory > Department Master
     Given I want to launch the "Inventory/frmDepartmentMaster.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "Gopi"
@@ -134,7 +135,7 @@ Scenario Outline: checking for Customer master
       
 
 
-
+@14062022
  Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Inventory/frmCategoryMaster.aspx"
     #Then I need to click on the  element "input#ContentPlaceHolder1_grdDepartmentList_imgbtnEdit_0"
@@ -170,7 +171,7 @@ Scenario Outline: checking for Customer master
       
 
 
-
+@14062022
  Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmsubCategory.aspx"
     #Then I need to click on the  element "input#ContentPlaceHolder1_grdDepartmentList_imgbtnEdit_0"
@@ -203,7 +204,7 @@ Scenario Outline: checking for Customer master
       
       
       
-    @go
+    @14062022
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Inventory/frmBrandMaster.aspx"
     #Then I need to click on the  element "input#ContentPlaceHolder1_grdDepartmentList_imgbtnEdit_0"
@@ -241,7 +242,7 @@ Scenario Outline: checking for Customer master
       
       
       
-    
+    @14062022
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmFloor.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -269,7 +270,7 @@ Scenario Outline: checking for Customer master
       |Floor      |
       
       
-    
+    @14062022
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmClass.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "Gopi"
@@ -293,7 +294,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Class      |
       
-          
+     @14062022     
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmSubClass.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "Gopi"
@@ -318,7 +319,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Subclass      |
       
-    
+    @14062022
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmItemType.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "Gopi"
@@ -343,7 +344,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Itemtype      |
       
-          
+       @14062022   
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmTaxMasterGST.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "C0000"
@@ -366,7 +367,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Tax      |
       
-    
+    @14062022
     Scenario Outline:
     Given I want to launch the "Masters/frmUOM.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "1"
@@ -389,7 +390,7 @@ Scenario Outline: checking for Customer master
       |Uom      |
       
       
-          
+       @14062022   
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmSection.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -415,7 +416,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Section      |
       
-    
+    @14062022
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "/Masters/frmBin.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -442,7 +443,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Bin      |
       
-          
+      @14062022    
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmshelf.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -469,7 +470,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Shelf      |
       
-    
+    @14062022
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmWarehouse.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -498,7 +499,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Warehouse     |
       
-        
+       @14062022 
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmSize.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -524,7 +525,7 @@ Scenario Outline: checking for Customer master
       |Size2      |  
       
       
-    
+    @14062022
     Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmstyle.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -548,7 +549,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Style     |
       
-      
+      @14062022
       Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmBaseUOM.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -571,7 +572,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Baseuom    |
       
-      
+      @14062022
       Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmAddition_Deduction.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -594,6 +595,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |AddDed    |
       
+      @14062022
       Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmZone.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -618,6 +620,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Zone      |
       
+      @14062022
        Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Inventory/frmCompanySettings.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -642,7 +645,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |CompanySettings  |
       
-      
+      @14062022
       Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmStockAdjustment.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -665,7 +668,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |StockAdjustmentType     |
       
-      
+      @14062022
        Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmManufacturer.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -690,6 +693,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Manufacturer      |
       
+      @14062022
       Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmMerchandise.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -712,7 +716,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Merchandise      |
       
-      
+      @14062022
       Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmOrigin.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -737,7 +741,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Origion      |
       
-      
+      @14062022
       Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmTransport.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -762,6 +766,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Transport      |
       
+      @14062022
       Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Masters/frmTransport.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "2"
@@ -786,7 +791,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Transport      |
       
-      
+      @14062022
       Scenario Outline: checking for Vendor master 
 	Given I want to launch the "Masters/frmVendorView.aspx" 
 	Then I need to click on the "Back" button1
@@ -806,7 +811,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName|
       |VendorMaster| 
 	
-	
+	@14062022
 	Scenario Outline: Title of your scenario outline
    Given I want to launch the "Masters/frmTerms.aspx"
    Then I load the testdata form excel to table
@@ -823,7 +828,8 @@ Scenario Outline: checking for Customer master
     Examples: 
       |TestcaseRowName |
       |TermsNew1|
-      
+    
+    @14062022  
 	Scenario Outline: check the Display and Contract
     Given I want to launch the "Masters/frmDisplayandContract.aspx"
    Then I load the testdata form excel to table
@@ -839,7 +845,8 @@ Scenario Outline: checking for Customer master
     Examples: 
       |TestcaseRowName|
       |DisplayandContractNew1|
-     
+      
+     @14062022
       Scenario Outline: check for BankModule
     Given I want to launch the "Masters/frmBankMaster.aspx"
      Then I load the testdata form excel to table
@@ -855,6 +862,7 @@ Scenario Outline: checking for Customer master
       |TestcaseRowName|
       |BankNew2|
     
+    @14062022
     Scenario Outline: checking for SalesMan Master
   Given I want to launch the "Masters/frmSalesManMaster.aspx"
   Then I load the testdata form excel to table
@@ -871,6 +879,7 @@ Scenario Outline: checking for Customer master
       |TestcaseRowName  |
       |SalesManNew |
      
+     @14062022
      Scenario Outline: Title of your scenario outline
     Given I want to launch the "Masters/frmDeliveryMan.aspx"
   Then I load the testdata form excel to table
@@ -888,7 +897,7 @@ Scenario Outline: checking for Customer master
       |TestcaseRowName  |
       |DeliveryManNew  |
       
-      
+      @14062022
       Scenario Outline: HomeMasterSalesSales ManSales Man Commission Brand
     Given I want to launch the "Masters/frmSalesManCommissionBrand.aspx"
   Then I load the testdata form excel to table
@@ -905,6 +914,7 @@ Scenario Outline: checking for Customer master
       |TestcaseRowName|
       |BrandWiseSalesManCommission|
       
+      @14062022
       Scenario Outline: Title of your scenario outline
       Given I want to launch the "Masters/frmSalesManCommissionItemWise.aspx"
   Then I load the testdata form excel to table
@@ -929,6 +939,7 @@ Scenario Outline: checking for Customer master
       |TestcaseRowName|
       |ItemWiseSalesManCommission|
       
+      @14062022
       Scenario Outline: checking for SalesMan Commission 
 	Given I want to launch the "Masters/frmSalesManCommissionItemsView.aspx" 
 	
@@ -947,6 +958,7 @@ Scenario Outline: checking for Customer master
       |TestcaseRowName|
       |SalesManComission|
       
+      @14062022
        Scenario Outline: Title of your scenario outline
       Given I want to launch the "Masters/frmPosPayment.aspx"
   Then I load the testdata form excel to table
@@ -963,6 +975,7 @@ Scenario Outline: checking for Customer master
       |TestcaseRowName|
       |POSPaymentNew1|
       
+      @14062022
       Scenario Outline: Title of your scenario outline
       Given I want to launch the "Masters/frmVehicleMaster.aspx"
   Then I load the testdata form excel to table
@@ -979,6 +992,7 @@ Scenario Outline: checking for Customer master
       |TestcaseRowName  |
       |VehicleMasterNew  |
       
+      @14062022
       Scenario Outline: Title of your scenario outline
       Given I want to launch the "Masters/frmPayMode.aspx"
   Then I load the testdata form excel to table
@@ -995,6 +1009,7 @@ Scenario Outline: checking for Customer master
       |TestcaseRowName |
       |PaymodeNew|
       
+      @14062022
        Scenario Outline: Title of your scenario outline
       Given I want to launch the "Masters/frmHomeDeliveryTrayMaster.aspx"
   Then I load the testdata form excel to table
@@ -1012,6 +1027,8 @@ Scenario Outline: checking for Customer master
       |TestcaseRowName |
       |HomeDeliveryTrayNew |
       
+      
+      @14062022
       Scenario Outline: Title of your scenario outline
        Given I want to launch the "Masters/frmBarcodePrinter.aspx"
   Then I load the testdata form excel to table
@@ -1030,6 +1047,7 @@ Scenario Outline: checking for Customer master
       |BarCodePrinterNew1 |
       
       
+      @14062022
       Scenario Outline: Title of your scenario outline
             Given I want to launch the "Masters/frmParamMaster.aspx"
   Then I load the testdata form excel to table
@@ -1042,6 +1060,8 @@ Scenario Outline: checking for Customer master
   Then I read the values from table "TBLPARAMMASTER" in ParamMasterNew
   Then I close connection to ParamMasterNew
       
+      
+      @14062022
       Scenario Outline: checking for Picker master 
 	Given I want to launch the "Masters/frmPickerMaster.aspx" 
 	Then I load the testdata form excel to table
@@ -1058,6 +1078,8 @@ Scenario Outline: checking for Customer master
       |TestcaseRowName|
       |PickerMasterNew1|
       
+      
+      @14062022
       Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Inventory/Barcode.aspx"
     #Then I enter the value forElement "input#ContentPlaceHolder1_txtSearch" as "C0000"
@@ -1079,6 +1101,8 @@ Scenario Outline: checking for Customer master
       |Barcode      |
       |Barcode1      |
       
+      
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
 
    Then I load the testdatas form excel to table
@@ -1095,6 +1119,8 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |PR1|
       
+      
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
       As a unipro user i want to launch the valid URL
     Given Launching the valid URL
@@ -1117,7 +1143,7 @@ Scenario Outline: checking for Customer master
       |Distribution|
       
       
-      
+    @14062022  
     Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Then I load the testdatas form excel to table
     Then I load the Distribution sheet data to map
@@ -1132,7 +1158,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Distribution1|
    
-      
+      @14062022
       Scenario Outline: Title of your scenario outline
     Given Launching the valid URL
     Given I enter the username
@@ -1165,7 +1191,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |Inventorychange5|
       
-      
+      @14062022
       Scenario Outline: Title of your scenario outline
     Given Launching the valid URL
     Given I enter the username
@@ -1199,42 +1225,8 @@ Scenario Outline: checking for Customer master
       |InventoryCostReset2|
       
    
-   Scenario Outline: Verifying Add Inventory Functionality Purchased by MRP1
-    Given I want to launch the "Inventory/frmInventoryMaster.aspx"
-    Then I load the testdata form excel to table
-    Then I load the inventory sheet data to map
-    Then I load the rowise inventory data for "<TestcaseRowName>" rowname
-    Then I update value to the inventory page global Variables
-    Then I fill new inventory data page using excel data
-    Then I check the purchased by radio button for "<TestcaseRowName>"
-    Then I need to click on the  element "input#ContentPlaceHolder1_imgPriceChange"
-    Then I fill the GST values in the inventory page
-    Then I fill inventory calculations page using excel data
-    Then I fill inventory calculations MRP page using excel data
-    Then I verify the actual ui values with expected Excel values
-    Then I click on button tag with value "Back"
-    Then I need to click on sub menu with text matching "Order & BreakPrice"
-    Then I fill Order and break price
-    Then I need to click on sub menu with text matching "Activation Settings"
-    Then I fill Activationsettings
-    Then I need to click on sub menu with text matching "Image"
-    #When Im waiting for 5 sec
-    Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "/Users/macpc/Downloads/download.jpeg"
-    Then I need to click on the "Save" button
-    Then I click dynamically on "NewItemNo" button
-    Then I establish connection to DB
-    Then I read the values from table "tblinventory" in DB
-    Then I read the values from table "tblinventorypricing" in DB
-    Then I read the values from table MRP "tblinventorystock" in DB
-    Then I read the values from table MRP "tblbarcode" in DB
-    Then I read the values from table MRP "TBLBATCHINVENTORYCONTROL" in DB
-    Then I read the values from table MRP "tblInventoryShelfQty" in DB
-    Then I close connection to DB
-    Examples: 
-      | TestcaseRowName |
-      | cost2            |
 
-    
+@14062022    
    Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Then I load the testdata form excel to table
@@ -1270,6 +1262,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       | cost1           |
 
+@14062022
   Scenario Outline: Verifying Add Inventory Functionality Purchased by MRP1
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Then I load the testdata form excel to table
@@ -1304,6 +1297,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       | MRP1            |
 
+@14062022
   Scenario Outline: Verifying Add Inventory Functionality Purchased by MRP2
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Then I load the testdata form excel to table
@@ -1314,7 +1308,7 @@ Scenario Outline: checking for Customer master
     Then I check the purchased by radio button for "<TestcaseRowName>"
     Then I need to click on the  element "input#ContentPlaceHolder1_imgPriceChange"
     Then I fill the GST values in the inventory page
-    Then I fill inventory calculations page for MRP using excel data
+    #Then I fill inventory calculations page for MRP using excel data
     Then I verify the actual ui values with expected Excel values
     Then I click on button tag with value "Back"
     #Then I need to click on sub menu with text matching "Image"
@@ -1327,6 +1321,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       | MRP2            |
 
+@14062022
   Scenario Outline: Verifying Add Inventory Functionality Purchased by MRP3
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Then I load the testdata form excel to table
@@ -1337,7 +1332,7 @@ Scenario Outline: checking for Customer master
     Then I check the purchased by radio button for "<TestcaseRowName>"
     Then I need to click on the  element "input#ContentPlaceHolder1_imgPriceChange"
     Then I fill the GST values in the inventory page
-    Then I fill inventory calculations page for MRP using excel data
+    #Then I fill inventory calculations page for MRP using excel data
     Then I verify the actual ui values with expected Excel values
     Then I click on button tag with value "Back"
     #Then I need to click on sub menu with text matching "Image"
@@ -1350,67 +1345,10 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       | MRP3            |
 
-  #Scenario Outline: Verifying Add Inventory Functionality Purchased by MRP4
-    #Given I want to launch the "Inventory/frmInventoryMaster.aspx"
-    #Then I load the testdata form excel to table
-    #Then I load the inventory sheet data to map
-    #Then I load the rowise inventory data for "<TestcaseRowName>" rowname
-    #Then I update value to the inventory page global Variables
-    #Then I fill new inventory data page using excel data
-    #Then I check the purchased by radio button for "<TestcaseRowName>"
-    #Then I need to click on the  element "input#ContentPlaceHolder1_imgPriceChange"
-    #Then I fill the GST values in the inventory page
-    #Then I fill inventory calculations page for MRP using excel data
-    #Then I verify the actual ui values with expected Excel values
-    #Then I click on button tag with value "Back"
-    #Then I need to click on sub menu with text matching "Image"
-    #When Im waiting for 5 sec
-    #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
-    #Then I need to click on the "Save" button
-    #Then I click dynamically on "NewItemNo" button
-#
-    #Examples: 
-      #| TestcaseRowName |
-      #| MRP4            |
-   
-   
-   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
-    Given I want to launch the "Inventory/frmInventoryMaster.aspx"
-    Then I load the testdata form excel to table
-    Then I load the inventory sheet data to map
-    Then I load the rowise inventory data for "<TestcaseRowName>" rowname
-    Then I update value to the inventory page global Variables
-    Then I fill new inventory data page using excel data
-    Then I check the purchased by radio button for "<TestcaseRowName>"
-    Then I need to click on the  element "input#ContentPlaceHolder1_imgPriceChange"
-    Then I fill the GST values in the inventory page
-    Then I fill inventory calculations page using excel data
-    When Im waiting for 2 sec
-    Then I verify the actual ui values with expected Excel values
-    Then I click on button tag with value "Back"
-    Then I need to click on sub menu with text matching "Order & BreakPrice"
-    Then I fill Order and break price
-    Then I need to click on sub menu with text matching "Activation Settings"
-    Then I fill Activationsettings
-    Then I need to click on sub menu with text matching "Image"
-    When Im waiting for 5 sec
-    Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as "12"
-    Then I need to click on the "Save" button
-    Then I click dynamically on "NewItemNo" button
-    Then I establish connection to DB
-    Then I read the values from table "tblinventory" in DB
-    Then I read the values from table "tblinventorypricing" in DB
-    Then I read the values from table "tblinventorystock" in DB
-    Then I read the values from table "tblbarcode" in DB
-    Then I read the values from table "TBLBATCHINVENTORYCONTROL" in DB
-    Then I read the values from table "tblInventoryShelfQty" in DB
-    Then I close connection to DB
-
-    Examples: 
-      | TestcaseRowName |
-      | cost1           |
-      
-      
+  
+         
+     
+      @14062022
     Scenario Outline: Verifying Add Inventory Functionality Purchased by MRP1
     Given I want to launch the "Inventory/frmInventoryMaster.aspx"
     Then I load the testdata form excel to table
@@ -1443,45 +1381,12 @@ Scenario Outline: checking for Customer master
     Then I close connection to DB
     Examples: 
       | TestcaseRowName |
-      | MRP1            |
-      
-    Scenario Outline: Verifying Add Inventory Functionality Purchased by MRP1
-    Given I want to launch the "Inventory/frmInventoryMaster.aspx"
-    Then I load the testdata form excel to table
-    Then I load the inventory sheet data to map
-    Then I load the rowise inventory data for "<TestcaseRowName>" rowname
-    Then I update value to the inventory page global Variables
-    Then I fill new inventory data page using excel data
-    Then I check the purchased by radio button for "<TestcaseRowName>"
-    Then I need to click on the  element "input#ContentPlaceHolder1_imgPriceChange"
-    Then I fill the GST values in the inventory page
-    Then I fill inventory calculations MRP page using excel data
-    Then I verify the actual ui values with expected Excel values
-    Then I click on button tag with value "Back"
-    Then I need to click on sub menu with text matching "Order & BreakPrice"
-    Then I fill Order and break price
-    Then I need to click on sub menu with text matching "Activation Settings"
-    Then I fill Activationsettings
-    #Then I need to click on sub menu with text matching "Image"
-    When Im waiting for 5 sec
-    #Then I enter the value forElement "input#ContentPlaceHolder1_fuimage" as ""
-    Then I need to click on the "Save" button
-    Then I click dynamically on "NewItemNo" button
-    Then I establish connection to DB
-    Then I read the values from table MRP "tblinventory" in DB
-    Then I read the values from table MRP "tblinventorypricing" in DB
-    Then I read the values from table MRP "tblinventorystock" in DB
-    Then I read the values from table MRP "tblbarcode" in DB
-    Then I read the values from table MRP "TBLBATCHINVENTORYCONTROL" in DB
-    Then I read the values from table MRP "tblInventoryShelfQty" in DB
-    Then I close connection to DB
-    Examples: 
-      | TestcaseRowName |
-      | MRP2            |
-      | MRP3            |
-      | MRP4            |
+      |     MRP4        |
+      |             |
+      |             |
       
       
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by MRP1
     Given I want to launch the "Inventory/frmInventoryMasterView.aspx"
     Then I load the testdata form excel to table
@@ -1518,6 +1423,7 @@ Scenario Outline: checking for Customer master
       |Gopi|
 
     
+    @14062022
       Scenario Outline: Title of your scenario outline
     Given Launching the valid URL
     Given I enter the username
@@ -1542,6 +1448,7 @@ Scenario Outline: checking for Customer master
       |Inventorymovement1|
       
       
+      @14062022
        Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
       As a unipro user i want to launch the valid URL
     Given Launching the valid URL
@@ -1566,7 +1473,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |InventoryParameter|
       
-      
+      @14062022
        Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Inventory/frmDistributionlist.aspx"
     Then I load the testdatas form excel to table
@@ -1587,6 +1494,8 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |InventoryParentChildSetting|
       
+      
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
       As a unipro user i want to launch the valid URL
     Given Launching the valid URL
@@ -1613,6 +1522,7 @@ Scenario Outline: checking for Customer master
       |PackageInventory2|
       
       
+      @14062022
       Scenario Outline: Title of your scenario outline
     Given Launching the valid URL
     Given I enter the username
@@ -1636,6 +1546,7 @@ Scenario Outline: checking for Customer master
       |RefillingScheduling4|
       
       
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Inventory/frmInventoryChange.aspx"
     Then I need to click on the  element "a#ContentPlaceHolder1_hypReorder"
@@ -1678,6 +1589,8 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |LocationWisePriceChange2|
       
+      
+      @14062022
   Scenario Outline: Title of your scenario outline
     Given Launching the valid URL
     Given I enter the username
@@ -1704,6 +1617,7 @@ Scenario Outline: checking for Customer master
       |PriceChangeBatchItem2|
       
       
+      @14062022
       Scenario Outline: Title of your scenario outline
     Given Launching the valid URL
     Given I enter the username
@@ -1729,6 +1643,8 @@ Scenario Outline: checking for Customer master
       |PriceChangeNonBatchItem2|
       
       
+      
+      @14062022
       Scenario Outline: Title of your scenario outline
     Given Launching the valid URL
     Given I enter the username
@@ -1756,6 +1672,7 @@ Scenario Outline: checking for Customer master
       |PriceImportExport2|
       
       
+      @14062022
       Scenario Outline: Title of your scenario outline
     Given Launching the valid URL
     Given I enter the username
@@ -1778,7 +1695,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |DayBasedPromotion2|
       
-      
+      @14062022
       Scenario Outline: Title of your scenario outline
     Given Launching the valid URL
     Given I enter the username
@@ -1803,6 +1720,7 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |FreeItem|
       
+      @14062022
       Scenario Outline: Title of your scenario outline
     Given Launching the valid URL
     Given I enter the username
@@ -1828,6 +1746,7 @@ Scenario Outline: checking for Customer master
       |NormalPromotion2|
       
       
+   @14062022   
       Scenario Outline: Title of your scenario outline
     Given Launching the valid URL
     Given I enter the username
@@ -1852,6 +1771,8 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |OtherPromotion3|
       
+      
+      @14062022
       Scenario Outline: Title of your scenario outline
     Given Launching the valid URL
     Given I enter the username
@@ -1872,6 +1793,8 @@ Scenario Outline: checking for Customer master
       | TestcaseRowName |
       |RevokePromotion|
       
+      
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given Launching the valid URL
     Given I enter the username
@@ -1904,6 +1827,7 @@ Scenario Outline: checking for Customer master
       |AutoPO1           |
       
       
+      @14062022
  Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost  
     Then I need to click on the  element "h1#ui-id-8"
     Then I load the testdatas form excel to table
@@ -1930,6 +1854,8 @@ Scenario Outline: checking for Customer master
       |AutoPO1           |
       
       
+      
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
 Given Launching the valid URL
     Given I enter the username
@@ -1955,279 +1881,29 @@ Given Launching the valid URL
     #Then I need to click on the "Save" button
     Then I need to click on the blue "Save" button
     Then I establish connection GRN to DB 
-    Then I read the values GRN from table "TBLGIDDETAIL" in DB
-    Then I read the values GRN from table "TBLGIDHEADER" in DB
-    #Then I read the values GRN from table "tblinventory" in DB
-    #Then I read the values GRN from table "tblinventorypricing" in DB
-    #Then I read the values GRN from table "tblinventorystock" in DB
-    #Then I read the values GRN from table "tblBatchInventoryControl" in DB
-    #Then I read the values GRN from table "tblInventoryShelfQty" in DB
+    #Then I read the values GRN from table "TBLGIDDETAIL" in DB
+    #Then I read the values GRN from table "TBLGIDHEADER" in DB
+    Then I read the values GRN from table "tblinventory" in DB
+    Then I read the values GRN from table "tblinventorypricing" in DB
+    Then I read the values GRN from table "tblinventorystock" in DB
+    Then I read the values GRN from table "tblBatchInventoryControl" in DB
+    Then I read the values GRN from table "tblInventoryShelfQty" in DB
     Then I close connection GRN to DB
     
     Examples: 
       | TestcaseRowName |
       |GRN           |
       
-      Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
-    Given Launching the valid URL
-    Given I enter the username
-    When I enter the password
-    Then I clik on the login button
-    Then I verify the page Title
-    Given I want to launch the "Purchase/frmGoodsAcknowledgement.aspx"
-    Then I need to click on the  element "input#ContentPlaceHolder1_rptrGA_btnGrn_0"
-    Then I load the testdata form excel to table
-    Then I load the GRN sheet data to map
-    Then I load the rowise GRN data for "<TestcaseRowName>" rowname
-    Then I update value to the GRN page global Variables
-    Then I fill new GRN data page using excel data
-    Then I need to click on the  element "a#ContentPlaceHolder1_lnkAdd"  
-    #Then I need to click on the  element "input#ContentPlaceHolder1_chFillGA"
-    #Then I enter the value forElement "input#ContentPlaceHolder1_txtAD" as "0.00"
-    #Then I need to click on the blue "Yes" button
-    #When Im waiting for 2 sec
-    #Then I need to click on the page
-    #Then I want to click purchase order
-    #When Im waiting for 2 sec
-    #Then I want to minimize the browser
-    #Then I need to click on the "Save" button
-    #Then I need to click on the blue "Save" button 
-    
-    
-    Examples: 
-      | TestcaseRowName |
-      |GRN          |
+     
+      
+     
       
       
       
 
-Scenario Outline:      
-      
-    Then I load the testdata form excel to table
-    Then I load the GRN sheet data to map
-    Then I load the rowise GRN data for "<TestcaseRowName>" rowname
-    Then I update value to the GRN page global Variables
-    Then I fill new GRN data page using excel data
-    Then I need to click on the  element "a#ContentPlaceHolder1_lnkAdd"  
-    #Then I need to click on the  element "input#ContentPlaceHolder1_chFillGA"
-    #Then I enter the value forElement "input#ContentPlaceHolder1_txtAD" as "0.00"
-    #Then I need to click on the blue "Save" button 
 
-     Examples: 
-      | TestcaseRowName |
-            |GRN1           |
-      |GRN2           |
-      |GRN3           |
-      |GRN4           |
-      |GRN5           |
-      |GRN6           |
-      |GRN7           |
-      |GRN8           |
-      |GRN9           | 
-      |GRN10           |
-      |GRN11           |
-      |GRN12           |
-      |GRN13           |
-      |GRN14           |
-      |GRN15           |
-      |GRN16           |
-      |GRN17           |
-      |GRN18           |
-      |GRN19           |
-      |GRN20           |
-      |GRN21           |
-      |GRN22           |
-      |GRN23           |
-      |GRN24           |
-      |GRN25           |
-      |GRN26           |
-      |GRN27           |
-      |GRN28           |
-      |GRN29           |
-      |GRN30           |
-      |GRN31           |
-      |GRN32           |
-      |GRN33           |
-      |GRN34           |
-      |GRN35           |
-      |GRN36           |
-      |GRN37           |
-      |GRN38           |
-      |GRN39           |
-      |GRN40           |
-      |GRN41           |
-      |GRN42           |
-      |GRN43           |
-      |GRN44           |
-      |GRN45           |
-      |GRN46           |
-      |GRN47           |
-      |GRN48           |
-      |GRN49           |
-      |GRN50           |
-      |GRN51           |
-      |GRN52           |
-      |GRN53           |
-      |GRN54           |
-      |GRN55           |
-      |GRN56           |
-      |GRN57           |
-      |GRN58           |
-      |GRN59           |
-      |GRN60           |
-      |GRN61           |
-      |GRN62           |
-      |GRN63           |
-      |GRN64           |
-      |GRN65           |
-      |GRN66           |
-      |GRN67           |
-      |GRN68           |
-      |GRN69           |
-      |GRN70           |
-      |GRN71           |
-      |GRN72           |
-      |GRN73           |
-      |GRN74           |
-      |GRN75           |
-      |GRN76           |
-      |GRN77           |
-      |GRN78           |
-      |GRN79           |
-      |GRN80           |
-      |GRN81           |
-      |GRN82           |
-      |GRN83           |
-      |GRN84           |
-      |GRN85           |
-      |GRN86           |
-      |GRN87           |
-      |GRN88           |
-      |GRN89           |
-      |GRN90           |
-      |GRN91           |
-      |GRN92           |
-      |GRN93           |
-      |GRN94           |
-      |GRN95           |
-      |GRN96           |
-      |GRN97           |
-      |GRN98           |
-      |GRN99           |
-      |GRN100           |
-      |GRN101           |
-      |GRN102           |
-      |GRN104           |
-      |GRN105           |
-      |GRN106           |
-      |GRN107           |
-      |GRN108           |
-      |GRN109           |
-      |GRN110           |
-      |GRN111           |
-      |GRN112           |
-      |GRN113           |
-      |GRN114          |
-      |GRN115          |
-      |GRN116          |
-      |GRN117          |
-      |GRN118          |
-      |GRN120          | 
-      |GRN121          |
-      |GRN122          |
-      |GRN123          |
-      |GRN124          |
-      |GRN125          |
-      |GRN126          |
-      |GRN128          |
-      |GRN129          |
-      |GRN130          |
-      |GRN131          |
-      |GRN132          |
-      |GRN133          |
-      |GRN134          |
-      |GRN136          |
-      |GRN137          |
-      |GRN138          |
-      |GRN139          |
-      |GRN140          |
-      |GRN141          |
-      |GRN142          |
-      |GRN143          |
-      |GRN144          |
-      |GRN145          |
-      |GRN146          |
-      |GRN147          |
-      |GRN148          |
-      |GRN149          |
-      |GRN150          |
-      |GRN151          |
-      |GRN152          |
-      |GRN153          |
-      |GRN154          |
-      |GRN155          |
-      |GRN156          |
-      |GRN157          |
-      |GRN158          |
-      |GRN159          |
-      |GRN160          |
-      |GRN161          |
-      |GRN162          |
-      |GRN163          |
-      |GRN164          |
-      |GRN165          |
-      |GRN166          |
-      |GRN167          |
-      |GRN168          |
-      |GRN169          |
-      |GRN170          |
-      |GRN171          |
-      |GRN172          |
-      |GRN173          |
-      |GRN174          |
-      |GRN175          |
-      |GRN176          |
-      |GRN177          |
-      |GRN178          |
-      |GRN179          |
-      |GRN180          |
-      |GRN181          |
-      |GRN182          |
-      |GRN183          |
-      |GRN184          |
-      |GRN185          |
-      |GRN186          |
-      |GRN187          |
-      |GRN188          |
-      |GRN189          |
-      |GRN190          |
-      |GRN191          |
-      |GRN192          |
-      |GRN193          |
-      |GRN194          |
-      |GRN195          |
-      |GRN196          |
-      |GRN197          |
-      |GRN198          |
-
-
-      
-   Scenario Outline:      
-    Then I load the testdata form excel to table
-    Then I load the GRN sheet data to map
-    Then I load the rowise GRN data for "<TestcaseRowName>" rowname
-    Then I update value to the GRN page global Variables
-    Then I fill new GRN data page using excel data
-    Then I need to click on the  element "a#ContentPlaceHolder1_lnkAdd"  
-    Then I need to click on the  element "input#ContentPlaceHolder1_chFillGA"
-    Then I enter the value forElement "input#ContentPlaceHolder1_txtAD" as "0.00"
-    Then I need to click on the blue "Save" button 
     
-       Examples: 
-      | TestcaseRowName |
-      |GRN199           |
-    
-    
+    @14062022
     Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Purchase/frmSupplierNoteSummary.aspx"
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkNewButton"
@@ -2251,6 +1927,8 @@ Scenario Outline:
       | TestcaseRowName |
       |CreditDebitnote|
       
+      
+      @14062022
        Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Purchase/frmPaymentsView.aspx"
     Then I need to click on the  element "input#ContentPlaceHolder1_rptrPayment_btnPay_0"
@@ -2276,6 +1954,9 @@ Scenario Outline:
       | TestcaseRowName |
       |Payments|
       
+      
+      
+      @14062022
       Scenario Outline: Home > Master > Inventory > Category Master
     Given I want to launch the "Purchase/frmVenderChangeForPO.aspx"
     Then I load the testdatas form excel to table
@@ -2296,6 +1977,7 @@ Scenario Outline:
       |PoVendorChange   |
       
       
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Purchase/frmPurchaseOrderView.aspx"
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkAdd"
@@ -2338,6 +2020,8 @@ Scenario Outline:
       |PO           |
       
       
+      
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Purchase/frmPurchaseReturnList.aspx"
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkAdd"
@@ -2367,6 +2051,8 @@ Scenario Outline:
       | TestcaseRowName |
       |PRR           |
       
+      
+      @14062022
        Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Purchase/frmPurchaseReturnView.aspx"
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkAdd"
@@ -2405,6 +2091,7 @@ Scenario Outline:
       |PR1           |
       
       
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given Launching the valid URL
     Given I enter the username
@@ -2440,7 +2127,7 @@ Scenario Outline:
   
     
     
-    
+    @14062022
      Examples: 
       | TestcaseRowName |
       |Vendorcatelog1    |
@@ -2464,6 +2151,8 @@ Scenario Outline:
       | TestcaseRowName |
       |Billcancel1|
       
+      
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Managements/frmCreditInvoice.aspx"
     Then I load the testdatas form excel to table
@@ -2486,6 +2175,8 @@ Scenario Outline:
       | TestcaseRowName |
       |Creditinvoice|
       
+      
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Sales/frmCustomerReceipts.aspx"
     Then I need to click on the  element "#ContentPlaceHolder1_gvCustomerReceipts > tbody > tr:nth-child(1) > td:nth-child(1) > input[type=button]"
@@ -2505,7 +2196,7 @@ Scenario Outline:
       | TestcaseRowName |
       |CustomerReceipts|
       
-      
+      @14062022
        Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Sales/frmSalesOrder.aspx"
     Then I load the testdatas form excel to table
@@ -2526,6 +2217,8 @@ Scenario Outline:
       | TestcaseRowName |
       |SalesOrder|
       
+      
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Sales/frmSalesTransaction.aspx"
     #Then I need to click on the  element "#ContentPlaceHolder1_gvCustomerReceipts > tbody > tr:nth-child(1) > td:nth-child(1) > input[type=button]"
@@ -2548,6 +2241,8 @@ Scenario Outline:
       |SalesTransaction1|
     
     
+    
+    @14062022
     Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Stock/frmExpiredDateChange.aspx"
     Then I load the testdatas form excel to table
@@ -2567,6 +2262,8 @@ Scenario Outline:
       | TestcaseRowName |
       |ExpiredDateChange|
       
+      
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Stock/frmStockAdjustmentSummery.aspx"
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkAdd"
@@ -2590,6 +2287,8 @@ Scenario Outline:
       |StockAdjustment2|
       
       
+      
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Inventory/frmInventoryStockReset.aspx"
     Then I load the testdatas form excel to table
@@ -2610,6 +2309,8 @@ Scenario Outline:
       |StockReset4|
       
       
+      
+      @14062022
       Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Stock/frmStockUpdate.aspx"
     Then I load the testdatas form excel to table
@@ -2632,6 +2333,8 @@ Scenario Outline:
 		  |StockUpdate4|
 		  
 		  
+		  
+		  @14062022
 		   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Stock/frmStockUpdatePosting.aspx"
     Then I load the testdatas form excel to table

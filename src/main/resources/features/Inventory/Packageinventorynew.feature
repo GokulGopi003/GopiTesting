@@ -1,4 +1,7 @@
-Feature: 
+
+@27062022
+Feature:
+ 
   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
       As a unipro user i want to launch the valid URL
     Given Launching the valid URL

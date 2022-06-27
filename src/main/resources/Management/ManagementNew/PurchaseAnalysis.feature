@@ -18,10 +18,13 @@ Feature: Home>Master>Company Master
   Then I load the PurchaseAnalysis rowise  data for "<TestcaseRowName>" rowname
   Then I update value to the PurchaseAnalysis page global Variables
   Then I fill new PurchaseAnalysis data page using excel data
-  Then I fill new Filterations data page using excel data
+  Then I fill PurchasedMargin
+  #Then I fill new Filterations data page using excel data
   Then I need to click on the  element "a#ContentPlaceHolder1_lnkLoadData"
+  #Then I need to click on the  element "a#ContentPlaceHolder1_lnkConsolidatedPrint"
+  #Then I need to click on the  element "a#ContentPlaceHolder1_lnkPrint"
 	 
     Examples: 
       |TestcaseRowName  |
-      |PurchaseAnalysis1|
+      |PurchaseAnalysis|
       

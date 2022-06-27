@@ -9,6 +9,7 @@ Feature: PoS Master > Location @done
     Then I clik on the login button
     Then I verify the page Title
   
+  @27062022
   @master
   Scenario Outline: check LocationMaster
   Given I want to launch the "Masters/frmLocationMaster.aspx"

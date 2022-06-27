@@ -15,7 +15,7 @@ Feature: PoS Inventory > Add Inventory
     Then I load the rowise StockAllocation data for "<TestcaseRowName>" rowname
     Then I update value to the StockAllocation page global Variables
     Then I fill new StockAllocation data page using excel data
-    Then I need to click on the  element "a#ContentPlaceHolder1_lnkTransfer"
+    #Then I need to click on the  element "a#ContentPlaceHolder1_lnkTransfer"
     Then I need to click on the  element "a#ContentPlaceHolder1_lnkFetch"
     
     

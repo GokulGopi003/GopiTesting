@@ -15,5 +15,14 @@ public class purchaseanalysistypefield {
 	public String FromDate_String = "input#ContentPlaceHolder1_txtFromDate";
 	public String ToDate_String ="input#ContentPlaceHolder1_txtToDate";
 	public String New_String ="input#ContentPlaceHolder1_chkNewItem";
+	
+	public String PurchasedMargin_String ="input#ContentPlaceHolder1_chkNewItem";
+	public String Margin_Range="input#ContentPlaceHolder1_txtMarginRange";
+	public String Lesser_String ="input#ContentPlaceHolder1_chkNewItem";
+	public String Equal_String ="input#ContentPlaceHolder1_chkNewItem";
+	public String Greater_String ="input#ContentPlaceHolder1_chkNewItem";
+	
+	public String ConsolidatedPrint_String ="input#ContentPlaceHolder1_chkNewItem";
+	public String Print_String ="input#ContentPlaceHolder1_chkNewItem";
 
 }

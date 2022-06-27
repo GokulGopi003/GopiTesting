@@ -42,6 +42,6 @@ Feature: PoS Inventory > Add Inventory
     Then I close connection to DB
     Examples: 
       | TestcaseRowName |
-      | cost2            |
+      | cost1           |
 
     

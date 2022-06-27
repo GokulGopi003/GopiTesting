@@ -72,6 +72,11 @@ public class PurchaseAnalysis extends PageObject {
 		Globals.Inventory.FromDate = Globals.Inventory.PurchaseAnalysisrowwiseData.get("FromDate");
 		Globals.Inventory.ToDate = Globals.Inventory.PurchaseAnalysisrowwiseData.get("ToDate");
 		Globals.Inventory.Allow = Globals.Inventory.PurchaseAnalysisrowwiseData.get("Allow");
+		Globals.Inventory.Batch1 = Globals.Inventory.PurchaseAnalysisrowwiseData.get("PurchasedMargin");
+		Globals.Inventory.ReasonCode = Globals.Inventory.PurchaseAnalysisrowwiseData.get("MarginRange");
+		Globals.Inventory.Batch2 = Globals.Inventory.PurchaseAnalysisrowwiseData.get("Lesser");
+		Globals.Inventory.Batch3 = Globals.Inventory.PurchaseAnalysisrowwiseData.get("Equal");
+		Globals.Inventory.Batch4 = Globals.Inventory.PurchaseAnalysisrowwiseData.get("Greater");
 	}
 
 	@Then("I fill new PurchaseAnalysis data page using excel data")
@@ -131,9 +136,6 @@ try {
 				webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtItemName\"]")).sendKeys(Keys.TAB);
 
 			}
-			if (GenericWrappers.isNotEmpty(Globals.Inventory.Allow)) {
-				terPage.get_radioButton_element(icp.New_String).click();
-			}
 			/*if (GenericWrappers.isNotEmpty(Globals.Inventory.FromDate)) {
 				terpage.terminal_waitClearEnterText_css(icp.FromDate_String, Globals.Inventory.FromDate);
 				//Inventorychange.clearAndTypeSlowly(Globals.Inventory.FromDate, "input#txtSearch");
@@ -145,7 +147,10 @@ try {
 				//Inventorychange.clearAndTypeSlowly(Globals.Inventory.ToDate, "input#txtSearch");
 				//Inventorychange.return_td_invoke_element(Globals.Inventory.ToDate).click();
 				webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtToDate\"]")).sendKeys(Keys.ENTER);
-			}*/
+		}*/
+			
+			
+			
 			pass.ExcelFourData("InventoryCostReset","Modules", "Actual", "Expected", "Status",
 					0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
 			pass.Excelcreate("InventoryCostReset", "Filters", "Pass", 1, 0, 1, 3);
@@ -162,6 +167,44 @@ try {
 			}
 
 	}
+	@Then("I fill PurchasedMargin")
+	public void i_fill_PurchasedMargin() {
+	    
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch1)) {
+			terPage.elementToBeClickable(By.cssSelector("a#ContentPlaceHolder1_lnkPurchaseMargin")).click();
+		}
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.FromDate)) {
+			terpage.terminal_waitClearEnterText_css(icp.FromDate_String, Globals.Inventory.FromDate);
+			//Inventorychange.clearAndTypeSlowly(Globals.Inventory.FromDate, "input#txtSearch");
+			//Inventorychange.return_td_invoke_element(Globals.Inventory.FromDate).click();
+			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtFromDate\"]")).sendKeys(Keys.ENTER);
+		}
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.ToDate)) {
+			terpage.terminal_waitClearEnterText_css(icp.ToDate_String, Globals.Inventory.ToDate);
+			//Inventorychange.clearAndTypeSlowly(Globals.Inventory.ToDate, "input#txtSearch");
+			//Inventorychange.return_td_invoke_element(Globals.Inventory.ToDate).click();
+			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtToDate\"]")).sendKeys(Keys.TAB);
+	}
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.ReasonCode)) {
+		terpage.terminal_waitClearEnterText_css(icp.Margin_Range, Globals.Inventory.ReasonCode);
+		//Inventorychange.clearAndTypeSlowly(Globals.Inventory.ReasonCode, "input#txtSearch");
+		//Inventorychange.return_td_invoke_element(Globals.Inventory.ReasonCode).click();
+		webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtMarginRange\"]")).sendKeys(Keys.TAB);
+	}
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch2)) {
+			terPage.get_radioButton_element(icp.Lesser_String).click();
+		}
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch3)) {
+			terPage.get_radioButton_element(icp.Equal_String).click();
+		}
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch4)) {
+			terPage.get_radioButton_element(icp.Greater_String).click();
+		}
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.Allow)) {
+			terPage.get_radioButton_element(icp.New_String).click();
+		}
+		
+	}
 	@Then("I fill new Filterations data page using excel data")
 	public void i_fill_new_Filterations_data_page_using_excel_data() {
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.FromDate)) {
@@ -174,8 +217,12 @@ try {
 			terpage.terminal_waitClearEnterText_css(icp.ToDate_String, Globals.Inventory.ToDate);
 			//Inventorychange.clearAndTypeSlowly(Globals.Inventory.ToDate, "input#txtSearch");
 			//Inventorychange.return_td_invoke_element(Globals.Inventory.ToDate).click();
-			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtToDate\"]")).sendKeys(Keys.ENTER);
+			webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtToDate\"]")).sendKeys(Keys.TAB);
 	}
 	}
+	
+		
+		
+	
 	
 }
