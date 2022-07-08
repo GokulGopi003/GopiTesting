@@ -28,4 +28,14 @@ Feature: PoS Inventory > Add Inventory
     
      Examples: 
       | TestcaseRowName |
+      |StockAdjustment|
+      |StockAdjustment1|
       |StockAdjustment2|
+      |StockAdjustment3|
+      |StockAdjustment4|
+      |StockAdjustment5|
+      |StockAdjustment6|
+      |StockAdjustment7|
+      |StockAdjustment8|
+      |StockAdjustment9|
+      |StockAdjustment10|

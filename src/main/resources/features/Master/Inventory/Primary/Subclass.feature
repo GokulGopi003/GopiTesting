@@ -32,3 +32,14 @@ Feature: PoS Master > Location
       Examples: 
       | TestcaseRowName |
       |Subclass      |
+      |Subclass1      |
+      |Subclass2      |
+      |Subclass3      |
+      |Subclass4      |
+      |Subclass5      |
+      |Subclass6      |
+      |Subclass7      |
+      |Subclass8      |
+      |Subclass9      |
+      |Subclass10      |
+      

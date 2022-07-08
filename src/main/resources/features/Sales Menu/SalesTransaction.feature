@@ -27,4 +27,13 @@ Feature: PoS Inventory > Add Inventory
     
      Examples: 
       | TestcaseRowName |
+      |SalesTransaction|
       |SalesTransaction1|
+      |SalesTransaction2|
+      |SalesTransaction3|
+      |SalesTransaction4|
+      |SalesTransaction5|
+      |SalesTransaction6|
+      |SalesTransaction7|
+      |SalesTransaction8|
+      

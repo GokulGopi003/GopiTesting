@@ -86,16 +86,6 @@ import org.openqa.selenium.Keys;
 		@Then("I fill new CustomerReceipts data page using excel data")
 		public void i_fill_new_PR_data_page_using_excel_data() throws Exception {
 			try {
-				if (GenericWrappers.isNotEmpty(Globals.Inventory.Customername)) {
-					terPage.terminal_waitClearEnterText_css(icp.Customername_String, Globals.Inventory.Customername);
-					add_inventory.clearAndTypeSlowly(Globals.Inventory.Customername, "input#txtSearch");
-					GenericWrappers.sleepInSeconds(3);
-					add_inventory.return_td_invoke_element(Globals.Inventory.Customername).click();
-					webDriver.findElement(By.cssSelector("a#ContentPlaceHolder1_lnkRefresh")).click();
-					GenericWrappers.sleepInSeconds(1);
-					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_gvCustomerReceipts > tbody > tr > td:nth-child(1) > input[type=button]")).click();
-
-				}
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.LocationCode)) {
 					webDriver.findElement(By.cssSelector("div#ContentPlaceHolder1_ddlPaymode_chzn")).click();
 					GenericWrappers.sleepInSeconds(1);
@@ -113,6 +103,17 @@ import org.openqa.selenium.Keys;
 					itemCodeValue.sendKeys(Keys.ENTER);
 	               
 				}
+				if (GenericWrappers.isNotEmpty(Globals.Inventory.Customername)) {
+					terPage.terminal_waitClearEnterText_css(icp.Customername_String, Globals.Inventory.Customername);
+					add_inventory.clearAndTypeSlowly(Globals.Inventory.Customername, "input#txtSearch");
+					GenericWrappers.sleepInSeconds(1);
+					add_inventory.return_td_invoke_element(Globals.Inventory.Customername).click();
+					webDriver.findElement(By.cssSelector("a#ContentPlaceHolder1_lnkRefresh")).click();
+					GenericWrappers.sleepInSeconds(1);
+					webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_gvCustomerReceipts > tbody > tr > td:nth-child(1) > input[type=button]")).click();
+
+				}
+				
 				if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch)) {
 					terPage.get_checkBox_element(icp.Batch_String).click();
 

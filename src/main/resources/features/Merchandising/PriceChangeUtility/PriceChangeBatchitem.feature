@@ -24,6 +24,17 @@ Feature: InventoryChange
     
      Examples: 
       | TestcaseRowName |
+      |PriceChangeBatchItem|
+      |PriceChangeBatchItem1|
       |PriceChangeBatchItem2|
+      |PriceChangeBatchItem3|
+      |PriceChangeBatchItem4|
+      |PriceChangeBatchItem5|
+      |PriceChangeBatchItem6|
+      |PriceChangeBatchItem7|
+      |PriceChangeBatchItem8|
+      |PriceChangeBatchItem9|
+      |PriceChangeBatchItem10|
+      
       
   

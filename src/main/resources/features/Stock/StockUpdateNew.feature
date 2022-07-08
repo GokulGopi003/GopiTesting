@@ -27,4 +27,14 @@ Feature: PoS Inventory > Add Inventory
     
      Examples: 
       | TestcaseRowName |
+		  |StockUpdate|
+		  |StockUpdate1|
+		  |StockUpdate2|
+		  |StockUpdate3|
 		  |StockUpdate4|
+		  |StockUpdate5|
+		  |StockUpdate6|
+		  |StockUpdate7|
+		  |StockUpdate8|
+		  |StockUpdate9|
+		  |StockUpdate10|

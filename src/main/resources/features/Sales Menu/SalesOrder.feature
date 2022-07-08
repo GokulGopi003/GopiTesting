@@ -27,3 +27,13 @@ Feature: PoS Inventory > Add Inventory
      Examples: 
       | TestcaseRowName |
       |SalesOrder|
+      |SalesOrder1|
+      |SalesOrder2|
+      |SalesOrder3|
+      |SalesOrder4|
+      |SalesOrder5|
+      |SalesOrder6|
+      |SalesOrder7|
+      |SalesOrder8|
+      |SalesOrder9|
+      |SalesOrder10|

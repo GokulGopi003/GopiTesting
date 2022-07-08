@@ -273,7 +273,7 @@ import org.openqa.selenium.By;
 		public void i_want_to_launch_the(String tablename ) throws SQLException, IOException {
 			
 			
-			ResultSet rs = st.executeQuery("select * from "+tablename+" where InventoryCode='000001'");
+			ResultSet rs = st.executeQuery("select * from "+tablename+" where InventoryCode='859641'");
 			
 			System.out.println(rs);
 			//ResultSet rs = st.executeQuery("");

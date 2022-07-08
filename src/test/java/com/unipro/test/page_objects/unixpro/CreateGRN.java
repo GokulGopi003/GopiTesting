@@ -73,6 +73,17 @@ package com.unipro.test.page_objects.unixpro;
 		public String AddDed_String = "input#ContentPlaceHolder1_txtAD";
 		public By AddDed_By = By.cssSelector(AddDed_String);
 		
+		public String Medical_Batch_String="input#ContentPlaceHolder1_txtMBatchNo";
+		public String ExpiredDate_String="input#ContentPlaceHolder1_txtExpireDate";
+		
+		public String SalesNotAffectNetcos_string="input#ContentPlaceHolder1_cbSalesNotAffectNetCost";
+		public String FreetoCustomer_String="input#ContentPlaceHolder1_cbFreetoCustomer";
+		public String FocItem_String="input#ContentPlaceHolder1_txtFocItem";
+		public String TotalQty_String="input#ContentPlaceHolder1_txtFocTotalQty";
+		public String FromDate_String="input#ContentPlaceHolder1_txtfocFromDate";
+		public String ToDate_String="input#ContentPlaceHolder1_txtFocToDate";
+		public String BuyQty_String="input#ContentPlaceHolder1_txtFocBuyQty";
+		public String FreeQty_String="input#ContentPlaceHolder1_txtFocFreeQty";
 		
 		public String Batch2_String = "input#ContentPlaceHolder1_chFillGA";
 		//public String Batch_String = "input#tdcbSelectPrl_0";

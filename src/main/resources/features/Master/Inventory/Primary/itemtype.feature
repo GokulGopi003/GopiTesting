@@ -32,3 +32,14 @@ Feature: PoS Master > Location
       Examples: 
       | TestcaseRowName |
       |Itemtype      |
+      |Itemtype1      |
+      |Itemtype2      |
+      |Itemtype3      |
+      |Itemtype4      |
+      |Itemtype5      |
+      |Itemtype6      |
+      |Itemtype7      |
+      |Itemtype8      |
+      |Itemtype9      |
+      |Itemtype10      |
+      

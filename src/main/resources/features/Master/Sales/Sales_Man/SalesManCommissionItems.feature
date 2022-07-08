@@ -26,4 +26,15 @@ Scenario Outline: checking for SalesMan Commission
     Examples: 
       |TestcaseRowName|
       |SalesManComission|
+      |SalesManComission1|
+      |SalesManComission2|
+      |SalesManComission3|
+      |SalesManComission4|
+      |SalesManComission5|
+      |SalesManComission6|
+      |SalesManComission7|
+      |SalesManComission8|
+      |SalesManComission9|
+      |SalesManComission10|
+      
       

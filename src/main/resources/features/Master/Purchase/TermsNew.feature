@@ -26,5 +26,15 @@ Feature: master > Purchase >  terms
 
     Examples: 
       |TestcaseRowName |
+      |TermsNew|
       |TermsNew1|
+      |TermsNew2|
+      |TermsNew3|
+      |TermsNew4|
+      |TermsNew5|
+      |TermsNew6|
+      |TermsNew7|
+      |TermsNew8|
+      |TermsNew9|
+      |TermsNew10|
       

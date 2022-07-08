@@ -43,3 +43,14 @@ Feature: PoS Master > Location
       Examples: 
       | TestcaseRowName |
       | Brand      |
+      | Brand1      |
+      | Brand2      |
+      | Brand3      |
+      | Brand4      |
+      | Brand5      |
+      | Brand6      |
+      | Brand7      |
+      | Brand8      |
+      | Brand9      |
+      | Brand10      |
+      

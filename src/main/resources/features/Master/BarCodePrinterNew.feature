@@ -24,5 +24,15 @@ Background:
 
     Examples: 
       |TestcaseRowName |
+      |BarCodePrinterNew |
       |BarCodePrinterNew1 |
+      |BarCodePrinterNew2 |
+      |BarCodePrinterNew3 |
+      |BarCodePrinterNew4 |
+      |BarCodePrinterNew5 |
+      |BarCodePrinterNew6 |
+      |BarCodePrinterNew7 |
+      |BarCodePrinterNew8 |
+      |BarCodePrinterNew9 |
+      |BarCodePrinterNew10 |
       

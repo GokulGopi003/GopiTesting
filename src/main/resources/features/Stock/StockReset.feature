@@ -25,4 +25,14 @@ Feature: PoS Inventory > Add Inventory
     
      Examples: 
       | TestcaseRowName |
+      |StockReset|
+      |StockReset1|
+      |StockReset2|
+      |StockReset3|
       |StockReset4|
+      |StockReset5|
+      |StockReset6|
+      |StockReset7|
+      |StockReset8|
+      |StockReset9|
+      |StockReset10|

@@ -30,3 +30,14 @@ Feature: PoS Master > Location
       Examples: 
       | TestcaseRowName |
       |Tax      |
+      |Tax1      |
+      |Tax2      |
+      |Tax3      |
+      |Tax4      |
+      |Tax5      |
+      |Tax6      |
+      |Tax7      |
+      |Tax8      |
+      |Tax9      |
+      |Tax10      |
+      

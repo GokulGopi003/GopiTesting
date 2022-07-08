@@ -24,4 +24,15 @@ Feature: InventoryChange
      Examples: 
       | TestcaseRowName |
       |FreeItem|
+      |FreeItem1|
+      |FreeItem2|
+      |FreeItem3|
+      |FreeItem4|
+      |FreeItem5|
+      |FreeItem6|
+      |FreeItem7|
+      |FreeItem8|
+      |FreeItem9|
+      |FreeItem10|
+      
 

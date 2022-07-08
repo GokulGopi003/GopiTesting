@@ -32,4 +32,15 @@ Scenario Outline: checking for Customer master
     Examples: 
       |TestcaseRowName |
       |TerminalNew|
+      |TerminalNew1|
+      |TerminalNew2|
+      |TerminalNew3|
+      |TerminalNew4|
+      |TerminalNew5|
+      |TerminalNew6|
+      |TerminalNew7|
+      |TerminalNew8|
+      |TerminalNew9|
+      |TerminalNew10|
+      
      

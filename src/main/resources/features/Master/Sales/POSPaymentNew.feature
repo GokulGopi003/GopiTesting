@@ -23,5 +23,15 @@ Background:
 
     Examples: 
       |TestcaseRowName|
+      |POSPaymentNew|
       |POSPaymentNew1|
+      |POSPaymentNew2|
+      |POSPaymentNew3|
+      |POSPaymentNew4|
+      |POSPaymentNew5|
+      |POSPaymentNew6|
+      |POSPaymentNew7|
+      |POSPaymentNew8|
+      |POSPaymentNew9|
+      |POSPaymentNew10|
      

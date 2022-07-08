@@ -25,5 +25,15 @@ Feature: InventoryChange
     
      Examples: 
       | TestcaseRowName |
+      |PriceImportExport1|
       |PriceImportExport2|
+      |PriceImportExport3|
+      |PriceImportExport4|
+      |PriceImportExport5|
+      |PriceImportExport6|
+      |PriceImportExport7|
+      |PriceImportExport8|
+      |PriceImportExport9|
+      |PriceImportExport10|
+      
 

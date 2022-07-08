@@ -25,6 +25,16 @@ Scenario Outline: checking for Picker master
   
     Examples: 
       |TestcaseRowName|
+      |PickerMasterNew|
       |PickerMasterNew1|
+      |PickerMasterNew2|
+      |PickerMasterNew3|
+      |PickerMasterNew4|
+      |PickerMasterNew5|
+      |PickerMasterNew6|
+      |PickerMasterNew7|
+      |PickerMasterNew8|
+      |PickerMasterNew9|
+      |PickerMasterNew10|
     
    

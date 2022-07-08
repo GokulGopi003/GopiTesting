@@ -34,3 +34,14 @@ Feature: PoS Master > Location
       Examples: 
       | TestcaseRowName |
       |Floor      |
+      |Floor1      |
+      |Floor2      |
+      |Floor3      |
+      |Floor4      |
+      |Floor5      |
+      |Floor6    |
+      |Floor7     |
+      |Floor8      |
+      |Floor9      |
+      |Floor10      |
+      |Floor11      |

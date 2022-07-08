@@ -29,3 +29,14 @@ Feature: PoS Inventory > Add Inventory
      Examples: 
       | TestcaseRowName |
       |Creditinvoice|
+      |Creditinvoice1|
+      |Creditinvoice2|
+      |Creditinvoice3|
+      |Creditinvoice4|
+      |Creditinvoice5|
+      |Creditinvoice6|
+      |Creditinvoice7|
+      |Creditinvoice8|
+      |Creditinvoice9|
+      |Creditinvoice10|
+           

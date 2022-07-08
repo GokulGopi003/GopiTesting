@@ -24,5 +24,17 @@ Feature: Purchase > Bank master   #alert check pblm
   Then I close connection to BankNew
     Examples: 
       |TestcaseRowName|
+      |BankNew|
+      |BankNew1|
       |BankNew2|
+      |BankNew3|
+      |BankNew4|
+      |BankNew5|
+      |BankNew6|
+      |BankNew7|
+      |BankNew8|
+      |BankNew9|
+      |BankNew10|
+      
+      
     

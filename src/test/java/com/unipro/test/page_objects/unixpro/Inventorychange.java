@@ -99,6 +99,7 @@ public class Inventorychange extends PageObject {
 		Globals.Inventory.NewToDate = Globals.Inventory.InventorychangerowwiseData.get("NewToDate");
 		Globals.Inventory.Selectall = Globals.Inventory.InventorychangerowwiseData.get("Selectall");
 		Globals.Inventory.AverageCost = Globals.Inventory.InventorychangerowwiseData.get("AverageCost");
+		Globals.Inventory.OutPutGst = Globals.Inventory.InventorychangerowwiseData.get("OutPutGst");
 		
 		
 		
@@ -204,6 +205,11 @@ public class Inventorychange extends PageObject {
 			terpage.terminal_waitClearEnterText_css(icp.Changefield_String, Globals.Inventory.Changefield);
 			Inventorychange.clearAndTypeSlowly(Globals.Inventory.Changefield, "input#txtSearch");
 			Inventorychange.return_td_invoke_element(Globals.Inventory.Changefield).click();
+		}
+		if (GenericWrappers.isNotEmpty(Globals.Inventory.OutPutGst)) {
+			terpage.terminal_waitClearEnterText_css(icp.OutPutGst_String, Globals.Inventory.OutPutGst);
+			Inventorychange.clearAndTypeSlowly(Globals.Inventory.OutPutGst, "input#txtSearch");
+			Inventorychange.return_td_invoke_element(Globals.Inventory.OutPutGst).click();
 		}
 		if (GenericWrappers.isNotEmpty(Globals.Inventory.Batch)) {
 			terpage.get_checkBox_element(icp.Batch_String).click();

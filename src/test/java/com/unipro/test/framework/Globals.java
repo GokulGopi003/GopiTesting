@@ -554,7 +554,20 @@ public class Globals {
 		public static String EarnedMargin;
 		public static String FromDate;
 		public static String ToDate;
+		public static String FreeItem;
+		public static String ExpiredDate;
 		public static String Mode;
+		
+		public static String FreeToCustomer;
+		public static String FocItem;
+		public static String TotalQty;
+		public static String BuyQty;
+		public static String FreeQty;
+		public static String AddButton;
+		public static String SalesNotAffectNetcost;
+		public static String VendorWisePriceChangeItem;
+		
+		
 		public static String Earnedmarginclick;
 		public static String MRPclick;
 		public static String Netcostclick;
@@ -574,6 +587,7 @@ public class Globals {
 		public static String search;
 		public static String InvQty;
 		public static String RecvQty;
+		public static String MBatch;
 		public static String DiscP;
 		public static String SDA;
 		public static String DiscA;
@@ -661,6 +675,7 @@ public class Globals {
 		public static String Batch3;
 		public static String Selectfield;
 		public static String Changefield;
+		public static String OutPutGst;
 		public static String OrigionCode;
 		public static String Transportname;
 		public static String Person;

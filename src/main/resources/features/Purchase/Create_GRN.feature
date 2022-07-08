@@ -22,7 +22,7 @@ Given Launching the valid URL
     #When Im waiting for 2 sec
     #Then I want to minimize the browser
     #Then I need to click on the "Save" button
-    Then I need to click on the blue "Save" button
+    #Then I need to click on the blue "Save" button`
     Then I establish connection GRN to DB 
     Then I read the values GRN from table "TBLGIDDETAIL" in DB
     Then I read the values GRN from table "TBLGIDHEADER" in DB
@@ -35,6 +35,6 @@ Given Launching the valid URL
     
     Examples: 
       | TestcaseRowName |
-      |GRN           |
+      |GRN202           |
 
       

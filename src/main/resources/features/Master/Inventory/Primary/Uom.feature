@@ -29,3 +29,14 @@ Feature: PoS Master > Location
       Examples: 
       | TestcaseRowName |
       |Uom      |
+      |Uom1      |
+      |Uom2      |
+      |Uom3      |
+      |Uom4      |
+      |Uom5      |
+      |Uom6      |
+      |Uom7      |
+      |Uom8      |
+      |Uom9      |
+      |Uom10      |
+      |Uom11      |

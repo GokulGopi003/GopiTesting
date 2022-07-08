@@ -26,3 +26,10 @@ Feature: PoS Inventory > Add Inventory
      Examples: 
       | TestcaseRowName |
       |ExpiredDateChange|
+      |ExpiredDateChange1|
+      |ExpiredDateChange2|
+      |ExpiredDateChange3|
+      |ExpiredDateChange4|
+      |ExpiredDateChange5|
+      |ExpiredDateChange6|
+      

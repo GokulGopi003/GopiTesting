@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.server.handler.SendKeys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -40,7 +41,8 @@ public class GRNcreate extends PageObject {
 		ExcelWrite pass;
 		Screenshot scr;
 		TerminalPage terPage;
-		
+		 
+		boolean AddButton;
 
 		public GRNcreate(CreateGRN icp,CommonPages cp) {
 			this.icp = icp;
@@ -49,7 +51,9 @@ public class GRNcreate extends PageObject {
 			scr = new Screenshot();
 			this.cp = cp;
 			add_inventory = new AddInventoryFormPage();
-
+			
+			
+			
 		}
 		
 
@@ -127,7 +131,22 @@ public class GRNcreate extends PageObject {
 			Globals.Inventory.ItemCode = Globals.Inventory.GRNcreaterowwiseData.get("ItemCode");
 			Globals.Inventory.InvQty = Globals.Inventory.GRNcreaterowwiseData.get("InvQty");
 			Globals.Inventory.RecvQty = Globals.Inventory.GRNcreaterowwiseData.get("RecvQty");
+			Globals.Inventory.MBatch = Globals.Inventory.GRNcreaterowwiseData.get("MBatch");
+			Globals.Inventory.ExpiredDate = Globals.Inventory.GRNcreaterowwiseData.get("ExpiredDate");
+			Globals.Inventory.FreeItem = Globals.Inventory.GRNcreaterowwiseData.get("FreeItem");
 			Globals.Inventory.MRP = Globals.Inventory.GRNcreaterowwiseData.get("MRP");
+			
+			Globals.Inventory.SalesNotAffectNetcost = Globals.Inventory.GRNcreaterowwiseData.get("SalesNotAffectNetcost");
+			Globals.Inventory.FreeToCustomer = Globals.Inventory.GRNcreaterowwiseData.get("FreeToCustomer");
+			Globals.Inventory.FocItem = Globals.Inventory.GRNcreaterowwiseData.get("FocItem");
+			Globals.Inventory.BatchNo = Globals.Inventory.GRNcreaterowwiseData.get("BatchNo");
+			Globals.Inventory.TotalQty = Globals.Inventory.GRNcreaterowwiseData.get("TotalQty");
+			Globals.Inventory.FromDate = Globals.Inventory.GRNcreaterowwiseData.get("FromDate");
+			Globals.Inventory.ToDate = Globals.Inventory.GRNcreaterowwiseData.get("ToDate");
+			Globals.Inventory.BuyQty = Globals.Inventory.GRNcreaterowwiseData.get("BuyQty");
+			Globals.Inventory.FreeQty = Globals.Inventory.GRNcreaterowwiseData.get("FreeQty");
+			
+			Globals.Inventory.AddButton = Globals.Inventory.GRNcreaterowwiseData.get("AddButton");
 			Globals.Inventory.BasicCost = Globals.Inventory.GRNcreaterowwiseData.get("BasicCost");
 			Globals.Inventory.DiscP = Globals.Inventory.GRNcreaterowwiseData.get("DiscP");
 			Globals.Inventory.DiscA = Globals.Inventory.GRNcreaterowwiseData.get("DiscA");
@@ -145,6 +164,9 @@ public class GRNcreate extends PageObject {
 			Globals.Inventory.BillAmt = Globals.Inventory.GRNcreaterowwiseData.get("BillAmt");
 			Globals.Inventory.AddDed = Globals.Inventory.GRNcreaterowwiseData.get("AddDed");
 			Globals.Inventory.Batch2 = Globals.Inventory.GRNcreaterowwiseData.get("Batch2");
+			Globals.Inventory.VendorWisePriceChangeItem = Globals.Inventory.GRNcreaterowwiseData.get("VendorWisePriceChangeItem");
+			
+
 		}
 
 
@@ -250,8 +272,70 @@ public class GRNcreate extends PageObject {
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.ItemCode)) {
 						terPage.terminal_waitClearEnterText_css(icp.ItemCode_String, Globals.Inventory.ItemCode);
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtItemCode")).sendKeys(Keys.RETURN);
+						GenericWrappers.sleepInSeconds(1);
+					}
+					
+		            if(GenericWrappers.isNotEmpty(Globals.Inventory.VendorWisePriceChangeItem))
+					{
+					if(Globals.Inventory.VendorWisePriceChangeItem == Globals.Inventory.AddButton)
+						{
+						webDriver.findElement(By.id("btnAdd")).click();
+						}
+							
+							
+					else if(Globals.Inventory.VendorWisePriceChangeItem != Globals.Inventory.AddButton) 
+					{
+					webDriver.findElement(By.xpath("//*[@id=\"btnClose\"]")).click();
+								
 
 					}
+					}
+		            if (GenericWrappers.isNotEmpty(Globals.Inventory.D2)) {
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
+						.sendKeys(Keys.DELETE);
+						terPage.terminal_waitClearEnterText_css(icp.D2_String, Globals.Inventory.D2);
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
+						.sendKeys(Keys.RETURN);
+						//if (Globals.Inventory.D2.contains(".")) {
+							//icp.setTextValue_Decimal(icp.D2_String, Globals.Inventory.D2);
+						//} else {
+							//icp.setTextValue(icp.D2_String, Globals.Inventory.D2);
+						//}
+					}
+					if (GenericWrappers.isNotEmpty(Globals.Inventory.D3)) {
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
+						.sendKeys(Keys.DELETE);
+						terPage.terminal_waitClearEnterText_css(icp.D3_String, Globals.Inventory.D3);
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
+						.sendKeys(Keys.RETURN);
+						//if (Globals.Inventory.D3.contains(".")) {
+							//icp.setTextValue_Decimal(icp.D3_String, Globals.Inventory.D3);
+						//} else {
+							//icp.setTextValue(icp.D3_String, Globals.Inventory.D3);
+						//}
+					}		
+					
+
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.InvQty)) {
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtInvQty"))
 						.sendKeys(Keys.SHIFT, Keys.LEFT);
@@ -290,12 +374,129 @@ public class GRNcreate extends PageObject {
 						terPage.terminal_waitClearEnterText_css(icp.RecvQty_String, Globals.Inventory.RecvQty);
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtLQty"))
 						.sendKeys(Keys.RETURN);
-						//if (Globals.Inventory.RecvQty.contains(".")) {
-							//icp.setTextValue_Decimal(icp.RecvQty_String, Globals.Inventory.RecvQty);
-						//} else {
-							//icp.setTextValue(icp.RecvQty_String, Globals.Inventory.RecvQty);
-						//}
+						GenericWrappers.sleepInSeconds(1);
+											}
+
+					if (GenericWrappers.isNotEmpty(Globals.Inventory.FreeItem)) {
+						
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtLQty")).sendKeys(Keys.ALT, "f");
+
+						
 					}
+                     if (GenericWrappers.isNotEmpty(Globals.Inventory.SalesNotAffectNetcost)) {
+         				terPage.get_radioButton_element(icp.SalesNotAffectNetcos_string).click();
+         			}
+         			if (GenericWrappers.isNotEmpty(Globals.Inventory.FreeToCustomer)) {
+         				terPage.get_radioButton_element(icp.FreetoCustomer_String).click();
+         			}
+         			if (GenericWrappers.isNotEmpty(Globals.Inventory.FocItem)) {
+						terPage.terminal_waitClearEnterText_css(icp.FocItem_String, Globals.Inventory.FocItem);
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocItem")).sendKeys(Keys.RETURN);
+
+					}
+         			/*if (GenericWrappers.isNotEmpty(Globals.Inventory.BatchNo)) {
+         				GenericWrappers.sleepInSeconds(1);
+         				webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_ddlfocBatch_chzn\"]")).click();
+         				GenericWrappers.sleepInSeconds(1);
+
+         				WebElement LocationValue = webDriver
+         						.findElement(By.cssSelector("#ContentPlaceHolder1_ddlfocBatch_chzn > div > div > input[type=text]"));
+         				String css_location_dropDownValue = "#ContentPlaceHolder1_ddlfocBatch_chzn > div > div > input[type=text]";
+         				By ddlocator = By.cssSelector(css_location_dropDownValue);
+         				waitForExpectedElement(ddlocator);
+         				js_typeIntoDropDownSearchBox(css_location_dropDownValue, Globals.Inventory.BatchNo);
+         				GenericWrappers.sleepInSeconds(1);
+         				LocationValue.sendKeys(Keys.SPACE);
+         				LocationValue.sendKeys(Keys.SPACE);
+         				LocationValue.sendKeys(Keys.ARROW_DOWN);
+         				GenericWrappers.sleepInSeconds(1);
+         				LocationValue.sendKeys(Keys.ENTER);
+
+         			}*/
+
+         			if (GenericWrappers.isNotEmpty(Globals.Inventory.TotalQty)) {
+         				/*webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocTotalQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocTotalQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocTotalQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocTotalQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocTotalQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+         				GenericWrappers.sleepInSeconds(1);
+         				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocTotalQty")).sendKeys(Keys.CONTROL, "a");
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocTotalQty"))
+						.sendKeys(Keys.DELETE);
+						GenericWrappers.sleepInSeconds(1);*/
+						terPage.terminal_waitClearEnterText_css(icp.TotalQty_String, Globals.Inventory.TotalQty);
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocTotalQty")).sendKeys(Keys.RETURN);
+
+					}
+
+				
+         			if (GenericWrappers.isNotEmpty(Globals.Inventory.FromDate)) {
+        				terPage.terminal_waitClearEnterText_css(icp.FromDate_String, Globals.Inventory.FromDate);
+        				//Inventorychange.clearAndTypeSlowly(Globals.Inventory.FromDate, "input#txtSearch");
+        				//Inventorychange.return_td_invoke_element(Globals.Inventory.FromDate).click();
+        				webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtfocFromDate\"]")).sendKeys(Keys.TAB);
+        			}
+        			if (GenericWrappers.isNotEmpty(Globals.Inventory.ToDate)) {
+        				terPage.terminal_waitClearEnterText_css(icp.ToDate_String, Globals.Inventory.ToDate);
+        				//Inventorychange.clearAndTypeSlowly(Globals.Inventory.ToDate, "input#txtSearch");
+        				//Inventorychange.return_td_invoke_element(Globals.Inventory.ToDate).click();
+        				webDriver.findElement(By.xpath("//*[@id=\"ContentPlaceHolder1_txtFocToDate\"]")).sendKeys(Keys.TAB);
+        			}
+        			if (GenericWrappers.isNotEmpty(Globals.Inventory.BuyQty)) {
+        				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocBuyQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocBuyQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocBuyQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocBuyQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocBuyQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocBuyQty"))
+						.sendKeys(Keys.DELETE);
+						terPage.terminal_waitClearEnterText_css(icp.BuyQty_String, Globals.Inventory.BuyQty);
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocBuyQty")).sendKeys(Keys.RETURN);
+
+					}
+        			if (GenericWrappers.isNotEmpty(Globals.Inventory.FreeQty)) {
+        				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocFreeQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocFreeQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocFreeQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocFreeQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocFreeQty"))
+						.sendKeys(Keys.SHIFT, Keys.LEFT);
+				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocFreeQty"))
+						.sendKeys(Keys.DELETE);
+						terPage.terminal_waitClearEnterText_css(icp.FreeQty_String, Globals.Inventory.FreeQty);
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtFocFreeQty")).sendKeys(Keys.ENTER);
+
+					}
+        								//MedicalBatch
+					if (GenericWrappers.isNotEmpty(Globals.Inventory.MBatch)) {
+						terPage.terminal_waitClearEnterText_css(icp.Medical_Batch_String, Globals.Inventory.MBatch);
+						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMBatchNo")).sendKeys(Keys.RETURN);
+
+					}
+					if (GenericWrappers.isNotEmpty(Globals.Inventory.ExpiredDate)) {
+						terPage.terminal_waitClearEnterText_css(icp.ExpiredDate_String, Globals.Inventory.ExpiredDate);
+						//Inventorychange.clearAndTypeSlowly(Globals.Inventory.FromDate, "input#txtSearch");
+						//Inventorychange.return_td_invoke_element(Globals.Inventory.FromDate).click();
+						webDriver.findElement(By.xpath("input#ContentPlaceHolder1_txtExpireDate")).sendKeys(Keys.TAB);
+					}
+					//Free Item
+					
+					
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.MRP)) {
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtMRP"))
 						.sendKeys(Keys.SHIFT, Keys.LEFT);
@@ -485,50 +686,7 @@ public class GRNcreate extends PageObject {
 							//icp.setTextValue(icp.D1_String, Globals.Inventory.D1);
 						//}
 					}
-					if (GenericWrappers.isNotEmpty(Globals.Inventory.D2)) {
-						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
-						.sendKeys(Keys.SHIFT, Keys.LEFT);
-				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
-						.sendKeys(Keys.SHIFT, Keys.LEFT);
-				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
-						.sendKeys(Keys.SHIFT, Keys.LEFT);
-				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
-						.sendKeys(Keys.SHIFT, Keys.LEFT);
-				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
-						.sendKeys(Keys.SHIFT, Keys.LEFT);
-				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
-						.sendKeys(Keys.DELETE);
-						terPage.terminal_waitClearEnterText_css(icp.D2_String, Globals.Inventory.D2);
-						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscPer2"))
-						.sendKeys(Keys.RETURN);
-						//if (Globals.Inventory.D2.contains(".")) {
-							//icp.setTextValue_Decimal(icp.D2_String, Globals.Inventory.D2);
-						//} else {
-							//icp.setTextValue(icp.D2_String, Globals.Inventory.D2);
-						//}
-					}
-					if (GenericWrappers.isNotEmpty(Globals.Inventory.D3)) {
-						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
-						.sendKeys(Keys.SHIFT, Keys.LEFT);
-				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
-						.sendKeys(Keys.SHIFT, Keys.LEFT);
-				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
-						.sendKeys(Keys.SHIFT, Keys.LEFT);
-				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
-						.sendKeys(Keys.SHIFT, Keys.LEFT);
-				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
-						.sendKeys(Keys.SHIFT, Keys.LEFT);
-				webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
-						.sendKeys(Keys.DELETE);
-						terPage.terminal_waitClearEnterText_css(icp.D3_String, Globals.Inventory.D3);
-						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtDiscper3"))
-						.sendKeys(Keys.RETURN);
-						//if (Globals.Inventory.D3.contains(".")) {
-							//icp.setTextValue_Decimal(icp.D3_String, Globals.Inventory.D3);
-						//} else {
-							//icp.setTextValue(icp.D3_String, Globals.Inventory.D3);
-						//}
-					}
+					
 					if (GenericWrappers.isNotEmpty(Globals.Inventory.WPrice1)) {
 						webDriver.findElement(By.cssSelector("input#ContentPlaceHolder1_txtWpirce1"))
 						.sendKeys(Keys.SHIFT, Keys.LEFT);
@@ -925,7 +1083,9 @@ public class GRNcreate extends PageObject {
 					pass.ExcelFourData("GRN","Modules", "Actual", "Expected", "Status",
 							0 ,0 ,0 ,1 ,0 ,2 ,0 , 3);
 					pass.Excelcreate("GRN", "ItemAdd", "PASS", 1, 0, 1, 3);
-				} catch (Exception e) {
+				 
+			
+			}catch (Exception e) {
 					// screen shot
 					scr.Screenshots();
 					System.out.println("Screen shot taken");
@@ -935,6 +1095,7 @@ public class GRNcreate extends PageObject {
 					pass.Excelcreate("GRN", "ItemAdd", "FAIL", 1, 0, 1, 3);
 
 				}
+            
 		}
 		@Then("I close connection GRN to DB")
 		public void I_close_connection_to_DB() throws SQLException {

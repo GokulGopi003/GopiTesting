@@ -31,6 +31,16 @@ Feature: InventoryChange
     
      Examples: 
       | TestcaseRowName |
+      |Inventorychange|
+      |Inventorychange1|
+      |Inventorychange2|
+      |Inventorychange3|
+      |Inventorychange4|
       |Inventorychange5|
+      |Inventorychange6|
+      |Inventorychange7|
+      |Inventorychange8|
+      |Inventorychange9|
+      |Inventorychange10|
       
   

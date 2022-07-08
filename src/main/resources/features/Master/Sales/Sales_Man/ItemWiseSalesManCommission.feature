@@ -32,4 +32,14 @@ Background:
     Examples: 
       |TestcaseRowName|
       |ItemWiseSalesManCommission|
+      |ItemWiseSalesManCommission1|
+      |ItemWiseSalesManCommission2|
+      |ItemWiseSalesManCommission3|
+      |ItemWiseSalesManCommission4|
+      |ItemWiseSalesManCommission5|
+      |ItemWiseSalesManCommission6|
+      |ItemWiseSalesManCommission7|
+      |ItemWiseSalesManCommission8|
+      |ItemWiseSalesManCommission9|
+      |ItemWiseSalesManCommission10|
       

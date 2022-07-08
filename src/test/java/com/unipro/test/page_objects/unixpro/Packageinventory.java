@@ -144,7 +144,7 @@ public class Packageinventory extends PageObject {
 	@Given("I read the values from Packageinventory table {string} in DB")
 	public void i_want_to_launch_the(String tablename) throws SQLException, IOException {
 
-		ResultSet rs = st.executeQuery("select * from " + tablename + " where Packageinvcode='000016'");
+		ResultSet rs = st.executeQuery("select * from " + tablename + " where Packageinvcode='859643'");
 
 		System.out.println(rs);
 		// ResultSet rs = st.executeQuery("");

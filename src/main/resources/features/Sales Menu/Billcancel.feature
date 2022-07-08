@@ -24,4 +24,16 @@ Feature: PoS Inventory > Add Inventory
     
      Examples: 
       | TestcaseRowName |
+      |Billcancel|
       |Billcancel1|
+      |Billcancel2|
+      |Billcancel3|
+      |Billcancel4|
+      |Billcancel5|
+      |Billcancel6|
+      |Billcancel7|
+      |Billcancel8|
+      |Billcancel9|
+      |Billcancel10|
+      
+      

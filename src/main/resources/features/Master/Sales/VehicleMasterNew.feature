@@ -24,4 +24,15 @@ Background:
     Examples: 
       |TestcaseRowName  |
       |VehicleMasterNew  |
+      |VehicleMasterNew1  |
+      |VehicleMasterNew2  |
+      |VehicleMasterNew3  |
+      |VehicleMasterNew4  |
+      |VehicleMasterNew5  |
+      |VehicleMasterNew6  |
+      |VehicleMasterNew7  |
+      |VehicleMasterNew8  |
+      |VehicleMasterNew9  |
+      |VehicleMasterNew10  |
+      
      

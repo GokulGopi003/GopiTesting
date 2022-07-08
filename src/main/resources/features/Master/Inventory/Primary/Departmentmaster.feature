@@ -40,4 +40,15 @@ Feature: PoS Master > Location
  
   Examples: 
       | TestcaseRowName |
+      | Depatment      |
+      | Depatment1      |
       | Depatment2      |
+      | Depatment3      |
+      | Depatment4      |
+      | Depatment5      |
+      | Depatment6      |
+      | Depatment7      |
+      | Depatment8      |
+      | Depatment9      |
+      | Depatment10      |
+      | Depatment11      |

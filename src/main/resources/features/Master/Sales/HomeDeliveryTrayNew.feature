@@ -25,4 +25,14 @@ Background:
     Examples: 
       |TestcaseRowName |
       |HomeDeliveryTrayNew |
+      |HomeDeliveryTrayNew1 |
+      |HomeDeliveryTrayNew2 |
+      |HomeDeliveryTrayNew3 |
+      |HomeDeliveryTrayNew4 |
+      |HomeDeliveryTrayNew5 |
+      |HomeDeliveryTrayNew6 |
+      |HomeDeliveryTrayNew7 |
+      |HomeDeliveryTrayNew8 |
+      |HomeDeliveryTrayNew9 |
+      |HomeDeliveryTrayNew10 |
       

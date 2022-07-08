@@ -10,7 +10,7 @@ Feature: PoS Inventory > Add Inventory
   @july2020
   Scenario Outline: Verifying Add Inventory Functionality Purchased by Cost
     Given I want to launch the "Sales/frmCustomerReceipts.aspx"
-    Then I need to click on the  element "#ContentPlaceHolder1_gvCustomerReceipts > tbody > tr:nth-child(1) > td:nth-child(1) > input[type=button]"
+   Then I need to click on the  element "#ContentPlaceHolder1_gvCustomerReceipts > tbody > tr:nth-child(1) > td:nth-child(1) > input[type=button]"
     Then I load the testdatas form excel to table
     Then I load the CustomerReceipts sheet data to map
     Then I load the rowise CustomerReceipts data for "<TestcaseRowName>" rowname
@@ -26,3 +26,14 @@ Feature: PoS Inventory > Add Inventory
      Examples: 
       | TestcaseRowName |
       |CustomerReceipts|
+      |CustomerReceipts1|
+      |CustomerReceipts2|
+      |CustomerReceipts3|
+      |CustomerReceipts4|
+      |CustomerReceipts5|
+      |CustomerReceipts6|
+      |CustomerReceipts7|
+      |CustomerReceipts8|
+      |CustomerReceipts9|
+      |CustomerReceipts10|
+      

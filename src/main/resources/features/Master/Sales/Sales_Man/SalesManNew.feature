@@ -25,4 +25,14 @@ Feature: Master > Sales > Sales man > SalesMan Master   #just referance scenario
     Examples: 
       |TestcaseRowName  |
       |SalesManNew |
+      |SalesManNew1 |
+      |SalesManNew2 |
+      |SalesManNew3 |
+      |SalesManNew4 |
+      |SalesManNew5 |
+      |SalesManNew6 |
+      |SalesManNew7 |
+      |SalesManNew8 |
+      |SalesManNew9 |
+      |SalesManNew10 |
      

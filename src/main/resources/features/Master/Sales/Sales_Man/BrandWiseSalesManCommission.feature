@@ -24,4 +24,16 @@ Background:
     Examples: 
       |TestcaseRowName|
       |BrandWiseSalesManCommission|
+      |BrandWiseSalesManCommission1|
+      |BrandWiseSalesManCommission2|
+      |BrandWiseSalesManCommission3|
+      |BrandWiseSalesManCommission4|
+      |BrandWiseSalesManCommission5|
+      |BrandWiseSalesManCommission6|
+      |BrandWiseSalesManCommission7|
+      |BrandWiseSalesManCommission8|
+      |BrandWiseSalesManCommission9|
+      |BrandWiseSalesManCommission10|
+      
+      
     

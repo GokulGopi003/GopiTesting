@@ -26,7 +26,18 @@ Scenario Outline: checking for Vendor master
 	
 	 Examples: 
       | TestcaseRowName|
-      |VendorMaster| 
+      |VendorMaster|
+      |VendorMaster1|
+      |VendorMaster2|
+      |VendorMaster3|
+      |VendorMaster4|
+      |VendorMaster5|
+      |VendorMaster6|
+      |VendorMaster7|
+      |VendorMaster8|
+      |VendorMaster9|
+      |VendorMaster10|
+      
 	
 	
 	

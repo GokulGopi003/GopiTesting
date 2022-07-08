@@ -23,6 +23,17 @@ Feature: InventoryChange
     
      Examples: 
       | TestcaseRowName |
+      |PriceChangeNonBatchItem|
+      |PriceChangeNonBatchItem1|
       |PriceChangeNonBatchItem2|
+      |PriceChangeNonBatchItem3|
+      |PriceChangeNonBatchItem4|
+      |PriceChangeNonBatchItem5|
+      |PriceChangeNonBatchItem6|
+      |PriceChangeNonBatchItem7|
+      |PriceChangeNonBatchItem8|
+      |PriceChangeNonBatchItem9|
+      |PriceChangeNonBatchItem10|
+      
       
   

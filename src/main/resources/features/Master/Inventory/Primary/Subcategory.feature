@@ -30,8 +30,8 @@ Feature: PoS Master > Location
     Then I update value to the Subcategory page global Variables
     Then I fill new Subcategory data page using excel data
     #Then I check the purchased by radio button for "<TestcaseRowName>"
-    #Then I need to invoke the DropDown by Index 0 if text matching "-- Select --"
-    #Then I need to select the dropdown "Gopi" value forLabel "Category" using Javascript
+    Then I need to invoke the DropDown by Index 0 if text matching "-- Select --"
+    Then I need to select the dropdown "Gopi" value forLabel "Category" using Javascript
     Then I need to click on the "Save" button
     Then I establish connection to Subcategory
     Then I read the values from table "tblSubCategory" in Subcategory
@@ -40,3 +40,17 @@ Feature: PoS Master > Location
   Examples: 
       | TestcaseRowName |
       | Subcategory      |
+      | Subcategory1      |
+      | Subcategory2      |
+      | Subcategory3      |
+      | Subcategory4      |
+      | Subcategory5      |
+      | Subcategory6      |
+      | Subcategory7      |
+      | Subcategory8      |
+      | Subcategory9      |
+      | Subcategory10      |
+      | Subcategory11      |
+      | Subcategory12      |
+      | Subcategory13      |
+      

@@ -25,4 +25,14 @@ Feature: master > Purchase > Display and Contract
     Examples: 
       |TestcaseRowName|
       |DisplayandContractNew1|
+      |DisplayandContractNew2|
+      |DisplayandContractNew3|
+      |DisplayandContractNew4|
+      |DisplayandContractNew5|
+      |DisplayandContractNew6|
+      |DisplayandContractNew7|
+      |DisplayandContractNew8|
+      |DisplayandContractNew9|
+      |DisplayandContractNew10|
+      
      

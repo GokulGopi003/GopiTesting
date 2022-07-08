@@ -25,5 +25,15 @@ Feature: PoS Master > Location @done
 
     Examples: 
       | TestcaseRowName |
+      |LocationNew|
       |LocationNew1|
-    
+      |LocationNew2|
+      |LocationNew3|
+      |LocationNew4|
+      |LocationNew5|
+      |LocationNew6|
+      |LocationNew7|
+      |LocationNew8|
+      |LocationNew9|
+      |LocationNew10|
+      |LocationNew11|

@@ -27,4 +27,15 @@ Scenario Outline: checking for Customer master
     Examples: 
       |TestcaseRowName |
       |CustomerNew|
+      |CustomerNew1|
+      |CustomerNew2|
+      |CustomerNew3|
+      |CustomerNew4|
+      |CustomerNew5|
+      |CustomerNew6|
+      |CustomerNew7|
+      |CustomerNew8|
+      |CustomerNew9|
+      |CustomerNew10|
+      
      

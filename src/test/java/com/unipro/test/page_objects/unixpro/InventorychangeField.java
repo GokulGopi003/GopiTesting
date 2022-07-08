@@ -26,6 +26,7 @@ public class InventorychangeField {
 	public String GST_String = "input#ContentPlaceHolder1_searchFilterUserControl_txtGst";
 	public String Selectfield_String = "input#ContentPlaceHolder1_txtInventoryType";
 	public String Changefield_String = "input#ContentPlaceHolder1_txtSelectedInventoryType";
+	public String OutPutGst_String = "input#ContentPlaceHolder1_txtOutputVat";
 	public String Billdate_String = "input#ContentPlaceHolder1_txtFromDate";
 	public String EarnedMargin_String = "input#ContentPlaceHolder1_txtMargin";
 	public String Earnedmarginclick_String = "input#ContentPlaceHolder1_txtMargin";

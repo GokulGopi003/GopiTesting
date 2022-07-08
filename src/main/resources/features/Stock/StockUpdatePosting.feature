@@ -26,3 +26,14 @@ Feature: PoS Inventory > Add Inventory
      Examples: 
       | TestcaseRowName |
       |StockUpdatePosting|
+      |StockUpdatePosting1|
+      |StockUpdatePosting2|
+      |StockUpdatePosting3|
+      |StockUpdatePosting4|
+      |StockUpdatePosting5|
+      |StockUpdatePosting6|
+      |StockUpdatePosting7|
+      |StockUpdatePosting8|
+      |StockUpdatePosting9|
+      |StockUpdatePosting10|
+      
