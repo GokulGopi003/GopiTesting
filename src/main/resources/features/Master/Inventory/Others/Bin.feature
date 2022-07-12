@@ -34,3 +34,13 @@ Feature: PoS Master > Location
       Examples: 
       | TestcaseRowName |
       |Bin      |
+      |Bin1      |
+      |Bin2      |
+      |Bin3      |
+      |Bin4      |
+      |Bin5      |
+      |Bin6      |
+      |Bin7      |
+      |Bin8      |
+      |Bin9      |
+      |Bin10      |

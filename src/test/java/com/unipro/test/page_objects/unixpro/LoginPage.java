@@ -10,9 +10,14 @@ import com.unipro.test.framework.helpers.Props;
 
 public class LoginPage extends PageObject {
 
-	private By username = By.cssSelector("input#txtUserName.form-control");
-	private By password = By.cssSelector("input#txtPassword.form-control");
-	private By loginButtton = By.cssSelector("input#btnSignIn.log-btn");
+	//private By username = By.cssSelector("input#txtUserName.form-control");
+	private By username = By.cssSelector("input#txtUserName");
+	//private By password = By.cssSelector("input#txtPassword.form-control");
+	private By password = By.cssSelector("input#txtPassword");
+
+	//private By loginButtton = By.cssSelector("input#btnSignIn.log-btn");
+	private By loginButtton = By.cssSelector("input#btnSignIn");
+
 
 	public void validLogin() {
 

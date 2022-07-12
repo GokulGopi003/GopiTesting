@@ -34,8 +34,20 @@ public class LoginPageSteps {
 		loginPage.getWebDriver().manage().window().maximize();
 		
 	}
+	
+ @Given("I enter the username")
+	public void i_enter_the_username() {
 
-	@Given("I enter the username")
+		loginPage.getUsernameElement().sendKeys("aa");
+		
+	}
+
+	@When("I enter the password")
+	public void i_enter_the_password() {
+		//loginPage.getPasswordElement().sendKeys("uniprosa");
+		loginPage.getPasswordElement().sendKeys("aa");
+	}
+	/*@Given("I enter the username")
 	public void i_enter_the_username() {
 
 		loginPage.getUsernameElement().sendKeys("aa");
@@ -46,8 +58,7 @@ public class LoginPageSteps {
 	public void i_enter_the_password() {
 		//loginPage.getPasswordElement().sendKeys("uniprosa");
 		loginPage.getPasswordElement().sendKeys("ups@123");
-	}
-
+	}*/
 	@Then("I clik on the login button")
 	public void i_clik_on_the_login_button() {
 

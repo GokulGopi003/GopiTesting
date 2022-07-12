@@ -32,6 +32,7 @@ public class Masters_CategoryAttributeMapping_steps {
 
 		m_cap.get_Masters_CategoryAtttributeMapping_Url(completeUrl.concat(string));
 		
+		
 	
 
 	

@@ -36,3 +36,14 @@ Feature: PoS Master > Location
       Examples: 
       | TestcaseRowName |
       |Warehouse     |
+      |Warehouse1     |
+      |Warehouse2     |
+      |Warehouse3     |
+      |Warehouse4     |
+      |Warehouse5     |
+      |Warehouse6     |
+      |Warehouse7     |
+      |Warehouse8     |
+      |Warehouse9     |
+      |Warehouse10     |
+      

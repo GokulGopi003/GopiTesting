@@ -34,3 +34,14 @@ Feature: PoS Master > Location
       Examples: 
       | TestcaseRowName |
       |Shelf      |
+      |Shelf1      |
+      |Shelf2      |
+      |Shelf3      |
+      |Shelf4      |
+      |Shelf5      |
+      |Shelf6      |
+      |Shelf7      |
+      |Shelf8      |
+      |Shelf9      |
+      |Shelf10      |
+      
